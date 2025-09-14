@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="meta.title">Integración - Minimal</title>
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="../assets/images/favicon.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        img, svg, video, canvas {
+            max-width: 100%;
+            height: auto;
+        }
+
+        :root {
+            /* Brand Rainbow Colors (from logo) */
+            --brand-red: #FF5757;
+            --brand-orange: #FFA500;
+            --brand-yellow: #FFD700;
+            --brand-green: #4CAF50;
+            --brand-blue: #2196F3;
+            --brand-indigo: #3F51B5;
+            
+            /* Rainbow Gradient (matching logo) */
+            --gradient-rainbow: linear-gradient(90deg, 
+                #FF5757 0%, 
+                #FFA500 20%, 
+                #FFD700 40%, 
+                #4CAF50 60%, 
+                #2196F3 80%, 
+                #3F51B5 100%
+            );
+            
+            /* Primary gradient using blue tones from logo */
+            --gradient-primary: linear-gradient(135deg, #2196F3 0%, #3F51B5 100%);
+            
+            /* Text Colors */
+            --text-dark: #4A4A4A;
+            --text-light: #6B7280;
+            --text-muted: #9CA3AF;
+            
+            /* Neutral Colors */
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --gray-100: #F3F4F6;
+            --gray-300: #D1D5DB;
+            
+            /* Shadows */
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --shadow-hover: 0 20px 40px rgba(0,0,0,0.15);
+            
+            /* Subtle background gradients */
+            --gradient-subtle: linear-gradient(135deg, rgba(33, 150, 243, 0.05) 0%, rgba(63, 81, 181, 0.05) 100%);
+            --gradient-hero: linear-gradient(135deg, rgba(255, 87, 87, 0.03) 0%, rgba(63, 81, 181, 0.03) 100%);
+            
+            /* Responsive Typography Scale */
+            --h1-size: 2rem;
+            --h2-size: 1.75rem;
+            --h3-size: 1.5rem;
+            --body-size: 1rem;
+            --small-size: 0.875rem;
+            
+            /* Responsive Spacing Scale */
+            --section-padding-y: 3rem;
+            --section-padding-left: 8%;
+            --section-padding-right: 8%;
+            --card-gap: 1rem;
+            --content-max-width: 100%;
+            
+            /* Minimum Touch Target Size */
+            --min-touch-target: 44px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segui UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            font-size: 1rem;
+        }
+
+        /* Side Animation Effects - Gradient Overlays */
+        .gradient-overlay-left,
+        .gradient-overlay-right {
+            position: fixed;
+            top: 0;
+            width: 100px;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.6;
+        }
+
+        .gradient-overlay-left {
+            left: 0;
+            background: linear-gradient(90deg, 
+                rgba(255, 87, 87, 0.1) 0%,
+                rgba(255, 165, 0, 0.08) 25%,
+                rgba(255, 215, 0, 0.06) 50%,
+                transparent 100%
+            );
+            animation: glow-left 4s ease-in-out infinite alternate;
+        }
+
+        .gradient-overlay-right {
+            right: 0;
+            background: linear-gradient(270deg, 
+                rgba(76, 175, 80, 0.1) 0%,
+                rgba(33, 150, 243, 0.08) 25%,
+                rgba(63, 81, 181, 0.06) 50%,
+                transparent 100%
+            );
+            animation: glow-right 4s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes glow-left {
+            0% { opacity: 0.3; transform: translateX(-10px); }
+            100% { opacity: 0.7; transform: translateX(0); }
+        }
+
+        @keyframes glow-right {
+            0% { opacity: 0.3; transform: translateX(10px); }
+            100% { opacity: 0.7; transform: translateX(0); }
+        }
+
+        /* Header - Mobile First */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem var(--section-padding-left) 0.75rem var(--section-padding-right);
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: 60px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            height: 32px; /* Mobile first - smaller */
+        }
+        
+        .logo img {
+            height: 100%;
+            width: auto;
+            display: block;
+            max-width: 120px; /* Mobile first - smaller */
+        }
+
+        .nav-links {
+            display: none; /* Hidden on mobile by default */
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            min-height: var(--min-touch-target);
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a:hover {
+            color: var(--brand-blue);
+            transition: color 0.3s;
+        }
+
+        .cta-button {
+            padding: 0.625rem 1.5rem; /* Mobile first - smaller */
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: var(--min-touch-target);
+            font-size: 0.875rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Mobile Menu - Mobile First */
+        .mobile-menu {
+            display: flex; /* Show by default on mobile */
+            align-items: center;
+            justify-content: center;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-dark);
+            min-height: var(--min-touch-target);
+            min-width: var(--min-touch-target);
+            transition: color 0.3s;
+        }
+        
+        .mobile-menu:hover {
+            color: var(--brand-blue);
+        }
+        
+        /* Mobile Navigation Overlay */
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 10000;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        
+        .mobile-nav-overlay.active {
+            display: flex;
+        }
+        
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            list-style: none;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .mobile-nav-links a {
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--text-dark);
+            min-height: var(--min-touch-target);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.3s;
+        }
+        
+        .mobile-nav-links a:hover {
+            color: var(--brand-blue);
+        }
+        
+        .mobile-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text-dark);
+            min-height: var(--min-touch-target);
+            min-width: var(--min-touch-target);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
+        }
+
+        .page-hero {
+            background: var(--gradient-hero);
+            padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-size: var(--h1-size);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-hero p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .content-section {
+            padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .content-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .content-card h2 {
+            font-size: var(--h2-size);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .content-card h3 {
+            font-size: var(--h3-size);
+            font-weight: 600;
+            margin: 1.5rem 0 0.75rem 0;
+            color: var(--brand-blue);
+        }
+
+        .content-card h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 1.25rem 0 0.5rem 0;
+            color: var(--text-dark);
+        }
+
+        .content-card p, .content-card li {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .content-card ul, .content-card ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Code Examples */
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            position: relative;
+        }
+
+        .code-block::before {
+            content: attr(data-lang);
+            position: absolute;
+            top: 0.5rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: #888;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+        }
+
+        .code-inline {
+            background: #f8f9fa;
+            color: #e83e8c;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.9em;
+        }
+
+        .copy-button {
+            position: absolute;
+            top: 0.5rem;
+            right: 3rem;
+            background: var(--brand-blue);
+            color: white;
+            border: none;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            opacity: 0.8;
+        }
+
+        .copy-button:hover {
+            opacity: 1;
+        }
+
+        /* Step by step guide */
+        .steps-container {
+            counter-reset: step-counter;
+        }
+
+        .step {
+            counter-increment: step-counter;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-left: 4rem;
+        }
+
+        .step::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .step h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Platform specific cards */
+        .platform-cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .platform-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            min-width: 0;
+            overflow: hidden;
+        }
+
+        .platform-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .platform-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            background: var(--gradient-primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .platform-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        /* Warning/Note boxes */
+        .note-box, .warning-box {
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid;
+        }
+
+        .note-box {
+            background: #e8f4fd;
+            border-color: var(--brand-blue);
+            color: #0c5aa6;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-color: #ffc107;
+            color: #856404;
+        }
+
+        .note-box h5, .warning-box h5 {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            :root {
+                --h1-size: 3rem;
+                --h2-size: 2.25rem;
+                --h3-size: 1.75rem;
+                --section-padding-y: 5rem;
+                --section-padding-left: 5%;
+                --section-padding-right: 5%;
+                --content-max-width: 1200px;
+            }
+
+            .nav-links {
+                display: flex; /* Show navigation on tablet+ */
+                gap: 1.5rem;
+            }
+            
+            .mobile-menu {
+                display: none; /* Hide mobile menu on tablet+ */
+            }
+            
+            .cta-button {
+                padding: 0.75rem 2rem;
+            }
+
+            .content-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 4rem;
+            }
+
+            .platform-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (min-width: 1024px) {
+            :root {
+                --section-padding-left: 3%;
+                --section-padding-right: 3%;
+            }
+
+            .nav-links {
+                gap: 2rem;
+            }
+
+            .content-grid {
+                gap: 5rem;
+            }
+
+            .platform-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Gradient Side Overlays (only for AI mode) -->
+    <div class="gradient-overlay-left">
+        <div class="gradient-noise"></div>
+    </div>
+    <div class="gradient-overlay-right">
+        <div class="gradient-noise"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="../assets/images/logo.jpeg" alt="Minimal" />
+            </div>
+            <ul class="nav-links">
+                <li><a href="../#producto" data-i18n="nav.product">Producto</a></li>
+                <li><a href="../#como-funciona" data-i18n="nav.howItWorks">Cómo Funciona</a></li>
+                <li><a href="../#beneficios" data-i18n="nav.benefits">Beneficios</a></li>
+                <li><a href="../#casos" data-i18n="nav.useCases">Casos de Uso</a></li>
+                <li><a href="../#precios" data-i18n="nav.pricing">Precios</a></li>
+            </ul>
+            <a href="../#contacto" class="cta-button" data-i18n="nav.tryFree">Prueba Gratis</a>
+            <button class="mobile-menu" id="mobileMenuButton">☰</button>
+        </nav>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <button class="mobile-close" id="mobileCloseButton">×</button>
+        <ul class="mobile-nav-links">
+            <li><a href="../#producto" data-i18n="nav.product">Producto</a></li>
+            <li><a href="../#como-funciona" data-i18n="nav.howItWorks">Cómo Funciona</a></li>
+            <li><a href="../#beneficios" data-i18n="nav.benefits">Beneficios</a></li>
+            <li><a href="../#casos" data-i18n="nav.useCases">Casos de Uso</a></li>
+            <li><a href="../#precios" data-i18n="nav.pricing">Precios</a></li>
+        </ul>
+        <a href="../#contacto" class="cta-button" data-i18n="nav.tryFree">Prueba Gratis</a>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Page Hero -->
+        <section class="page-hero">
+            <h1 data-i18n="hero.title">Guía de Integración</h1>
+            <p data-i18n="hero.subtitle">Implementa Minimal en tu sitio web en minutos. Documentación técnica completa para desarrolladores y no-desarrolladores.</p>
+        </section>
+
+        <!-- Quick Start -->
+        <section class="content-section">
+            <div class="content-card">
+                <h2 data-i18n="quickStart.title">Integración Rápida (5 minutos)</h2>
+                <p data-i18n="quickStart.subtitle">La manera más simple de empezar con Minimal. Funciona con cualquier sitio web.</p>
+                
+                <div class="steps-container">
+                    <div class="step">
+                        <h4 data-i18n="quickStart.steps.step1.title">Obtén tu API Key</h4>
+                        <p data-i18n="quickStart.steps.step1.description">Regístrate en <a href="/contact">nuestra plataforma</a> y obtén tu clave de API única.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4 data-i18n="quickStart.steps.step2.title">Agrega el Script</h4>
+                        <p data-i18n="quickStart.steps.step2.description">Copia y pega este código antes del tag <code class="code-inline">&lt;/body&gt;</code> en tu HTML:</p>
+                        <div class="code-block" data-lang="HTML">
+                            <button class="copy-button" onclick="copyToClipboard(this)" data-i18n="quickStart.steps.step2.button">Copiar</button>
+&lt;script src="https://cdn.minimal.ai/v1/minimal.js" data-api-key="TU_API_KEY"&gt;&lt;/script&gt;
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <h4 data-i18n="quickStart.steps.step3.title">¡Listo!</h4>
+                        <p data-i18n="quickStart.steps.step3.description">Refresca tu sitio web y verás el toggle de AI. El sistema automáticamente indexará tu contenido.</p>
+                    </div>
+                </div>
+
+                <div class="note-box">
+                    <h5 data-i18n="quickStart.note.title">💡 Nota Importante</h5>
+                    <p data-i18n="quickStart.note.content">Reemplaza <code class="code-inline">TU_API_KEY</code> con la clave real que recibiste por email. El chat puede tardar 2-3 minutos en aparecer la primera vez mientras se indexa tu contenido.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Platform Specific Guides -->
+        <section class="content-section">
+            <h2 style="text-align: center; margin-bottom: 3rem; color: var(--text-dark);" data-i18n="platforms.title">Guías por Plataforma</h2>
+            
+            <div class="platform-cards">
+                <div class="platform-card">
+                    <div class="platform-icon">📝</div>
+                    <div class="platform-title" data-i18n="platforms.wordpress.title">WordPress</div>
+                    <h4 data-i18n="platforms.wordpress.method1.title">Método 1: Plugin Personalizado</h4>
+                    <p data-i18n="platforms.wordpress.method1.description">Crea un archivo <code class="code-inline">minimal-chat.php</code> en tu carpeta de plugins:</p>
+                    <div class="code-block" data-lang="PHP">
+&lt;?php
+/*
+Plugin Name: Minimal Chat
+Description: Integración de Minimal AI Chat
+Version: 1.0
+*/
+
+function minimal_chat_script() {
+    echo '&lt;script src="https://cdn.minimal.ai/v1/minimal.js" data-api-key="TU_API_KEY"&gt;&lt;/script&gt;';
+}
+add_action('wp_footer', 'minimal_chat_script');
+?&gt;
+                    </div>
+                    
+                    <h4 data-i18n="platforms.wordpress.method2.title">Método 2: Functions.php</h4>
+                    <p data-i18n="platforms.wordpress.method2.description">Agrega este código al archivo <code class="code-inline">functions.php</code> de tu tema:</p>
+                    <div class="code-block" data-lang="PHP">
+function add_minimal_chat() {
+    wp_enqueue_script('minimal-chat', 'https://cdn.minimal.ai/v1/minimal.js', [], '1.0', true);
+    wp_add_inline_script('minimal-chat', 'window.MinimalConfig = {apiKey: "TU_API_KEY"};', 'before');
+}
+add_action('wp_enqueue_scripts', 'add_minimal_chat');
+                    </div>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-icon">🛍️</div>
+                    <div class="platform-title" data-i18n="platforms.shopify.title">Shopify</div>
+                    <p data-i18n="platforms.shopify.description">En tu panel de administración de Shopify:</p>
+                    <ol>
+                        <li data-i18n="platforms.shopify.steps[0]">Ve a <strong>Tienda online → Temas</strong></li>
+                        <li data-i18n="platforms.shopify.steps[1]">Haz clic en <strong>Acciones → Editar código</strong></li>
+                        <li data-i18n="platforms.shopify.steps[2]">Abre el archivo <code class="code-inline">theme.liquid</code></li>
+                        <li data-i18n="platforms.shopify.steps[3]">Busca el tag <code class="code-inline">&lt;/body&gt;</code></li>
+                        <li data-i18n="platforms.shopify.steps[4]">Agrega el código justo antes:</li>
+                    </ol>
+                    <div class="code-block" data-lang="HTML">
+&lt;script src="https://cdn.minimal.ai/v1/minimal.js" 
+        data-api-key="TU_API_KEY"
+        data-ecommerce="true"&gt;&lt;/script&gt;
+                    </div>
+                    
+                    <div class="note-box">
+                        <h5 data-i18n="platforms.shopify.note.title">🛒 E-commerce Optimizado</h5>
+                        <p data-i18n="platforms.shopify.note.content">El atributo <code class="code-inline">data-ecommerce="true"</code> habilita funcionalidades especiales para tiendas online como búsqueda de productos y asistencia de compra.</p>
+                    </div>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-icon">⚛️</div>
+                    <div class="platform-title" data-i18n="platforms.react.title">React / Next.js</div>
+                    <h4 data-i18n="platforms.react.npm.title">Instalación con NPM</h4>
+                    <div class="code-block" data-lang="BASH">
+npm install @minimal/react-chat
+                    </div>
+                    
+                    <h4 data-i18n="platforms.react.components.title">Uso en Componentes</h4>
+                    <div class="code-block" data-lang="JSX">
+import { MinimalChat } from '@minimal/react-chat';
+
+function App() {
+  return (
+    &lt;div&gt;
+      {/* Tu contenido */}
+      &lt;MinimalChat apiKey="TU_API_KEY" /&gt;
+    &lt;/div&gt;
+  );
+}
+                    </div>
+
+                    <h4 data-i18n="platforms.react.nextjs.title">Next.js con Script Component</h4>
+                    <div class="code-block" data-lang="JSX">
+import Script from 'next/script';
+
+export default function Layout({ children }) {
+  return (
+    &lt;&gt;
+      {children}
+      &lt;Script
+        src="https://cdn.minimal.ai/v1/minimal.js"
+        data-api-key="TU_API_KEY"
+        strategy="lazyOnload"
+      /&gt;
+    &lt;/&gt;
+  );
+}
+                    </div>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-icon">🟢</div>
+                    <div class="platform-title" data-i18n="platforms.vue.title">Vue.js / Nuxt.js</div>
+                    <h4 data-i18n="platforms.vue.plugin.title">Plugin para Vue 3</h4>
+                    <div class="code-block" data-lang="JS">
+// plugins/minimal.client.js
+export default defineNuxtPlugin(() => {
+  const script = document.createElement('script');
+  script.src = 'https://cdn.minimal.ai/v1/minimal.js';
+  script.setAttribute('data-api-key', 'TU_API_KEY');
+  document.body.appendChild(script);
+});
+                    </div>
+
+                    <h4 data-i18n="platforms.vue.composable.title">Composable para Vue</h4>
+                    <div class="code-block" data-lang="JS">
+// composables/useMinimal.js
+export const useMinimal = (apiKey) => {
+  const loadMinimal = () => {
+    if (process.client) {
+      const script = document.createElement('script');
+      script.src = 'https://cdn.minimal.ai/v1/minimal.js';
+      script.setAttribute('data-api-key', apiKey);
+      document.head.appendChild(script);
+    }
+  };
+
+  onMounted(() => {
+    loadMinimal();
+  });
+};
+                    </div>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-icon">📱</div>
+                    <div class="platform-title" data-i18n="platforms.wix.title">Wix / Squarespace</div>
+                    <h4 data-i18n="platforms.wix.wixSteps.title">Wix</h4>
+                    <ol>
+                        <li data-i18n="platforms.wix.wixSteps.steps[0]">Ve a <strong>Configuración → SEO avanzado</strong></li>
+                        <li data-i18n="platforms.wix.wixSteps.steps[1]">Busca <strong>Código personalizado</strong></li>
+                        <li data-i18n="platforms.wix.wixSteps.steps[2]">Agrega en <strong>Código para todas las páginas</strong>:</li>
+                    </ol>
+                    <div class="code-block" data-lang="HTML">
+&lt;script src="https://cdn.minimal.ai/v1/minimal.js" data-api-key="TU_API_KEY"&gt;&lt;/script&gt;
+                    </div>
+
+                    <h4 data-i18n="platforms.wix.squarespace.title">Squarespace</h4>
+                    <ol>
+                        <li data-i18n="platforms.wix.squarespace.steps[0]">Ve a <strong>Configuración → Avanzado → Inyección de código</strong></li>
+                        <li data-i18n="platforms.wix.squarespace.steps[1]">En <strong>Pie de página</strong>, agrega:</li>
+                    </ol>
+                    <div class="code-block" data-lang="HTML">
+&lt;script src="https://cdn.minimal.ai/v1/minimal.js" data-api-key="TU_API_KEY"&gt;&lt;/script&gt;
+                    </div>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-icon">🅰️</div>
+                    <div class="platform-title" data-i18n="platforms.angular.title">Angular</div>
+                    <h4 data-i18n="platforms.angular.service.title">Servicio de Integración</h4>
+                    <div class="code-block" data-lang="TS">
+// services/minimal.service.ts
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class MinimalService {
+  private apiKey = 'TU_API_KEY';
+  private loaded = false;
+
+  loadMinimal(): Promise&lt;void&gt; {
+    if (this.loaded) return Promise.resolve();
+
+    return new Promise((resolve) => {
+      const script = document.createElement('script');
+      script.src = 'https://cdn.minimal.ai/v1/minimal.js';
+      script.setAttribute('data-api-key', this.apiKey);
+      script.onload = () => {
+        this.loaded = true;
+        resolve();
+      };
+      document.body.appendChild(script);
+    });
+  }
+}
+                    </div>
+
+                    <h4 data-i18n="platforms.angular.appComponent.title">Uso en App Component</h4>
+                    <div class="code-block" data-lang="TS">
+// app.component.ts
+import { Component, OnInit } from '@angular/core';
+import { MinimalService } from './services/minimal.service';
+
+@Component({
+  selector: 'app-root',
+  template: '&lt;router-outlet&gt;&lt;/router-outlet&gt;'
+})
+export class AppComponent implements OnInit {
+  constructor(private minimal: MinimalService) {}
+
+  ngOnInit() {
+    this.minimal.loadMinimal();
+  }
+}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Advanced Configuration -->
+        <section class="content-section">
+            <div class="content-grid">
+                <div class="content-card">
+                    <h2 data-i18n="advanced.title">Configuración Avanzada</h2>
+                    
+                    <h3 data-i18n="advanced.customization.title">Opciones de Personalización</h3>
+                    <div class="code-block" data-lang="HTML">
+&lt;script src="https://cdn.minimal.ai/v1/minimal.js" 
+        data-api-key="TU_API_KEY"
+        data-position="bottom-left"
+        data-primary-color="#2196F3"
+        data-theme="dark"
+        data-language="es"
+        data-welcome-message="¡Hola! ¿En qué puedo ayudarte?"
+        data-placeholder="Escribe tu pregunta aquí..."
+        data-auto-open="false"
+        data-enable-typing="true"&gt;&lt;/script&gt;
+                    </div>
+
+                    <h3 data-i18n="advanced.api.title">Configuración con JavaScript</h3>
+                    <div class="code-block" data-lang="JS">
+window.MinimalConfig = {
+  apiKey: 'TU_API_KEY',
+  ui: {
+    position: 'bottom-right',
+    theme: 'auto', // 'light' | 'dark' | 'auto'
+    primaryColor: '#2196F3',
+    borderRadius: '12px',
+    fontFamily: 'inherit'
+  },
+  behavior: {
+    autoOpen: false,
+    enableTypingIndicator: true,
+    enableSuggestions: true,
+    enableFileUpload: false,
+    maxMessageLength: 1000
+  },
+  content: {
+    language: 'es',
+    welcomeMessage: '¡Hola! ¿Cómo puedo ayudarte?',
+    placeholder: 'Escribe tu mensaje...',
+    errorMessage: 'Hubo un error. Inténtalo de nuevo.',
+    offlineMessage: 'Chat no disponible temporalmente.'
+  },
+  advanced: {
+    enableAnalytics: true,
+    enableA11y: true,
+    loadDelay: 2000,
+    apiEndpoint: 'https://api.minimal.ai/v1'
+  }
+};
+                    </div>
+
+                    <h3 data-i18n="advanced.analytics.title">Eventos y Callbacks</h3>
+                    <div class="code-block" data-lang="JS">
+window.addEventListener('minimal:loaded', () => {
+  console.log('Minimal chat loaded');
+});
+
+window.addEventListener('minimal:opened', () => {
+  // Analytics tracking
+  gtag('event', 'chat_opened', {
+    'event_category': 'engagement'
+  });
+});
+
+window.addEventListener('minimal:message:sent', (event) => {
+  console.log('Message sent:', event.detail.message);
+});
+
+window.addEventListener('minimal:message:received', (event) => {
+  console.log('Response received:', event.detail.response);
+});
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <h2 data-i18n="advanced.apiReference.title">API Reference</h2>
+                    
+                    <h3 data-i18n="advanced.apiReference.methods.title">Métodos Disponibles</h3>
+                    <div class="code-block" data-lang="JS">
+// Abrir el chat programáticamente
+MinimalChat.open();
+
+// Cerrar el chat
+MinimalChat.close();
+
+// Enviar mensaje programáticamente
+MinimalChat.sendMessage('Hola, necesito ayuda');
+
+// Actualizar configuración
+MinimalChat.updateConfig({
+  ui: { primaryColor: '#FF5722' }
+});
+
+// Obtener estadísticas de la sesión
+const stats = MinimalChat.getSessionStats();
+console.log(stats.messagesCount, stats.duration);
+
+// Resetear conversación
+MinimalChat.resetConversation();
+
+// Activar/desactivar
+MinimalChat.enable();
+MinimalChat.disable();
+                    </div>
+
+                    <h3 data-i18n="advanced.apiReference.analytics.title">Integración con Analytics</h3>
+                    <div class="code-block" data-lang="JS">
+// Google Analytics 4
+window.addEventListener('minimal:message:sent', (event) => {
+  gtag('event', 'chat_message_sent', {
+    'message_length': event.detail.message.length,
+    'session_id': event.detail.sessionId
+  });
+});
+
+// Facebook Pixel
+window.addEventListener('minimal:opened', () => {
+  fbq('track', 'ChatEngagement');
+});
+
+// Custom Analytics
+window.addEventListener('minimal:conversation:ended', (event) => {
+  fetch('/api/analytics/chat-ended', {
+    method: 'POST',
+    body: JSON.stringify({
+      duration: event.detail.duration,
+      messageCount: event.detail.messageCount,
+      resolved: event.detail.resolved
+    })
+  });
+});
+                    </div>
+
+                    <h3 data-i18n="advanced.apiReference.crm.title">Integración con CRM</h3>
+                    <div class="code-block" data-lang="JS">
+// Enviar leads a tu CRM
+window.addEventListener('minimal:lead:captured', (event) => {
+  const leadData = {
+    email: event.detail.email,
+    name: event.detail.name,
+    message: event.detail.message,
+    source: 'minimal_chat'
+  };
+  
+  // Ejemplo: Enviar a HubSpot
+  fetch('https://api.hubspot.com/contacts/v1/contact/', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer TU_HUBSPOT_TOKEN',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(leadData)
+  });
+});
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Troubleshooting -->
+        <section class="content-section">
+            <div class="content-card">
+                <h2 data-i18n="troubleshooting.title">Resolución de Problemas</h2>
+                
+                <h3 data-i18n="troubleshooting.common.title">Problemas Comunes</h3>
+                
+                <h4 data-i18n="troubleshooting.common.issue1.title">El chat no aparece</h4>
+                <ul>
+                    <li data-i18n="troubleshooting.common.issue1.solutions[0]">Verifica que tu API key sea correcta</li>
+                    <li data-i18n="troubleshooting.common.issue1.solutions[1]">Asegúrate de que el script esté antes del <code class="code-inline">&lt;/body&gt;</code></li>
+                    <li data-i18n="troubleshooting.common.issue1.solutions[2]">Revisa la consola del navegador para errores</li>
+                    <li data-i18n="troubleshooting.common.issue1.solutions[3]">Espera 2-3 minutos para el primer indexado</li>
+                </ul>
+
+                <h4 data-i18n="troubleshooting.common.issue2.title">Conflictos con otros scripts</h4>
+                <ul>
+                    <li data-i18n="troubleshooting.common.issue2.solutions[0]">Carga Minimal después de otros scripts</li>
+                    <li data-i18n="troubleshooting.common.issue2.solutions[1]">Usa el atributo defer si es necesario</li>
+                    <li data-i18n="troubleshooting.common.issue2.solutions[2]">Contacta soporte si persisten los conflictos</li>
+                </ul>
+
+                <h4 data-i18n="troubleshooting.common.issue3.title">Respuestas lentas o imprecisas</h4>
+                <ul>
+                    <li data-i18n="troubleshooting.common.issue3.solutions[0]">Verifica que tu sitio sea público y accesible</li>
+                    <li data-i18n="troubleshooting.common.issue3.solutions[1]">Asegúrate de que tu contenido esté bien estructurado (headings, párrafos)</li>
+                    <li data-i18n="troubleshooting.common.issue3.solutions[2]">Usa meta descripciones en tus páginas</li>
+                    <li data-i18n="troubleshooting.common.issue3.solutions[3]">Evita contenido duplicado o muy repetitivo</li>
+                </ul>
+
+                <div class="warning-box">
+                    <h5 data-i18n="troubleshooting.warning.title">⚠️ Advertencia de Seguridad</h5>
+                    <p data-i18n="troubleshooting.warning.content">Nunca compartas tu API key públicamente. Si crees que tu clave ha sido comprometida, contáctanos inmediatamente para regenerarla.</p>
+                </div>
+
+                <h3 data-i18n="troubleshooting.validation.title">Validación de Instalación</h3>
+                <p data-i18n="troubleshooting.validation.description">Puedes verificar que Minimal esté funcionando correctamente usando esta función en la consola:</p>
+                <div class="code-block" data-lang="JS">
+// Ejecutar en la consola del navegador
+console.log('Minimal Status:', {
+  loaded: typeof MinimalChat !== 'undefined',
+  version: MinimalChat?.version,
+  apiKey: MinimalChat?.config?.apiKey?.substring(0, 8) + '...',
+  ready: MinimalChat?.isReady()
+});
+                </div>
+            </div>
+        </section>
+
+        <!-- Support Section -->
+        <section class="content-section">
+            <div class="content-card" style="background: var(--gradient-primary); color: white; text-align: center;">
+                <h2 style="color: white;" data-i18n="support.title">¿Necesitas Ayuda con la Integración?</h2>
+                <p style="color: white; opacity: 0.9;" data-i18n="support.description">Nuestro equipo técnico está disponible para ayudarte con implementaciones complejas, configuraciones personalizadas o cualquier problema técnico.</p>
+                <br>
+                <a href="/contact" style="background: white; color: var(--brand-blue); padding: 0.75rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block;" data-i18n="support.button">Obtener Soporte Técnico</a>
+            </div>
+        </section>
+    </main>
+
+    <script src="../components/footer.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        // Mobile menu functionality (same as landing page)
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobileMenuButton');
+            const mobileCloseButton = document.getElementById('mobileCloseButton');
+            const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+
+            if (mobileMenuButton && mobileNavOverlay && mobileCloseButton) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileNavOverlay.classList.add('active');
+                });
+
+                mobileCloseButton.addEventListener('click', function() {
+                    mobileNavOverlay.classList.remove('active');
+                });
+
+                // Close mobile menu when clicking on overlay
+                mobileNavOverlay.addEventListener('click', function(e) {
+                    if (e.target === mobileNavOverlay) {
+                        mobileNavOverlay.classList.remove('active');
+                    }
+                });
+
+                // Close mobile menu when clicking on a link
+                const mobileNavLinks = mobileNavOverlay.querySelectorAll('a');
+                mobileNavLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileNavOverlay.classList.remove('active');
+                    });
+                });
+            }
+        });
+
+        function copyToClipboard(button) {
+            const codeBlock = button.parentElement;
+            const code = codeBlock.textContent.replace('Copiar', '').trim();
+            navigator.clipboard.writeText(code).then(() => {
+                button.textContent = '✓ Copiado';
+                setTimeout(() => {
+                    button.textContent = 'Copiar';
+                }, 2000);
+            });
+        }
+    </script>
+    
+    <script src="../assets/js/i18n-core.js"></script>
+    <script src="../assets/js/translations/integration.js"></script>
+    <script src="../components/footer.js"></script>
+    <script>
+        // Initialize i18n system and reinitialize after footer loads
+        document.addEventListener('DOMContentLoaded', function() {
+            window.i18n.init(integrationTranslations);
+            
+            // Re-apply translations after footer is loaded
+            setTimeout(() => {
+                window.i18n.updatePageContent();
+            }, 100);
+        });
+    </script>
+</body>
+</html>

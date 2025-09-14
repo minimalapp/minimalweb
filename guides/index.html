@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="meta.title">Guías - Minimal</title>
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="../assets/images/favicon.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        img, svg, video, canvas {
+            max-width: 100%;
+            height: auto;
+        }
+
+        :root {
+            /* Brand Rainbow Colors (from logo) */
+            --brand-red: #FF5757;
+            --brand-orange: #FFA500;
+            --brand-yellow: #FFD700;
+            --brand-green: #4CAF50;
+            --brand-blue: #2196F3;
+            --brand-indigo: #3F51B5;
+            
+            /* Rainbow Gradient (matching logo) */
+            --gradient-rainbow: linear-gradient(90deg, 
+                #FF5757 0%, 
+                #FFA500 20%, 
+                #FFD700 40%, 
+                #4CAF50 60%, 
+                #2196F3 80%, 
+                #3F51B5 100%
+            );
+            
+            /* Primary gradient using blue tones from logo */
+            --gradient-primary: linear-gradient(135deg, #2196F3 0%, #3F51B5 100%);
+            
+            /* Text Colors */
+            --text-dark: #4A4A4A;
+            --text-light: #6B7280;
+            --text-muted: #9CA3AF;
+            
+            /* Neutral Colors */
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --gray-100: #F3F4F6;
+            --gray-300: #D1D5DB;
+            
+            /* Shadows */
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --shadow-hover: 0 20px 40px rgba(0,0,0,0.15);
+            
+            /* Subtle background gradients */
+            --gradient-subtle: linear-gradient(135deg, rgba(33, 150, 243, 0.05) 0%, rgba(63, 81, 181, 0.05) 100%);
+            --gradient-hero: linear-gradient(135deg, rgba(255, 87, 87, 0.03) 0%, rgba(63, 81, 181, 0.03) 100%);
+            
+            /* Responsive Typography Scale */
+            --h1-size: 2rem;
+            --h2-size: 1.75rem;
+            --h3-size: 1.5rem;
+            --body-size: 1rem;
+            --small-size: 0.875rem;
+            
+            /* Responsive Spacing Scale */
+            --section-padding-y: 3rem;
+            --section-padding-left: 8%;
+            --section-padding-right: 8%;
+            --card-gap: 1rem;
+            --content-max-width: 100%;
+            
+            /* Minimum Touch Target Size */
+            --min-touch-target: 44px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            font-size: 1rem;
+        }
+
+        /* Side Animation Effects - Gradient Overlays */
+        .gradient-overlay-left,
+        .gradient-overlay-right {
+            position: fixed;
+            top: 0;
+            width: 100px;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.6;
+        }
+
+        .gradient-overlay-left {
+            left: 0;
+            background: linear-gradient(90deg, 
+                rgba(255, 87, 87, 0.1) 0%,
+                rgba(255, 165, 0, 0.08) 25%,
+                rgba(255, 215, 0, 0.06) 50%,
+                transparent 100%
+            );
+            animation: glow-left 4s ease-in-out infinite alternate;
+        }
+
+        .gradient-overlay-right {
+            right: 0;
+            background: linear-gradient(270deg, 
+                rgba(76, 175, 80, 0.1) 0%,
+                rgba(33, 150, 243, 0.08) 25%,
+                rgba(63, 81, 181, 0.06) 50%,
+                transparent 100%
+            );
+            animation: glow-right 4s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes glow-left {
+            0% { opacity: 0.3; transform: translateX(-10px); }
+            100% { opacity: 0.7; transform: translateX(0); }
+        }
+
+        @keyframes glow-right {
+            0% { opacity: 0.3; transform: translateX(10px); }
+            100% { opacity: 0.7; transform: translateX(0); }
+        }
+
+        /* Header - Mobile First */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem var(--section-padding-left) 0.75rem var(--section-padding-right);
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: 60px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            height: 32px; /* Mobile first - smaller */
+        }
+        
+        .logo img {
+            height: 100%;
+            width: auto;
+            display: block;
+            max-width: 120px; /* Mobile first - smaller */
+        }
+
+        .nav-links {
+            display: none; /* Hidden on mobile by default */
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            min-height: var(--min-touch-target);
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a:hover {
+            color: var(--brand-blue);
+            transition: color 0.3s;
+        }
+
+        .cta-button {
+            padding: 0.625rem 1.5rem; /* Mobile first - smaller */
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: var(--min-touch-target);
+            font-size: 0.875rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Mobile Menu - Mobile First */
+        .mobile-menu {
+            display: flex; /* Show by default on mobile */
+            align-items: center;
+            justify-content: center;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-dark);
+            min-height: var(--min-touch-target);
+            min-width: var(--min-touch-target);
+            transition: color 0.3s;
+        }
+        
+        .mobile-menu:hover {
+            color: var(--brand-blue);
+        }
+        
+        /* Mobile Navigation Overlay */
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 10000;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        
+        .mobile-nav-overlay.active {
+            display: flex;
+        }
+        
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            list-style: none;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .mobile-nav-links a {
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--text-dark);
+            min-height: var(--min-touch-target);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.3s;
+        }
+        
+        .mobile-nav-links a:hover {
+            color: var(--brand-blue);
+        }
+        
+        .mobile-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text-dark);
+            min-height: var(--min-touch-target);
+            min-width: var(--min-touch-target);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
+        }
+
+        .page-hero {
+            background: var(--gradient-hero);
+            padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-size: var(--h1-size);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-hero p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .content-section {
+            padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .content-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .content-card h2 {
+            font-size: var(--h2-size);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .content-card h3 {
+            font-size: var(--h3-size);
+            font-weight: 600;
+            margin: 1.5rem 0 0.75rem 0;
+            color: var(--brand-blue);
+        }
+
+        .content-card h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 1.25rem 0 0.5rem 0;
+            color: var(--text-dark);
+        }
+
+        .content-card p, .content-card li {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .content-card ul, .content-card ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Guide Categories */
+        .guide-categories {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .guide-category {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .guide-category:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .guide-category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .guide-category-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            background: var(--gradient-primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .guide-category-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .guide-list {
+            list-style: none;
+            margin: 0;
+        }
+
+        .guide-list li {
+            margin-bottom: 0.75rem;
+        }
+
+        .guide-list a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .guide-list a:hover {
+            color: var(--brand-blue);
+        }
+
+        .guide-list a::before {
+            content: "→";
+            margin-right: 0.5rem;
+            color: var(--brand-blue);
+        }
+
+        /* Best Practices Section */
+        .best-practice {
+            background: var(--gradient-subtle);
+            border: 1px solid rgba(33, 150, 243, 0.2);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .best-practice-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .best-practice-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--brand-blue);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .best-practice-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        /* Step-by-step guides */
+        .steps-container {
+            counter-reset: step-counter;
+        }
+
+        .step {
+            counter-increment: step-counter;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-left: 4rem;
+        }
+
+        .step::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .step h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Code blocks */
+        .code-example {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+
+        /* Warning and tip boxes */
+        .tip-box, .warning-box {
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid;
+        }
+
+        .tip-box {
+            background: #e8f5e8;
+            border-color: var(--brand-green);
+            color: #2d5d2d;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-color: #ffc107;
+            color: #856404;
+        }
+
+        .tip-box h5, .warning-box h5 {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        /* Gray out guide links that don't have anchors */
+        .guide-list a:not([href="#quick-start"]):not([href="#content-optimization"]):not([href="#conversation-design"]):not([href="#kpi-tracking"]):not([href="#advanced-setup"]) {
+            color: #9CA3AF !important;
+            pointer-events: none;
+            cursor: default;
+            opacity: 0.6;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            :root {
+                --h1-size: 3rem;
+                --h2-size: 2.25rem;
+                --h3-size: 1.75rem;
+                --section-padding-y: 5rem;
+                --section-padding-left: 5%;
+                --section-padding-right: 5%;
+                --content-max-width: 1200px;
+            }
+
+            .nav-links {
+                display: flex; /* Show navigation on tablet+ */
+                gap: 1.5rem;
+            }
+            
+            .mobile-menu {
+                display: none; /* Hide mobile menu on tablet+ */
+            }
+            
+            .cta-button {
+                padding: 0.75rem 2rem;
+            }
+
+            .content-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 4rem;
+            }
+
+            .guide-categories {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (min-width: 1024px) {
+            :root {
+                --section-padding-left: 3%;
+                --section-padding-right: 3%;
+            }
+
+            .nav-links {
+                gap: 2rem;
+            }
+
+            .content-grid {
+                gap: 5rem;
+            }
+
+            .guide-categories {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Gradient Side Overlays (only for AI mode) -->
+    <div class="gradient-overlay-left">
+        <div class="gradient-noise"></div>
+    </div>
+    <div class="gradient-overlay-right">
+        <div class="gradient-noise"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="../assets/images/logo.jpeg" alt="Minimal" />
+            </div>
+            <ul class="nav-links">
+                <li><a href="../#producto" data-i18n="nav.product">Producto</a></li>
+                <li><a href="../#como-funciona" data-i18n="nav.howItWorks">Cómo Funciona</a></li>
+                <li><a href="../#beneficios" data-i18n="nav.benefits">Beneficios</a></li>
+                <li><a href="../#casos" data-i18n="nav.useCases">Casos de Uso</a></li>
+                <li><a href="../#precios" data-i18n="nav.pricing">Precios</a></li>
+            </ul>
+            <a href="../#contacto" class="cta-button" data-i18n="nav.tryFree">Prueba Gratis</a>
+            <button class="mobile-menu" id="mobileMenuButton">☰</button>
+        </nav>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <button class="mobile-close" id="mobileCloseButton">×</button>
+        <ul class="mobile-nav-links">
+            <li><a href="../#producto" data-i18n="nav.product">Producto</a></li>
+            <li><a href="../#como-funciona" data-i18n="nav.howItWorks">Cómo Funciona</a></li>
+            <li><a href="../#beneficios" data-i18n="nav.benefits">Beneficios</a></li>
+            <li><a href="../#casos" data-i18n="nav.useCases">Casos de Uso</a></li>
+            <li><a href="../#precios" data-i18n="nav.pricing">Precios</a></li>
+        </ul>
+        <a href="../#contacto" class="cta-button" data-i18n="nav.tryFree">Prueba Gratis</a>
+    </div>
+
+    <main>
+        <!-- Page Hero -->
+        <section class="page-hero">
+            <h1 data-i18n="hero.title">Guías y Mejores Prácticas</h1>
+            <p data-i18n="hero.subtitle">Aprende a maximizar el potencial de Minimal con nuestras guías detalladas, casos de uso y mejores prácticas probadas en producción.</p>
+        </section>
+
+        <!-- Guide Categories -->
+        <section class="content-section">
+            <div class="guide-categories">
+                <div class="guide-category">
+                    <div class="guide-category-header">
+                        <div class="guide-category-icon">🚀</div>
+                        <div class="guide-category-title" data-i18n="categories.implementation.title">Implementación</div>
+                    </div>
+                    <ul class="guide-list">
+                        <li><a href="#quick-start" data-i18n="categories.implementation.guides[0]">Guía de inicio rápido (5 minutos)</a></li>
+                        <li><a href="#advanced-setup" data-i18n="categories.implementation.guides[1]">Configuración avanzada</a></li>
+                        <li><a href="#testing" data-i18n="categories.implementation.guides[2]">Testing y debugging</a></li>
+                        <li><a href="#performance" data-i18n="categories.implementation.guides[3]">Optimización de rendimiento</a></li>
+                        <li><a href="#migration" data-i18n="categories.implementation.guides[4]">Migración desde otras plataformas</a></li>
+                    </ul>
+                </div>
+
+                <div class="guide-category">
+                    <div class="guide-category-header">
+                        <div class="guide-category-icon">🎨</div>
+                        <div class="guide-category-title" data-i18n="categories.design.title">Diseño y UX</div>
+                    </div>
+                    <ul class="guide-list">
+                        <li><a href="#brand-customization" data-i18n="categories.design.guides[0]">Personalización de marca</a></li>
+                        <li><a href="#conversation-design" data-i18n="categories.design.guides[1]">Diseño conversacional</a></li>
+                        <li><a href="#mobile-optimization" data-i18n="categories.design.guides[2]">Optimización móvil</a></li>
+                        <li><a href="#accessibility" data-i18n="categories.design.guides[3]">Accesibilidad</a></li>
+                        <li><a href="#ui-patterns" data-i18n="categories.design.guides[4]">Patrones de interfaz</a></li>
+                    </ul>
+                </div>
+
+                <div class="guide-category">
+                    <div class="guide-category-header">
+                        <div class="guide-category-icon">📊</div>
+                        <div class="guide-category-title" data-i18n="categories.analytics.title">Analytics y Datos</div>
+                    </div>
+                    <ul class="guide-list">
+                        <li><a href="#kpi-tracking" data-i18n="categories.analytics.guides[0]">Métricas clave (KPIs)</a></li>
+                        <li><a href="#user-insights" data-i18n="categories.analytics.guides[1]">Análisis de usuarios</a></li>
+                        <li><a href="#conversion-optimization" data-i18n="categories.analytics.guides[2]">Optimización de conversiones</a></li>
+                        <li><a href="#reporting" data-i18n="categories.analytics.guides[3]">Reportes automáticos</a></li>
+                        <li><a href="#data-export" data-i18n="categories.analytics.guides[4]">Exportación de datos</a></li>
+                    </ul>
+                </div>
+
+                <div class="guide-category">
+                    <div class="guide-category-header">
+                        <div class="guide-category-icon">🔧</div>
+                        <div class="guide-category-title" data-i18n="categories.useCases.title">Casos de Uso</div>
+                    </div>
+                    <ul class="guide-list">
+                        <li><a href="#ecommerce" data-i18n="categories.useCases.guides[0]">E-commerce y ventas</a></li>
+                        <li><a href="#lead-generation" data-i18n="categories.useCases.guides[1]">Generación de leads</a></li>
+                        <li><a href="#customer-support" data-i18n="categories.useCases.guides[2]">Soporte al cliente</a></li>
+                        <li><a href="#content-discovery" data-i18n="categories.useCases.guides[3]">Descubrimiento de contenido</a></li>
+                        <li><a href="#user-onboarding" data-i18n="categories.useCases.guides[4]">Onboarding de usuarios</a></li>
+                    </ul>
+                </div>
+
+                <div class="guide-category">
+                    <div class="guide-category-header">
+                        <div class="guide-category-icon">⚡</div>
+                        <div class="guide-category-title" data-i18n="categories.optimization.title">Optimización</div>
+                    </div>
+                    <ul class="guide-list">
+                        <li><a href="#content-optimization" data-i18n="categories.optimization.guides[0]">Optimización de contenido</a></li>
+                        <li><a href="#response-quality" data-i18n="categories.optimization.guides[1]">Mejora de respuestas</a></li>
+                        <li><a href="#user-engagement" data-i18n="categories.optimization.guides[2]">Aumento de engagement</a></li>
+                        <li><a href="#conversion-rate" data-i18n="categories.optimization.guides[3]">Tasa de conversión</a></li>
+                        <li><a href="#seo-impact" data-i18n="categories.optimization.guides[4]">Impacto en SEO</a></li>
+                    </ul>
+                </div>
+
+                <div class="guide-category">
+                    <div class="guide-category-header">
+                        <div class="guide-category-icon">🔒</div>
+                        <div class="guide-category-title" data-i18n="categories.security.title">Seguridad</div>
+                    </div>
+                    <ul class="guide-list">
+                        <li><a href="#data-privacy" data-i18n="categories.security.guides[0]">Privacidad de datos</a></li>
+                        <li><a href="#security-best-practices" data-i18n="categories.security.guides[1]">Mejores prácticas de seguridad</a></li>
+                        <li><a href="#compliance" data-i18n="categories.security.guides[2]">Cumplimiento normativo</a></li>
+                        <li><a href="#incident-response" data-i18n="categories.security.guides[3]">Respuesta a incidentes</a></li>
+                        <li><a href="#user-consent" data-i18n="categories.security.guides[4]">Gestión de consentimientos</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Guide: Quick Start -->
+        <section class="content-section">
+            <div class="content-card" id="quick-start">
+                <h2 data-i18n="quickStart.title">Guía de Inicio Rápido</h2>
+                <p data-i18n="quickStart.subtitle">Implementa Minimal en tu sitio web en menos de 5 minutos con esta guía paso a paso.</p>
+                
+                <div class="steps-container">
+                    <div class="step">
+                        <h4 data-i18n="quickStart.steps[0].title">Obtén tu API Key</h4>
+                        <p data-i18n="quickStart.steps[0].description">Regístrate en nuestra plataforma y recibe tu clave de API única por email.</p>
+                        <div class="tip-box">
+                            <h5>💡 Consejo</h5>
+                            <p data-i18n="quickStart.steps[0].tip">Guarda tu API key en un lugar seguro. La necesitarás para toda la configuración.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <h4 data-i18n="quickStart.steps[1].title">Agrega el Script a tu Sitio</h4>
+                        <p data-i18n="quickStart.steps[1].description">Copia este código y pégalo justo antes del tag <code>&lt;/body&gt;</code> en tu HTML:</p>
+                        <div class="code-example">
+&lt;script src="https://cdn.minimal.ai/v1/minimal.js" data-api-key="TU_API_KEY"&gt;&lt;/script&gt;
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <h4 data-i18n="quickStart.steps[2].title">Personaliza la Configuración</h4>
+                        <p data-i18n="quickStart.steps[2].description">Opcionalmente, personaliza colores y comportamiento:</p>
+                        <div class="code-example">
+&lt;script src="https://cdn.minimal.ai/v1/minimal.js" 
+        data-api-key="TU_API_KEY"
+        data-primary-color="#2196F3"
+        data-welcome-message="¡Hola! ¿En qué puedo ayudarte?"&gt;
+&lt;/script&gt;
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <h4 data-i18n="quickStart.steps[3].title">Verifica la Instalación</h4>
+                        <p data-i18n="quickStart.steps[3].description">Refresca tu sitio web y busca el ícono de chat en la esquina inferior derecha. ¡Ya tienes Minimal funcionando!</p>
+                        <div class="warning-box">
+                            <h5>⚠️ Nota</h5>
+                            <p data-i18n="quickStart.steps[3].warning">El chat puede tardar 2-3 minutos en aparecer la primera vez mientras indexamos tu contenido.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Best Practices -->
+        <section class="content-section">
+            <div class="content-grid">
+                <div class="content-card" id="content-optimization">
+                    <h2 data-i18n="contentOptimization.title">Optimización de Contenido</h2>
+                    
+                    <div class="best-practice">
+                        <div class="best-practice-header">
+                            <div class="best-practice-icon">📝</div>
+                            <div class="best-practice-title" data-i18n="contentOptimization.practices[0].title">Estructura tu Contenido</div>
+                        </div>
+                        <p data-i18n="contentOptimization.practices[0].description">Usa headings (H1, H2, H3) de manera jerárquica para que la IA comprenda mejor la estructura de tu información.</p>
+                        <ul>
+                            <li data-i18n="contentOptimization.practices[0].items[0]">Un solo H1 por página</li>
+                            <li data-i18n="contentOptimization.practices[0].items[1]">H2 para secciones principales</li>
+                            <li data-i18n="contentOptimization.practices[0].items[2]">H3 para subsecciones</li>
+                            <li data-i18n="contentOptimization.practices[0].items[3]">Párrafos cortos y enfocados</li>
+                        </ul>
+                    </div>
+
+                    <div class="best-practice">
+                        <div class="best-practice-header">
+                            <div class="best-practice-icon">🔍</div>
+                            <div class="best-practice-title" data-i18n="contentOptimization.practices[1].title">Meta Descripciones</div>
+                        </div>
+                        <p data-i18n="contentOptimization.practices[1].description">Agrega meta descripciones claras a todas tus páginas. La IA las utiliza para entender el contexto y propósito de cada página.</p>
+                        <div class="code-example">
+&lt;meta name="description" content="Descripción clara y concisa de la página"&gt;
+                        </div>
+                    </div>
+
+                    <div class="best-practice">
+                        <div class="best-practice-header">
+                            <div class="best-practice-icon">📋</div>
+                            <div class="best-practice-title" data-i18n="contentOptimization.practices[2].title">FAQs Estructuradas</div>
+                        </div>
+                        <p data-i18n="contentOptimization.practices[2].description">Crea secciones de preguntas frecuentes bien estructuradas. Usa schema markup cuando sea posible.</p>
+                        <div class="code-example">
+&lt;div itemscope itemtype="https://schema.org/FAQPage"&gt;
+  &lt;div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"&gt;
+    &lt;h3 itemprop="name"&gt;¿Cómo funciona Minimal?&lt;/h3&gt;
+    &lt;div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"&gt;
+      &lt;p itemprop="text"&gt;Minimal transforma tu sitio web...&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card" id="conversation-design">
+                    <h2 data-i18n="conversationDesign.title">Diseño Conversacional</h2>
+                    
+                    <div class="best-practice">
+                        <div class="best-practice-header">
+                            <div class="best-practice-icon">💬</div>
+                            <div class="best-practice-title" data-i18n="conversationDesign.practices[0].title">Mensajes de Bienvenida Efectivos</div>
+                        </div>
+                        <p data-i18n="conversationDesign.practices[0].description">El primer mensaje es crucial para el engagement:</p>
+                        <ul>
+                            <li data-i18n="conversationDesign.practices[0].tips[0]">Específico: "¿Buscas información sobre nuestros productos?"</li>
+                            <li data-i18n="conversationDesign.practices[0].tips[1]">Accionable: "¿En qué puedo ayudarte hoy?"</li>
+                            <li data-i18n="conversationDesign.practices[0].tips[2]">Amigable: Usa el tono de tu marca</li>
+                        </ul>
+                        
+                        <h4>Ejemplos por Industria:</h4>
+                        <ul>
+                            <li data-i18n="conversationDesign.practices[0].examples[0]">E-commerce: "¿Buscas algo en particular? ¡Te ayudo a encontrarlo!"</li>
+                            <li data-i18n="conversationDesign.practices[0].examples[1]">SaaS: "¿Tienes preguntas sobre nuestro producto?"</li>
+                            <li data-i18n="conversationDesign.practices[0].examples[2]">Servicios: "¿Necesitas información sobre nuestros servicios?"</li>
+                        </ul>
+                    </div>
+
+                    <div class="best-practice">
+                        <div class="best-practice-header">
+                            <div class="best-practice-icon">🎯</div>
+                            <div class="best-practice-title" data-i18n="conversationDesign.practices[1].title">Sugerencias Inteligentes</div>
+                        </div>
+                        <p data-i18n="conversationDesign.practices[1].description">Configura sugerencias que guíen a los usuarios hacia información importante:</p>
+                        <ul>
+                            <li data-i18n="conversationDesign.practices[1].suggestions[0]">"Ver precios y planes"</li>
+                            <li data-i18n="conversationDesign.practices[1].suggestions[1]">"¿Cómo empiezo?"</li>
+                            <li data-i18n="conversationDesign.practices[1].suggestions[2]">"Hablar con ventas"</li>
+                            <li data-i18n="conversationDesign.practices[1].suggestions[3]">"Soporte técnico"</li>
+                        </ul>
+                    </div>
+
+                    <div class="best-practice">
+                        <div class="best-practice-header">
+                            <div class="best-practice-icon">🔄</div>
+                            <div class="best-practice-title" data-i18n="conversationDesign.practices[2].title">Flujos de Conversación</div>
+                        </div>
+                        <p data-i18n="conversationDesign.practices[2].description">Diseña flujos que capturen leads de manera natural:</p>
+                        <ol>
+                            <li data-i18n="conversationDesign.practices[2].steps[0]">Pregunta inicial del usuario</li>
+                            <li data-i18n="conversationDesign.practices[2].steps[1]">Respuesta útil con información relevante</li>
+                            <li data-i18n="conversationDesign.practices[2].steps[2]">Pregunta de seguimiento para calificar</li>
+                            <li data-i18n="conversationDesign.practices[2].steps[3]">Oferta de contacto directo si corresponde</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="content-card" id="kpi-tracking">
+                    <h2 data-i18n="kpiTracking.title">Métricas Clave (KPIs)</h2>
+                    
+                    <h3 data-i18n="kpiTracking.engagementMetrics.title">Métricas de Engagement</h3>
+                    <ul>
+                        <li data-i18n="kpiTracking.engagementMetrics.items[0]">Tasa de Interacción: % visitantes que abren el chat</li>
+                        <li data-i18n="kpiTracking.engagementMetrics.items[1]">Mensajes por Sesión: Profundidad de las conversaciones</li>
+                        <li data-i18n="kpiTracking.engagementMetrics.items[2]">Tiempo de Sesión: Duración promedio de las conversaciones</li>
+                        <li data-i18n="kpiTracking.engagementMetrics.items[3]">Tasa de Retorno: Usuarios que vuelven a usar el chat</li>
+                    </ul>
+
+                    <h3 data-i18n="kpiTracking.effectivenessMetrics.title">Métricas de Efectividad</h3>
+                    <ul>
+                        <li data-i18n="kpiTracking.effectivenessMetrics.items[0]">Tasa de Resolución: % de consultas resueltas satisfactoriamente</li>
+                        <li data-i18n="kpiTracking.effectivenessMetrics.items[1]">Precisión de Respuestas: Calidad de la información proporcionada</li>
+                        <li data-i18n="kpiTracking.effectivenessMetrics.items[2]">Satisfacción del Usuario: Ratings y feedback</li>
+                    </ul>
+
+                    <h3 data-i18n="kpiTracking.businessMetrics.title">Métricas de Negocio</h3>
+                    <ul>
+                        <li data-i18n="kpiTracking.businessMetrics.items[0]">Generación de Leads: Contactos capturados a través del chat</li>
+                        <li data-i18n="kpiTracking.businessMetrics.items[1]">Conversión: % de conversations que resultan en conversión</li>
+                        <li data-i18n="kpiTracking.businessMetrics.items[2]">Valor por Conversación: ROI atribuible al chat</li>
+                        <li data-i18n="kpiTracking.businessMetrics.items[3]">Reducción de Soporte: Menor carga en canales tradicionales</li>
+                    </ul>
+
+                    <div class="tip-box">
+                        <h5>📊 Tip para Analytics</h5>
+                        <p data-i18n="kpiTracking.tip">Establece objetivos específicos para cada métrica y revísalos mensualmente. Una tasa de interacción del 15-25% es excelente para la mayoría de sitios web.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Advanced Guides -->
+        <section class="content-section">
+            <div class="content-card" id="advanced-setup">
+                <h2 data-i18n="advancedSetup.title">Configuración Avanzada</h2>
+                
+                <h3 data-i18n="advancedSetup.programmaticConfig.title">Configuración Programática</h3>
+                <p data-i18n="advancedSetup.programmaticConfig.description">Para mayor control sobre el comportamiento del chat:</p>
+                <div class="code-example">
+window.MinimalConfig = {
+  // Configuración básica
+  apiKey: 'TU_API_KEY',
+  
+  // Configuración de UI
+  ui: {
+    position: 'bottom-right',
+    theme: 'auto', // 'light' | 'dark' | 'auto'
+    primaryColor: '#2196F3',
+    accentColor: '#3F51B5',
+    borderRadius: '12px',
+    fontSize: '14px',
+    fontFamily: 'inherit'
+  },
+  
+  // Comportamiento
+  behavior: {
+    autoOpen: false,
+    autoOpenDelay: 5000,
+    enableTyping: true,
+    enableSuggestions: true,
+    enableFileUpload: false,
+    maxMessageLength: 1000,
+    enableEmojis: true
+  },
+  
+  // Contenido
+  content: {
+    language: 'es',
+    welcomeMessage: 'Mensaje personalizado',
+    placeholder: 'Escribe aquí...',
+    offlineMessage: 'Temporalmente no disponible',
+    errorMessage: 'Error, inténtalo de nuevo'
+  },
+  
+  // Analytics y integración
+  analytics: {
+    enableGoogleAnalytics: true,
+    enableFacebookPixel: true,
+    customEvents: true
+  },
+  
+  // Configuración avanzada
+  advanced: {
+    enableA11y: true,
+    enableSSL: true,
+    cacheContent: true,
+    prefetchResponse: true,
+    enableDebug: false
+  }
+};
+                </div>
+
+                <h3 data-i18n="advancedSetup.eventsCallbacks.title">Eventos y Callbacks</h3>
+                <p data-i18n="advancedSetup.eventsCallbacks.description">Escucha eventos para integrar con tu sistema:</p>
+                <div class="code-example">
+// Event listeners
+window.addEventListener('minimal:ready', () => {
+  console.log('Minimal chat ready');
+});
+
+window.addEventListener('minimal:opened', () => {
+  // Track engagement
+  gtag('event', 'chat_opened');
+});
+
+window.addEventListener('minimal:message:sent', (event) => {
+  // Track user messages
+  console.log('Message:', event.detail.message);
+});
+
+window.addEventListener('minimal:lead:captured', (event) => {
+  // Send to CRM
+  sendToCRM(event.detail.leadData);
+});
+
+// Programmatic control
+function openChat() {
+  MinimalChat.open();
+}
+
+function sendMessage(msg) {
+  MinimalChat.sendMessage(msg);
+}
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="content-section">
+            <div class="content-card" style="background: var(--gradient-primary); color: white; text-align: center;">
+                <h2 style="color: white;" data-i18n="cta.title">¿Necesitas Ayuda Personalizada?</h2>
+                <p style="color: white; opacity: 0.9;" data-i18n="cta.description">Nuestro equipo puede ayudarte a implementar estas mejores prácticas específicamente para tu sitio web y industria.</p>
+                <br>
+                <a href="/contact" style="background: white; color: var(--brand-blue); padding: 0.75rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block;" data-i18n="cta.button">Solicitar Consultoría</a>
+            </div>
+        </section>
+    </main>
+
+    <script src="../components/footer.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        // Mobile menu functionality (same as landing page)
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobileMenuButton');
+            const mobileCloseButton = document.getElementById('mobileCloseButton');
+            const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+
+            if (mobileMenuButton && mobileNavOverlay && mobileCloseButton) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileNavOverlay.classList.add('active');
+                });
+
+                mobileCloseButton.addEventListener('click', function() {
+                    mobileNavOverlay.classList.remove('active');
+                });
+
+                // Close mobile menu when clicking on overlay
+                mobileNavOverlay.addEventListener('click', function(e) {
+                    if (e.target === mobileNavOverlay) {
+                        mobileNavOverlay.classList.remove('active');
+                    }
+                });
+
+                // Close mobile menu when clicking on a link
+                const mobileNavLinks = mobileNavOverlay.querySelectorAll('a');
+                mobileNavLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileNavOverlay.classList.remove('active');
+                    });
+                });
+            }
+        });
+    </script>
+    
+    <script src="../assets/js/i18n-core.js"></script>
+    <script src="../assets/js/translations/guides.js"></script>
+    <script src="../components/footer.js"></script>
+    <script>
+        // Initialize i18n system and reinitialize after footer loads
+        document.addEventListener('DOMContentLoaded', function() {
+            window.i18n.init(guidesTranslations);
+            
+            // Re-apply translations after footer is loaded
+            setTimeout(() => {
+                window.i18n.updatePageContent();
+            }, 100);
+        });
+    </script>
+</body>
+</html>

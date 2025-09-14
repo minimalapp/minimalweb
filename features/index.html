@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="meta.title">Características - Minimal</title>
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="../assets/images/favicon.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        img, svg, video, canvas {
+            max-width: 100%;
+            height: auto;
+        }
+
+        :root {
+            /* Brand Rainbow Colors (from logo) */
+            --brand-red: #FF5757;
+            --brand-orange: #FFA500;
+            --brand-yellow: #FFD700;
+            --brand-green: #4CAF50;
+            --brand-blue: #2196F3;
+            --brand-indigo: #3F51B5;
+            
+            /* Rainbow Gradient (matching logo) */
+            --gradient-rainbow: linear-gradient(90deg, 
+                #FF5757 0%, 
+                #FFA500 20%, 
+                #FFD700 40%, 
+                #4CAF50 60%, 
+                #2196F3 80%, 
+                #3F51B5 100%
+            );
+            
+            /* Primary gradient using blue tones from logo */
+            --gradient-primary: linear-gradient(135deg, #2196F3 0%, #3F51B5 100%);
+            
+            /* Text Colors */
+            --text-dark: #4A4A4A;
+            --text-light: #6B7280;
+            --text-muted: #9CA3AF;
+            
+            /* Neutral Colors */
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --gray-100: #F3F4F6;
+            --gray-300: #D1D5DB;
+            
+            /* Shadows */
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --shadow-hover: 0 20px 40px rgba(0,0,0,0.15);
+            
+            /* Subtle background gradients */
+            --gradient-subtle: linear-gradient(135deg, rgba(33, 150, 243, 0.05) 0%, rgba(63, 81, 181, 0.05) 100%);
+            --gradient-hero: linear-gradient(135deg, rgba(255, 87, 87, 0.03) 0%, rgba(63, 81, 181, 0.03) 100%);
+            
+            /* Responsive Typography Scale */
+            --h1-size: 2rem;
+            --h2-size: 1.75rem;
+            --h3-size: 1.5rem;
+            --body-size: 1rem;
+            --small-size: 0.875rem;
+            
+            /* Responsive Spacing Scale */
+            --section-padding-y: 3rem;
+            --section-padding-left: 8%;
+            --section-padding-right: 8%;
+            --card-gap: 1rem;
+            --content-max-width: 100%;
+            
+            /* Minimum Touch Target Size */
+            --min-touch-target: 44px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            font-size: 1rem;
+        }
+
+        /* Side Animation Effects - Gradient Overlays */
+        .gradient-overlay-left,
+        .gradient-overlay-right {
+            position: fixed;
+            top: 0;
+            width: 100px;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.6;
+        }
+
+        .gradient-overlay-left {
+            left: 0;
+            background: linear-gradient(90deg, 
+                rgba(255, 87, 87, 0.1) 0%,
+                rgba(255, 165, 0, 0.08) 25%,
+                rgba(255, 215, 0, 0.06) 50%,
+                transparent 100%
+            );
+            animation: glow-left 4s ease-in-out infinite alternate;
+        }
+
+        .gradient-overlay-right {
+            right: 0;
+            background: linear-gradient(270deg, 
+                rgba(76, 175, 80, 0.1) 0%,
+                rgba(33, 150, 243, 0.08) 25%,
+                rgba(63, 81, 181, 0.06) 50%,
+                transparent 100%
+            );
+            animation: glow-right 4s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes glow-left {
+            0% { opacity: 0.3; transform: translateX(-10px); }
+            100% { opacity: 0.7; transform: translateX(0); }
+        }
+
+        @keyframes glow-right {
+            0% { opacity: 0.3; transform: translateX(10px); }
+            100% { opacity: 0.7; transform: translateX(0); }
+        }
+
+        /* Header - Mobile First */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem var(--section-padding-left) 0.75rem var(--section-padding-right);
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: 60px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            height: 32px; /* Mobile first - smaller */
+        }
+        
+        .logo img {
+            height: 100%;
+            width: auto;
+            display: block;
+            max-width: 120px; /* Mobile first - smaller */
+        }
+
+        .nav-links {
+            display: none; /* Hidden on mobile by default */
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            min-height: var(--min-touch-target);
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a:hover {
+            color: var(--brand-blue);
+            transition: color 0.3s;
+        }
+
+        .cta-button {
+            padding: 0.625rem 1.5rem; /* Mobile first - smaller */
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: var(--min-touch-target);
+            font-size: 0.875rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Mobile Menu - Mobile First */
+        .mobile-menu {
+            display: flex; /* Show by default on mobile */
+            align-items: center;
+            justify-content: center;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-dark);
+            min-height: var(--min-touch-target);
+            min-width: var(--min-touch-target);
+            transition: color 0.3s;
+        }
+        
+        .mobile-menu:hover {
+            color: var(--brand-blue);
+        }
+        
+        /* Mobile Navigation Overlay */
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 10000;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        
+        .mobile-nav-overlay.active {
+            display: flex;
+        }
+        
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            list-style: none;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .mobile-nav-links a {
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--text-dark);
+            min-height: var(--min-touch-target);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.3s;
+        }
+        
+        .mobile-nav-links a:hover {
+            color: var(--brand-blue);
+        }
+        
+        .mobile-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text-dark);
+            min-height: var(--min-touch-target);
+            min-width: var(--min-touch-target);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
+        }
+
+        .page-hero {
+            background: var(--gradient-hero);
+            padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-size: var(--h1-size);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-hero p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .content-section {
+            padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .content-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .content-card h2 {
+            font-size: var(--h2-size);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .content-card h3 {
+            font-size: var(--h3-size);
+            font-weight: 600;
+            margin: 1.5rem 0 0.75rem 0;
+            color: var(--brand-blue);
+        }
+
+        .content-card p, .content-card li {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .content-card ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Feature Cards Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .feature-description {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--brand-blue);
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            min-height: var(--min-touch-target);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            :root {
+                --h1-size: 3rem;
+                --h2-size: 2.25rem;
+                --h3-size: 1.75rem;
+                --section-padding-y: 5rem;
+                --section-padding-left: 5%;
+                --section-padding-right: 5%;
+                --content-max-width: 1200px;
+            }
+
+            .nav-links {
+                display: flex; /* Show navigation on tablet+ */
+                gap: 1.5rem;
+            }
+            
+            .mobile-menu {
+                display: none; /* Hide mobile menu on tablet+ */
+            }
+            
+            .cta-button {
+                padding: 0.75rem 2rem;
+            }
+
+            .content-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 4rem;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 3rem;
+            }
+
+        }
+
+        @media (min-width: 1024px) {
+            :root {
+                --section-padding-left: 3%;
+                --section-padding-right: 3%;
+            }
+
+            .nav-links {
+                gap: 2rem;
+            }
+
+            .content-grid {
+                gap: 5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Gradient Side Overlays (only for AI mode) -->
+    <div class="gradient-overlay-left">
+        <div class="gradient-noise"></div>
+    </div>
+    <div class="gradient-overlay-right">
+        <div class="gradient-noise"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="../assets/images/logo.jpeg" alt="Minimal" />
+            </div>
+            <ul class="nav-links">
+                <li><a href="../#producto" data-i18n="nav.product">Producto</a></li>
+                <li><a href="../#como-funciona" data-i18n="nav.howItWorks">Cómo Funciona</a></li>
+                <li><a href="../#beneficios" data-i18n="nav.benefits">Beneficios</a></li>
+                <li><a href="../#casos" data-i18n="nav.useCases">Casos de Uso</a></li>
+                <li><a href="../#precios" data-i18n="nav.pricing">Precios</a></li>
+            </ul>
+            <a href="../#contacto" class="cta-button" data-i18n="nav.tryFree">Prueba Gratis</a>
+            <button class="mobile-menu" id="mobileMenuButton">☰</button>
+        </nav>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <button class="mobile-close" id="mobileCloseButton">×</button>
+        <ul class="mobile-nav-links">
+            <li><a href="../#producto" data-i18n="nav.product">Producto</a></li>
+            <li><a href="../#como-funciona" data-i18n="nav.howItWorks">Cómo Funciona</a></li>
+            <li><a href="../#beneficios" data-i18n="nav.benefits">Beneficios</a></li>
+            <li><a href="../#casos" data-i18n="nav.useCases">Casos de Uso</a></li>
+            <li><a href="../#precios" data-i18n="nav.pricing">Precios</a></li>
+        </ul>
+        <a href="../#contacto" class="cta-button" data-i18n="nav.tryFree">Prueba Gratis</a>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Page Hero -->
+        <section class="page-hero">
+            <h1 data-i18n="hero.title">Características de Minimal</h1>
+            <p data-i18n="hero.subtitle">Descubre todas las funcionalidades que transformarán tu sitio web en una experiencia conversacional inteligente.</p>
+        </section>
+
+        <!-- Core Features -->
+        <section class="content-section">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <div class="feature-title" data-i18n="coreFeatures.ai.title">IA Conversacional Avanzada</div>
+                    <div class="feature-description" data-i18n="coreFeatures.ai.description">Procesamiento de lenguaje natural de última generación que entiende el contexto y las intenciones de tus usuarios, proporcionando respuestas precisas y útiles.</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <div class="feature-title" data-i18n="coreFeatures.branding.title">Preservación de Marca</div>
+                    <div class="feature-description" data-i18n="coreFeatures.branding.description">La interfaz conversacional se adapta automáticamente a los colores, tipografías y estilo visual de tu sitio web, manteniendo tu identidad de marca intacta.</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-title" data-i18n="coreFeatures.integration.title">Integración en 1 Línea</div>
+                    <div class="feature-description" data-i18n="coreFeatures.integration.description">Implementación ultra-rápida que requiere solo agregar una línea de código JavaScript a tu sitio web. Funciona con cualquier tecnología o plataforma.</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <div class="feature-title" data-i18n="coreFeatures.analytics.title">Analytics Inteligentes</div>
+                    <div class="feature-description" data-i18n="coreFeatures.analytics.description">Obtén insights profundos sobre las intenciones reales de tus usuarios, patrones de comportamiento y oportunidades de mejora que los analytics tradicionales no revelan.</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <div class="feature-title" data-i18n="coreFeatures.sync.title">Sincronización Automática</div>
+                    <div class="feature-description" data-i18n="coreFeatures.sync.description">El contenido de tu sitio web se sincroniza automáticamente, permitiendo que la IA siempre tenga información actualizada sin intervención manual.</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <div class="feature-title" data-i18n="coreFeatures.multilang.title">Soporte Multiidioma</div>
+                    <div class="feature-description" data-i18n="coreFeatures.multilang.description">Interfaz conversacional que se adapta automáticamente al idioma de tu sitio web, con soporte para múltiples idiomas y localización regional.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Advanced Features -->
+        <section class="content-section">
+            <div class="content-grid">
+                <div class="content-card">
+                    <h2 data-i18n="technical.title">Funcionalidades Técnicas</h2>
+                    
+                    <h3 data-i18n="technical.processing.title">Procesamiento Inteligente</h3>
+                    <ul>
+                        <li data-i18n="technical.processing.features[0]">Comprensión de contexto conversacional</li>
+                        <li data-i18n="technical.processing.features[1]">Análisis semántico del contenido web</li>
+                        <li data-i18n="technical.processing.features[2]">Detección automática de intenciones de usuario</li>
+                        <li data-i18n="technical.processing.features[3]">Respuestas personalizadas basadas en navegación</li>
+                    </ul>
+
+                    <h3 data-i18n="technical.frictionless.title">Integración sin Fricción</h3>
+                    <ul>
+                        <li data-i18n="technical.frictionless.features[0]">Compatible con WordPress, Shopify, React, Vue, Angular</li>
+                        <li data-i18n="technical.frictionless.features[1]">No requiere modificaciones de backend</li>
+                        <li data-i18n="technical.frictionless.features[2]">CDN global para carga ultra-rápida</li>
+                        <li data-i18n="technical.frictionless.features[3]">Fallbacks automáticos para compatibilidad</li>
+                    </ul>
+
+                </div>
+
+                <div class="content-card">
+                    <h2 data-i18n="analyticsCapabilities.title">Capacidades de Análisis</h2>
+                    
+                    <h3 data-i18n="analyticsCapabilities.engagement.title">Métricas de Engagement</h3>
+                    <ul>
+                        <li data-i18n="analyticsCapabilities.engagement.features[0]">Tiempo de interacción promedio</li>
+                        <li data-i18n="analyticsCapabilities.engagement.features[1]">Tasa de resolución de consultas</li>
+                        <li data-i18n="analyticsCapabilities.engagement.features[2]">Patrones de navegación conversacional</li>
+                        <li data-i18n="analyticsCapabilities.engagement.features[3]">Puntos de abandono y optimización</li>
+                    </ul>
+
+                    <h3 data-i18n="analyticsCapabilities.insights.title">Insights de Usuario</h3>
+                    <ul>
+                        <li data-i18n="analyticsCapabilities.insights.features[0]">Intenciones más comunes de búsqueda</li>
+                        <li data-i18n="analyticsCapabilities.insights.features[1]">Contenido de mayor interés</li>
+                        <li data-i18n="analyticsCapabilities.insights.features[2]">Gaps de información identificados</li>
+                        <li data-i18n="analyticsCapabilities.insights.features[3]">Oportunidades de conversión detectadas</li>
+                    </ul>
+
+                    <h3 data-i18n="analyticsCapabilities.reports.title">Reportes Accionables</h3>
+                    <ul>
+                        <li data-i18n="analyticsCapabilities.reports.features[0]">Dashboards en tiempo real</li>
+                        <li data-i18n="analyticsCapabilities.reports.features[1]">Reportes automatizados semanales/mensuales</li>
+                        <li data-i18n="analyticsCapabilities.reports.features[2]">Recomendaciones de mejora automática</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h2 data-i18n="security.title">Seguridad y Confiabilidad</h2>
+                    
+                    <h3 data-i18n="security.dataProtection.title">Protección de Datos</h3>
+                    <ul>
+                        <li data-i18n="security.dataProtection.features[0]">Encriptación end-to-end de todas las conversaciones</li>
+                        <li data-i18n="security.dataProtection.features[1]">Cumplimiento GDPR, CCPA y regulaciones locales</li>
+                    </ul>
+
+                    <h3 data-i18n="security.infrastructure.title">Infraestructura Robusta</h3>
+                    <ul>
+                        <li data-i18n="security.infrastructure.features[0]">99.9% de uptime garantizado</li>
+                        <li data-i18n="security.infrastructure.features[1]">Balanceadores de carga automáticos</li>
+                    </ul>
+
+                    <h3 data-i18n="security.scalability.title">Escalabilidad</h3>
+                    <ul>
+                        <li data-i18n="security.scalability.features[0]">Auto-scaling basado en demanda</li>
+                        <li data-i18n="security.scalability.features[1]">Soporte para millones de visitantes concurrentes</li>
+                        <li data-i18n="security.scalability.features[2]">Arquitectura cloud-native distribuida</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h2 data-i18n="userExperience.title">Experiencia de Usuario</h2>
+                    
+                    <h3 data-i18n="userExperience.interface.title">Interfaz Intuitiva</h3>
+                    <ul>
+                        <li data-i18n="userExperience.interface.features[0]">Diseño conversacional natural y fluido</li>
+                        <li data-i18n="userExperience.interface.features[1]">Adaptación automática a dispositivos móviles</li>
+                        <li data-i18n="userExperience.interface.features[2]">Animaciones y transiciones suaves</li>
+                    </ul>
+
+                    <h3 data-i18n="userExperience.customization.title">Personalización Visual</h3>
+                    <ul>
+                        <li data-i18n="userExperience.customization.features[0]">Extracción automática de paleta de colores</li>
+                        <li data-i18n="userExperience.customization.features[1]">Adaptación de tipografías existentes</li>
+                        <li data-i18n="userExperience.customization.features[2]">Posicionamiento flexible del chat</li>
+                        <li data-i18n="userExperience.customization.features[3]">Temas prediseñados profesionales</li>
+                    </ul>
+
+                    <h3 data-i18n="userExperience.advanced.title">Funcionalidades Avanzadas</h3>
+                    <ul>
+                        <li data-i18n="userExperience.advanced.features[0]">Sugerencias de preguntas inteligentes</li>
+                        <li data-i18n="userExperience.advanced.features[1]">Historial de conversaciones persistente</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="content-section">
+            <div class="cta-section">
+                <h2 data-i18n="cta.title">¿Listo para Transformar tu Sitio Web?</h2>
+                <p data-i18n="cta.description">Comienza tu prueba gratuita de 14 días y descubre cómo Minimal puede revolucionar la experiencia de tus usuarios.</p>
+                <a href="/contact" class="btn-secondary" data-i18n="cta.button">Comenzar Prueba Gratuita</a>
+            </div>
+        </section>
+    </main>
+
+    <script src="../components/footer.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        // Mobile menu functionality (same as landing page)
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobileMenuButton');
+            const mobileCloseButton = document.getElementById('mobileCloseButton');
+            const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+
+            if (mobileMenuButton && mobileNavOverlay && mobileCloseButton) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileNavOverlay.classList.add('active');
+                });
+
+                mobileCloseButton.addEventListener('click', function() {
+                    mobileNavOverlay.classList.remove('active');
+                });
+
+                // Close mobile menu when clicking on overlay
+                mobileNavOverlay.addEventListener('click', function(e) {
+                    if (e.target === mobileNavOverlay) {
+                        mobileNavOverlay.classList.remove('active');
+                    }
+                });
+
+                // Close mobile menu when clicking on a link
+                const mobileNavLinks = mobileNavOverlay.querySelectorAll('a');
+                mobileNavLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileNavOverlay.classList.remove('active');
+                    });
+                });
+            }
+        });
+    </script>
+    
+    <script src="../assets/js/i18n-core.js"></script>
+    <script src="../assets/js/translations/features.js"></script>
+    <script src="../components/footer.js"></script>
+    <script>
+        // Initialize i18n system and reinitialize after footer loads
+        document.addEventListener('DOMContentLoaded', function() {
+            window.i18n.init(featuresTranslations);
+            
+            // Re-apply translations after footer is loaded
+            setTimeout(() => {
+                window.i18n.updatePageContent();
+            }, 100);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="meta.title">Carreras - Minimal</title>
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="../assets/images/favicon.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        img, svg, video, canvas {
+            max-width: 100%;
+            height: auto;
+        }
+
+        :root {
+            /* Brand Rainbow Colors (from logo) */
+            --brand-red: #FF5757;
+            --brand-orange: #FFA500;
+            --brand-yellow: #FFD700;
+            --brand-green: #4CAF50;
+            --brand-blue: #2196F3;
+            --brand-indigo: #3F51B5;
+            
+            /* Rainbow Gradient (matching logo) */
+            --gradient-rainbow: linear-gradient(90deg, 
+                #FF5757 0%, 
+                #FFA500 20%, 
+                #FFD700 40%, 
+                #4CAF50 60%, 
+                #2196F3 80%, 
+                #3F51B5 100%
+            );
+            
+            /* Primary gradient using blue tones from logo */
+            --gradient-primary: linear-gradient(135deg, #2196F3 0%, #3F51B5 100%);
+            
+            /* Text Colors */
+            --text-dark: #4A4A4A;
+            --text-light: #6B7280;
+            --text-muted: #9CA3AF;
+            
+            /* Neutral Colors */
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --gray-100: #F3F4F6;
+            --gray-300: #D1D5DB;
+            
+            /* Shadows */
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --shadow-hover: 0 20px 40px rgba(0,0,0,0.15);
+            
+            /* Subtle background gradients */
+            --gradient-subtle: linear-gradient(135deg, rgba(33, 150, 243, 0.05) 0%, rgba(63, 81, 181, 0.05) 100%);
+            --gradient-hero: linear-gradient(135deg, rgba(255, 87, 87, 0.03) 0%, rgba(63, 81, 181, 0.03) 100%);
+            
+            /* Responsive Typography Scale */
+            --h1-size: 2rem;
+            --h2-size: 1.75rem;
+            --h3-size: 1.5rem;
+            --body-size: 1rem;
+            --small-size: 0.875rem;
+            
+            /* Responsive Spacing Scale */
+            --section-padding-y: 3rem;
+            --section-padding-left: 8%;
+            --section-padding-right: 8%;
+            --card-gap: 1rem;
+            --content-max-width: 100%;
+            
+            /* Minimum Touch Target Size */
+            --min-touch-target: 44px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            font-size: 1rem;
+        }
+
+        /* Side Animation Effects - Gradient Overlays */
+        .gradient-overlay-left,
+        .gradient-overlay-right {
+            position: fixed;
+            top: 0;
+            width: 100px;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.6;
+        }
+
+        .gradient-overlay-left {
+            left: 0;
+            background: linear-gradient(90deg, 
+                rgba(255, 87, 87, 0.1) 0%,
+                rgba(255, 165, 0, 0.08) 25%,
+                rgba(255, 215, 0, 0.06) 50%,
+                transparent 100%
+            );
+            animation: glow-left 4s ease-in-out infinite alternate;
+        }
+
+        .gradient-overlay-right {
+            right: 0;
+            background: linear-gradient(270deg, 
+                rgba(76, 175, 80, 0.1) 0%,
+                rgba(33, 150, 243, 0.08) 25%,
+                rgba(63, 81, 181, 0.06) 50%,
+                transparent 100%
+            );
+            animation: glow-right 4s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes glow-left {
+            0% { opacity: 0.3; transform: translateX(-10px); }
+            100% { opacity: 0.7; transform: translateX(0); }
+        }
+
+        @keyframes glow-right {
+            0% { opacity: 0.3; transform: translateX(10px); }
+            100% { opacity: 0.7; transform: translateX(0); }
+        }
+
+        /* Header - Mobile First */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem var(--section-padding-left) 0.75rem var(--section-padding-right);
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: 60px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            height: 32px; /* Mobile first - smaller */
+        }
+        
+        .logo img {
+            height: 100%;
+            width: auto;
+            display: block;
+            max-width: 120px; /* Mobile first - smaller */
+        }
+
+        .nav-links {
+            display: none; /* Hidden on mobile by default */
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            min-height: var(--min-touch-target);
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a:hover {
+            color: var(--brand-blue);
+            transition: color 0.3s;
+        }
+
+        .cta-button {
+            padding: 0.625rem 1.5rem; /* Mobile first - smaller */
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: var(--min-touch-target);
+            font-size: 0.875rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Mobile Menu - Mobile First */
+        .mobile-menu {
+            display: flex; /* Show by default on mobile */
+            align-items: center;
+            justify-content: center;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-dark);
+            min-height: var(--min-touch-target);
+            min-width: var(--min-touch-target);
+            transition: color 0.3s;
+        }
+        
+        .mobile-menu:hover {
+            color: var(--brand-blue);
+        }
+        
+        /* Mobile Navigation Overlay */
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 10000;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        
+        .mobile-nav-overlay.active {
+            display: flex;
+        }
+        
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            list-style: none;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .mobile-nav-links a {
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--text-dark);
+            min-height: var(--min-touch-target);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.3s;
+        }
+        
+        .mobile-nav-links a:hover {
+            color: var(--brand-blue);
+        }
+        
+        .mobile-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text-dark);
+            min-height: var(--min-touch-target);
+            min-width: var(--min-touch-target);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
+        }
+
+        .page-hero {
+            background: var(--gradient-hero);
+            padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-size: var(--h1-size);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-hero p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .content-section {
+            padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .content-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .content-card h2 {
+            font-size: var(--h2-size);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .content-card h3 {
+            font-size: var(--h3-size);
+            font-weight: 600;
+            margin: 1.5rem 0 0.75rem 0;
+            color: var(--brand-blue);
+        }
+
+        .content-card p, .content-card li {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .content-card ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Values Grid */
+        .values-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .value-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+        }
+
+        .value-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .value-description {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Job Listings */
+        .jobs-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .job-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .job-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .job-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .job-tag {
+            background: var(--gradient-subtle);
+            color: var(--brand-blue);
+            padding: 0.25rem 0.75rem;
+            border-radius: 16px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .job-description {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .job-requirements {
+            margin-bottom: 1.5rem;
+        }
+
+        .job-requirements h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .job-requirements ul {
+            margin-left: 1.5rem;
+        }
+
+        .job-requirements li {
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            min-height: var(--min-touch-target);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Benefits Section */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .benefit-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .benefit-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .benefit-content h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .benefit-content p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--brand-blue);
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            min-height: var(--min-touch-target);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            :root {
+                --h1-size: 3rem;
+                --h2-size: 2.25rem;
+                --h3-size: 1.75rem;
+                --section-padding-y: 5rem;
+                --section-padding-left: 5%;
+                --section-padding-right: 5%;
+                --content-max-width: 1200px;
+            }
+
+            .nav-links {
+                display: flex; /* Show navigation on tablet+ */
+                gap: 1.5rem;
+            }
+            
+            .mobile-menu {
+                display: none; /* Hide mobile menu on tablet+ */
+            }
+            
+            .cta-button {
+                padding: 0.75rem 2rem;
+            }
+
+            .content-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 4rem;
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 3rem;
+            }
+
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (min-width: 1024px) {
+            :root {
+                --section-padding-left: 3%;
+                --section-padding-right: 3%;
+            }
+
+            .nav-links {
+                gap: 2rem;
+            }
+
+            .content-grid {
+                gap: 5rem;
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Gradient Side Overlays (only for AI mode) -->
+    <div class="gradient-overlay-left">
+        <div class="gradient-noise"></div>
+    </div>
+    <div class="gradient-overlay-right">
+        <div class="gradient-noise"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="../assets/images/logo.jpeg" alt="Minimal" />
+            </div>
+            <ul class="nav-links">
+                <li><a href="../#producto" data-i18n="nav.product">Producto</a></li>
+                <li><a href="../#como-funciona" data-i18n="nav.howItWorks">Cómo Funciona</a></li>
+                <li><a href="../#beneficios" data-i18n="nav.benefits">Beneficios</a></li>
+                <li><a href="../#casos" data-i18n="nav.useCases">Casos de Uso</a></li>
+                <li><a href="../#precios" data-i18n="nav.pricing">Precios</a></li>
+            </ul>
+            <a href="../#contacto" class="cta-button" data-i18n="nav.tryFree">Prueba Gratis</a>
+            <button class="mobile-menu" id="mobileMenuButton">☰</button>
+        </nav>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <button class="mobile-close" id="mobileCloseButton">×</button>
+        <ul class="mobile-nav-links">
+            <li><a href="../#producto" data-i18n="nav.product">Producto</a></li>
+            <li><a href="../#como-funciona" data-i18n="nav.howItWorks">Cómo Funciona</a></li>
+            <li><a href="../#beneficios" data-i18n="nav.benefits">Beneficios</a></li>
+            <li><a href="../#casos" data-i18n="nav.useCases">Casos de Uso</a></li>
+            <li><a href="../#precios" data-i18n="nav.pricing">Precios</a></li>
+        </ul>
+        <a href="../#contacto" class="cta-button" data-i18n="nav.tryFree">Prueba Gratis</a>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Page Hero -->
+        <section class="page-hero">
+            <h1 data-i18n="hero.title">Únete a Nuestro Equipo</h1>
+            <p data-i18n="hero.subtitle">Construye el futuro de las experiencias web conversacionales con un equipo apasionado por la innovación y la tecnología de vanguardia.</p>
+        </section>
+
+        <!-- Company Culture -->
+        <section class="content-section">
+            <div class="content-grid">
+                <div class="content-card">
+                    <h2 data-i18n="culture.title">Nuestra Cultura</h2>
+                    
+                    <h3 data-i18n="culture.innovation.title">Innovación Constante</h3>
+                    <p data-i18n="culture.innovation.description">En Minimal, la innovación no es solo una palabra de moda: es el núcleo de lo que hacemos. Trabajamos con las últimas tecnologías de IA y NLP, empujando constantemente los límites de lo posible en experiencias web conversacionales.</p>
+                    
+                    <h3 data-i18n="culture.autonomy.title">Autonomía y Responsabilidad</h3>
+                    <p data-i18n="culture.autonomy.description">Creemos en dar a nuestro equipo la libertad de tomar decisiones y asumir la propiedad de su trabajo. Cada persona es un contribuyente clave al éxito de la empresa, y valoramos la iniciativa personal.</p>
+                    
+                    <h3 data-i18n="culture.learning.title">Aprendizaje Continuo</h3>
+                    <p data-i18n="culture.learning.description">El campo de la IA evoluciona rápidamente, y nosotros también. Proporcionamos recursos para el aprendizaje continuo, conferencias, cursos y tiempo dedicado para explorar nuevas tecnologías.</p>
+                </div>
+
+                <div class="content-card">
+                    <h2 data-i18n="whyMinimal.title">¿Por Qué Minimal?</h2>
+                    
+                    <h3 data-i18n="whyMinimal.impact.title">Impacto Real</h3>
+                    <p data-i18n="whyMinimal.impact.description">Tu trabajo tendrá un impacto directo en miles de sitios web y millones de usuarios. Estamos transformando cómo las personas interactúan con el contenido web, creando experiencias más intuitivas y valiosas.</p>
+                    
+                    <h3 data-i18n="whyMinimal.team.title">Equipo de Clase Mundial</h3>
+                    <p data-i18n="whyMinimal.team.description">Trabaja junto a algunos de los mejores talentos en IA, ingeniería de software y experiencia de usuario. Nuestro equipo combina experiencia técnica profunda con visión de producto excepcional.</p>
+                    
+                    <h3 data-i18n="whyMinimal.technology.title">Tecnología de Vanguardia</h3>
+                    <p data-i18n="whyMinimal.technology.description">Utilizamos las herramientas y tecnologías más avanzadas: from los últimos modelos de lenguaje hasta arquitecturas cloud nativas. Siempre estamos a la vanguardia de la innovación tecnológica.</p>
+                    
+                    <h3 data-i18n="whyMinimal.growth.title">Crecimiento Acelerado</h3>
+                    <p data-i18n="whyMinimal.growth.description">Únete a una empresa en rápido crecimiento donde tu contribución individual realmente importa y donde tendrás oportunidades únicas de crecimiento profesional y personal.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Company Values -->
+        <section class="content-section">
+            <h2 style="text-align: center; margin-bottom: 3rem; color: var(--text-dark);" data-i18n="values.title">Nuestros Valores</h2>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">🚀</div>
+                    <div class="value-title" data-i18n="values.excellence.title">Excelencia Técnica</div>
+                    <div class="value-description" data-i18n="values.excellence.description">Nos esforzamos por crear soluciones técnicas de la más alta calidad, con código limpio, arquitecturas escalables y performance excepcional.</div>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <div class="value-title" data-i18n="values.collaboration.title">Colaboración</div>
+                    <div class="value-description" data-i18n="values.collaboration.description">Trabajamos mejor juntos. Valoramos la comunicación abierta, el feedback constructivo y la colaboración multidisciplinaria.</div>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">💡</div>
+                    <div class="value-title" data-i18n="values.curiosity.title">Curiosidad</div>
+                    <div class="value-description" data-i18n="values.curiosity.description">Mantenemos una mentalidad de aprendizaje constante, experimentando con nuevas tecnologías y enfoques para resolver problemas complejos.</div>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">🎯</div>
+                    <div class="value-title" data-i18n="values.userFocus.title">Enfoque en Usuario</div>
+                    <div class="value-description" data-i18n="values.userFocus.description">Cada decisión que tomamos está guiada por el impacto que tendrá en la experiencia del usuario final y el valor que aportamos.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Open Positions -->
+        <section class="content-section">
+            <h2 style="text-align: center; margin-bottom: 3rem; color: var(--text-dark);" data-i18n="positions.title">Posiciones Abiertas</h2>
+            
+            <div class="jobs-grid">
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title" data-i18n="positions.fullstack.title">Senior Full-Stack Engineer</div>
+                            <div class="job-meta">
+                                <span class="job-tag" data-i18n="positions.fullstack.tags.remote">Remoto</span>
+                                <span class="job-tag" data-i18n="positions.fullstack.tags.fulltime">Full-time</span>
+                                <span class="job-tag" data-i18n="positions.fullstack.tags.senior">Senior</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="job-description" data-i18n="positions.fullstack.description">
+                        Buscamos un ingeniero full-stack experimentado para liderar el desarrollo de nuestra plataforma principal. Trabajarás en la arquitectura de sistemas complejos, desde APIs escalables hasta interfaces de usuario modernas.
+                    </div>
+                    <div class="job-requirements">
+                        <h4 data-i18n="positions.fullstack.requirements.title">Requisitos:</h4>
+                        <ul>
+                            <li data-i18n="positions.fullstack.requirements.items[0]">5+ años de experiencia con JavaScript/TypeScript</li>
+                            <li data-i18n="positions.fullstack.requirements.items[1]">Experiencia con React, Node.js, y bases de datos (PostgreSQL, MongoDB)</li>
+                            <li data-i18n="positions.fullstack.requirements.items[2]">Conocimientos de arquitecturas cloud (AWS, GCP)</li>
+                            <li data-i18n="positions.fullstack.requirements.items[3]">Experiencia con APIs RESTful y GraphQL</li>
+                            <li data-i18n="positions.fullstack.requirements.items[4]">Inglés avanzado (trabajamos con clientes internacionales)</li>
+                        </ul>
+                    </div>
+                    <a href="/contact" class="btn-primary" data-i18n="positions.fullstack.apply">Aplicar</a>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title" data-i18n="positions.designer.title">Product Designer (UX/UI)</div>
+                            <div class="job-meta">
+                                <span class="job-tag" data-i18n="positions.designer.tags.remote">Remoto</span>
+                                <span class="job-tag" data-i18n="positions.designer.tags.fulltime">Full-time</span>
+                                <span class="job-tag" data-i18n="positions.designer.tags.midSenior">Mid-Senior</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="job-description" data-i18n="positions.designer.description">
+                        Diseña experiencias de usuario excepcionales para interfaces conversacionales. Trabajarás en la intersección entre diseño tradicional de UX y nuevos paradigmas de interacción con IA.
+                    </div>
+                    <div class="job-requirements">
+                        <h4 data-i18n="positions.designer.requirements.title">Requisitos:</h4>
+                        <ul>
+                            <li data-i18n="positions.designer.requirements.items[0]">3+ años de experiencia en diseño de productos digitales</li>
+                            <li data-i18n="positions.designer.requirements.items[1]">Portfolio sólido con casos de estudio detallados</li>
+                            <li data-i18n="positions.designer.requirements.items[2]">Experiencia con Figma, Sketch, y herramientas de prototipado</li>
+                            <li data-i18n="positions.designer.requirements.items[3]">Conocimientos en design systems y accesibilidad</li>
+                            <li data-i18n="positions.designer.requirements.items[4]">Experiencia previa con chatbots o interfaces conversacionales (plus)</li>
+                        </ul>
+                    </div>
+                    <a href="/contact" class="btn-primary" data-i18n="positions.designer.apply">Aplicar</a>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title" data-i18n="positions.devops.title">DevOps Engineer</div>
+                            <div class="job-meta">
+                                <span class="job-tag" data-i18n="positions.devops.tags.remote">Remoto</span>
+                                <span class="job-tag" data-i18n="positions.devops.tags.fulltime">Full-time</span>
+                                <span class="job-tag" data-i18n="positions.devops.tags.senior">Senior</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="job-description" data-i18n="positions.devops.description">
+                        Construye y mantén la infraestructura que soporta millones de interacciones conversacionales. Trabajarás en sistemas de alta disponibilidad y escalabilidad automática.
+                    </div>
+                    <div class="job-requirements">
+                        <h4 data-i18n="positions.devops.requirements.title">Requisitos:</h4>
+                        <ul>
+                            <li data-i18n="positions.devops.requirements.items[0]">4+ años de experiencia en DevOps/SRE</li>
+                            <li data-i18n="positions.devops.requirements.items[1]">Experiencia con Kubernetes, Docker, y orquestación de contenedores</li>
+                            <li data-i18n="positions.devops.requirements.items[2]">Conocimientos avanzados de AWS/GCP (certificaciones preferidas)</li>
+                            <li data-i18n="positions.devops.requirements.items[3]">Experiencia con Infrastructure as Code (Terraform, CloudFormation)</li>
+                            <li data-i18n="positions.devops.requirements.items[4]">Conocimientos en monitoring, logging, y observabilidad</li>
+                        </ul>
+                    </div>
+                    <a href="/contact" class="btn-primary" data-i18n="positions.devops.apply">Aplicar</a>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title" data-i18n="positions.customerSuccess.title">Customer Success Manager</div>
+                            <div class="job-meta">
+                                <span class="job-tag" data-i18n="positions.customerSuccess.tags.remote">Remoto</span>
+                                <span class="job-tag" data-i18n="positions.customerSuccess.tags.fulltime">Full-time</span>
+                                <span class="job-tag" data-i18n="positions.customerSuccess.tags.midLevel">Mid-level</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="job-description" data-i18n="positions.customerSuccess.description">
+                        Ayuda a nuestros clientes a maximizar el valor de Minimal. Trabajarás directamente con empresas para asegurar implementaciones exitosas y crecimiento continuo.
+                    </div>
+                    <div class="job-requirements">
+                        <h4 data-i18n="positions.customerSuccess.requirements.title">Requisitos:</h4>
+                        <ul>
+                            <li data-i18n="positions.customerSuccess.requirements.items[0]">2+ años de experiencia en Customer Success o Account Management</li>
+                            <li data-i18n="positions.customerSuccess.requirements.items[1]">Experiencia previa en empresas B2B SaaS</li>
+                            <li data-i18n="positions.customerSuccess.requirements.items[2]">Excelentes habilidades de comunicación y presentación</li>
+                            <li data-i18n="positions.customerSuccess.requirements.items[3]">Conocimientos técnicos básicos (HTML, CSS, JavaScript)</li>
+                            <li data-i18n="positions.customerSuccess.requirements.items[4]">Inglés nativo o bilingüe</li>
+                        </ul>
+                    </div>
+                    <a href="/contact" class="btn-primary" data-i18n="positions.customerSuccess.apply">Aplicar</a>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title" data-i18n="positions.marketing.title">Growth Marketing Lead</div>
+                            <div class="job-meta">
+                                <span class="job-tag" data-i18n="positions.marketing.tags.remote">Remoto</span>
+                                <span class="job-tag" data-i18n="positions.marketing.tags.fulltime">Full-time</span>
+                                <span class="job-tag" data-i18n="positions.marketing.tags.senior">Senior</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="job-description" data-i18n="positions.marketing.description">
+                        Lidera nuestros esfuerzos de crecimiento y adquisición de usuarios. Desarrollarás estrategias data-driven para acelerar el crecimiento de nuestra base de usuarios B2B.
+                    </div>
+                    <div class="job-requirements">
+                        <h4 data-i18n="positions.marketing.requirements.title">Requisitos:</h4>
+                        <ul>
+                            <li data-i18n="positions.marketing.requirements.items[0]">4+ años de experiencia en growth marketing para B2B SaaS</li>
+                            <li data-i18n="positions.marketing.requirements.items[1]">Experiencia con herramientas de marketing automation y analytics</li>
+                            <li data-i18n="positions.marketing.requirements.items[2]">Conocimientos en SEO/SEM, content marketing, y social media</li>
+                            <li data-i18n="positions.marketing.requirements.items[3]">Experiencia con A/B testing y optimización de conversión</li>
+                            <li data-i18n="positions.marketing.requirements.items[4]">Track record demostrable de crecimiento de usuarios/revenue</li>
+                        </ul>
+                    </div>
+                    <a href="/contact" class="btn-primary" data-i18n="positions.marketing.apply">Aplicar</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Application Process -->
+        <section class="content-section">
+            <div class="content-card">
+                <h2 data-i18n="process.title">Proceso de Selección</h2>
+                
+                <h3 data-i18n="process.step1.title">1. Aplicación Inicial</h3>
+                <p data-i18n="process.step1.description">Envía tu CV y carta de presentación a través de nuestro formulario de contacto. Incluye enlaces a tu portfolio, GitHub, o trabajos relevantes.</p>
+                
+                <h3 data-i18n="process.step2.title">2. Screening Call (30 min)</h3>
+                <p data-i18n="process.step2.description">Una conversación inicial con nuestro equipo de People para conocerte mejor y responder tus preguntas sobre la posición y la empresa.</p>
+                
+                <h3 data-i18n="process.step3.title">3. Evaluación Técnica</h3>
+                <p data-i18n="process.step3.description">Dependiendo del rol, incluye una prueba técnica práctica o presentación de case study. Diseñamos evaluaciones que reflejan el trabajo real que harías.</p>
+                
+                <h3 data-i18n="process.step4.title">4. Entrevistas con el Equipo</h3>
+                <p data-i18n="process.step4.description">2-3 entrevistas con miembros del equipo con el que trabajarías directamente, incluyendo los cofundadores. Enfoque en fit cultural y técnico.</p>
+                
+                <h3 data-i18n="process.step5.title">5. Referencia y Oferta</h3>
+                <p data-i18n="process.step5.description">Verificación de referencias y, si todo va bien, ¡te hacemos una oferta competitiva!</p>
+                
+                <div style="background: var(--gradient-subtle); padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                    <p data-i18n="process.tip"><strong>💡 Tip:</strong> Todo el proceso toma entre 1-2 semanas. Valoramos tu tiempo y te mantendremos informado en cada paso.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="content-section">
+            <div class="cta-section">
+                <h2 data-i18n="cta.title">¿No Ves una Posición que Encaje?</h2>
+                <p data-i18n="cta.description">Siempre estamos buscando talento excepcional. Si crees que puedes agregar valor a Minimal, nos encantaría conocerte.</p>
+                <a href="/contact" class="btn-secondary" data-i18n="cta.button">Enviar Aplicación Espontánea</a>
+            </div>
+        </section>
+    </main>
+
+    <script src="../components/footer.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        // Mobile menu functionality (same as landing page)
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobileMenuButton');
+            const mobileCloseButton = document.getElementById('mobileCloseButton');
+            const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+
+            if (mobileMenuButton && mobileNavOverlay && mobileCloseButton) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileNavOverlay.classList.add('active');
+                });
+
+                mobileCloseButton.addEventListener('click', function() {
+                    mobileNavOverlay.classList.remove('active');
+                });
+
+                // Close mobile menu when clicking on overlay
+                mobileNavOverlay.addEventListener('click', function(e) {
+                    if (e.target === mobileNavOverlay) {
+                        mobileNavOverlay.classList.remove('active');
+                    }
+                });
+
+                // Close mobile menu when clicking on a link
+                const mobileNavLinks = mobileNavOverlay.querySelectorAll('a');
+                mobileNavLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileNavOverlay.classList.remove('active');
+                    });
+                });
+            }
+        });
+    </script>
+    
+    <script src="../assets/js/i18n-core.js"></script>
+    <script src="../assets/js/translations/careers.js"></script>
+    <script src="../components/footer.js"></script>
+    <script>
+        // Initialize i18n system and reinitialize after footer loads
+        document.addEventListener('DOMContentLoaded', function() {
+            window.i18n.init(careersTranslations);
+            
+            // Re-apply translations after footer is loaded
+            setTimeout(() => {
+                window.i18n.updatePageContent();
+            }, 100);
+        });
+    </script>
+</body>
+</html>

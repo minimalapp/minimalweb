@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="meta.title">Política de Privacidad - Minimal</title>
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="../assets/images/favicon.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        img, svg, video, canvas {
+            max-width: 100%;
+            height: auto;
+        }
+
+        :root {
+            /* Brand Rainbow Colors (from logo) */
+            --brand-red: #FF5757;
+            --brand-orange: #FFA500;
+            --brand-yellow: #FFD700;
+            --brand-green: #4CAF50;
+            --brand-blue: #2196F3;
+            --brand-indigo: #3F51B5;
+            
+            /* Rainbow Gradient (matching logo) */
+            --gradient-rainbow: linear-gradient(90deg, 
+                #FF5757 0%, 
+                #FFA500 20%, 
+                #FFD700 40%, 
+                #4CAF50 60%, 
+                #2196F3 80%, 
+                #3F51B5 100%
+            );
+            
+            /* Primary gradient using blue tones from logo */
+            --gradient-primary: linear-gradient(135deg, #2196F3 0%, #3F51B5 100%);
+            
+            /* Text Colors */
+            --text-dark: #4A4A4A;
+            --text-light: #6B7280;
+            --text-muted: #9CA3AF;
+            
+            /* Neutral Colors */
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --gray-100: #F3F4F6;
+            --gray-300: #D1D5DB;
+            
+            /* Shadows */
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --shadow-hover: 0 20px 40px rgba(0,0,0,0.15);
+            
+            /* Subtle background gradients */
+            --gradient-subtle: linear-gradient(135deg, rgba(33, 150, 243, 0.05) 0%, rgba(63, 81, 181, 0.05) 100%);
+            --gradient-hero: linear-gradient(135deg, rgba(255, 87, 87, 0.03) 0%, rgba(63, 81, 181, 0.03) 100%);
+            
+            /* Responsive Typography Scale */
+            --h1-size: 2rem;
+            --h2-size: 1.75rem;
+            --h3-size: 1.5rem;
+            --body-size: 1rem;
+            --small-size: 0.875rem;
+            
+            /* Responsive Spacing Scale */
+            --section-padding-y: 3rem;
+            --section-padding-left: 8%;
+            --section-padding-right: 8%;
+            --card-gap: 1rem;
+            --content-max-width: 100%;
+            
+            /* Minimum Touch Target Size */
+            --min-touch-target: 44px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            font-size: 1rem;
+        }
+
+        /* Side Animation Effects - Gradient Overlays */
+        .gradient-overlay-left,
+        .gradient-overlay-right {
+            position: fixed;
+            top: 0;
+            width: 100px;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.6;
+        }
+
+        .gradient-overlay-left {
+            left: 0;
+            background: linear-gradient(90deg, 
+                rgba(255, 87, 87, 0.1) 0%,
+                rgba(255, 165, 0, 0.08) 25%,
+                rgba(255, 215, 0, 0.06) 50%,
+                transparent 100%
+            );
+            animation: glow-left 4s ease-in-out infinite alternate;
+        }
+
+        .gradient-overlay-right {
+            right: 0;
+            background: linear-gradient(270deg, 
+                rgba(76, 175, 80, 0.1) 0%,
+                rgba(33, 150, 243, 0.08) 25%,
+                rgba(63, 81, 181, 0.06) 50%,
+                transparent 100%
+            );
+            animation: glow-right 4s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes glow-left {
+            0% { opacity: 0.3; transform: translateX(-10px); }
+            100% { opacity: 0.7; transform: translateX(0); }
+        }
+
+        @keyframes glow-right {
+            0% { opacity: 0.3; transform: translateX(10px); }
+            100% { opacity: 0.7; transform: translateX(0); }
+        }
+
+        /* Header - Mobile First */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem var(--section-padding-left) 0.75rem var(--section-padding-right);
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: 60px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            height: 32px; /* Mobile first - smaller */
+        }
+        
+        .logo img {
+            height: 100%;
+            width: auto;
+            display: block;
+            max-width: 120px; /* Mobile first - smaller */
+        }
+
+        .nav-links {
+            display: none; /* Hidden on mobile by default */
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            min-height: var(--min-touch-target);
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a:hover {
+            color: var(--brand-blue);
+            transition: color 0.3s;
+        }
+
+        .cta-button {
+            padding: 0.625rem 1.5rem; /* Mobile first - smaller */
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: var(--min-touch-target);
+            font-size: 0.875rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Mobile Menu - Mobile First */
+        .mobile-menu {
+            display: flex; /* Show by default on mobile */
+            align-items: center;
+            justify-content: center;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-dark);
+            min-height: var(--min-touch-target);
+            min-width: var(--min-touch-target);
+            transition: color 0.3s;
+        }
+        
+        .mobile-menu:hover {
+            color: var(--brand-blue);
+        }
+        
+        /* Mobile Navigation Overlay */
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 10000;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        
+        .mobile-nav-overlay.active {
+            display: flex;
+        }
+        
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            list-style: none;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .mobile-nav-links a {
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--text-dark);
+            min-height: var(--min-touch-target);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.3s;
+        }
+        
+        .mobile-nav-links a:hover {
+            color: var(--brand-blue);
+        }
+        
+        .mobile-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text-dark);
+            min-height: var(--min-touch-target);
+            min-width: var(--min-touch-target);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
+        }
+
+        .page-hero {
+            background: var(--gradient-hero);
+            padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-size: var(--h1-size);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-hero p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .content-section {
+            padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .content-card h2 {
+            font-size: var(--h2-size);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .content-card h3 {
+            font-size: var(--h3-size);
+            font-weight: 600;
+            margin: 1.5rem 0 0.75rem 0;
+            color: var(--brand-blue);
+        }
+
+        .content-card h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 1.25rem 0 0.5rem 0;
+            color: var(--text-dark);
+        }
+
+        .content-card p, .content-card li {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .content-card ul, .content-card ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .content-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        .last-updated {
+            background: var(--gradient-subtle);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            font-size: var(--small-size);
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        .contact-info {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .contact-info h3 {
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            :root {
+                --h1-size: 3rem;
+                --h2-size: 2.25rem;
+                --h3-size: 1.75rem;
+                --section-padding-y: 5rem;
+                --section-padding-left: 5%;
+                --section-padding-right: 5%;
+                --content-max-width: 1200px;
+            }
+
+            .nav-links {
+                display: flex; /* Show navigation on tablet+ */
+                gap: 1.5rem;
+            }
+            
+            .mobile-menu {
+                display: none; /* Hide mobile menu on tablet+ */
+            }
+            
+            .cta-button {
+                padding: 0.75rem 2rem;
+            }
+
+        }
+
+        @media (min-width: 1024px) {
+            :root {
+                --section-padding-left: 3%;
+                --section-padding-right: 3%;
+            }
+
+            .nav-links {
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Gradient Side Overlays (only for AI mode) -->
+    <div class="gradient-overlay-left">
+        <div class="gradient-noise"></div>
+    </div>
+    <div class="gradient-overlay-right">
+        <div class="gradient-noise"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="../assets/images/logo.jpeg" alt="Minimal" />
+            </div>
+            <ul class="nav-links">
+                <li><a href="../#producto" data-i18n="nav.product">Producto</a></li>
+                <li><a href="../#como-funciona" data-i18n="nav.howItWorks">Cómo Funciona</a></li>
+                <li><a href="../#beneficios" data-i18n="nav.benefits">Beneficios</a></li>
+                <li><a href="../#casos" data-i18n="nav.useCases">Casos de Uso</a></li>
+                <li><a href="../#precios" data-i18n="nav.pricing">Precios</a></li>
+            </ul>
+            <a href="../#contacto" class="cta-button" data-i18n="nav.tryFree">Prueba Gratis</a>
+            <button class="mobile-menu" id="mobileMenuButton">☰</button>
+        </nav>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <button class="mobile-close" id="mobileCloseButton">×</button>
+        <ul class="mobile-nav-links">
+            <li><a href="../#producto" data-i18n="nav.product">Producto</a></li>
+            <li><a href="../#como-funciona" data-i18n="nav.howItWorks">Cómo Funciona</a></li>
+            <li><a href="../#beneficios" data-i18n="nav.benefits">Beneficios</a></li>
+            <li><a href="../#casos" data-i18n="nav.useCases">Casos de Uso</a></li>
+            <li><a href="../#precios" data-i18n="nav.pricing">Precios</a></li>
+        </ul>
+        <a href="../#contacto" class="cta-button" data-i18n="nav.tryFree">Prueba Gratis</a>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Page Hero -->
+        <section class="page-hero">
+            <h1 data-i18n="hero.title">Política de Privacidad</h1>
+            <p data-i18n="hero.subtitle">Tu privacidad es fundamental para nosotros. Aquí explicamos cómo recopilamos, utilizamos y protegemos tu información personal.</p>
+        </section>
+
+        <!-- Content Sections -->
+        <section class="content-section">
+            <div class="last-updated">
+                <p data-i18n="hero.lastUpdated"><strong>Última actualización:</strong> 15 de enero de 2025</p>
+            </div>
+
+            <!-- Introduction -->
+            <div class="content-card">
+                <h2 data-i18n="sections.overview.title">Información General</h2>
+                <p data-i18n="sections.overview.content">En Minimal, respetamos su privacidad y nos comprometemos a proteger su información personal. Esta política describe cómo manejamos los datos que recopilamos a través de nuestro servicio.</p>
+            </div>
+
+            <!-- Information We Collect -->
+            <div class="content-card">
+                <h2 data-i18n="sections.dataCollection.title">Información que Recopilamos</h2>
+                
+                <h3 data-i18n="sections.dataCollection.personalData.subtitle">Información Personal:</h3>
+                <ul>
+                    <li data-i18n="sections.dataCollection.personalData.items[0]">Nombre y dirección de correo electrónico</li>
+                    <li data-i18n="sections.dataCollection.personalData.items[1]">Información de la empresa y sitio web</li>
+                    <li data-i18n="sections.dataCollection.personalData.items[2]">Datos de facturación y pago</li>
+                    <li data-i18n="sections.dataCollection.personalData.items[3]">Información de contacto proporcionada voluntariamente</li>
+                </ul>
+
+                <h3 data-i18n="sections.dataCollection.automaticData.subtitle">Información Automática:</h3>
+                <ul>
+                    <li data-i18n="sections.dataCollection.automaticData.items[0]">Dirección IP y ubicación geográfica aproximada</li>
+                    <li data-i18n="sections.dataCollection.automaticData.items[1]">Información del navegador y dispositivo</li>
+                    <li data-i18n="sections.dataCollection.automaticData.items[2]">Páginas visitadas y tiempo de navegación</li>
+                    <li data-i18n="sections.dataCollection.automaticData.items[3]">Conversaciones del chat (anonimizadas para mejoras del servicio)</li>
+                </ul>
+            </div>
+
+            <!-- How We Use Your Information -->
+            <div class="content-card">
+                <h2 data-i18n="sections.dataUse.title">Cómo Utilizamos su Información</h2>
+                <ul>
+                    <li data-i18n="sections.dataUse.items[0]">Proporcionar y mantener nuestro servicio</li>
+                    <li data-i18n="sections.dataUse.items[1]">Procesar pagos y gestionar su cuenta</li>
+                    <li data-i18n="sections.dataUse.items[2]">Mejorar nuestro servicio mediante análisis de uso</li>
+                    <li data-i18n="sections.dataUse.items[3]">Comunicarnos con usted sobre actualizaciones del servicio</li>
+                    <li data-i18n="sections.dataUse.items[4]">Proporcionar soporte técnico y atención al cliente</li>
+                    <li data-i18n="sections.dataUse.items[5]">Cumplir con obligaciones legales</li>
+                </ul>
+            </div>
+
+            <!-- Information Sharing -->
+            <div class="content-card">
+                <h2 data-i18n="sections.dataSharing.title">Compartir Información</h2>
+                <p data-i18n="sections.dataSharing.content">No vendemos, alquilamos ni compartimos su información personal con terceros, excepto en las siguientes circunstancias:</p>
+                <ul>
+                    <li data-i18n="sections.dataSharing.items[0]">Con proveedores de servicios que nos ayudan a operar nuestro servicio</li>
+                    <li data-i18n="sections.dataSharing.items[1]">Cuando sea requerido por ley o autoridades competentes</li>
+                    <li data-i18n="sections.dataSharing.items[2]">Para proteger nuestros derechos, propiedad o seguridad</li>
+                    <li data-i18n="sections.dataSharing.items[3]">Con su consentimiento explícito</li>
+                </ul>
+            </div>
+
+            <!-- Data Security -->
+            <div class="content-card">
+                <h2 data-i18n="sections.dataRetention.title">Retención de Datos</h2>
+                <p data-i18n="sections.dataRetention.content">Conservamos su información personal durante el tiempo necesario para los fines descritos en esta política, típicamente:</p>
+                <ul>
+                    <li data-i18n="sections.dataRetention.items[0]">Datos de cuenta: mientras su cuenta esté activa</li>
+                    <li data-i18n="sections.dataRetention.items[1]">Datos de conversación: 12 meses para mejora del servicio</li>
+                    <li data-i18n="sections.dataRetention.items[2]">Datos de facturación: 7 años por requerimientos legales</li>
+                    <li data-i18n="sections.dataRetention.items[3]">Datos de soporte: 3 años después de la última interacción</li>
+                </ul>
+                
+                <div class="content-card">
+                <h2 data-i18n="sections.security.title">Seguridad de los Datos</h2>
+                <p data-i18n="sections.security.content">Implementamos medidas de seguridad técnicas y organizativas para proteger su información:</p>
+                <ul>
+                    <li data-i18n="sections.security.items[0]">Encriptación de datos en tránsito y en reposo</li>
+                    <li data-i18n="sections.security.items[1]">Acceso restringido basado en necesidad</li>
+                    <li data-i18n="sections.security.items[2]">Monitoreo regular de seguridad</li>
+                    <li data-i18n="sections.security.items[3]">Auditorías de seguridad periódicas</li>
+                    <li data-i18n="sections.security.items[4]">Protocolos de respuesta a incidentes</li>
+                </ul>
+                </div>
+            </div>
+
+            <!-- Your Rights -->
+            <div class="content-card">
+                <h2 data-i18n="sections.rights.title">Sus Derechos</h2>
+                <p data-i18n="sections.rights.content">Bajo las leyes de protección de datos aplicables, usted tiene derecho a:</p>
+                <ul>
+                    <li data-i18n="sections.rights.items[0]">Acceder a su información personal</li>
+                    <li data-i18n="sections.rights.items[1]">Rectificar información inexacta</li>
+                    <li data-i18n="sections.rights.items[2]">Solicitar la eliminación de sus datos</li>
+                    <li data-i18n="sections.rights.items[3]">Restringir el procesamiento de sus datos</li>
+                    <li data-i18n="sections.rights.items[4]">Portabilidad de datos</li>
+                    <li data-i18n="sections.rights.items[5]">Oponerse al procesamiento de sus datos</li>
+                </ul>
+                
+                <div class="content-card">
+                <h2 data-i18n="sections.cookies.title">Cookies y Tecnologías Similares</h2>
+                <p data-i18n="sections.cookies.content">Utilizamos cookies y tecnologías similares para mejorar su experiencia:</p>
+                <p data-i18n="sections.cookies.types.essential">Cookies esenciales: Necesarias para el funcionamiento básico</p>
+                <p data-i18n="sections.cookies.types.analytics">Cookies de análisis: Para entender cómo se usa nuestro servicio</p>
+                <p data-i18n="sections.cookies.types.functional">Cookies funcionales: Para recordar sus preferencias</p>
+                </div>
+            </div>
+
+            <!-- Children's Privacy -->
+            <div class="content-card">
+                <h2 data-i18n="sections.international.title">Transferencias Internacionales</h2>
+                <p data-i18n="sections.international.content">Sus datos pueden ser procesados en países fuera de su residencia. Aseguramos protecciones adecuadas mediante:</p>
+                <ul>
+                    <li data-i18n="sections.international.items[0]">Cláusulas contractuales estándar de la UE</li>
+                    <li data-i18n="sections.international.items[1]">Certificaciones de privacidad reconocidas</li>
+                    <li data-i18n="sections.international.items[2]">Evaluaciones de adecuación país por país</li>
+                </ul>
+                
+                <div class="content-card">
+                <h2 data-i18n="sections.children.title">Protección de Menores</h2>
+                <p data-i18n="sections.children.content">Nuestro servicio no está dirigido a menores de 16 años. No recopilamos conscientemente información personal de niños menores de esta edad.</p>
+                </div>
+            </div>
+
+            <!-- International Transfers -->
+            <div class="content-card">
+                <h2 data-i18n="sections.changes.title">Cambios en esta Política</h2>
+                <p data-i18n="sections.changes.content">Podemos actualizar esta política ocasionalmente. Le notificaremos cambios significativos por correo electrónico o mediante aviso en nuestro servicio.</p>
+            </div>
+
+            <!-- Changes to Policy -->
+            <div class="content-card">
+                <h2 data-i18n="sections.contact.title">Contacto</h2>
+                <p data-i18n="sections.contact.content">Para preguntas sobre esta política o sus derechos de privacidad:</p>
+                <p><strong>Email:</strong> <span data-i18n="sections.contact.email">privacy@minimal.com</span></p>
+                <p data-i18n="sections.contact.dpo">Responsable de Protección de Datos: dpo@minimal.com</p>
+                <p data-i18n="sections.contact.address">Calle Ejemplo 123, 28001 Madrid, España</p>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <h3 data-i18n="sections.contact.title">Contacto</h3>
+                <p data-i18n="sections.contact.content">Para preguntas sobre esta política o sus derechos de privacidad:</p>
+                <p><strong>Email:</strong> <a href="mailto:privacy@minimal.com" data-i18n="sections.contact.email">privacy@minimal.com</a></p>
+                <p data-i18n="sections.contact.address">Calle Ejemplo 123, 28001 Madrid, España</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="../components/footer.js"></script>
+    <script src="../assets/js/i18n-core.js"></script>
+    <script src="../assets/js/translations/privacy.js"></script>
+    <script>
+        // Initialize i18n after DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof i18n !== 'undefined' && typeof privacyTranslations !== 'undefined') {
+                i18n.init(privacyTranslations);
+            }
+        });
+    </script>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        // Mobile menu functionality (same as landing page)
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobileMenuButton');
+            const mobileCloseButton = document.getElementById('mobileCloseButton');
+            const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+
+            if (mobileMenuButton && mobileNavOverlay && mobileCloseButton) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileNavOverlay.classList.add('active');
+                });
+
+                mobileCloseButton.addEventListener('click', function() {
+                    mobileNavOverlay.classList.remove('active');
+                });
+
+                // Close mobile menu when clicking on overlay
+                mobileNavOverlay.addEventListener('click', function(e) {
+                    if (e.target === mobileNavOverlay) {
+                        mobileNavOverlay.classList.remove('active');
+                    }
+                });
+
+                // Close mobile menu when clicking on a link
+                const mobileNavLinks = mobileNavOverlay.querySelectorAll('a');
+                mobileNavLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileNavOverlay.classList.remove('active');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
