@@ -97,7 +97,7 @@ All pages include complete translations using the i18n system.
 
 If you have a custom domain, edit `CNAME`:
 ```bash
-echo "yourdomain.com" > CNAME
+echo "minimal.lat" > CNAME
 ```
 
 ### Jekyll Configuration
