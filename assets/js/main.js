@@ -123,13 +123,79 @@ const translations = {
                 endUsers: "Usuarios Finales"
             }
         },
+
+        // Use Cases Section
+        useCases: {
+            title: "Casos de Uso Reales",
+            subtitle: "Descubre cómo diferentes industrias están transformando su presencia web con Minimal",
+            case1: {
+                title: "SaaS & Software",
+                icon: "💻",
+                description: "Reduce fricción en onboarding y convierte visitantes en usuarios activos",
+                benefits: [
+                    "Onboarding conversacional",
+                    "Demostraciones interactivas",
+                    "Soporte técnico inteligente"
+                ]
+            },
+            case2: {
+                title: "Servicios Profesionales",
+                icon: "🏢",
+                description: "Captura leads calificados y agenda reuniones automáticamente",
+                benefits: [
+                    "Calificación automática de leads",
+                    "Agendamiento inteligente",
+                    "Propuestas personalizadas"
+                ]
+            },
+            case3: {
+                title: "Educación & Formación",
+                icon: "🎓",
+                description: "Guía a estudiantes a cursos relevantes y responde dudas al instante",
+                benefits: [
+                    "Recomendación de cursos",
+                    "Asesoría académica 24/7",
+                    "Inscripción simplificada"
+                ]
+            },
+            case4: {
+                title: "Salud & Bienestar",
+                icon: "🏥",
+                description: "Conecta pacientes con servicios adecuados y agenda citas fácilmente",
+                benefits: [
+                    "Triage automatizado",
+                    "Agendamiento de citas",
+                    "Información de servicios"
+                ]
+            },
+            case5: {
+                title: "Inmobiliaria",
+                icon: "🏠",
+                description: "Ayuda a compradores a encontrar propiedades ideales basado en sus necesidades",
+                benefits: [
+                    "Búsqueda conversacional",
+                    "Tours virtuales guiados",
+                    "Cálculo de hipotecas"
+                ]
+            },
+            case6: {
+                title: "Finanzas & Seguros",
+                icon: "💰",
+                description: "Explica productos complejos de forma simple y personalizada",
+                benefits: [
+                    "Asesoría financiera básica",
+                    "Comparación de productos",
+                    "Cotización instantánea"
+                ]
+            }
+        },
         
         // Pricing Section
         pricing: {
             title: "Planes Simples, Valor Transparente",
             starter: {
                 title: "Starter",
-                price: "$99",
+                price: "$19",
                 period: "/mes",
                 button: "Comenzar",
                 features: [
@@ -140,14 +206,13 @@ const translations = {
             },
             professional: {
                 title: "Professional",
-                price: "$299",
+                price: "$39",
                 period: "/mes",
                 button: "Comenzar",
                 badge: "Más Popular",
                 features: [
                     "✓ Hasta 10,000 conversaciones",
                     "✓ Analytics avanzados",
-                    "✓ Personalización completa",
                     "✓ Soporte prioritario"
                 ]
             },
@@ -159,7 +224,6 @@ const translations = {
                 features: [
                     "✓ Conversaciones ilimitadas",
                     "✓ Integración personalizada",
-                    "✓ SLA garantizado",
                     "✓ Account manager dedicado"
                 ]
             }
@@ -225,34 +289,7 @@ const translations = {
         benefit3Text: "Actualiza tu presencia web sin reconstruir",
         benefit4Title: "Captura de Leads Mejorada",
         benefit4Text: "Convierte más visitantes en clientes",
-        
-        // Pricing Section
-        pricingTitle: "Planes Simples, Valor Transparente",
-        planStarter: "Starter",
-        planProfessional: "Professional",
-        planEnterprise: "Enterprise",
-        planStarterPrice: "$99",
-        planProfessionalPrice: "$299",
-        planEnterprisePrice: "Custom",
-        planMonth: "/mes",
-        planCustom: "Personalizado",
-        planMostPopular: "Más Popular",
-        planButton: "Comenzar",
-        planButtonContact: "Contactar",
-        
-        // Plan Features
-        starterFeature1: "✓ Hasta 1,000 conversaciones",
-        starterFeature2: "✓ Analytics básicos",
-        starterFeature3: "✓ Soporte por email",
-        professionalFeature1: "✓ Hasta 10,000 conversaciones",
-        professionalFeature2: "✓ Analytics avanzados",
-        professionalFeature3: "✓ Personalización completa",
-        professionalFeature4: "✓ Soporte prioritario",
-        enterpriseFeature1: "✓ Conversaciones ilimitadas",
-        enterpriseFeature2: "✓ Integración personalizada",
-        enterpriseFeature3: "✓ SLA garantizado",
-        enterpriseFeature4: "✓ Account manager dedicado",
-        
+
         // CTA Section
         ctaTitle: "Comienza tu Transformación Digital Hoy",
         ctaSubtitle: "Únete a las empresas que ya están revolucionando su presencia web",
@@ -437,13 +474,79 @@ const translations = {
                 description: "Convert more visitors to customers"
             }
         },
+
+        // Use Cases Section
+        useCases: {
+            title: "Real Use Cases",
+            subtitle: "Discover how different industries are transforming their web presence with Minimal",
+            case1: {
+                title: "SaaS & Software",
+                icon: "💻",
+                description: "Reduce onboarding friction and convert visitors into active users",
+                benefits: [
+                    "Conversational onboarding",
+                    "Interactive demonstrations",
+                    "Intelligent technical support"
+                ]
+            },
+            case2: {
+                title: "Professional Services",
+                icon: "🏢",
+                description: "Capture qualified leads and schedule meetings automatically",
+                benefits: [
+                    "Automatic lead qualification",
+                    "Smart scheduling",
+                    "Personalized proposals"
+                ]
+            },
+            case3: {
+                title: "Education & Training",
+                icon: "🎓",
+                description: "Guide students to relevant courses and answer questions instantly",
+                benefits: [
+                    "Course recommendations",
+                    "24/7 academic advising",
+                    "Simplified enrollment"
+                ]
+            },
+            case4: {
+                title: "Health & Wellness",
+                icon: "🏥",
+                description: "Connect patients with appropriate services and schedule appointments easily",
+                benefits: [
+                    "Automated triage",
+                    "Appointment scheduling",
+                    "Service information"
+                ]
+            },
+            case5: {
+                title: "Real Estate",
+                icon: "🏠",
+                description: "Help buyers find ideal properties based on their needs",
+                benefits: [
+                    "Conversational search",
+                    "Guided virtual tours",
+                    "Mortgage calculator"
+                ]
+            },
+            case6: {
+                title: "Finance & Insurance",
+                icon: "💰",
+                description: "Explain complex products in a simple and personalized way",
+                benefits: [
+                    "Basic financial advice",
+                    "Product comparison",
+                    "Instant quotes"
+                ]
+            }
+        },
         
         // Pricing Section
         pricing: {
             title: "Simple Plans, Transparent Value",
             starter: {
                 title: "Starter",
-                price: "$99",
+                price: "$19",
                 period: "/month",
                 button: "Get Started",
                 features: [
@@ -454,28 +557,25 @@ const translations = {
             },
             professional: {
                 title: "Professional",
-                price: "$299",
+                price: "$39",
                 period: "/month",
                 button: "Get Started",
                 badge: "Most Popular",
                 features: [
                     "✓ Up to 10,000 conversations",
                     "✓ Advanced analytics",
-                    "✓ Priority support",
-                    "✓ Custom integrations"
+                    "✓ Priority support"
                 ]
             },
             enterprise: {
                 title: "Enterprise",
                 price: "Custom",
-                period: "",
+                period: "Custom",
                 button: "Contact",
                 features: [
                     "✓ Unlimited conversations",
                     "✓ Complete analytics",
                     "✓ Dedicated support",
-                    "✓ Custom training",
-                    "✓ SLA guarantee"
                 ]
             }
         },
@@ -514,26 +614,7 @@ const translations = {
             security: "Security",
             copyright: "© 2025 Minimal. All rights reserved."
         },
-        
-        // Old flat structure (to be removed)
-        starterFeature3: "✓ Email support",
-        professionalFeature1: "✓ Up to 10,000 conversations",
-        professionalFeature2: "✓ Advanced analytics",
-        professionalFeature3: "✓ Full customization",
-        professionalFeature4: "✓ Priority support",
-        enterpriseFeature1: "✓ Unlimited conversations",
-        enterpriseFeature2: "✓ Custom integration",
-        enterpriseFeature3: "✓ Guaranteed SLA",
-        enterpriseFeature4: "✓ Dedicated account manager",
-        
-        // CTA Section
-        ctaTitle: "Start your Digital Transformation Today",
-        ctaSubtitle: "Join the companies already revolutionizing their web presence",
-        ctaEmailPlaceholder: "Your email",
-        ctaUrlPlaceholder: "Your website URL",
-        ctaButton: "Get Personalized Demo",
-        ctaFootnote: "⚡ Setup in less than 1 hour",
-        
+
         // Footer
         footerProduct: "Product",
         footerFeatures: "Features",
