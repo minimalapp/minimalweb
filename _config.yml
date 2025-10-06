@@ -3,8 +3,8 @@
 # Site settings
 title: "Minimal - AI-Powered Conversational Experiences"
 description: "Transform your static website into an intelligent conversational experience with Minimal's AI-powered platform."
-url: "https://minimalapp.github.io"
-baseurl: "/minimalweb"
+url: "https://minimal.lat"
+baseurl: ""
 
 # Build settings
 markdown: kramdown
