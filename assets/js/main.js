@@ -4,7 +4,12 @@ const translations = {
         // Page Title and Meta
         pageTitle: "Minimal - Transforma tu Sitio Web en una Experiencia Conversacional Inteligente",
         meta: {
-            title: "Minimal - Transforma tu Sitio Web en una Experiencia Conversacional Inteligente"
+            title: "Minimal - Transforma tu Sitio Web en una Experiencia Conversacional Inteligente",
+            description: "Minimal convierte sitios web estáticos en interfaces dinámicas de IA que capturan la intención real de tus visitantes. Moderniza tu presencia web sin reconstruir.",
+            ogTitle: "Minimal - Transforma tu Sitio Web en una Experiencia Conversacional Inteligente",
+            ogDescription: "Convierte sitios estáticos en interfaces dinámicas de IA que capturan la intención real de tus visitantes",
+            twitterTitle: "Minimal - Transforma tu Sitio Web con IA Conversacional",
+            twitterDescription: "Convierte sitios estáticos en interfaces dinámicas de IA que capturan la intención real de tus visitantes"
         },
         
         // Navigation
@@ -325,7 +330,12 @@ const translations = {
         // Page Title and Meta
         pageTitle: "Minimal - Transform your Website into an Intelligent Conversational Experience",
         meta: {
-            title: "Minimal - Transform your Website into an Intelligent Conversational Experience"
+            title: "Minimal - Transform your Website into an Intelligent Conversational Experience",
+            description: "Minimal converts static websites into dynamic AI interfaces that capture your visitors' real intent. Modernize your web presence without rebuilding.",
+            ogTitle: "Minimal - Transform your Website into an Intelligent Conversational Experience",
+            ogDescription: "Convert static sites into dynamic AI interfaces that capture your visitors' real intent",
+            twitterTitle: "Minimal - Transform your Website with Conversational AI",
+            twitterDescription: "Convert static sites into dynamic AI interfaces that capture your visitors' real intent"
         },
         
         // Navigation
@@ -663,12 +673,28 @@ function detectBrowserLanguage() {
 
 function updatePageContent() {
     const t = translations[currentLanguage];
-    
+
     // Update HTML lang attribute
     document.documentElement.lang = currentLanguage;
-    
+
     // Update page title
     document.title = t.meta.title;
+
+    // Update meta tags
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) metaDescription.setAttribute('content', t.meta.description);
+
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute('content', t.meta.ogTitle);
+
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    if (ogDescription) ogDescription.setAttribute('content', t.meta.ogDescription);
+
+    const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+    if (twitterTitle) twitterTitle.setAttribute('content', t.meta.twitterTitle);
+
+    const twitterDescription = document.querySelector('meta[name="twitter:description"]');
+    if (twitterDescription) twitterDescription.setAttribute('content', t.meta.twitterDescription);
     
     // Helper function to get nested property (supports array notation)
     function getNestedValue(obj, path) {
