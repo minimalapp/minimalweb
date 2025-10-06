@@ -36,8 +36,8 @@ exclude:
   - .DS_Store
 
 # SEO and social
-lang: es
-locale: es_ES
+lang: en
+locale: en_US
 
 # GitHub Pages specific
 plugins:
