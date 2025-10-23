@@ -1,0 +1,70 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+
+const locale = 'es';
+const title = 'Características - Minimal';
+const description = 'Descubre todas las funcionalidades que transformarán tu sitio web en una experiencia conversacional inteligente.';
+---
+
+<BaseLayout title={title} description={description} locale={locale}>
+  <Header locale={locale} />
+  <main>
+    <section class="hero-section">
+      <div class="container">
+        <h1>Características de Minimal</h1>
+        <p class="subtitle">Descubre todas las funcionalidades que transformarán tu sitio web en una experiencia conversacional inteligente.</p>
+      </div>
+    </section>
+    <section class="features-section">
+      <div class="container">
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h3>IA Conversacional Avanzada</h3>
+            <p>Procesamiento de lenguaje natural de última generación que entiende el contexto y las intenciones.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Preservación de Marca</h3>
+            <p>La interfaz conversacional se adapta automáticamente a los colores, tipografías y estilo visual de tu sitio.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Integración en 1 Línea</h3>
+            <p>Implementación ultra-rápida que requiere solo agregar una línea de código JavaScript a tu sitio.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Analytics Inteligentes</h3>
+            <p>Obtén insights profundos sobre las intenciones reales de tus usuarios y patrones de comportamiento.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Sincronización Automática</h3>
+            <p>El contenido de tu sitio se sincroniza automáticamente, permitiendo que la IA siempre tenga información actualizada.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Soporte Multiidioma</h3>
+            <p>Interfaz conversacional que se adapta automáticamente al idioma de tu sitio web.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer locale={locale} />
+</BaseLayout>
+
+<style>
+  main { padding-top: 60px; }
+  .hero-section {
+    padding: calc(var(--section-padding-y) + 2rem) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
+    background: linear-gradient(180deg, #f7fafc 0%, #ffffff 100%);
+    text-align: center;
+  }
+  .hero-section h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1.5rem; }
+  .subtitle { font-size: clamp(1.1rem, 2vw, 1.5rem); color: var(--text-light); max-width: 800px; margin: 0 auto; }
+  .features-section { padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right); }
+  .feature-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; max-width: 1200px; margin: 0 auto; }
+  .feature-card { background: white; padding: 2rem; border-radius: 12px; box-shadow: var(--shadow-sm); }
+  .feature-card h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+  .feature-card p { color: var(--text-light); line-height: 1.6; }
+  @media (min-width: 768px) { .feature-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px) { .feature-grid { grid-template-columns: repeat(3, 1fr); } }
+</style>

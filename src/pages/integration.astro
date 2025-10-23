@@ -1,0 +1,39 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+
+const locale = 'en';
+---
+
+<BaseLayout title="Integration - Minimal" description="Simple integration in minutes. One script, instant transformation." locale={locale}>
+  <Header locale={locale} />
+  <main>
+    <section class="hero-section">
+      <div class="container">
+        <h1>Simple Integration</h1>
+        <p class="subtitle">One line of code, instant transformation. Works with any platform.</p>
+      </div>
+    </section>
+    <section class="content-section">
+      <div class="container">
+        <h2>Easy Integration</h2>
+        <p>Add Minimal to your website with just one line of code. Compatible with WordPress, Shopify, React, Vue, Angular, and any other platform.</p>
+        <div class="code-block">
+          <code>&lt;script src="https://minimal.lat/embed.js" data-site-id="your-id"&gt;&lt;/script&gt;</code>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer locale={locale} />
+</BaseLayout>
+
+<style>
+  main { padding-top: 60px; }
+  .hero-section { padding: calc(var(--section-padding-y) + 2rem) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right); background: linear-gradient(180deg, #f7fafc 0%, #ffffff 100%); text-align: center; }
+  .hero-section h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1.5rem; }
+  .subtitle { font-size: clamp(1.1rem, 2vw, 1.5rem); color: var(--text-light); max-width: 800px; margin: 0 auto; }
+  .content-section { padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right); max-width: 800px; margin: 0 auto; }
+  .code-block { background: #1a202c; color: #4ade80; padding: 2rem; border-radius: 8px; overflow-x: auto; margin: 2rem 0; }
+  .code-block code { font-family: 'Courier New', monospace; }
+</style>

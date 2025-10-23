@@ -1,0 +1,102 @@
+---
+import '@/styles/global.css';
+import '@/styles/animations.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  locale?: 'en' | 'es';
+  ogImage?: string;
+}
+
+const {
+  title,
+  description,
+  locale = 'en',
+  ogImage = '/assets/images/og-image.jpg'
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL(ogImage, Astro.site);
+
+// Language alternates
+const alternateEn = new URL(Astro.url.pathname.replace('/es/', '/'), Astro.site);
+const alternateEs = new URL('/es' + Astro.url.pathname, Astro.site);
+---
+
+<!DOCTYPE html>
+<html lang={locale}>
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1N7WSHVF9F"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1N7WSHVF9F');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content={description}>
+  <meta name="keywords" content="conversational AI, website transformation, chatbot, AI interface, web modernization, SaaS, AI assistant">
+  <meta name="author" content="Minimal">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href={canonicalURL}>
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content={canonicalURL}>
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:image" content={ogImageURL}>
+  <meta property="og:site_name" content="Minimal">
+  <meta property="og:locale" content={locale === 'es' ? 'es_ES' : 'en_US'}>
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content={canonicalURL}>
+  <meta name="twitter:title" content={title}>
+  <meta name="twitter:description" content={description}>
+  <meta name="twitter:image" content={ogImageURL}>
+
+  <!-- Language Alternates -->
+  <link rel="alternate" hreflang="en" href={alternateEn} />
+  <link rel="alternate" hreflang="es" href={alternateEs} />
+  <link rel="alternate" hreflang="x-default" href={alternateEn} />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/images/favicon.png">
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Minimal",
+    "applicationCategory": "WebApplication",
+    "operatingSystem": "Web",
+    "description": "Transform your website into an intelligent conversational AI experience",
+    "offers": {
+      "@type": "AggregateOffer",
+      "lowPrice": "19",
+      "highPrice": "39",
+      "priceCurrency": "USD",
+      "offerCount": "3"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "150"
+    }
+  }
+  </script>
+</head>
+<body>
+  <slot />
+</body>
+</html>

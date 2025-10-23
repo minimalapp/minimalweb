@@ -1,0 +1,49 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+
+const locale = 'es';
+---
+
+<BaseLayout title="Contacto - Minimal" description="Ponte en contacto con el equipo de Minimal." locale={locale}>
+  <Header locale={locale} />
+  <main>
+    <section class="hero-section">
+      <div class="container">
+        <h1>Contáctanos</h1>
+        <p class="subtitle">¿Tienes preguntas? Nos encantaría saber de ti.</p>
+      </div>
+    </section>
+    <section class="content-section">
+      <div class="container">
+        <form class="contact-form">
+          <input type="text" placeholder="Nombre" required />
+          <input type="email" placeholder="Email" required />
+          <input type="text" placeholder="Asunto" required />
+          <textarea placeholder="Mensaje" rows="6" required></textarea>
+          <button type="submit">Enviar Mensaje</button>
+        </form>
+        <div class="contact-info">
+          <p><strong>Email:</strong> hello@minimal.lat</p>
+          <p><strong>Soporte:</strong> support@minimal.lat</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer locale={locale} />
+</BaseLayout>
+
+<style>
+  main { padding-top: 60px; }
+  .hero-section { padding: calc(var(--section-padding-y) + 2rem) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right); background: linear-gradient(180deg, #f7fafc 0%, #ffffff 100%); text-align: center; }
+  .hero-section h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1.5rem; }
+  .subtitle { font-size: clamp(1.1rem, 2vw, 1.5rem); color: var(--text-light); max-width: 800px; margin: 0 auto; }
+  .content-section { padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right); max-width: 600px; margin: 0 auto; }
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 3rem; }
+  .contact-form input, .contact-form textarea { padding: 1rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem; }
+  .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--brand-blue); }
+  .contact-form button { padding: 1rem 2rem; background: var(--gradient-primary); color: white; border: none; border-radius: 50px; font-size: 1.1rem; font-weight: 600; cursor: pointer; }
+  .contact-info { text-align: center; }
+  .contact-info p { margin: 0.5rem 0; color: var(--text-light); }
+</style>

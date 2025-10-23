@@ -1,0 +1,70 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+
+const locale = 'en';
+const title = 'Features - Minimal';
+const description = 'Discover all the functionalities that will transform your website into an intelligent conversational experience.';
+---
+
+<BaseLayout title={title} description={description} locale={locale}>
+  <Header locale={locale} />
+  <main>
+    <section class="hero-section">
+      <div class="container">
+        <h1>Minimal Features</h1>
+        <p class="subtitle">Discover all the functionalities that will transform your website into an intelligent conversational experience.</p>
+      </div>
+    </section>
+    <section class="features-section">
+      <div class="container">
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h3>Advanced Conversational AI</h3>
+            <p>State-of-the-art natural language processing that understands context and user intentions.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Brand Preservation</h3>
+            <p>The conversational interface automatically adapts to your website's colors, fonts, and visual style.</p>
+          </div>
+          <div class="feature-card">
+            <h3>1-Line Integration</h3>
+            <p>Ultra-fast implementation that requires only adding one line of JavaScript code to your website.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Intelligent Analytics</h3>
+            <p>Get deep insights into your users' real intentions and behavior patterns.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Automatic Synchronization</h3>
+            <p>Your website content syncs automatically, allowing AI to always have updated information.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Multi-language Support</h3>
+            <p>Conversational interface that automatically adapts to your website's language.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer locale={locale} />
+</BaseLayout>
+
+<style>
+  main { padding-top: 60px; }
+  .hero-section {
+    padding: calc(var(--section-padding-y) + 2rem) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
+    background: linear-gradient(180deg, #f7fafc 0%, #ffffff 100%);
+    text-align: center;
+  }
+  .hero-section h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1.5rem; }
+  .subtitle { font-size: clamp(1.1rem, 2vw, 1.5rem); color: var(--text-light); max-width: 800px; margin: 0 auto; }
+  .features-section { padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right); }
+  .feature-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; max-width: 1200px; margin: 0 auto; }
+  .feature-card { background: white; padding: 2rem; border-radius: 12px; box-shadow: var(--shadow-sm); }
+  .feature-card h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+  .feature-card p { color: var(--text-light); line-height: 1.6; }
+  @media (min-width: 768px) { .feature-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px) { .feature-grid { grid-template-columns: repeat(3, 1fr); } }
+</style>

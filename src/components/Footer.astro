@@ -1,0 +1,123 @@
+---
+import type { Locale } from '@/i18n/utils';
+import commonTranslations from '@/i18n/common.json';
+
+export interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = commonTranslations[locale];
+
+// Determine base path for links
+const basePath = locale === 'es' ? '/es' : '';
+---
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-column">
+      <h4>{t.footer.product}</h4>
+      <ul>
+        <li><a href={`${basePath}/features`}>{t.footer.features}</a></li>
+        <li><a href={`${basePath}/integration`}>{t.footer.integration}</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>{t.footer.company}</h4>
+      <ul>
+        <li><a href={`${basePath}/about`}>{t.footer.about}</a></li>
+        <li><a href={`${basePath}/careers`}>{t.footer.careers}</a></li>
+        <li><a href={`${basePath}/contact`}>{t.footer.contact}</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>{t.footer.resources}</h4>
+      <ul>
+        <li><a href={`${basePath}/help`}>{t.footer.help}</a></li>
+        <li><a href={`${basePath}/guides`}>{t.footer.guides}</a></li>
+        <li><a href={`${basePath}/community`}>{t.footer.community}</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>{t.footer.legal}</h4>
+      <ul>
+        <li><a href={`${basePath}/terms`}>{t.footer.terms}</a></li>
+        <li><a href={`${basePath}/privacy`}>{t.footer.privacy}</a></li>
+        <li><a href={`${basePath}/gdpr`}>{t.footer.gdpr}</a></li>
+        <li><a href={`${basePath}/security`}>{t.footer.security}</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>{t.footer.copyright}</p>
+  </div>
+</footer>
+
+<style>
+  /* Footer Component Styles */
+  footer {
+    padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
+    background: var(--text-dark);
+    color: white;
+  }
+
+  .footer-content {
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-column h4 {
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+    color: white;
+  }
+
+  .footer-column ul {
+    list-style: none;
+  }
+
+  .footer-column li {
+    margin-bottom: 0.25rem;
+  }
+
+  .footer-column a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-size: 0.9rem;
+    min-height: var(--min-touch-target);
+    display: inline-block;
+    padding: 0.25rem 0;
+    line-height: 1.4;
+  }
+
+  .footer-column a:hover {
+    color: white;
+  }
+
+  .footer-bottom {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #555;
+    color: #ccc;
+    font-size: 0.875rem;
+  }
+
+  /* Tablet (768px+) */
+  @media (min-width: 768px) {
+    .footer-content {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* Desktop (1024px+) */
+  @media (min-width: 1024px) {
+    .footer-content {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+</style>

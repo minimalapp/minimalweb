@@ -1,0 +1,42 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+
+const locale = 'es';
+---
+
+<BaseLayout title="Comunidad - Minimal" description="Únete a la comunidad Minimal de innovadores transformando la web." locale={locale}>
+  <Header locale={locale} />
+  <main>
+    <section class="hero-section">
+      <div class="container">
+        <h1>Comunidad</h1>
+        <p class="subtitle">Únete a miles de innovadores transformando su presencia web con Minimal.</p>
+      </div>
+    </section>
+    <section class="content-section">
+      <div class="container">
+        <h2>Conéctate con Nosotros</h2>
+        <p>Únete a nuestra comunidad para compartir experiencias, obtener soporte y mantenerte actualizado con las últimas características y mejores prácticas.</p>
+        <div class="community-links">
+          <a href="#" class="community-link">Comunidad Discord</a>
+          <a href="#" class="community-link">Foro</a>
+          <a href="#" class="community-link">Newsletter</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer locale={locale} />
+</BaseLayout>
+
+<style>
+  main { padding-top: 60px; }
+  .hero-section { padding: calc(var(--section-padding-y) + 2rem) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right); background: linear-gradient(180deg, #f7fafc 0%, #ffffff 100%); text-align: center; }
+  .hero-section h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1.5rem; }
+  .subtitle { font-size: clamp(1.1rem, 2vw, 1.5rem); color: var(--text-light); max-width: 800px; margin: 0 auto; }
+  .content-section { padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right); text-align: center; max-width: 800px; margin: 0 auto; }
+  .community-links { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+  .community-link { padding: 1rem 2rem; background: var(--gradient-primary); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; }
+  @media (min-width: 640px) { .community-links { flex-direction: row; justify-content: center; } }
+</style>

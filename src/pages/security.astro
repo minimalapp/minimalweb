@@ -1,0 +1,51 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+
+const locale = 'en';
+---
+
+<BaseLayout title="Security - Minimal" description="Security practices and measures at Minimal." locale={locale}>
+  <Header locale={locale} />
+  <main>
+    <section class="legal-section">
+      <div class="container">
+        <h1>Security</h1>
+        <p class="last-updated">Last updated: January 2025</p>
+        <div class="legal-content">
+          <h2>1. Data Encryption</h2>
+          <p>All data is encrypted in transit using TLS 1.3 and at rest using AES-256 encryption.</p>
+
+          <h2>2. Infrastructure Security</h2>
+          <p>Our infrastructure is hosted on enterprise-grade cloud providers with SOC 2 Type II compliance.</p>
+
+          <h2>3. Access Controls</h2>
+          <p>We implement strict access controls and multi-factor authentication for all team members.</p>
+
+          <h2>4. Regular Audits</h2>
+          <p>We conduct regular security audits and penetration testing to identify and address vulnerabilities.</p>
+
+          <h2>5. Incident Response</h2>
+          <p>We have a comprehensive incident response plan to quickly address any security incidents.</p>
+
+          <h2>6. Compliance</h2>
+          <p>We comply with industry standards including GDPR, CCPA, and SOC 2.</p>
+
+          <h2>7. Report Security Issues</h2>
+          <p>If you discover a security vulnerability, please report it to security@minimal.lat</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer locale={locale} />
+</BaseLayout>
+
+<style>
+  main { padding-top: 60px; }
+  .legal-section { padding: calc(var(--section-padding-y) + 2rem) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right); max-width: 900px; margin: 0 auto; }
+  .legal-section h1 { margin-bottom: 1rem; }
+  .last-updated { color: var(--text-light); margin-bottom: 3rem; font-style: italic; }
+  .legal-content h2 { margin-top: 2rem; margin-bottom: 1rem; color: var(--text-dark); }
+  .legal-content p { color: var(--text-light); line-height: 1.8; margin-bottom: 1rem; }
+</style>

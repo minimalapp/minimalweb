@@ -1,0 +1,50 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+
+const locale = 'en';
+---
+
+<BaseLayout title="Help Center - Minimal" description="Get help and find answers to common questions." locale={locale}>
+  <Header locale={locale} />
+  <main>
+    <section class="hero-section">
+      <div class="container">
+        <h1>Help Center</h1>
+        <p class="subtitle">Get help and find answers to common questions about Minimal.</p>
+      </div>
+    </section>
+    <section class="content-section">
+      <div class="container">
+        <div class="faq-grid">
+          <div class="faq-item">
+            <h3>How do I get started?</h3>
+            <p>Simply sign up for an account, add your website URL, customize your settings, and copy the integration code to your site.</p>
+          </div>
+          <div class="faq-item">
+            <h3>What platforms are supported?</h3>
+            <p>Minimal works with any website platform including WordPress, Shopify, Wix, Squarespace, and custom-built sites.</p>
+          </div>
+          <div class="faq-item">
+            <h3>How much does it cost?</h3>
+            <p>We offer plans starting at $19/month. Visit our pricing page for detailed information.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer locale={locale} />
+</BaseLayout>
+
+<style>
+  main { padding-top: 60px; }
+  .hero-section { padding: calc(var(--section-padding-y) + 2rem) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right); background: linear-gradient(180deg, #f7fafc 0%, #ffffff 100%); text-align: center; }
+  .hero-section h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1.5rem; }
+  .subtitle { font-size: clamp(1.1rem, 2vw, 1.5rem); color: var(--text-light); max-width: 800px; margin: 0 auto; }
+  .content-section { padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right); }
+  .faq-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; max-width: 900px; margin: 0 auto; }
+  .faq-item { background: white; padding: 2rem; border-radius: 12px; box-shadow: var(--shadow-sm); }
+  .faq-item h3 { margin-bottom: 1rem; }
+  .faq-item p { color: var(--text-light); line-height: 1.6; }
+</style>

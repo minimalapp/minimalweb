@@ -1,0 +1,51 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+
+const locale = 'es';
+---
+
+<BaseLayout title="Política de Privacidad - Minimal" description="Política de privacidad para los servicios de Minimal." locale={locale}>
+  <Header locale={locale} />
+  <main>
+    <section class="legal-section">
+      <div class="container">
+        <h1>Política de Privacidad</h1>
+        <p class="last-updated">Última actualización: Enero 2025</p>
+        <div class="legal-content">
+          <h2>1. Información que Recopilamos</h2>
+          <p>Recopilamos información que proporcionas directamente, como información de cuenta, contenido del sitio web y datos de conversación.</p>
+
+          <h2>2. Cómo Usamos tu Información</h2>
+          <p>Usamos la información recopilada para proporcionar, mantener y mejorar nuestros servicios, y para comunicarnos contigo.</p>
+
+          <h2>3. Compartir Información</h2>
+          <p>No vendemos tu información personal. Podemos compartir datos con proveedores de servicios que asisten en nuestras operaciones.</p>
+
+          <h2>4. Seguridad de Datos</h2>
+          <p>Implementamos medidas de seguridad apropiadas para proteger tu información del acceso o divulgación no autorizados.</p>
+
+          <h2>5. Cookies</h2>
+          <p>Usamos cookies y tecnologías similares para mejorar la experiencia del usuario y analizar el uso del servicio.</p>
+
+          <h2>6. Tus Derechos</h2>
+          <p>Tienes derecho a acceder, corregir o eliminar tu información personal en cualquier momento.</p>
+
+          <h2>7. Contacto</h2>
+          <p>Para preguntas sobre privacidad, contáctanos en privacy@minimal.lat</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer locale={locale} />
+</BaseLayout>
+
+<style>
+  main { padding-top: 60px; }
+  .legal-section { padding: calc(var(--section-padding-y) + 2rem) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right); max-width: 900px; margin: 0 auto; }
+  .legal-section h1 { margin-bottom: 1rem; }
+  .last-updated { color: var(--text-light); margin-bottom: 3rem; font-style: italic; }
+  .legal-content h2 { margin-top: 2rem; margin-bottom: 1rem; color: var(--text-dark); }
+  .legal-content p { color: var(--text-light); line-height: 1.8; margin-bottom: 1rem; }
+</style>

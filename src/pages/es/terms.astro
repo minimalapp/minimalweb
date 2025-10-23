@@ -1,0 +1,51 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+
+const locale = 'es';
+---
+
+<BaseLayout title="Términos de Servicio - Minimal" description="Términos de servicio para usar Minimal." locale={locale}>
+  <Header locale={locale} />
+  <main>
+    <section class="legal-section">
+      <div class="container">
+        <h1>Términos de Servicio</h1>
+        <p class="last-updated">Última actualización: Enero 2025</p>
+        <div class="legal-content">
+          <h2>1. Aceptación de Términos</h2>
+          <p>Al acceder y usar los servicios de Minimal, aceptas y acuerdas estar sujeto a los términos y disposiciones de este acuerdo.</p>
+
+          <h2>2. Licencia de Uso</h2>
+          <p>Se otorga permiso para usar temporalmente los servicios de Minimal con fines personales o comerciales. Esto es el otorgamiento de una licencia, no una transferencia de título.</p>
+
+          <h2>3. Descripción del Servicio</h2>
+          <p>Minimal proporciona interfaces de IA conversacional para sitios web. Nos reservamos el derecho de modificar o descontinuar el servicio en cualquier momento.</p>
+
+          <h2>4. Obligaciones del Usuario</h2>
+          <p>Los usuarios deben proporcionar información precisa y mantener la seguridad de las credenciales de su cuenta.</p>
+
+          <h2>5. Pagos y Reembolsos</h2>
+          <p>Las tarifas de suscripción se facturan por adelantado. Los reembolsos se proporcionan caso por caso.</p>
+
+          <h2>6. Limitación de Responsabilidad</h2>
+          <p>Minimal no será responsable de ningún daño indirecto, incidental, especial, consecuente o punitivo.</p>
+
+          <h2>7. Contacto</h2>
+          <p>Para preguntas sobre estos Términos, contáctanos en legal@minimal.lat</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer locale={locale} />
+</BaseLayout>
+
+<style>
+  main { padding-top: 60px; }
+  .legal-section { padding: calc(var(--section-padding-y) + 2rem) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right); max-width: 900px; margin: 0 auto; }
+  .legal-section h1 { margin-bottom: 1rem; }
+  .last-updated { color: var(--text-light); margin-bottom: 3rem; font-style: italic; }
+  .legal-content h2 { margin-top: 2rem; margin-bottom: 1rem; color: var(--text-dark); }
+  .legal-content p { color: var(--text-light); line-height: 1.8; margin-bottom: 1rem; }
+</style>

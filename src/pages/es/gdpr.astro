@@ -1,0 +1,56 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+
+const locale = 'es';
+---
+
+<BaseLayout title="Cumplimiento GDPR - Minimal" description="Información de cumplimiento GDPR para Minimal." locale={locale}>
+  <Header locale={locale} />
+  <main>
+    <section class="legal-section">
+      <div class="container">
+        <h1>Cumplimiento GDPR</h1>
+        <p class="last-updated">Última actualización: Enero 2025</p>
+        <div class="legal-content">
+          <h2>1. Protección de Datos</h2>
+          <p>Minimal se compromete a proteger tus datos personales de acuerdo con el Reglamento General de Protección de Datos (GDPR).</p>
+
+          <h2>2. Base Legal para el Procesamiento</h2>
+          <p>Procesamos datos personales basados en consentimiento, ejecución de contrato, obligación legal e intereses legítimos.</p>
+
+          <h2>3. Tus Derechos Bajo GDPR</h2>
+          <ul>
+            <li>Derecho de acceso a tus datos personales</li>
+            <li>Derecho de rectificación de datos inexactos</li>
+            <li>Derecho al olvido ("derecho a ser olvidado")</li>
+            <li>Derecho a restringir el procesamiento</li>
+            <li>Derecho a la portabilidad de datos</li>
+            <li>Derecho a objetar el procesamiento</li>
+          </ul>
+
+          <h2>4. Retención de Datos</h2>
+          <p>Retenemos datos personales solo el tiempo necesario para los propósitos descritos en nuestra Política de Privacidad.</p>
+
+          <h2>5. Transferencias Internacionales</h2>
+          <p>Aseguramos que existan salvaguardas apropiadas para transferencias internacionales de datos.</p>
+
+          <h2>6. Oficial de Protección de Datos</h2>
+          <p>Para consultas GDPR, contacta a nuestro DPO en dpo@minimal.lat</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer locale={locale} />
+</BaseLayout>
+
+<style>
+  main { padding-top: 60px; }
+  .legal-section { padding: calc(var(--section-padding-y) + 2rem) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right); max-width: 900px; margin: 0 auto; }
+  .legal-section h1 { margin-bottom: 1rem; }
+  .last-updated { color: var(--text-light); margin-bottom: 3rem; font-style: italic; }
+  .legal-content h2 { margin-top: 2rem; margin-bottom: 1rem; color: var(--text-dark); }
+  .legal-content p, .legal-content li { color: var(--text-light); line-height: 1.8; margin-bottom: 1rem; }
+  .legal-content ul { margin-left: 2rem; }
+</style>

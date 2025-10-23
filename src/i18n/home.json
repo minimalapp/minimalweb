@@ -1,0 +1,580 @@
+{
+  "en": {
+    "meta": {
+      "title": "Minimal - Transform your Website into an Intelligent Conversational Experience",
+      "description": "Minimal converts static websites into dynamic AI interfaces that capture your visitors' real intent. Modernize your web presence without rebuilding."
+    },
+    "hero": {
+      "title": "Transform your Website into an Intelligent Conversational Experience",
+      "subtitle": "Minimal converts static sites into dynamic AI interfaces that capture your visitors' real intent",
+      "inputPlaceholder": "Enter your website URL",
+      "button": "Generate Preview"
+    },
+    "problem": {
+      "title": "The Problem with Static Websites",
+      "items": [
+        {
+          "title": "🔍 Zero Visibility",
+          "description": "You don't know what your visitors are really looking for"
+        },
+        {
+          "title": "🚪 Rigid Navigation",
+          "description": "Users abandon if they don't find information quickly"
+        },
+        {
+          "title": "💔 Lost Opportunities",
+          "description": "Without personalization, you lose conversions daily"
+        },
+        {
+          "title": "📊 Limited Data",
+          "description": "You only have clicks, not intentions"
+        }
+      ]
+    },
+    "features": {
+      "title": "Everything You Need to Modernize Your Web Presence",
+      "items": [
+        {
+          "title": "Automatic Brand Detection",
+          "description": "Keeps your visual identity intact"
+        },
+        {
+          "title": "Advanced Analytics",
+          "description": "Understand intentions, not just clicks"
+        },
+        {
+          "title": "Smart Toggle",
+          "description": "Switch between traditional and AI view"
+        },
+        {
+          "title": "Contextual Lead Capture",
+          "description": "Dynamic CTAs based on conversation"
+        },
+        {
+          "title": "No Complex Code",
+          "description": "Integration in minutes"
+        },
+        {
+          "title": "Enterprise Security",
+          "description": "Encrypted and secure data"
+        }
+      ]
+    },
+    "process": {
+      "title": "From Your Website to AI in 3 Simple Steps",
+      "steps": [
+        {
+          "title": "Enter your URL",
+          "description": "The platform analyzes and understands your content"
+        },
+        {
+          "title": "Customize and Configure",
+          "description": "Adjust colors, tone, and behavior"
+        },
+        {
+          "title": "Integrate with a Script",
+          "description": "One code, instant transformation"
+        }
+      ]
+    },
+    "value": {
+      "title": "Real Value for Every Role",
+      "tabs": {
+        "businessOwners": "Business Owners",
+        "marketing": "Marketing Teams",
+        "developers": "Developers",
+        "endUsers": "End Users"
+      },
+      "businessOwners": [
+        {
+          "icon": "✓",
+          "title": "Measurable ROI",
+          "description": "Clear metrics on engagement and conversion"
+        },
+        {
+          "icon": "✓",
+          "title": "Intent Visibility",
+          "description": "Understand what your customers really want"
+        },
+        {
+          "icon": "✓",
+          "title": "Instant Modernization",
+          "description": "Update your web presence without rebuilding"
+        },
+        {
+          "icon": "✓",
+          "title": "Enhanced Lead Capture",
+          "description": "Convert more visitors to customers"
+        }
+      ],
+      "marketing": [
+        {
+          "icon": "✓",
+          "title": "Deep Insights",
+          "description": "Detailed analysis of user behavior"
+        },
+        {
+          "icon": "✓",
+          "title": "Brand Customization",
+          "description": "Maintain your visual identity and tone of voice"
+        },
+        {
+          "icon": "✓",
+          "title": "A/B Testing",
+          "description": "Test different variations and optimize"
+        },
+        {
+          "icon": "✓",
+          "title": "Automated Reports",
+          "description": "Real-time metrics and KPIs"
+        }
+      ],
+      "developers": [
+        {
+          "icon": "✓",
+          "title": "Simple Integration",
+          "description": "One script, no complexity"
+        },
+        {
+          "icon": "✓",
+          "title": "Flexible APIs",
+          "description": "Easily connect with your existing tools"
+        },
+        {
+          "icon": "✓",
+          "title": "No Maintenance",
+          "description": "Automatic updates"
+        },
+        {
+          "icon": "✓",
+          "title": "Clear Documentation",
+          "description": "Detailed guides and examples"
+        }
+      ],
+      "endUsers": [
+        {
+          "icon": "✓",
+          "title": "Modern Experience",
+          "description": "Intuitive and attractive interface"
+        },
+        {
+          "icon": "✓",
+          "title": "Instant Answers",
+          "description": "Find what you need without browsing"
+        },
+        {
+          "icon": "✓",
+          "title": "Personalization",
+          "description": "Experience tailored to your needs"
+        },
+        {
+          "icon": "✓",
+          "title": "Accessibility",
+          "description": "Inclusive design for everyone"
+        }
+      ]
+    },
+    "useCases": {
+      "title": "Real Use Cases",
+      "subtitle": "Discover how different industries are transforming their web presence with Minimal",
+      "cases": [
+        {
+          "title": "SaaS & Software",
+          "icon": "💻",
+          "description": "Reduce onboarding friction and convert visitors into active users",
+          "benefits": [
+            "Conversational onboarding",
+            "Interactive demonstrations",
+            "Intelligent technical support"
+          ]
+        },
+        {
+          "title": "Professional Services",
+          "icon": "🏢",
+          "description": "Capture qualified leads and schedule meetings automatically",
+          "benefits": [
+            "Automatic lead qualification",
+            "Smart scheduling",
+            "Personalized proposals"
+          ]
+        },
+        {
+          "title": "Education & Training",
+          "icon": "🎓",
+          "description": "Guide students to relevant courses and answer questions instantly",
+          "benefits": [
+            "Course recommendations",
+            "24/7 academic advising",
+            "Simplified enrollment"
+          ]
+        },
+        {
+          "title": "Health & Wellness",
+          "icon": "🏥",
+          "description": "Connect patients with appropriate services and schedule appointments easily",
+          "benefits": [
+            "Automated triage",
+            "Appointment scheduling",
+            "Service information"
+          ]
+        },
+        {
+          "title": "Real Estate",
+          "icon": "🏠",
+          "description": "Help buyers find ideal properties based on their needs",
+          "benefits": [
+            "Conversational search",
+            "Guided virtual tours",
+            "Mortgage calculator"
+          ]
+        },
+        {
+          "title": "Finance & Insurance",
+          "icon": "💰",
+          "description": "Explain complex products in a simple and personalized way",
+          "benefits": [
+            "Basic financial advice",
+            "Product comparison",
+            "Instant quotes"
+          ]
+        }
+      ]
+    },
+    "pricing": {
+      "title": "Simple Plans, Transparent Value",
+      "plans": [
+        {
+          "name": "Starter",
+          "price": "$19",
+          "period": "/month",
+          "button": "Get Started",
+          "features": [
+            "✓ Up to 1,000 conversations",
+            "✓ Basic analytics",
+            "✓ Email support"
+          ]
+        },
+        {
+          "name": "Professional",
+          "price": "$39",
+          "period": "/month",
+          "button": "Get Started",
+          "badge": "Most Popular",
+          "features": [
+            "✓ Up to 10,000 conversations",
+            "✓ Advanced analytics",
+            "✓ Priority support"
+          ]
+        },
+        {
+          "name": "Enterprise",
+          "price": "Custom",
+          "period": "Custom",
+          "button": "Contact",
+          "features": [
+            "✓ Unlimited conversations",
+            "✓ Complete analytics",
+            "✓ Dedicated support"
+          ]
+        }
+      ]
+    },
+    "cta": {
+      "title": "Start your Digital Transformation Today",
+      "subtitle": "Join the companies already revolutionizing their web presence",
+      "emailPlaceholder": "Your email",
+      "urlPlaceholder": "Your website URL",
+      "button": "Get Personalized Demo",
+      "footnote": "⚡ Setup in less than 1 hour"
+    }
+  },
+  "es": {
+    "meta": {
+      "title": "Minimal - Transforma tu Sitio Web en una Experiencia Conversacional Inteligente",
+      "description": "Minimal convierte sitios web estáticos en interfaces dinámicas de IA que capturan la intención real de tus visitantes. Moderniza tu presencia web sin reconstruir."
+    },
+    "hero": {
+      "title": "Transforma tu Sitio Web en una Experiencia Conversacional Inteligente",
+      "subtitle": "Minimal convierte sitios estáticos en interfaces dinámicas de IA que capturan la intención real de tus visitantes",
+      "inputPlaceholder": "Ingresa la URL de tu sitio",
+      "button": "Generar Vista Previa"
+    },
+    "problem": {
+      "title": "El Problema de los Sitios Web Estáticos",
+      "items": [
+        {
+          "title": "🔍 Visibilidad Cero",
+          "description": "No sabes qué buscan realmente tus visitantes"
+        },
+        {
+          "title": "🚪 Navegación Rígida",
+          "description": "Los usuarios abandonan si no encuentran información rápidamente"
+        },
+        {
+          "title": "💔 Oportunidades Perdidas",
+          "description": "Sin personalización, pierdes conversiones diariamente"
+        },
+        {
+          "title": "📊 Datos Limitados",
+          "description": "Solo tienes clics, no intenciones"
+        }
+      ]
+    },
+    "features": {
+      "title": "Todo lo que Necesitas para Modernizar tu Presencia Web",
+      "items": [
+        {
+          "title": "Detección Automática de Marca",
+          "description": "Mantiene tu identidad visual intacta"
+        },
+        {
+          "title": "Analytics Avanzados",
+          "description": "Comprende intenciones, no solo clics"
+        },
+        {
+          "title": "Toggle Inteligente",
+          "description": "Alterna entre vista tradicional y IA"
+        },
+        {
+          "title": "Captura de Leads Contextual",
+          "description": "CTAs dinámicos según conversación"
+        },
+        {
+          "title": "Sin Código Complejo",
+          "description": "Integración en minutos"
+        },
+        {
+          "title": "Seguridad Empresarial",
+          "description": "Datos encriptados y seguros"
+        }
+      ]
+    },
+    "process": {
+      "title": "De tu Sitio Web a IA en 3 Simples Pasos",
+      "steps": [
+        {
+          "title": "Ingresa tu URL",
+          "description": "La plataforma analiza y comprende tu contenido"
+        },
+        {
+          "title": "Personaliza y Configura",
+          "description": "Ajusta colores, tono y comportamiento"
+        },
+        {
+          "title": "Integra con un Script",
+          "description": "Un código, transformación instantánea"
+        }
+      ]
+    },
+    "value": {
+      "title": "Valor Real para Cada Rol",
+      "tabs": {
+        "businessOwners": "Dueños de Negocio",
+        "marketing": "Equipos de Marketing",
+        "developers": "Desarrolladores",
+        "endUsers": "Usuarios Finales"
+      },
+      "businessOwners": [
+        {
+          "icon": "✓",
+          "title": "ROI Medible",
+          "description": "Métricas claras de engagement y conversión"
+        },
+        {
+          "icon": "✓",
+          "title": "Visibilidad de Intención",
+          "description": "Entiende qué buscan realmente tus clientes"
+        },
+        {
+          "icon": "✓",
+          "title": "Modernización Instantánea",
+          "description": "Actualiza tu presencia web sin reconstruir"
+        },
+        {
+          "icon": "✓",
+          "title": "Captura de Leads Mejorada",
+          "description": "Convierte más visitantes en clientes"
+        }
+      ],
+      "marketing": [
+        {
+          "icon": "✓",
+          "title": "Insights Profundos",
+          "description": "Análisis detallado del comportamiento del usuario"
+        },
+        {
+          "icon": "✓",
+          "title": "Personalización de Marca",
+          "description": "Mantén tu identidad visual y tono de voz"
+        },
+        {
+          "icon": "✓",
+          "title": "A/B Testing",
+          "description": "Prueba diferentes variaciones y optimiza"
+        },
+        {
+          "icon": "✓",
+          "title": "Reportes Automatizados",
+          "description": "Métricas y KPIs en tiempo real"
+        }
+      ],
+      "developers": [
+        {
+          "icon": "✓",
+          "title": "Integración Simple",
+          "description": "Un script, sin complejidad"
+        },
+        {
+          "icon": "✓",
+          "title": "APIs Flexibles",
+          "description": "Conecta fácilmente con tus herramientas existentes"
+        },
+        {
+          "icon": "✓",
+          "title": "Sin Mantenimiento",
+          "description": "Actualizaciones automáticas"
+        },
+        {
+          "icon": "✓",
+          "title": "Documentación Clara",
+          "description": "Guías y ejemplos detallados"
+        }
+      ],
+      "endUsers": [
+        {
+          "icon": "✓",
+          "title": "Experiencia Moderna",
+          "description": "Interfaz intuitiva y atractiva"
+        },
+        {
+          "icon": "✓",
+          "title": "Respuestas Instantáneas",
+          "description": "Encuentra lo que buscas sin navegar"
+        },
+        {
+          "icon": "✓",
+          "title": "Personalización",
+          "description": "Experiencia adaptada a tus necesidades"
+        },
+        {
+          "icon": "✓",
+          "title": "Accesibilidad",
+          "description": "Diseño inclusivo para todos"
+        }
+      ]
+    },
+    "useCases": {
+      "title": "Casos de Uso Reales",
+      "subtitle": "Descubre cómo diferentes industrias están transformando su presencia web con Minimal",
+      "cases": [
+        {
+          "title": "SaaS & Software",
+          "icon": "💻",
+          "description": "Reduce fricción en onboarding y convierte visitantes en usuarios activos",
+          "benefits": [
+            "Onboarding conversacional",
+            "Demostraciones interactivas",
+            "Soporte técnico inteligente"
+          ]
+        },
+        {
+          "title": "Servicios Profesionales",
+          "icon": "🏢",
+          "description": "Captura leads calificados y agenda reuniones automáticamente",
+          "benefits": [
+            "Calificación automática de leads",
+            "Agendamiento inteligente",
+            "Propuestas personalizadas"
+          ]
+        },
+        {
+          "title": "Educación & Formación",
+          "icon": "🎓",
+          "description": "Guía a estudiantes a cursos relevantes y responde dudas al instante",
+          "benefits": [
+            "Recomendación de cursos",
+            "Asesoría académica 24/7",
+            "Inscripción simplificada"
+          ]
+        },
+        {
+          "title": "Salud & Bienestar",
+          "icon": "🏥",
+          "description": "Conecta pacientes con servicios adecuados y agenda citas fácilmente",
+          "benefits": [
+            "Triage automatizado",
+            "Agendamiento de citas",
+            "Información de servicios"
+          ]
+        },
+        {
+          "title": "Inmobiliaria",
+          "icon": "🏠",
+          "description": "Ayuda a compradores a encontrar propiedades ideales basado en sus necesidades",
+          "benefits": [
+            "Búsqueda conversacional",
+            "Tours virtuales guiados",
+            "Cálculo de hipotecas"
+          ]
+        },
+        {
+          "title": "Finanzas & Seguros",
+          "icon": "💰",
+          "description": "Explica productos complejos de forma simple y personalizada",
+          "benefits": [
+            "Asesoría financiera básica",
+            "Comparación de productos",
+            "Cotización instantánea"
+          ]
+        }
+      ]
+    },
+    "pricing": {
+      "title": "Planes Simples, Valor Transparente",
+      "plans": [
+        {
+          "name": "Starter",
+          "price": "$19",
+          "period": "/mes",
+          "button": "Comenzar",
+          "features": [
+            "✓ Hasta 1,000 conversaciones",
+            "✓ Analytics básicos",
+            "✓ Soporte por email"
+          ]
+        },
+        {
+          "name": "Professional",
+          "price": "$39",
+          "period": "/mes",
+          "button": "Comenzar",
+          "badge": "Más Popular",
+          "features": [
+            "✓ Hasta 10,000 conversaciones",
+            "✓ Analytics avanzados",
+            "✓ Soporte prioritario"
+          ]
+        },
+        {
+          "name": "Enterprise",
+          "price": "Custom",
+          "period": "Personalizado",
+          "button": "Contactar",
+          "features": [
+            "✓ Conversaciones ilimitadas",
+            "✓ Integración personalizada",
+            "✓ Account manager dedicado"
+          ]
+        }
+      ]
+    },
+    "cta": {
+      "title": "Comienza tu Transformación Digital Hoy",
+      "subtitle": "Únete a las empresas que ya están revolucionando su presencia web",
+      "emailPlaceholder": "Tu email",
+      "urlPlaceholder": "URL de tu sitio web",
+      "button": "Obtener Demo Personalizada",
+      "footnote": "⚡ Configuración en menos de 1 hora"
+    }
+  }
+}

@@ -1,0 +1,76 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import Hero from '@/components/Hero.astro';
+import Problem from '@/components/Problem.astro';
+import Features from '@/components/Features.astro';
+import Process from '@/components/Process.astro';
+import UseCases from '@/components/UseCases.astro';
+import Pricing from '@/components/Pricing.astro';
+import CTA from '@/components/CTA.astro';
+import homeTranslations from '@/i18n/home.json';
+
+const locale = 'es';
+const t = homeTranslations[locale];
+---
+
+<BaseLayout
+  title={t.meta.title}
+  description={t.meta.description}
+  locale={locale}
+>
+  <Header locale={locale} />
+
+  <main>
+    <Hero
+      title={t.hero.title}
+      subtitle={t.hero.subtitle}
+      inputPlaceholder={t.hero.inputPlaceholder}
+      buttonText={t.hero.button}
+    />
+
+    <Problem
+      title={t.problem.title}
+      items={t.problem.items}
+    />
+
+    <Features
+      title={t.features.title}
+      items={t.features.items}
+    />
+
+    <Process
+      title={t.process.title}
+      steps={t.process.steps}
+    />
+
+    <UseCases
+      title={t.useCases.title}
+      subtitle={t.useCases.subtitle}
+      cases={t.useCases.cases}
+    />
+
+    <Pricing
+      title={t.pricing.title}
+      plans={t.pricing.plans}
+    />
+
+    <CTA
+      title={t.cta.title}
+      subtitle={t.cta.subtitle}
+      emailPlaceholder={t.cta.emailPlaceholder}
+      urlPlaceholder={t.cta.urlPlaceholder}
+      buttonText={t.cta.button}
+      footnote={t.cta.footnote}
+    />
+  </main>
+
+  <Footer locale={locale} />
+</BaseLayout>
+
+<style is:global>
+  main {
+    padding-top: 60px;
+  }
+</style>

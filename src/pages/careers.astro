@@ -1,0 +1,48 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+
+const locale = 'en';
+---
+
+<BaseLayout title="Careers - Minimal" description="Join our team and help transform the future of the web." locale={locale}>
+  <Header locale={locale} />
+  <main>
+    <section class="hero-section">
+      <div class="container">
+        <h1>Careers</h1>
+        <p class="subtitle">Join our team and help transform the future of the web with conversational AI.</p>
+      </div>
+    </section>
+    <section class="content-section">
+      <div class="container">
+        <h2>Why Work at Minimal?</h2>
+        <div class="benefits-grid">
+          <div class="benefit-card"><h3>Innovative Technology</h3><p>Work on cutting-edge AI and conversational interfaces.</p></div>
+          <div class="benefit-card"><h3>Remote First</h3><p>Work from anywhere in the world.</p></div>
+          <div class="benefit-card"><h3>Growth Opportunities</h3><p>Learn and grow with a fast-paced startup.</p></div>
+        </div>
+        <div class="cta-section">
+          <h3>Open Positions</h3>
+          <p>We're always looking for talented people. Send your resume to careers@minimal.lat</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer locale={locale} />
+</BaseLayout>
+
+<style>
+  main { padding-top: 60px; }
+  .hero-section { padding: calc(var(--section-padding-y) + 2rem) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right); background: linear-gradient(180deg, #f7fafc 0%, #ffffff 100%); text-align: center; }
+  .hero-section h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1.5rem; }
+  .subtitle { font-size: clamp(1.1rem, 2vw, 1.5rem); color: var(--text-light); max-width: 800px; margin: 0 auto; }
+  .content-section { padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right); max-width: 1000px; margin: 0 auto; }
+  .benefits-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin: 3rem 0; }
+  .benefit-card { background: white; padding: 2rem; border-radius: 12px; box-shadow: var(--shadow-sm); }
+  .benefit-card h3 { margin-bottom: 1rem; }
+  .benefit-card p { color: var(--text-light); }
+  .cta-section { text-align: center; margin-top: 4rem; padding: 3rem; background: var(--bg-light); border-radius: 12px; }
+  @media (min-width: 768px) { .benefits-grid { grid-template-columns: repeat(3, 1fr); } }
+</style>

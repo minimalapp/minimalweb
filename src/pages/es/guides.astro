@@ -1,0 +1,43 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+
+const locale = 'es';
+---
+
+<BaseLayout title="Guías - Minimal" description="Guías paso a paso para aprovechar al máximo Minimal." locale={locale}>
+  <Header locale={locale} />
+  <main>
+    <section class="hero-section">
+      <div class="container">
+        <h1>Guías</h1>
+        <p class="subtitle">Guías paso a paso para ayudarte a aprovechar al máximo Minimal.</p>
+      </div>
+    </section>
+    <section class="content-section">
+      <div class="container">
+        <div class="guide-grid">
+          <div class="guide-card"><h3>Comenzando</h3><p>Aprende cómo configurar Minimal en tu sitio web en minutos.</p></div>
+          <div class="guide-card"><h3>Personalización</h3><p>Personaliza colores, comportamiento y apariencia para que coincida con tu marca.</p></div>
+          <div class="guide-card"><h3>Analytics</h3><p>Comprende y aprovecha el panel de analytics para obtener insights.</p></div>
+          <div class="guide-card"><h3>Mejores Prácticas</h3><p>Consejos y trucos para maximizar conversiones y engagement.</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer locale={locale} />
+</BaseLayout>
+
+<style>
+  main { padding-top: 60px; }
+  .hero-section { padding: calc(var(--section-padding-y) + 2rem) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right); background: linear-gradient(180deg, #f7fafc 0%, #ffffff 100%); text-align: center; }
+  .hero-section h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1.5rem; }
+  .subtitle { font-size: clamp(1.1rem, 2vw, 1.5rem); color: var(--text-light); max-width: 800px; margin: 0 auto; }
+  .content-section { padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right); }
+  .guide-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; max-width: 1000px; margin: 0 auto; }
+  .guide-card { background: white; padding: 2rem; border-radius: 12px; box-shadow: var(--shadow-sm); }
+  .guide-card h3 { margin-bottom: 1rem; }
+  .guide-card p { color: var(--text-light); }
+  @media (min-width: 768px) { .guide-grid { grid-template-columns: repeat(2, 1fr); } }
+</style>
