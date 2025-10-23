@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://minimalapp.github.io/minimalweb/sitemap.xml
+
+# Specific pages to highlight
+Allow: /about/
+Allow: /features/
+Allow: /integration/
+Allow: /help/
+Allow: /guides/
+
+# Contact and legal pages
+Allow: /contact/
+Allow: /terms/
+Allow: /privacy/
+Allow: /gdpr/
+Allow: /security/
+
+# Assets
+Allow: /assets/
+Allow: /components/

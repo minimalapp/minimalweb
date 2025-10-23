@@ -1,0 +1,26 @@
+{
+  "name": "minimalweb",
+  "version": "1.0.0",
+  "description": "The official website for **Minimal** - an AI-powered platform that transforms static websites into intelligent conversational experiences.",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://local_proxy@127.0.0.1:47629/git/minimalapp/minimalweb"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@astrojs/sitemap": "^3.6.0",
+    "@astrojs/tailwind": "^6.0.2",
+    "astro": "^5.15.0",
+    "tailwindcss": "^3.4.18"
+  }
+}

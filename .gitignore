@@ -27,11 +27,15 @@ pids
 .tmp/
 temp/
 
-# Build directories (if added later)
+# Dependencies
+node_modules/
+
+# Build directories
 dist/
 build/
+.astro/
 
-# Environment variables (if added later)
+# Environment variables
 .env
 .env.local
 .env.production
@@ -42,3 +46,7 @@ build/
 
 # OS generated files
 Icon?
+
+# Astro
+.vercel/
+.netlify/
