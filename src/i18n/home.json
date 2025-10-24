@@ -4,11 +4,29 @@
       "title": "Minimal - Transform your Website into an Intelligent Conversational Experience",
       "description": "Minimal converts static websites into dynamic AI interfaces that capture your visitors' real intent. Modernize your web presence without rebuilding."
     },
+    "magic": {
+      "words": ["Transform", "Modernize", "Revolutionize"],
+      "phrases": ["your website", "your brand", "your business"]
+    },
     "hero": {
-      "title": "Transform your Website into an Intelligent Conversational Experience",
+      "title": "Transform your Website into an <span class=\"highlight\">Intelligent Conversational Experience</span>",
       "subtitle": "Minimal converts static sites into dynamic AI interfaces that capture your visitors' real intent",
       "inputPlaceholder": "Enter your website URL",
-      "button": "Generate Preview"
+      "button": "Generate Preview",
+      "demo": {
+        "traditional": "Traditional Website",
+        "withMinimal": "With Minimal",
+        "chat": {
+          "greeting": "Hello! How can I help you today?",
+          "userMessage": "Tell me about your services",
+          "response": "Of course, let me show you our main services..."
+        },
+        "services": {
+          "title": "Featured Services",
+          "consulting": "Consulting",
+          "development": "Development"
+        }
+      }
     },
     "problem": {
       "title": "The Problem with Static Websites",
@@ -35,26 +53,32 @@
       "title": "Everything You Need to Modernize Your Web Presence",
       "items": [
         {
+          "icon": "🎨",
           "title": "Automatic Brand Detection",
           "description": "Keeps your visual identity intact"
         },
         {
+          "icon": "📈",
           "title": "Advanced Analytics",
           "description": "Understand intentions, not just clicks"
         },
         {
+          "icon": "🔄",
           "title": "Smart Toggle",
           "description": "Switch between traditional and AI view"
         },
         {
+          "icon": "🎯",
           "title": "Contextual Lead Capture",
           "description": "Dynamic CTAs based on conversation"
         },
         {
+          "icon": "⚡",
           "title": "No Complex Code",
           "description": "Integration in minutes"
         },
         {
+          "icon": "🔒",
           "title": "Enterprise Security",
           "description": "Encrypted and secure data"
         }
@@ -293,11 +317,29 @@
       "title": "Minimal - Transforma tu Sitio Web en una Experiencia Conversacional Inteligente",
       "description": "Minimal convierte sitios web estáticos en interfaces dinámicas de IA que capturan la intención real de tus visitantes. Moderniza tu presencia web sin reconstruir."
     },
+    "magic": {
+      "words": ["Transforma", "Moderniza", "Revoluciona"],
+      "phrases": ["tu sitio web", "tu marca", "tu negocio"]
+    },
     "hero": {
-      "title": "Transforma tu Sitio Web en una Experiencia Conversacional Inteligente",
+      "title": "Transforma tu Sitio Web en una <span class=\"highlight\">Experiencia Conversacional Inteligente</span>",
       "subtitle": "Minimal convierte sitios estáticos en interfaces dinámicas de IA que capturan la intención real de tus visitantes",
       "inputPlaceholder": "Ingresa la URL de tu sitio",
-      "button": "Generar Vista Previa"
+      "button": "Generar Vista Previa",
+      "demo": {
+        "traditional": "Sitio Web Tradicional",
+        "withMinimal": "Con Minimal",
+        "chat": {
+          "greeting": "¡Hola! ¿En qué puedo ayudarte hoy?",
+          "userMessage": "Cuéntame sobre sus servicios",
+          "response": "Por supuesto, te muestro nuestros servicios principales..."
+        },
+        "services": {
+          "title": "Servicios Destacados",
+          "consulting": "Consultoría",
+          "development": "Desarrollo"
+        }
+      }
     },
     "problem": {
       "title": "El Problema de los Sitios Web Estáticos",
@@ -324,26 +366,32 @@
       "title": "Todo lo que Necesitas para Modernizar tu Presencia Web",
       "items": [
         {
+          "icon": "🎨",
           "title": "Detección Automática de Marca",
           "description": "Mantiene tu identidad visual intacta"
         },
         {
+          "icon": "📈",
           "title": "Analytics Avanzados",
           "description": "Comprende intenciones, no solo clics"
         },
         {
+          "icon": "🔄",
           "title": "Toggle Inteligente",
           "description": "Alterna entre vista tradicional y IA"
         },
         {
+          "icon": "🎯",
           "title": "Captura de Leads Contextual",
           "description": "CTAs dinámicos según conversación"
         },
         {
+          "icon": "⚡",
           "title": "Sin Código Complejo",
           "description": "Integración en minutos"
         },
         {
+          "icon": "🔒",
           "title": "Seguridad Empresarial",
           "description": "Datos encriptados y seguros"
         }

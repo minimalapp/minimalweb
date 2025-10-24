@@ -25,6 +25,8 @@ pids
 
 # Temporary files
 .tmp/
+.gemini-clipboard/
+.playwright-mcp/
 temp/
 
 # Dependencies

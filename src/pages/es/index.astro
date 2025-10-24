@@ -2,10 +2,13 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
+import MagicHero from '@/components/MagicHero.astro';
+import GradientOverlays from '@/components/GradientOverlays.astro';
 import Hero from '@/components/Hero.astro';
 import Problem from '@/components/Problem.astro';
 import Features from '@/components/Features.astro';
 import Process from '@/components/Process.astro';
+import ValueTabs from '@/components/ValueTabs.astro';
 import UseCases from '@/components/UseCases.astro';
 import Pricing from '@/components/Pricing.astro';
 import CTA from '@/components/CTA.astro';
@@ -20,6 +23,12 @@ const t = homeTranslations[locale];
   description={t.meta.description}
   locale={locale}
 >
+  <!-- Gradient Overlays -->
+  <GradientOverlays />
+
+  <!-- Magic Hero Animation -->
+  <MagicHero locale={locale} />
+
   <Header locale={locale} />
 
   <main>
@@ -28,6 +37,7 @@ const t = homeTranslations[locale];
       subtitle={t.hero.subtitle}
       inputPlaceholder={t.hero.inputPlaceholder}
       buttonText={t.hero.button}
+      locale={locale}
     />
 
     <Problem
@@ -43,6 +53,16 @@ const t = homeTranslations[locale];
     <Process
       title={t.process.title}
       steps={t.process.steps}
+    />
+
+    <ValueTabs
+      title={t.value.title}
+      tabs={t.value.tabs}
+      businessOwners={t.value.businessOwners}
+      marketing={t.value.marketing}
+      developers={t.value.developers}
+      endUsers={t.value.endUsers}
+      locale={locale}
     />
 
     <UseCases
@@ -68,6 +88,18 @@ const t = homeTranslations[locale];
 
   <Footer locale={locale} />
 </BaseLayout>
+
+<script>
+  import { initMagicHero } from '@/scripts/magicHero';
+
+  // Initialize magic hero animation with Spanish translations
+  const translations = {
+    words: ["Transforma", "Moderniza", "Revoluciona"],
+    phrases: ["tu sitio web", "tu marca", "tu negocio"]
+  };
+
+  initMagicHero(translations);
+</script>
 
 <style is:global>
   main {

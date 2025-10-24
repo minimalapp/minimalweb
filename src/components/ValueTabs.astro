@@ -1,0 +1,206 @@
+---
+export interface BenefitItem {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+export interface Props {
+  title: string;
+  tabs: {
+    businessOwners: string;
+    marketing: string;
+    developers: string;
+    endUsers: string;
+  };
+  businessOwners: BenefitItem[];
+  marketing: BenefitItem[];
+  developers: BenefitItem[];
+  endUsers: BenefitItem[];
+  locale: string;
+}
+
+const { title, tabs, businessOwners, marketing, developers, endUsers, locale } = Astro.props;
+---
+
+<section class="value-section" id="beneficios">
+  <div class="container">
+    <h2 class="section-title">{title}</h2>
+    <div class="tabs-wrapper">
+      <div class="tab-buttons">
+        <button class="tab-button active" data-tab="businessOwners">
+          {tabs.businessOwners}
+        </button>
+        <button class="tab-button" data-tab="marketing">
+          {tabs.marketing}
+        </button>
+        <button class="tab-button" data-tab="developers">
+          {tabs.developers}
+        </button>
+        <button class="tab-button" data-tab="endUsers">
+          {tabs.endUsers}
+        </button>
+      </div>
+      <div class="tab-content">
+        <div class="benefit-list">
+          {businessOwners.map((item) => (
+            <div class="benefit-item">
+              <div class="benefit-icon">{item.icon}</div>
+              <div>
+                <h4>{item.title}</h4>
+                <p>{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Store all benefit content data
+  const benefitContents = {
+    businessOwners: JSON.parse(document.getElementById('businessOwners-data')?.textContent || '[]'),
+    marketing: JSON.parse(document.getElementById('marketing-data')?.textContent || '[]'),
+    developers: JSON.parse(document.getElementById('developers-data')?.textContent || '[]'),
+    endUsers: JSON.parse(document.getElementById('endUsers-data')?.textContent || '[]')
+  };
+
+  // Tab switching functionality
+  const tabButtons = document.querySelectorAll('.tab-button');
+  const benefitList = document.querySelector('.benefit-list');
+
+  tabButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      // Remove active from all buttons
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+      
+      // Add active to clicked button
+      this.classList.add('active');
+
+      // Get the tab key
+      const tabKey = this.getAttribute('data-tab') as keyof typeof benefitContents;
+      const content = benefitContents[tabKey];
+
+      // Update benefit list
+      if (benefitList && content) {
+        benefitList.innerHTML = content.map((item: any) => `
+          <div class="benefit-item">
+            <div class="benefit-icon">${item.icon}</div>
+            <div>
+              <h4>${item.title}</h4>
+              <p>${item.description}</p>
+            </div>
+          </div>
+        `).join('');
+      }
+    });
+  });
+</script>
+
+<!-- Hidden data for client-side script -->
+<script id="businessOwners-data" type="application/json" set:html={JSON.stringify(businessOwners)}></script>
+<script id="marketing-data" type="application/json" set:html={JSON.stringify(marketing)}></script>
+<script id="developers-data" type="application/json" set:html={JSON.stringify(developers)}></script>
+<script id="endUsers-data" type="application/json" set:html={JSON.stringify(endUsers)}></script>
+
+<style>
+  .value-section {
+    padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
+    background: #f7fafc;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+  }
+
+  .tabs-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .tab-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+  }
+
+  .tab-button {
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #e2e8f0;
+    background: white;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-dark);
+  }
+
+  .tab-button:hover {
+    background: #f8f9fa;
+  }
+
+  .tab-button.active {
+    background: var(--gradient-primary);
+    color: white;
+    border-color: transparent;
+  }
+
+  .benefit-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .benefit-item {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .benefit-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  }
+
+  .benefit-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(33, 150, 243, 0.1);
+    border-radius: 12px;
+  }
+
+  .benefit-item h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+    color: var(--text-dark);
+  }
+
+  .benefit-item p {
+    margin: 0;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+
+  @media (min-width: 768px) {
+    .benefit-list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

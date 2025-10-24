@@ -1,26 +1,35 @@
 ---
+import DemoComparison from './DemoComparison.astro';
+import type { Locale } from '@/i18n/utils';
+
 export interface Props {
   title: string;
   subtitle: string;
   inputPlaceholder: string;
   buttonText: string;
+  locale: Locale;
 }
 
-const { title, subtitle, inputPlaceholder, buttonText } = Astro.props;
+const { title, subtitle, inputPlaceholder, buttonText, locale } = Astro.props;
 ---
 
-<section class="hero">
+<section class="hero" id="mainHero" style="opacity: 0;">
   <div class="hero-content">
-    <h1 class="hero-title" set:html={title}></h1>
-    <p class="hero-subtitle">{subtitle}</p>
-    <div class="hero-input-group">
-      <input
-        type="url"
-        placeholder={inputPlaceholder}
-        class="hero-input"
-        aria-label="Website URL"
-      />
-      <button class="hero-button">{buttonText}</button>
+    <div class="hero-text">
+      <h1 class="hero-title" set:html={title}></h1>
+      <p class="hero-subtitle">{subtitle}</p>
+      <div class="hero-input-group">
+        <input
+          type="url"
+          placeholder={inputPlaceholder}
+          class="hero-input url-input"
+          aria-label="Website URL"
+        />
+        <button class="hero-button cta-button">{buttonText}</button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <DemoComparison locale={locale} />
     </div>
   </div>
 </section>
@@ -35,8 +44,32 @@ const { title, subtitle, inputPlaceholder, buttonText } = Astro.props;
   }
 
   .hero-content {
-    max-width: 900px;
+    max-width: 1400px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .hero-text {
+    text-align: center;
+  }
+
+  .hero-visual {
+    width: 100%;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-text {
+      text-align: left;
+    }
   }
 
   .hero-title {
@@ -47,10 +80,30 @@ const { title, subtitle, inputPlaceholder, buttonText } = Astro.props;
   }
 
   .hero-title :global(.highlight) {
-    background: var(--gradient-primary);
+    background: linear-gradient(
+      90deg,
+      #FF5757 0%,
+      #FFA500 16.66%,
+      #FFD700 33.33%,
+      #4CAF50 50%,
+      #2196F3 66.66%,
+      #3F51B5 83.33%,
+      #FF5757 100%
+    );
+    background-size: 300% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: rainbowSlide 6s linear infinite;
+  }
+
+  @keyframes rainbowSlide {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 300% 50%;
+    }
   }
 
   .hero-subtitle {
