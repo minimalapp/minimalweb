@@ -46,8 +46,8 @@ const { title, tabs, businessOwners, marketing, developers, endUsers, locale } =
       <div class="pt-3">
         <div class="benefit-list grid grid-cols-1 md:grid-cols-2 gap-4 opacity-100">
           {businessOwners.map((item) => (
-            <div class="flex gap-3 items-start p-4 bg-bg-tertiary rounded-md shadow-sm transition-all duration-base border border-black/[0.04] hover:-translate-y-0.5 hover:shadow-md">
-              <div class="text-2xl flex-shrink-0 w-[42px] h-[42px] flex items-center justify-center bg-brand-purple-primary/8 rounded-sm text-brand-purple-primary font-bold">
+            <div class="flex gap-3 items-start p-4 bg-bg-tertiary rounded-md shadow-sm transition-all duration-base border border-border-subtle hover:-translate-y-0.5 hover:shadow-md">
+              <div class="text-2xl flex-shrink-0 w-[42px] h-[42px] flex items-center justify-center bg-brand-purple-primary/[0.08] rounded-sm text-brand-purple-primary font-bold">
                 {item.icon}
               </div>
               <div>
@@ -99,8 +99,8 @@ const { title, tabs, businessOwners, marketing, developers, endUsers, locale } =
 
         // Update content
         listElement.innerHTML = content.map((item: any) => `
-          <div class="flex gap-3 items-start p-4 bg-bg-tertiary rounded-md shadow-sm transition-all duration-base border border-black/[0.04] hover:-translate-y-0.5 hover:shadow-md">
-            <div class="text-2xl flex-shrink-0 w-[42px] h-[42px] flex items-center justify-center bg-brand-purple-primary/8 rounded-sm text-brand-purple-primary font-bold">
+          <div class="flex gap-3 items-start p-4 bg-bg-tertiary rounded-md shadow-sm transition-all duration-base border border-border-subtle hover:-translate-y-0.5 hover:shadow-md">
+            <div class="text-2xl flex-shrink-0 w-[42px] h-[42px] flex items-center justify-center bg-brand-purple-primary/[0.08] rounded-sm text-brand-purple-primary font-bold">
               ${item.icon}
             </div>
             <div>

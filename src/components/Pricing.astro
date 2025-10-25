@@ -19,15 +19,13 @@ export interface Props {
 const { title, plans, locale } = Astro.props;
 ---
 
-<section class="py-12 md:py-16 px-[clamp(1rem,4vw,3rem)] bg-bg-secondary" id={locale === 'es' ? 'precios' : 'pricing'}>
+<section class="section-padding bg-bg-secondary" id={locale === 'es' ? 'precios' : 'pricing'}>
   <div class="container">
-    <h2 class="text-center mb-6 text-[clamp(var(--font-size-3xl),4vw,var(--font-size-4xl))] text-text-primary">{title}</h2>
+    <h2 class="section-title">{title}</h2>
     <div class="grid grid-cols-1 gap-3 max-w-[1200px] mx-auto items-stretch md:grid-cols-3">
       {plans.map((plan) => (
-        <div class={`relative bg-bg-primary px-4 py-6 rounded-lg shadow-sm text-center transition-all duration-base flex flex-col hover:-translate-y-0.5 hover:shadow-lg ${
-          plan.badge ? 'border-2 border-brand-purple-primary bg-[linear-gradient(180deg,rgba(99,102,241,0.02)_0%,var(--bg-primary)_100%)]' : ''
-        }`}>
-          {plan.badge && <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white py-2 px-4 rounded-[20px] text-sm font-bold shadow-lg z-10">{plan.badge}</div>}
+        <div class={`pricing-card ${plan.badge ? 'pricing-card-featured' : ''}`}>
+          {plan.badge && <div class="pricing-badge">{plan.badge}</div>}
           <h3 class="text-2xl mb-2 text-text-primary font-bold">{plan.name}</h3>
           <div class="mb-6 flex items-baseline justify-center gap-2">
             <span class="text-[clamp(2.5rem,5vw,3rem)] font-bold text-text-primary leading-none">{plan.price}</span>
@@ -38,28 +36,9 @@ const { title, plans, locale } = Astro.props;
               <li class="py-3 text-[15px] text-text-tertiary border-b border-gray-200 last:border-b-0">{feature}</li>
             ))}
           </ul>
-          <button class={`w-full py-2 px-7 border-2 rounded-full text-base font-semibold cursor-pointer transition-all duration-base mt-4 ${
-            plan.badge
-              ? 'bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white border-none hover:-translate-y-0.5 hover:shadow-hover'
-              : 'bg-transparent border-brand-purple-primary text-brand-purple-primary hover:bg-brand-purple-primary hover:text-white hover:-translate-y-0.5 hover:shadow-md'
-          }`}>{plan.button}</button>
+          <button class={`w-full mt-4 ${plan.badge ? 'btn-primary' : 'btn-outline'}`}>{plan.button}</button>
         </div>
       ))}
     </div>
   </div>
 </section>
-
-<style>
-  @keyframes pulse {
-    0%, 100% {
-      transform: translateX(-50%) scale(1);
-    }
-    50% {
-      transform: translateX(-50%) scale(1.05);
-    }
-  }
-
-  .animate-pulse {
-    animation: pulse 2s ease-in-out infinite;
-  }
-</style>

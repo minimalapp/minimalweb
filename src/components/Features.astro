@@ -27,23 +27,23 @@ const icons: Record<string, string> = {
 ---
 
 <section
-  class="py-12 md:py-16 px-[var(--section-padding-right)] pl-[var(--section-padding-left)] bg-bg-primary"
+  class="section-padding bg-bg-primary"
   id={locale === 'es' ? 'producto' : 'product'}
 >
   <div class="container">
-    <h2 class="text-center mb-6 text-text-primary section-title">
+    <h2 class="section-title">
       {title}
     </h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-5 gap-x-4 max-w-[1200px] mx-auto">
       {items.map((item) => (
-        <div class="text-center p-4 bg-bg-tertiary border border-black/[0.06] rounded-md transition-[transform,box-shadow] duration-base hover:-translate-y-[2px] hover:shadow-md">
-          <div class="inline-flex items-center justify-center w-16 h-16 mb-2 bg-brand-purple-primary/[0.08] rounded-full">
-            <span class="inline-flex w-12 h-12 text-brand-purple-primary feature-icon" set:html={icons[item.icon] || icons.palette}></span>
+        <div class="card-feature">
+          <div class="icon-feature">
+            <span class="icon-feature-inner" set:html={icons[item.icon] || icons.palette}></span>
           </div>
           <h3 class="text-2xl font-semibold mb-2 text-text-primary">
             {item.title}
           </h3>
-          <p class="text-[15px] text-text-tertiary leading-loose">
+          <p class="text-description leading-loose">
             {item.description}
           </p>
         </div>
@@ -51,16 +51,3 @@ const icons: Record<string, string> = {
     </div>
   </div>
 </section>
-
-<style>
-  /* Section title with fluid typography */
-  .section-title {
-    font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-4xl));
-  }
-
-  /* Ensure SVG icons fill container */
-  .feature-icon :global(svg) {
-    width: 100%;
-    height: 100%;
-  }
-</style>

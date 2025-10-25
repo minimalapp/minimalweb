@@ -25,23 +25,23 @@ const icons: Record<string, string> = {
 ---
 
 <section
-  class="py-12 md:py-16 px-[var(--section-padding-right)] pl-[var(--section-padding-left)] bg-bg-secondary"
+  class="section-padding bg-bg-secondary"
   id={locale === 'es' ? 'problema' : 'problem'}
 >
   <div class="mx-auto max-w-[1200px]">
-    <h2 class="text-center mb-6 text-text-primary section-title">
+    <h2 class="section-title">
       {title}
     </h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
       {items.map((item) => (
-        <div class="problem-card bg-bg-primary p-4 rounded-md border border-black/[0.06] shadow-sm transition-[transform,box-shadow] duration-base hover:-translate-y-0.5 hover:shadow-md">
+        <div class="card-base">
           <div class="mb-2">
-            <span class="icon inline-flex items-center justify-center w-12 h-12 text-brand-purple-primary" set:html={icons[item.icon] || icons.search}></span>
+            <span class="icon-wrapper" set:html={icons[item.icon] || icons.search}></span>
           </div>
-          <h3 class="text-[calc(var(--font-size-2xl)+2px)] font-semibold mb-2 text-text-primary leading-snug">
+          <h3 class="text-2xl font-semibold mb-2 text-text-primary leading-snug">
             {item.title}
           </h3>
-          <p class="text-[15px] text-text-tertiary leading-relaxed">
+          <p class="text-description">
             {item.description}
           </p>
         </div>
@@ -49,16 +49,3 @@ const icons: Record<string, string> = {
     </div>
   </div>
 </section>
-
-<style>
-  /* Title responsive font sizing */
-  .section-title {
-    font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-4xl));
-  }
-
-  /* SVG full width/height within icon wrapper */
-  .icon :global(svg) {
-    width: 100%;
-    height: 100%;
-  }
-</style>

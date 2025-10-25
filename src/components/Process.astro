@@ -15,17 +15,17 @@ export interface Props {
 const { title, steps, locale } = Astro.props;
 ---
 
-<section class="py-12 md:py-16 px-[clamp(1rem,4vw,3rem)] bg-bg-primary" id={locale === 'es' ? 'como-funciona' : 'how-it-works'}>
+<section class="section-padding bg-bg-primary" id={locale === 'es' ? 'como-funciona' : 'how-it-works'}>
   <div class="container">
-    <h2 class="text-center mb-6 text-[clamp(var(--font-size-3xl),4vw,var(--font-size-4xl))] text-text-primary">{title}</h2>
+    <h2 class="section-title">{title}</h2>
     <div class="process-steps grid grid-cols-1 gap-8 max-w-[1100px] mx-auto relative md:grid-cols-3 md:gap-6">
       {steps.map((step, index) => (
-        <div class={`process-step text-center relative p-4 bg-bg-tertiary rounded-md transition-all duration-base hover:-translate-y-1 hover:shadow-md ${index < 3 ? 'opacity-0 animate-fadeIn' : ''}`} style={index < 3 ? `animation-delay: ${(index + 1) * 0.1}s` : ''}>
-          <div class={`step-number w-20 h-20 bg-gradient-to-br from-brand-purple-primary to-brand-purple-dark text-white rounded-full flex items-center justify-center text-[calc(1.5rem*1.2)] font-bold mx-auto mb-[calc(var(--space-2)+4px)] shadow-md relative z-[1] ${
+        <div class="process-step text-center relative p-4 bg-bg-tertiary rounded-md transition-all duration-base hover:-translate-y-1 hover:shadow-md">
+          <div class={`step-number ${
             index === 0 ? '-rotate-[3deg]' : index === 2 ? 'rotate-[3deg]' : ''
           }`}>{index + 1}</div>
           <h3 class="text-2xl font-semibold mb-2 text-text-primary">{step.title}</h3>
-          <p class="text-[15px] text-text-tertiary leading-relaxed">{step.description}</p>
+          <p class="text-description">{step.description}</p>
         </div>
       ))}
     </div>
@@ -36,37 +36,12 @@ const { title, steps, locale } = Astro.props;
   /* Connecting line between steps on desktop */
   @media (min-width: 768px) {
     .process-steps::before {
-      content: '';
-      position: absolute;
-      top: 40px; /* Half of badge height */
-      left: 20%;
-      right: 20%;
-      height: 2px;
+      @apply content-[''] absolute top-10 left-[20%] right-[20%] h-0.5 z-0 opacity-30;
       background: linear-gradient(90deg,
         var(--brand-purple-primary) 0%,
         var(--brand-purple-light) 50%,
         var(--brand-purple-primary) 100%
       );
-      z-index: 0;
-      opacity: 0.3;
-    }
-  }
-
-  /* Scroll animation */
-  @media (prefers-reduced-motion: no-preference) {
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .animate-fadeIn {
-      animation: fadeIn 0.6s ease-out forwards;
     }
   }
 </style>

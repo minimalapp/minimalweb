@@ -1,0 +1,188 @@
+/* Component Layer - Reusable Component Classes */
+/* Note: @tailwind directives are in global.css */
+
+@layer components {
+  /* Hero Section Components */
+  .hero-title {
+    @apply mb-8 font-bold tracking-tight leading-tight;
+    font-size: clamp(1.5rem, 7vw, 2rem);
+  }
+
+  @media (min-width: 640px) {
+    .hero-title {
+      font-size: clamp(2rem, 6vw, 3rem);
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hero-title {
+      font-size: clamp(2.5rem, 5.5vw, 3.5rem);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-title {
+      font-size: clamp(1.75rem, 5.5vw, 4.5rem);
+    }
+  }
+
+  .hero-title br {
+    @apply block;
+  }
+
+  .hero-highlight {
+    @apply bg-clip-text text-transparent inline;
+    background: linear-gradient(90deg, #FF5757 0%, #FFA500 20%, #FFD700 40%, #4CAF50 60%, #2196F3 80%, #3F51B5 100%);
+    background-size: 300% 100%;
+    animation: rainbowSlide 6s linear infinite;
+  }
+
+  /* Section Titles */
+  .section-title {
+    @apply text-center mb-6 text-text-primary;
+    font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-4xl));
+  }
+
+  /* Card Components */
+  .card-base {
+    @apply bg-bg-primary p-4 rounded-md;
+    @apply border shadow-sm;
+    @apply transition-[transform,box-shadow] duration-base;
+    @apply hover:-translate-y-0.5 hover:shadow-md;
+    border-color: rgba(0, 0, 0, 0.06);
+  }
+
+  .card-feature {
+    @apply text-center p-4 bg-bg-tertiary;
+    @apply border rounded-md;
+    @apply transition-[transform,box-shadow] duration-base;
+    @apply hover:-translate-y-[2px] hover:shadow-md;
+    border-color: rgba(0, 0, 0, 0.06);
+  }
+
+  /* Icon Containers */
+  .icon-wrapper {
+    @apply inline-flex items-center justify-center;
+    @apply w-12 h-12 text-brand-purple-primary;
+  }
+
+  .icon-wrapper svg {
+    @apply w-full h-full;
+  }
+
+  .icon-feature {
+    @apply inline-flex items-center justify-center;
+    @apply w-16 h-16 mb-2 rounded-full;
+    background-color: rgba(99, 102, 241, 0.08);
+  }
+
+  .icon-feature-inner {
+    @apply inline-flex w-12 h-12 text-brand-purple-primary;
+  }
+
+  .icon-feature-inner svg {
+    @apply w-full h-full;
+  }
+
+  /* Button Styles */
+  .btn-primary {
+    @apply px-7 py-2 text-white border-none rounded-full;
+    @apply text-base font-semibold cursor-pointer;
+    @apply transition-all duration-base;
+    @apply hover:-translate-y-0.5 hover:shadow-hover;
+    @apply sm:whitespace-nowrap;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+
+  .btn-outline {
+    @apply px-7 py-2 bg-transparent;
+    @apply border-2 border-brand-purple-primary text-brand-purple-primary;
+    @apply rounded-full text-base font-semibold cursor-pointer;
+    @apply transition-all duration-base;
+    @apply hover:bg-brand-purple-primary hover:text-white;
+    @apply hover:-translate-y-0.5 hover:shadow-md;
+  }
+
+  /* Process Steps */
+  .step-number {
+    @apply w-20 h-20 text-white rounded-full;
+    @apply flex items-center justify-center;
+    @apply text-[calc(1.5rem*1.2)] font-bold;
+    @apply mx-auto mb-[calc(var(--space-2)+4px)];
+    @apply shadow-md relative z-[1];
+    background: linear-gradient(to bottom right, var(--brand-purple-primary), var(--brand-purple-dark));
+  }
+
+  /* Pricing Cards */
+  .pricing-card {
+    @apply relative bg-bg-primary px-4 py-6;
+    @apply rounded-lg shadow-sm text-center;
+    @apply transition-all duration-base flex flex-col;
+    @apply hover:-translate-y-0.5 hover:shadow-lg;
+  }
+
+  .pricing-card-featured {
+    @apply border-2 border-brand-purple-primary;
+    background: linear-gradient(180deg, rgba(99, 102, 241, 0.02) 0%, var(--bg-primary) 100%);
+  }
+
+  .pricing-badge {
+    @apply absolute -top-3 left-1/2 -translate-x-1/2;
+    @apply text-white py-2 px-4 rounded-[20px];
+    @apply text-sm font-bold shadow-lg z-10;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+
+  /* Input Styles */
+  .input-base {
+    @apply px-5 py-2 border-2 border-gray-200 rounded-full;
+    @apply text-base transition-colors duration-base w-full;
+    @apply focus:outline-none focus:border-brand-blue;
+  }
+
+  /* Text Styles */
+  .text-description {
+    @apply text-text-tertiary leading-relaxed;
+    font-size: 15px;
+  }
+
+  .text-subtitle {
+    @apply text-text-light mb-10 leading-relaxed;
+    @apply max-w-[90%] lg:max-w-full mx-auto lg:mx-0;
+    font-size: clamp(1.125rem, 2.5vw, 1.625rem);
+  }
+}
+
+/* Utility Layer - Custom Utilities */
+@layer utilities {
+  /* Section Padding */
+  .section-padding {
+    @apply py-12 md:py-16;
+    padding-left: clamp(1rem, 4vw, 3rem);
+    padding-right: clamp(1rem, 4vw, 3rem);
+  }
+
+  /* Animation Delays */
+  .animation-delay-100 {
+    animation-delay: 0.1s;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 0.3s;
+  }
+
+  /* Background Gradients with Clip */
+  .text-gradient-rainbow {
+    @apply bg-clip-text text-transparent;
+    background: linear-gradient(90deg, #FF5757 0%, #FFA500 20%, #FFD700 40%, #4CAF50 60%, #2196F3 80%, #3F51B5 100%);
+  }
+
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+}

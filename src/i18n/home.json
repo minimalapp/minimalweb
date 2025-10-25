@@ -208,7 +208,7 @@
       "cases": [
         {
           "title": "SaaS & Software",
-          "icon": "💻",
+          "icon": "laptop",
           "description": "Reduce onboarding friction and convert visitors into active users",
           "benefits": [
             "Conversational onboarding",
@@ -218,7 +218,7 @@
         },
         {
           "title": "Professional Services",
-          "icon": "🏢",
+          "icon": "building",
           "description": "Capture qualified leads and schedule meetings automatically",
           "benefits": [
             "Automatic lead qualification",
@@ -228,7 +228,7 @@
         },
         {
           "title": "Education & Training",
-          "icon": "🎓",
+          "icon": "academic",
           "description": "Guide students to relevant courses and answer questions instantly",
           "benefits": [
             "Course recommendations",
@@ -238,7 +238,7 @@
         },
         {
           "title": "Health & Wellness",
-          "icon": "🏥",
+          "icon": "heart-pulse",
           "description": "Connect patients with appropriate services and schedule appointments easily",
           "benefits": [
             "Automated triage",
@@ -248,7 +248,7 @@
         },
         {
           "title": "Real Estate",
-          "icon": "🏠",
+          "icon": "home",
           "description": "Help buyers find ideal properties based on their needs",
           "benefits": [
             "Conversational search",
@@ -258,7 +258,7 @@
         },
         {
           "title": "Finance & Insurance",
-          "icon": "💰",
+          "icon": "currency",
           "description": "Explain complex products in a simple and personalized way",
           "benefits": [
             "Basic financial advice",

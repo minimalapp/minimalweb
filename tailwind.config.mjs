@@ -47,6 +47,19 @@ export default {
 					dark: 'var(--bg-dark)',
 					'dark-alt': 'var(--bg-dark-alt)',
 				},
+				// Border Colors
+				'border-subtle': 'rgba(0, 0, 0, 0.06)',
+			},
+			// Background Images - Gradients
+			backgroundImage: {
+				'gradient-primary': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+				'gradient-rainbow': 'linear-gradient(90deg, #FF5757 0%, #FFA500 20%, #FFD700 40%, #4CAF50 60%, #2196F3 80%, #3F51B5 100%)',
+				'gradient-purple': 'linear-gradient(to bottom right, var(--brand-purple-primary), var(--brand-purple-dark))',
+				'gradient-purple-fade': 'linear-gradient(180deg, rgba(99, 102, 241, 0.02) 0%, var(--bg-primary) 100%)',
+			},
+			// Background Size for animations
+			backgroundSize: {
+				'300': '300% 100%',
 			},
 			// Spacing Scale - matching 8px base unit system
 			spacing: {
@@ -78,15 +91,23 @@ export default {
 			},
 			// Font Sizes
 			fontSize: {
-				'xs': 'var(--font-size-xs)',
-				'sm': 'var(--font-size-sm)',
-				'base': 'var(--font-size-base)',
-				'lg': 'var(--font-size-lg)',
-				'xl': 'var(--font-size-xl)',
-				'2xl': 'var(--font-size-2xl)',
-				'3xl': 'var(--font-size-3xl)',
-				'4xl': 'var(--font-size-4xl)',
-				'5xl': 'var(--font-size-5xl)',
+				'xs': 'var(--font-size-xs)',     // 13px
+				'sm': 'var(--font-size-sm)',     // 14px
+				'15': '15px',                    // Common size in components
+				'base': 'var(--font-size-base)', // 16px
+				'lg': 'var(--font-size-lg)',     // 18px
+				'xl': 'var(--font-size-xl)',     // 20px
+				'2xl': 'var(--font-size-2xl)',   // 24px
+				'3xl': 'var(--font-size-3xl)',   // 32px
+				'4xl': 'var(--font-size-4xl)',   // 40px
+				'5xl': 'var(--font-size-5xl)',   // 48px
+				// Responsive fluid typography
+				'hero-mobile': 'clamp(1.5rem, 7vw, 2rem)',
+				'hero-sm': 'clamp(2rem, 6vw, 3rem)',
+				'hero-md': 'clamp(2.5rem, 5.5vw, 3.5rem)',
+				'hero-lg': 'clamp(1.75rem, 5.5vw, 4.5rem)',
+				'hero-subtitle': 'clamp(1.125rem, 2.5vw, 1.625rem)',
+				'section-title': 'clamp(var(--font-size-3xl), 4vw, var(--font-size-4xl))',
 			},
 			// Font Weight
 			fontWeight: {
@@ -117,6 +138,27 @@ export default {
 			// Font Family
 			fontFamily: {
 				sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'sans-serif'],
+			},
+			// Custom Padding for sections
+			padding: {
+				'section-x': 'clamp(1rem, 4vw, 3rem)',
+				'section-y': 'clamp(3rem, 8vw, 6rem)',
+			},
+			// Keyframes for animations
+			keyframes: {
+				rainbowSlide: {
+					'0%': { backgroundPosition: '0% 50%' },
+					'100%': { backgroundPosition: '300% 50%' },
+				},
+				fadeIn: {
+					'0%': { opacity: '0', transform: 'translateY(20px)' },
+					'100%': { opacity: '1', transform: 'translateY(0)' },
+				},
+			},
+			// Animations
+			animation: {
+				'rainbow-slide': 'rainbowSlide 6s linear infinite',
+				'fade-in': 'fadeIn 0.6s ease-out forwards',
 			},
 		},
 	},

@@ -28,18 +28,18 @@ const icons: Record<string, string> = {
 };
 ---
 
-<section class="py-12 md:py-16 px-[clamp(1rem,4vw,3rem)] bg-bg-secondary" id={locale === 'es' ? 'casos' : 'use-cases'}>
+<section class="section-padding bg-bg-secondary" id={locale === 'es' ? 'casos' : 'use-cases'}>
   <div class="container">
-    <h2 class="text-center mb-2 text-[clamp(var(--font-size-3xl),4vw,var(--font-size-4xl))] text-text-primary">{title}</h2>
-    <p class="text-center text-text-secondary text-[calc(1.1rem+1px)] mb-6 max-w-[700px] mx-auto">{subtitle}</p>
+    <h2 class="section-title mb-2">{title}</h2>
+    <p class="text-center text-text-secondary text-lg mb-6 max-w-[700px] mx-auto">{subtitle}</p>
     <div class="grid grid-cols-1 gap-y-5 gap-x-4 max-w-[1200px] mx-auto sm:grid-cols-2 lg:grid-cols-3">
       {cases.map((useCase) => (
         <div class="bg-bg-primary p-6 rounded-md shadow-md transition-all duration-base hover:-translate-y-0.5 hover:shadow-lg">
           <div class="mb-3">
-            <span class="inline-flex w-14 h-14 text-brand-purple-primary" set:html={icons[useCase.icon] || icons.laptop}></span>
+            <span class="inline-flex w-14 h-14 text-brand-purple-primary case-icon" set:html={icons[useCase.icon] || icons.laptop}></span>
           </div>
-          <h3 class="text-[calc(var(--font-size-2xl)+1px)] font-bold mb-2 text-text-primary">{useCase.title}</h3>
-          <p class="text-[15px] text-text-tertiary mb-4 leading-loose">{useCase.description}</p>
+          <h3 class="text-2xl font-bold mb-2 text-text-primary">{useCase.title}</h3>
+          <p class="text-description mb-4 leading-loose">{useCase.description}</p>
           <ul class="list-none p-0">
             {useCase.benefits.map((benefit) => (
               <li class="text-sm text-text-tertiary mb-1 pl-3 relative before:content-['✓'] before:absolute before:left-0 before:text-brand-green before:font-bold">{benefit}</li>
@@ -53,7 +53,6 @@ const icons: Record<string, string> = {
 
 <style>
   .case-icon :global(svg) {
-    width: 100%;
-    height: 100%;
+    @apply w-full h-full;
   }
 </style>

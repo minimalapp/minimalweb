@@ -1,19 +1,22 @@
 /* Global Styles - Minimal Website */
+@import './components.css';
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-html, body {
-    max-width: 100%;
-    overflow-x: hidden;
-}
+@layer base {
+  * {
+    @apply m-0 p-0 box-border;
+  }
 
-img, svg, video, canvas {
-    max-width: 100%;
-    height: auto;
+  html, body {
+    @apply max-w-full overflow-x-hidden;
+  }
+
+  img, svg, video, canvas {
+    @apply max-w-full h-auto;
+  }
 }
 
 :root {
@@ -161,210 +164,154 @@ img, svg, video, canvas {
     --transition-slower: 0.4s ease;
 }
 
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    font-size: var(--font-size-base);
-    line-height: var(--line-height-relaxed);
-    color: var(--text-secondary);
-    background: var(--bg-primary);
-}
+@layer base {
+  body {
+    @apply font-sans text-base leading-relaxed text-text-secondary bg-bg-primary;
+  }
 
-/* ========================================
-   TYPOGRAPHY - Standardized Scale
-   ======================================== */
-h1, h2, h3, h4, h5, h6 {
-    color: var(--text-primary);
-    font-weight: var(--font-weight-bold);
-    line-height: var(--line-height-snug);
-    margin-bottom: var(--space-2);
-}
+  /* Typography - Standardized Scale */
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-text-primary font-bold leading-snug mb-2;
+  }
 
-h1 {
+  h1 {
+    @apply text-5xl leading-tight;
     font-size: clamp(var(--font-size-4xl), 5vw, var(--font-size-5xl));
-    line-height: var(--line-height-tight);
-}
+  }
 
-h2 {
+  h2 {
     font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-4xl));
+  }
+
+  h3 {
+    @apply text-2xl;
+  }
+
+  h4 {
+    @apply text-xl;
+  }
+
+  p {
+    @apply mb-2 text-text-secondary leading-relaxed;
+  }
+
+  a {
+    @apply text-brand-purple-primary no-underline transition-colors duration-base;
+  }
+
+  a:hover {
+    @apply text-brand-purple-dark;
+  }
 }
 
-h3 {
-    font-size: var(--font-size-2xl);
+@layer components {
+  /* Base Button Styles */
+  button, .button {
+    @apply cursor-pointer border-none rounded-full;
+    @apply px-8 py-3 text-base font-semibold;
+    @apply transition-all duration-slow;
+    @apply min-h-[44px] inline-flex items-center justify-center;
+  }
+
+  .cta-button {
+    @apply text-white shadow-md;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+
+  .cta-button:hover {
+    @apply -translate-y-0.5 shadow-hover;
+  }
+
+  .cta-button:active {
+    @apply translate-y-0;
+  }
+
+  /* Button variants */
+  .button-outline {
+    @apply bg-transparent border-2 border-brand-purple-primary text-brand-purple-primary;
+  }
+
+  .button-outline:hover {
+    @apply bg-brand-purple-primary text-white -translate-y-0.5 shadow-md;
+  }
+
+  /* Container */
+  .container {
+    @apply max-w-content mx-auto;
+  }
 }
 
-h4 {
-    font-size: var(--font-size-xl);
+@layer utilities {
+  /* Utility Classes */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background: linear-gradient(90deg, #FF5757 0%, #FFA500 20%, #FFD700 40%, #4CAF50 60%, #2196F3 80%, #3F51B5 100%);
+  }
+
+  .highlight {
+    @apply bg-clip-text text-transparent;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
 }
 
-p {
-    margin-bottom: var(--space-2);
-    color: var(--text-secondary);
-    line-height: var(--line-height-relaxed);
+@layer base {
+  /* Scroll Behavior */
+  html {
+    @apply scroll-smooth;
+  }
+
+  /* Selection */
+  ::selection {
+    @apply bg-brand-blue text-white;
+  }
+
+  ::-moz-selection {
+    @apply bg-brand-blue text-white;
+  }
 }
 
-a {
-    color: var(--brand-purple-primary);
-    text-decoration: none;
-    transition: color var(--transition-base);
+@layer components {
+  /* Card hover effect */
+  .card-hover {
+    @apply transition-[transform,box-shadow] duration-base;
+  }
+
+  .card-hover:hover {
+    @apply -translate-y-0.5 shadow-lg;
+  }
 }
 
-a:hover {
-    color: var(--brand-purple-dark);
-}
-
-/* ========================================
-   BUTTONS - Enhanced with proper states
-   ======================================== */
-button, .button {
-    cursor: pointer;
-    border: none;
-    border-radius: var(--radius-full);
-    padding: 0.75rem 2rem;
-    font-size: var(--font-size-base);
-    font-weight: var(--font-weight-semibold);
-    transition: all var(--transition-slow);
-    min-height: var(--min-touch-target);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.cta-button {
-    background: var(--gradient-primary);
-    color: white;
-    box-shadow: var(--shadow-md);
-}
-
-.cta-button:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-hover);
-}
-
-.cta-button:active {
-    transform: translateY(0);
-}
-
-/* Button variants */
-.button-outline {
-    background: transparent;
-    border: 2px solid var(--brand-purple-primary);
-    color: var(--brand-purple-primary);
-}
-
-.button-outline:hover {
-    background: var(--brand-purple-primary);
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-}
-
-/* Sections */
-section {
-    padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
-}
-
-.container {
-    max-width: var(--content-max-width);
-    margin: 0 auto;
-}
-
-/* Utility Classes */
-.text-gradient {
-    background: var(--gradient-rainbow);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.highlight {
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-/* ========================================
-   SCROLL BEHAVIOR & ANIMATIONS
-   ======================================== */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Smooth scroll for anchor links */
-@media (prefers-reduced-motion: no-preference) {
-    html {
-        scroll-behavior: smooth;
-    }
-}
-
-/* Fade-in animation for sections */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.fade-in {
-    animation: fadeIn 0.6s ease-out;
-}
-
-/* Card hover effect */
-.card-hover {
-    transition: transform var(--transition-base), box-shadow var(--transition-base);
-}
-
-.card-hover:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
-}
-
-/* Selection */
-::selection {
-    background: var(--brand-blue);
-    color: white;
-}
-
-::-moz-selection {
-    background: var(--brand-blue);
-    color: white;
-}
-
-/* ========================================
-   ACCESSIBILITY - Focus States (WCAG AAA)
-   ======================================== */
-:focus-visible {
+@layer base {
+  /* Accessibility - Focus States (WCAG AAA) */
+  :focus-visible {
     outline: var(--focus-ring);
     outline-offset: var(--focus-ring-offset);
-    border-radius: var(--radius-sm);
-}
+    @apply rounded-sm;
+  }
 
-/* Specific focus styles for different elements */
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible {
+  /* Specific focus styles for different elements */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
     outline: var(--focus-ring);
     outline-offset: var(--focus-ring-offset);
-}
+  }
 
-/* Tab navigation focus */
-[role="tab"]:focus-visible {
+  /* Tab navigation focus */
+  [role="tab"]:focus-visible {
     outline: var(--focus-ring);
     outline-offset: 0;
-    z-index: 1;
-}
+    @apply z-[1];
+  }
 
-/* Loading States */
-@media (prefers-reduced-motion: reduce) {
+  /* Loading States - Reduced Motion */
+  @media (prefers-reduced-motion: reduce) {
     * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
     }
+  }
 }
