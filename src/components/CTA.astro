@@ -15,9 +15,8 @@ const { title, subtitle, emailPlaceholder, urlPlaceholder, buttonText, footnote,
 ---
 
 <section
-  class="relative overflow-hidden text-center text-white bg-gradient-to-br from-brand-purple-primary via-brand-purple-dark to-[#5B21B6] pt-12 pb-16 md:pt-16 md:pb-20 [clip-path:polygon(0_0,100%_4%,100%_100%,0_96%)] animate-fadeIn motion-reduce:animate-none"
+  class="relative overflow-hidden text-center text-white bg-gradient-to-br from-brand-purple-primary via-brand-purple-dark to-[#5B21B6] pt-12 pb-16 md:pt-16 md:pb-20 px-4 md:px-8 lg:px-12 animate-fadeIn motion-reduce:animate-none"
   id={locale === 'es' ? 'contacto' : 'contact'}
-  style="padding-left: var(--section-padding-left); padding-right: var(--section-padding-right);"
 >
   <!-- Noise overlay for texture -->
   <div
@@ -27,18 +26,17 @@ const { title, subtitle, emailPlaceholder, urlPlaceholder, buttonText, footnote,
 
   <!-- Gradient orb animation -->
   <div
-    class="absolute w-[500px] h-[500px] rounded-full -top-[250px] -right-[100px] pointer-events-none animate-float"
-    style="background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%)"
+    class="absolute w-[500px] h-[500px] rounded-full -top-[250px] -right-[100px] pointer-events-none animate-float bg-[radial-gradient(circle,rgba(255,255,255,0.1)_0%,transparent_70%)]"
   ></div>
 
-  <div class="max-w-[800px] mx-auto relative z-10">
+  <div class="max-w-tight mx-auto relative z-10">
     <h2 class="text-section-title mb-2 font-bold leading-tight">
       {title}
     </h2>
     <p class="text-xl mb-6 opacity-95 leading-relaxed">
       {subtitle}
     </p>
-    <form class="flex flex-col gap-3 mb-3 max-w-[600px] mx-auto">
+    <form class="flex flex-col gap-3 mb-3 max-w-xs sm:max-w-[600px] mx-auto">
       <div class="flex flex-col sm:flex-row gap-3">
         <input
           type="email"
@@ -68,33 +66,3 @@ const { title, subtitle, emailPlaceholder, urlPlaceholder, buttonText, footnote,
   </div>
 </section>
 
-<style>
-  @keyframes float {
-    0%, 100% {
-      transform: translate(0, 0) scale(1);
-    }
-    33% {
-      transform: translate(50px, 100px) scale(1.1);
-    }
-    66% {
-      transform: translate(-30px, 80px) scale(0.9);
-    }
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  .animate-float {
-    animation: float 20s ease-in-out infinite;
-  }
-
-  .animate-fadeIn {
-    animation: fadeIn 0.8s ease-out;
-  }
-</style>

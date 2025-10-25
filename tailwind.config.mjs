@@ -134,6 +134,26 @@ export default {
 			// Max Width
 			maxWidth: {
 				'content': 'var(--content-max-width)', // 1400px
+				'container': '1200px',
+				'narrow': '1000px',
+				'tight': '800px',
+				'xs': '600px',
+			},
+			// Width
+			width: {
+				'icon-sm': '42px',
+				'icon-md': '48px',
+				'icon-lg': '56px',
+				'icon-xl': '64px',
+				'step': '80px',
+			},
+			// Height
+			height: {
+				'icon-sm': '42px',
+				'icon-md': '48px',
+				'icon-lg': '56px',
+				'icon-xl': '64px',
+				'step': '80px',
 			},
 			// Font Family
 			fontFamily: {
@@ -154,11 +174,27 @@ export default {
 					'0%': { opacity: '0', transform: 'translateY(20px)' },
 					'100%': { opacity: '1', transform: 'translateY(0)' },
 				},
+				fadeInSimple: {
+					'0%': { opacity: '0' },
+					'100%': { opacity: '1' },
+				},
+				fadeInUp: {
+					'0%': { opacity: '0', transform: 'translateY(10px)' },
+					'100%': { opacity: '1', transform: 'translateY(0)' },
+				},
+				float: {
+					'0%, 100%': { transform: 'translate(0, 0) scale(1)' },
+					'33%': { transform: 'translate(50px, 100px) scale(1.1)' },
+					'66%': { transform: 'translate(-30px, 80px) scale(0.9)' },
+				},
 			},
 			// Animations
 			animation: {
 				'rainbow-slide': 'rainbowSlide 6s linear infinite',
 				'fade-in': 'fadeIn 0.6s ease-out forwards',
+				'fadeIn': 'fadeInSimple 0.8s ease-out',
+				'fadeInUp': 'fadeInUp 0.4s ease-out',
+				'float': 'float 20s ease-in-out infinite',
 			},
 		},
 	},

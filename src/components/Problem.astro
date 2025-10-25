@@ -28,20 +28,20 @@ const icons: Record<string, string> = {
   class="section-padding bg-bg-secondary"
   id={locale === 'es' ? 'problema' : 'problem'}
 >
-  <div class="mx-auto max-w-[1200px]">
+  <div class="mx-auto max-w-container">
     <h2 class="section-title">
       {title}
     </h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
       {items.map((item) => (
-        <div class="card-base">
+        <div class="bg-bg-primary p-4 rounded-md border border-border-subtle shadow-sm transition-all duration-base hover:-translate-y-0.5 hover:shadow-md">
           <div class="mb-2">
-            <span class="icon-wrapper" set:html={icons[item.icon] || icons.search}></span>
+            <span class="inline-flex items-center justify-center w-12 h-12 text-brand-purple-primary [&>svg]:w-full [&>svg]:h-full" set:html={icons[item.icon] || icons.search}></span>
           </div>
           <h3 class="text-2xl font-semibold mb-2 text-text-primary leading-snug">
             {item.title}
           </h3>
-          <p class="text-description">
+          <p class="text-text-tertiary leading-relaxed text-[15px]">
             {item.description}
           </p>
         </div>

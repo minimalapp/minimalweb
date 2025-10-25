@@ -32,14 +32,14 @@ const icons: Record<string, string> = {
   <div class="container">
     <h2 class="section-title mb-2">{title}</h2>
     <p class="text-center text-text-secondary text-lg mb-6 max-w-[700px] mx-auto">{subtitle}</p>
-    <div class="grid grid-cols-1 gap-y-5 gap-x-4 max-w-[1200px] mx-auto sm:grid-cols-2 lg:grid-cols-3">
+    <div class="grid grid-cols-1 gap-y-5 gap-x-4 max-w-container mx-auto sm:grid-cols-2 lg:grid-cols-3">
       {cases.map((useCase) => (
         <div class="bg-bg-primary p-6 rounded-md shadow-md transition-all duration-base hover:-translate-y-0.5 hover:shadow-lg">
           <div class="mb-3">
             <span class="inline-flex w-14 h-14 text-brand-purple-primary case-icon" set:html={icons[useCase.icon] || icons.laptop}></span>
           </div>
           <h3 class="text-2xl font-bold mb-2 text-text-primary">{useCase.title}</h3>
-          <p class="text-description mb-4 leading-loose">{useCase.description}</p>
+          <p class="text-text-tertiary leading-loose text-[15px] mb-4">{useCase.description}</p>
           <ul class="list-none p-0">
             {useCase.benefits.map((benefit) => (
               <li class="text-sm text-text-tertiary mb-1 pl-3 relative before:content-['✓'] before:absolute before:left-0 before:text-brand-green before:font-bold">{benefit}</li>

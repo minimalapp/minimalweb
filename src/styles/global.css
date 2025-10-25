@@ -6,16 +6,9 @@
 @tailwind utilities;
 
 @layer base {
-  * {
-    @apply m-0 p-0 box-border;
-  }
-
+  /* Only essential overrides - Tailwind Preflight handles most resets */
   html, body {
     @apply max-w-full overflow-x-hidden;
-  }
-
-  img, svg, video, canvas {
-    @apply max-w-full h-auto;
   }
 }
 
@@ -169,26 +162,26 @@
     @apply font-sans text-base leading-relaxed text-text-secondary bg-bg-primary;
   }
 
-  /* Typography - Standardized Scale */
+  /* Typography - Standardized Scale (30% smaller) */
   h1, h2, h3, h4, h5, h6 {
     @apply text-text-primary font-bold leading-snug mb-2;
   }
 
   h1 {
-    @apply text-5xl leading-tight;
-    font-size: clamp(var(--font-size-4xl), 5vw, var(--font-size-5xl));
+    @apply leading-tight;
+    font-size: clamp(calc(var(--font-size-4xl) * 0.7), 3.5vw, calc(var(--font-size-5xl) * 0.7));
   }
 
   h2 {
-    font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-4xl));
+    font-size: clamp(calc(var(--font-size-3xl) * 0.7), 2.8vw, calc(var(--font-size-4xl) * 0.7));
   }
 
   h3 {
-    @apply text-2xl;
+    @apply text-lg;
   }
 
   h4 {
-    @apply text-xl;
+    @apply text-base;
   }
 
   p {
@@ -205,39 +198,34 @@
 }
 
 @layer components {
-  /* Base Button Styles */
-  button, .button {
-    @apply cursor-pointer border-none rounded-full;
-    @apply px-8 py-3 text-base font-semibold;
-    @apply transition-all duration-slow;
-    @apply min-h-[44px] inline-flex items-center justify-center;
-  }
+  /* Essential reusable components only - most styling should be inline Tailwind utilities */
 
-  .cta-button {
-    @apply text-white shadow-md;
+  /* Primary CTA Button - used across multiple sections */
+  .btn-primary {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   }
 
-  .cta-button:hover {
-    @apply -translate-y-0.5 shadow-hover;
+  /* Outline Button Variant */
+  .btn-outline {
+    /* Hover background handled by Tailwind */
   }
 
-  .cta-button:active {
-    @apply translate-y-0;
-  }
-
-  /* Button variants */
-  .button-outline {
-    @apply bg-transparent border-2 border-brand-purple-primary text-brand-purple-primary;
-  }
-
-  .button-outline:hover {
-    @apply bg-brand-purple-primary text-white -translate-y-0.5 shadow-md;
-  }
-
-  /* Container */
+  /* Container - max-width wrapper */
   .container {
     @apply max-w-content mx-auto;
+  }
+
+  /* Section title - consistent heading style (30% smaller) */
+  .section-title {
+    @apply text-center mb-6 text-text-primary font-bold;
+    font-size: clamp(calc(var(--font-size-3xl) * 0.7), 2.8vw, calc(var(--font-size-4xl) * 0.7));
+  }
+
+  /* Section padding utility */
+  .section-padding {
+    @apply py-12 md:py-16;
+    padding-left: clamp(1rem, 4vw, 3rem);
+    padding-right: clamp(1rem, 4vw, 3rem);
   }
 }
 

@@ -13,19 +13,19 @@ export interface Props {
 const { title, subtitle, inputPlaceholder, buttonText, locale } = Astro.props;
 ---
 
-<section class="hero px-4 md:px-8 lg:px-12 pt-10 pb-8 md:pt-12 md:pb-12 lg:pb-28 text-center bg-gradient-to-b from-gray-50 to-white relative overflow-hidden" id="mainHero" style="opacity: 0;">
+<section class="hero px-4 md:px-8 lg:px-12 pt-10 pb-8 md:pt-12 md:pb-12 lg:pb-28 text-center bg-gradient-to-b from-gray-50 to-white relative overflow-hidden opacity-0" id="mainHero">
   <div class="max-w-content mx-auto flex flex-col lg:grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16 lg:items-center">
     <div class="hero-text text-center lg:text-left">
-      <h1 class="hero-title" set:html={title}></h1>
-      <p class="text-subtitle">{subtitle}</p>
-      <div class="flex flex-col sm:flex-row gap-3 max-w-[600px] mx-auto lg:mx-0">
+      <h1 class="hero-title mb-8 font-bold tracking-tight leading-tight" set:html={title}></h1>
+      <p class="text-text-light mb-10 leading-relaxed max-w-[90%] lg:max-w-full mx-auto lg:mx-0 text-[clamp(1.125rem,2.5vw,1.625rem)]">{subtitle}</p>
+      <div class="flex flex-col sm:flex-row gap-3 max-w-xs sm:max-w-[600px] mx-auto lg:mx-0">
         <input
           type="url"
           placeholder={inputPlaceholder}
-          class="input-base"
+          class="px-5 py-2 border-2 border-gray-200 rounded-full text-base transition-colors duration-base w-full focus:outline-none focus:border-brand-blue"
           aria-label="Website URL"
         />
-        <button class="btn-primary">{buttonText}</button>
+        <button class="btn-primary px-7 py-2 text-white border-none rounded-full text-base font-semibold cursor-pointer transition-all duration-base hover:-translate-y-0.5 hover:shadow-hover sm:whitespace-nowrap">{buttonText}</button>
       </div>
     </div>
     <div class="hero-visual w-full">
@@ -37,16 +37,7 @@ const { title, subtitle, inputPlaceholder, buttonText, locale } = Astro.props;
 <style>
   /* Rainbow gradient animation for highlight text */
   .hero-title :global(.highlight) {
-    background: linear-gradient(
-      90deg,
-      #FF5757 0%,
-      #FFA500 16.66%,
-      #FFD700 33.33%,
-      #4CAF50 50%,
-      #2196F3 66.66%,
-      #3F51B5 83.33%,
-      #FF5757 100%
-    );
+    background: linear-gradient(90deg, #FF5757 0%, #FFA500 16.66%, #FFD700 33.33%, #4CAF50 50%, #2196F3 66.66%, #3F51B5 83.33%, #FF5757 100%);
     background-size: 300% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
