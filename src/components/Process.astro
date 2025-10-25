@@ -30,56 +30,125 @@ const { title, steps } = Astro.props;
 <style>
   .process {
     padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
-    background: var(--bg-light);
+    background: var(--bg-primary);
   }
 
   .section-title {
     text-align: center;
-    margin-bottom: 3rem;
-    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    margin-bottom: var(--space-6);
+    font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-4xl));
+    color: var(--text-primary);
   }
 
   .process-steps {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 3rem;
-    max-width: 1000px;
+    gap: var(--space-8);
+    max-width: 1100px;
     margin: 0 auto;
+    position: relative;
+  }
+
+  /* Connecting line between steps on desktop */
+  @media (min-width: 768px) {
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 40px; /* Half of badge height */
+      left: 20%;
+      right: 20%;
+      height: 2px;
+      background: linear-gradient(90deg,
+        var(--brand-purple-primary) 0%,
+        var(--brand-purple-light) 50%,
+        var(--brand-purple-primary) 100%
+      );
+      z-index: 0;
+      opacity: 0.3;
+    }
   }
 
   .process-step {
     text-align: center;
     position: relative;
+    padding: var(--space-4);
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-md);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+  }
+
+  .process-step:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
   }
 
   .step-number {
-    width: 60px;
-    height: 60px;
-    background: var(--gradient-primary);
+    width: 80px; /* Increased by 20% from 60px */
+    height: 80px;
+    background: linear-gradient(135deg, var(--brand-purple-primary) 0%, var(--brand-purple-dark) 100%);
     color: white;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin: 0 auto 1.5rem;
+    font-size: calc(1.5rem * 1.2); /* Increased proportionally */
+    font-weight: var(--font-weight-bold);
+    margin: 0 auto calc(var(--space-2) + 4px); /* Added 4px from badge */
+    box-shadow: var(--shadow-md);
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Subtle rotation for playfulness */
+  .process-step:nth-child(1) .step-number {
+    transform: rotate(-3deg);
+  }
+
+  .process-step:nth-child(2) .step-number {
+    transform: rotate(0deg);
+  }
+
+  .process-step:nth-child(3) .step-number {
+    transform: rotate(3deg);
   }
 
   .process-step h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: var(--text-dark);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--space-2);
+    color: var(--text-primary);
   }
 
   .process-step p {
-    color: var(--text-light);
-    line-height: 1.6;
+    font-size: 15px; /* Increased from default */
+    color: var(--text-tertiary);
+    line-height: var(--line-height-relaxed);
   }
 
   @media (min-width: 768px) {
     .process-steps {
       grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+    }
+  }
+
+  /* Scroll animation */
+  @media (prefers-reduced-motion: no-preference) {
+    .process-step {
+      opacity: 0;
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+
+    .process-step:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    .process-step:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .process-step:nth-child(3) {
+      animation-delay: 0.3s;
     }
   }
 </style>

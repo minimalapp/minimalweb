@@ -32,19 +32,23 @@
       "title": "The Problem with Static Websites",
       "items": [
         {
-          "title": "🔍 Zero Visibility",
+          "icon": "search",
+          "title": "Zero Visibility",
           "description": "You don't know what your visitors are really looking for"
         },
         {
-          "title": "🚪 Rigid Navigation",
+          "icon": "door",
+          "title": "Rigid Navigation",
           "description": "Users abandon if they don't find information quickly"
         },
         {
-          "title": "💔 Lost Opportunities",
+          "icon": "heart",
+          "title": "Lost Opportunities",
           "description": "Without personalization, you lose conversions daily"
         },
         {
-          "title": "📊 Limited Data",
+          "icon": "chart",
+          "title": "Limited Data",
           "description": "You only have clicks, not intentions"
         }
       ]
@@ -53,32 +57,32 @@
       "title": "Everything You Need to Modernize Your Web Presence",
       "items": [
         {
-          "icon": "🎨",
+          "icon": "palette",
           "title": "Automatic Brand Detection",
           "description": "Keeps your visual identity intact"
         },
         {
-          "icon": "📈",
+          "icon": "chart",
           "title": "Advanced Analytics",
           "description": "Understand intentions, not just clicks"
         },
         {
-          "icon": "🔄",
+          "icon": "arrows",
           "title": "Smart Toggle",
           "description": "Switch between traditional and AI view"
         },
         {
-          "icon": "🎯",
+          "icon": "target",
           "title": "Contextual Lead Capture",
           "description": "Dynamic CTAs based on conversation"
         },
         {
-          "icon": "⚡",
+          "icon": "bolt",
           "title": "No Complex Code",
           "description": "Integration in minutes"
         },
         {
-          "icon": "🔒",
+          "icon": "lock",
           "title": "Enterprise Security",
           "description": "Encrypted and secure data"
         }
@@ -293,7 +297,7 @@
         {
           "name": "Enterprise",
           "price": "Custom",
-          "period": "Custom",
+          "period": "",
           "button": "Contact",
           "features": [
             "✓ Unlimited conversations",
@@ -345,19 +349,23 @@
       "title": "El Problema de los Sitios Web Estáticos",
       "items": [
         {
-          "title": "🔍 Visibilidad Cero",
+          "icon": "search",
+          "title": "Visibilidad Cero",
           "description": "No sabes qué buscan realmente tus visitantes"
         },
         {
-          "title": "🚪 Navegación Rígida",
+          "icon": "door",
+          "title": "Navegación Rígida",
           "description": "Los usuarios abandonan si no encuentran información rápidamente"
         },
         {
-          "title": "💔 Oportunidades Perdidas",
+          "icon": "heart",
+          "title": "Oportunidades Perdidas",
           "description": "Sin personalización, pierdes conversiones diariamente"
         },
         {
-          "title": "📊 Datos Limitados",
+          "icon": "chart",
+          "title": "Datos Limitados",
           "description": "Solo tienes clics, no intenciones"
         }
       ]
@@ -366,32 +374,32 @@
       "title": "Todo lo que Necesitas para Modernizar tu Presencia Web",
       "items": [
         {
-          "icon": "🎨",
+          "icon": "palette",
           "title": "Detección Automática de Marca",
           "description": "Mantiene tu identidad visual intacta"
         },
         {
-          "icon": "📈",
+          "icon": "chart",
           "title": "Analytics Avanzados",
           "description": "Comprende intenciones, no solo clics"
         },
         {
-          "icon": "🔄",
+          "icon": "arrows",
           "title": "Toggle Inteligente",
           "description": "Alterna entre vista tradicional y IA"
         },
         {
-          "icon": "🎯",
+          "icon": "target",
           "title": "Captura de Leads Contextual",
           "description": "CTAs dinámicos según conversación"
         },
         {
-          "icon": "⚡",
+          "icon": "bolt",
           "title": "Sin Código Complejo",
           "description": "Integración en minutos"
         },
         {
-          "icon": "🔒",
+          "icon": "lock",
           "title": "Seguridad Empresarial",
           "description": "Datos encriptados y seguros"
         }
@@ -517,7 +525,7 @@
       "cases": [
         {
           "title": "SaaS & Software",
-          "icon": "💻",
+          "icon": "laptop",
           "description": "Reduce fricción en onboarding y convierte visitantes en usuarios activos",
           "benefits": [
             "Onboarding conversacional",
@@ -527,7 +535,7 @@
         },
         {
           "title": "Servicios Profesionales",
-          "icon": "🏢",
+          "icon": "building",
           "description": "Captura leads calificados y agenda reuniones automáticamente",
           "benefits": [
             "Calificación automática de leads",
@@ -537,7 +545,7 @@
         },
         {
           "title": "Educación & Formación",
-          "icon": "🎓",
+          "icon": "academic",
           "description": "Guía a estudiantes a cursos relevantes y responde dudas al instante",
           "benefits": [
             "Recomendación de cursos",
@@ -547,7 +555,7 @@
         },
         {
           "title": "Salud & Bienestar",
-          "icon": "🏥",
+          "icon": "heart-pulse",
           "description": "Conecta pacientes con servicios adecuados y agenda citas fácilmente",
           "benefits": [
             "Triage automatizado",
@@ -557,7 +565,7 @@
         },
         {
           "title": "Inmobiliaria",
-          "icon": "🏠",
+          "icon": "home",
           "description": "Ayuda a compradores a encontrar propiedades ideales basado en sus necesidades",
           "benefits": [
             "Búsqueda conversacional",
@@ -567,7 +575,7 @@
         },
         {
           "title": "Finanzas & Seguros",
-          "icon": "💰",
+          "icon": "currency",
           "description": "Explica productos complejos de forma simple y personalizada",
           "benefits": [
             "Asesoría financiera básica",
@@ -605,13 +613,13 @@
         },
         {
           "name": "Enterprise",
-          "price": "Custom",
-          "period": "Personalizado",
+          "price": "Personalizado",
+          "period": "",
           "button": "Contactar",
           "features": [
             "✓ Conversaciones ilimitadas",
-            "✓ Integración personalizada",
-            "✓ Account manager dedicado"
+            "✓ Analytics completos",
+            "✓ Soporte dedicado"
           ]
         }
       ]

@@ -42,41 +42,46 @@ const { title, plans } = Astro.props;
 
 <style>
   .pricing {
-    padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
-    background: var(--bg-light);
+    padding: calc(var(--section-padding-y) + var(--space-5)) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
+    background: var(--bg-secondary);
   }
 
   .section-title {
     text-align: center;
-    margin-bottom: 3rem;
-    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    margin-bottom: var(--space-6);
+    font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-4xl));
+    color: var(--text-primary);
   }
 
   .pricing-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: var(--space-3); /* Reduced gap from 2rem to 24px */
     max-width: 1200px;
     margin: 0 auto;
+    align-items: stretch; /* Equal heights */
   }
 
   .pricing-card {
-    background: white;
-    padding: 2.5rem 2rem;
-    border-radius: 12px;
+    background: var(--bg-primary);
+    padding: var(--space-6) var(--space-4);
+    border-radius: var(--radius-lg); /* Increased to 16px */
     box-shadow: var(--shadow-sm);
     text-align: center;
     position: relative;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+    display: flex;
+    flex-direction: column;
   }
 
   .pricing-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
   }
 
   .pricing-card.featured {
-    border: 2px solid var(--brand-blue);
+    border: 2px solid var(--brand-purple-primary);
+    background: linear-gradient(180deg, rgba(99, 102, 241, 0.02) 0%, var(--bg-primary) 100%);
   }
 
   .badge {
@@ -86,43 +91,82 @@ const { title, plans } = Astro.props;
     transform: translateX(-50%);
     background: var(--gradient-primary);
     color: white;
-    padding: 0.25rem 1rem;
+    padding: 8px 16px; /* Increased padding */
     border-radius: 20px;
-    font-size: 0.875rem;
-    font-weight: 600;
+    font-size: calc(var(--font-size-sm) - 1px); /* Slightly smaller */
+    font-weight: var(--font-weight-bold); /* Bolder: 700 */
+    box-shadow: var(--shadow-lg); /* Doubled shadow */
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      transform: translateX(-50%) scale(1);
+    }
+    50% {
+      transform: translateX(-50%) scale(1.05);
+    }
   }
 
   .plan-name {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: var(--text-dark);
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--space-2);
+    color: var(--text-primary);
+    font-weight: var(--font-weight-bold);
   }
 
   .plan-price {
-    margin-bottom: 2rem;
+    margin-bottom: var(--space-6);
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.5rem;
   }
 
   .price {
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--text-dark);
+    font-size: clamp(2.5rem, 5vw, 3rem);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-primary);
+    line-height: 1;
   }
 
   .period {
-    font-size: 1rem;
-    color: var(--text-light);
+    font-size: var(--font-size-lg); /* Increased by 2px */
+    color: var(--text-quaternary);
   }
 
   .plan-features {
     list-style: none;
-    margin-bottom: 2rem;
+    margin-bottom: auto; /* Push button to bottom */
+    padding-bottom: var(--space-4);
     text-align: left;
   }
 
   .plan-features li {
-    padding: 0.75rem 0;
-    color: var(--text-light);
-    border-bottom: 1px solid #f0f0f0;
+    padding: 12px 0; /* Increased spacing */
+    font-size: 15px; /* Increased from 14px */
+    color: var(--text-tertiary); /* Darkened to #4B5563 */
+    border-bottom: 1px solid var(--gray-200);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .plan-features li::before {
+    content: '✓';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    color: var(--brand-green);
+    font-weight: var(--font-weight-bold);
+  }
+
+  /* Remove checkmark emoji from text */
+  .plan-features li:global {
+    text-indent: -2px;
   }
 
   .plan-features li:last-child {
@@ -131,20 +175,40 @@ const { title, plans } = Astro.props;
 
   .plan-button {
     width: 100%;
-    padding: 1rem 2rem;
-    background: var(--gradient-primary);
-    color: white;
-    border: none;
-    border-radius: 50px;
-    font-size: 1.1rem;
-    font-weight: 600;
+    padding: 14px 32px; /* Increased padding */
+    border: 2px solid transparent;
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
     cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: all var(--transition-base);
+    margin-top: var(--space-4);
   }
 
-  .plan-button:hover {
-    transform: translateY(-2px);
+  /* Featured card button - solid purple */
+  .featured .plan-button {
+    background: var(--gradient-primary);
+    color: white;
+    border-color: transparent;
+  }
+
+  .featured .plan-button:hover {
+    transform: translateY(-2px) scale(1.02);
     box-shadow: var(--shadow-hover);
+  }
+
+  /* Other cards - outlined style */
+  .pricing-card:not(.featured) .plan-button {
+    background: transparent;
+    border-color: var(--brand-purple-primary);
+    color: var(--brand-purple-primary);
+  }
+
+  .pricing-card:not(.featured) .plan-button:hover {
+    background: var(--brand-purple-primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
   }
 
   @media (min-width: 768px) {

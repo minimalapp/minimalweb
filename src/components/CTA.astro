@@ -38,75 +38,139 @@ const { title, subtitle, emailPlaceholder, urlPlaceholder, buttonText, footnote 
 
 <style>
   .cta {
-    padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: var(--space-10) var(--section-padding-left) calc(var(--space-10) + var(--space-3)) var(--section-padding-right); /* 80px top, 100px bottom */
+    background: linear-gradient(135deg, var(--brand-purple-primary) 0%, var(--brand-purple-dark) 50%, #5B21B6 100%); /* Dynamic purple gradient */
     color: white;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+    clip-path: polygon(0 0, 100% 4%, 100% 100%, 0 96%); /* Angled clip-path */
+  }
+
+  /* Noise overlay for texture */
+  .cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.05;
+    pointer-events: none;
+  }
+
+  /* Gradient orb animation */
+  .cta::after {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    top: -250px;
+    right: -100px;
+    animation: float 20s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    33% {
+      transform: translate(50px, 100px) scale(1.1);
+    }
+    66% {
+      transform: translate(-30px, 80px) scale(0.9);
+    }
   }
 
   .container {
     max-width: 800px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
   }
 
   .cta-title {
-    font-size: clamp(1.75rem, 4vw, 2.75rem);
-    margin-bottom: 1rem;
+    font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-4xl)); /* Increased */
+    margin-bottom: var(--space-2); /* 16px */
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
   }
 
   .cta-subtitle {
-    font-size: 1.1rem;
-    margin-bottom: 2.5rem;
+    font-size: calc(var(--font-size-lg) + 2px); /* Increased by 2px to ~20px */
+    margin-bottom: var(--space-6); /* Increased from 2.5rem to 48px */
     opacity: 0.95;
+    line-height: var(--line-height-relaxed);
   }
 
   .cta-form {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 1rem;
+    gap: var(--space-2); /* 16px */
+    margin-bottom: var(--space-3); /* 24px */
   }
 
   .cta-input {
-    padding: 1rem 1.5rem;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 50px;
-    font-size: 1rem;
-    background: rgba(255, 255, 255, 0.1);
+    padding: 16px 24px; /* 52px total height */
+    height: 52px;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-radius: 12px; /* Changed from 50px to 12px */
+    font-size: var(--font-size-base);
+    background: rgba(255, 255, 255, 0.12);
     color: white;
-    transition: border-color 0.3s, background 0.3s;
+    transition: all var(--transition-base);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Added shadow */
   }
 
   .cta-input::placeholder {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.65);
   }
 
   .cta-input:focus {
     outline: none;
-    border-color: rgba(255, 255, 255, 0.6);
-    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.18);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25); /* Enhanced shadow on focus */
+    transform: translateY(-1px);
   }
 
   .cta-button {
-    padding: 1rem 2.5rem;
+    padding: 16px 40px; /* Increased padding */
+    min-height: 52px; /* Match input height */
     background: white;
-    color: #667eea;
+    color: var(--brand-purple-primary);
     border: none;
-    border-radius: 50px;
-    font-size: 1.1rem;
-    font-weight: 600;
+    border-radius: var(--radius-md); /* Changed from 50px to 12px */
+    font-size: var(--font-size-lg); /* Increased */
+    font-weight: var(--font-weight-semibold);
     cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-lg);
   }
 
   .cta-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35); /* Enhanced shadow */
+    background: var(--gray-50); /* Slight color change */
+  }
+
+  .cta-button:active {
+    transform: translateY(0);
+  }
+
+  .cta-button:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 2px;
   }
 
   .cta-footnote {
-    font-size: 0.9rem;
+    font-size: var(--font-size-base); /* Increased from 0.9rem */
     opacity: 0.9;
+    margin-top: var(--space-2);
   }
 
   @media (min-width: 640px) {
@@ -122,6 +186,13 @@ const { title, subtitle, emailPlaceholder, urlPlaceholder, buttonText, footnote 
 
     .cta-button {
       flex-shrink: 0;
+    }
+  }
+
+  /* Scroll animation */
+  @media (prefers-reduced-motion: no-preference) {
+    .cta {
+      animation: fadeIn 0.8s ease-out;
     }
   }
 </style>

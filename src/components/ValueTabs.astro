@@ -75,7 +75,7 @@ const { title, tabs, businessOwners, marketing, developers, endUsers, locale } =
     button.addEventListener('click', function() {
       // Remove active from all buttons
       tabButtons.forEach(btn => btn.classList.remove('active'));
-      
+
       // Add active to clicked button
       this.classList.add('active');
 
@@ -83,8 +83,15 @@ const { title, tabs, businessOwners, marketing, developers, endUsers, locale } =
       const tabKey = this.getAttribute('data-tab') as keyof typeof benefitContents;
       const content = benefitContents[tabKey];
 
-      // Update benefit list
+      // Update benefit list with fade animation
       if (benefitList && content) {
+        // Trigger fade out by removing animation
+        benefitList.style.animation = 'none';
+
+        // Force reflow
+        void benefitList.offsetWidth;
+
+        // Update content
         benefitList.innerHTML = content.map((item: any) => `
           <div class="benefit-item">
             <div class="benefit-icon">${item.icon}</div>
@@ -94,6 +101,9 @@ const { title, tabs, businessOwners, marketing, developers, endUsers, locale } =
             </div>
           </div>
         `).join('');
+
+        // Trigger fade in
+        benefitList.style.animation = 'fadeIn 0.4s ease-out';
       }
     });
   });
@@ -108,13 +118,14 @@ const { title, tabs, businessOwners, marketing, developers, endUsers, locale } =
 <style>
   .value-section {
     padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
-    background: #f7fafc;
+    background: var(--bg-primary); /* Changed from #f7fafc */
   }
 
   .section-title {
     text-align: center;
-    margin-bottom: 3rem;
-    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    margin-bottom: var(--space-6); /* Changed from 3rem to 48px */
+    font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-4xl));
+    color: var(--text-primary);
   }
 
   .tabs-wrapper {
@@ -125,77 +136,110 @@ const { title, tabs, businessOwners, marketing, developers, endUsers, locale } =
   .tab-buttons {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: var(--space-2); /* Changed from 1rem to 16px */
     justify-content: center;
-    margin-bottom: 3rem;
+    margin-bottom: var(--space-4); /* Changed from 3rem to 32px */
   }
 
   .tab-button {
-    padding: 0.75rem 1.5rem;
-    border: 2px solid #e2e8f0;
-    background: white;
-    border-radius: 25px;
+    padding: 14px 28px; /* Increased from 0.75rem 1.5rem */
+    border: none; /* Removed border */
+    border-bottom: 3px solid transparent; /* Added for active state */
+    background: var(--bg-secondary); /* Changed from white */
+    border-radius: var(--radius-sm); /* Changed from 25px to 8px */
     cursor: pointer;
-    transition: all 0.3s;
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--text-dark);
+    transition: all var(--transition-base);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    color: var(--text-secondary);
+    opacity: 0.7; /* Inactive state opacity */
+    position: relative;
   }
 
   .tab-button:hover {
-    background: #f8f9fa;
+    background: var(--bg-tertiary); /* Changed from #f8f9fa */
+    opacity: 0.9; /* Slightly more visible on hover */
   }
 
   .tab-button.active {
-    background: var(--gradient-primary);
-    color: white;
-    border-color: transparent;
+    background: var(--bg-primary); /* Changed from gradient */
+    color: var(--brand-purple-primary); /* Changed to purple text */
+    opacity: 1; /* Full opacity when active */
+    border-bottom-color: var(--brand-purple-primary); /* 3px purple underline */
+    font-weight: var(--font-weight-semibold); /* Bolder when active */
+  }
+
+  .tab-button:focus-visible {
+    outline: 2px solid var(--brand-purple-primary);
+    outline-offset: 2px;
+  }
+
+  .tab-content {
+    padding-top: var(--space-3); /* Added 20px+ top padding */
   }
 
   .benefit-list {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: var(--space-4); /* Changed from 2rem to 32px */
+    opacity: 1;
+    animation: fadeIn 0.4s ease-out; /* Added fade animation */
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .benefit-item {
     display: flex;
-    gap: 1.5rem;
+    gap: var(--space-3); /* Changed from 1.5rem to 24px */
     align-items: flex-start;
-    padding: 1.5rem;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s, box-shadow 0.3s;
+    padding: var(--space-4); /* Changed from 1.5rem to 32px */
+    background: var(--bg-tertiary); /* Changed from white */
+    border-radius: var(--radius-md); /* Consistent 12px */
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+    border: 1px solid rgba(0, 0, 0, 0.04); /* Subtle border */
   }
 
   .benefit-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px); /* Reduced from -4px */
+    box-shadow: var(--shadow-md); /* Increased shadow */
   }
 
   .benefit-icon {
-    font-size: 2rem;
+    font-size: 1.5rem; /* Reduced by ~15% from 2rem */
     flex-shrink: 0;
-    width: 50px;
-    height: 50px;
+    width: 42px; /* Reduced by ~15% from 50px */
+    height: 42px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(33, 150, 243, 0.1);
-    border-radius: 12px;
+    background: rgba(99, 102, 241, 0.08); /* Brand purple instead of blue */
+    border-radius: var(--radius-sm); /* Consistent 8px */
+    color: var(--brand-purple-primary); /* Purple checkmark */
+    font-weight: var(--font-weight-bold);
   }
 
   .benefit-item h4 {
-    margin: 0 0 0.5rem 0;
-    font-size: 1.25rem;
-    color: var(--text-dark);
+    margin: 0 0 var(--space-1) 0; /* Changed from 0.5rem to 8px */
+    font-size: var(--font-size-xl); /* Increased from 1.25rem */
+    color: var(--text-primary);
+    font-weight: var(--font-weight-semibold); /* Changed to 600 */
   }
 
   .benefit-item p {
     margin: 0;
-    color: var(--text-light);
-    line-height: 1.6;
+    color: var(--text-tertiary); /* Darkened from var(--text-light) */
+    line-height: var(--line-height-relaxed); /* 1.6 */
+    font-size: 15px; /* Slightly increased */
   }
 
   @media (min-width: 768px) {
