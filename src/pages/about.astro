@@ -25,6 +25,16 @@ const description = 'Transforming how websites interact with their users through
           <div class="content-block">
             <h2>Our Story</h2>
             <p>Minimal was born from a simple yet revolutionary vision: to transform traditional static websites into intelligent conversational experiences that maintain brand identity while offering completely new interaction.</p>
+
+            <div class="subsection">
+              <h3>The Problem We Solve</h3>
+              <p>Traditional websites are static and one-directional. Users struggle to find information, navigation is complex, and companies miss valuable insights about what their visitors really need. The disconnect between user intent and website structure creates friction and lost opportunities.</p>
+            </div>
+
+            <div class="subsection">
+              <h3>Our Approach</h3>
+              <p>We believe the solution isn't replacing websites but enhancing them. By adding a conversational AI layer that understands your content and preserves your brand, we transform existing websites into intelligent assistants. One line of code unlocks natural language interaction, automatic content synchronization, and deep behavioral insights.</p>
+            </div>
           </div>
 
           <div class="content-block">
@@ -35,6 +45,45 @@ const description = 'Transforming how websites interact with their users through
           <div class="content-block">
             <h2>Our Vision</h2>
             <p>We envision a future where every website is an intelligent conversational experience, where users can interact naturally with content and where companies gain deep insights into their customers' real needs.</p>
+
+            <div class="subsection">
+              <h3>Technological Impact</h3>
+              <p>We're pioneering a new paradigm in web interaction. As AI becomes more sophisticated, the gap between static content and user expectations widens. We're building the bridge that makes every website intelligent, accessible, and insightful—creating a new standard for digital experiences.</p>
+            </div>
+          </div>
+
+          <div class="content-block">
+            <h2>Our Values</h2>
+            <ul class="values-list">
+              <li><strong>Simplicity First:</strong> Complex technology should deliver simple experiences. We obsess over making powerful AI accessible through effortless integration.</li>
+              <li><strong>Brand Integrity:</strong> Your identity matters. We enhance websites without replacing them, preserving the unique character that makes your brand recognizable.</li>
+              <li><strong>Privacy & Trust:</strong> User data is sacred. We build with privacy by design, transparency in our processes, and unwavering commitment to data protection.</li>
+              <li><strong>Continuous Innovation:</strong> AI evolves rapidly, and so do we. We're committed to staying at the forefront of conversational technology while maintaining reliability.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="why-choose-section">
+      <div class="container">
+        <h2>Why Choose Us?</h2>
+        <div class="reasons-grid">
+          <div class="reason-card">
+            <h3>Advanced Technology</h3>
+            <p>We leverage cutting-edge natural language processing and machine learning models to deliver human-like conversations. Our AI understands context, remembers previous interactions, and continuously learns from your content. Built on enterprise-grade infrastructure, our platform ensures 99.9% uptime and lightning-fast response times.</p>
+          </div>
+          <div class="reason-card">
+            <h3>Simple Implementation</h3>
+            <p>Get started in minutes, not months. Our one-line integration means no complex installations, no API wrestling, no technical headaches. Just copy, paste, and watch your website transform. Automatic content synchronization keeps everything up-to-date without manual intervention. It's sophisticated technology made simple.</p>
+          </div>
+          <div class="reason-card">
+            <h3>Deep Analytics</h3>
+            <p>Go beyond page views and bounce rates. See what users actually want, which questions they ask, where they get stuck, and what content resonates. Our analytics dashboard reveals user intent patterns, conversation flows, and engagement metrics that traditional analytics miss—turning interactions into actionable insights.</p>
+          </div>
+          <div class="reason-card">
+            <h3>Scalability</h3>
+            <p>From startup to enterprise, we scale with you. Our infrastructure handles everything from 100 to 10 million monthly conversations without performance degradation. Pay only for what you use with transparent, flexible pricing. Add features, languages, and capabilities as you grow—no platform migrations, no rebuilding required.</p>
           </div>
         </div>
       </div>
@@ -45,13 +94,15 @@ const description = 'Transforming how websites interact with their users through
         <h2>Our Team</h2>
         <div class="team-grid">
           <div class="team-member">
+            <div class="avatar">PW</div>
             <h3>Pablo Wolfus</h3>
-            <p class="role">Co-Founder & CEO</p>
+            <span class="role-badge">Co-Founder & CEO</span>
             <p>Technology visionary with experience in product and development. Specialized in transforming complex ideas into simple and scalable solutions.</p>
           </div>
           <div class="team-member">
+            <div class="avatar">GV</div>
             <h3>Guido Valente</h3>
-            <p class="role">Co-Founder & CTO</p>
+            <span class="role-badge">Co-Founder & CTO</span>
             <p>Software architect expert in AI and distributed systems. Leads the technical development of our conversational platform.</p>
           </div>
         </div>
@@ -68,21 +119,24 @@ const description = 'Transforming how websites interact with their users through
   }
 
   .hero-section {
-    padding: calc(var(--section-padding-y) + 2rem) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
-    background: linear-gradient(180deg, #f7fafc 0%, #ffffff 100%);
+    padding: calc(var(--section-padding-y) + var(--space-4)) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
+    background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
     text-align: center;
   }
 
   .hero-section h1 {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    margin-bottom: 1.5rem;
+    font-size: clamp(var(--font-size-3xl), 5vw, var(--font-size-5xl));
+    margin-bottom: var(--space-3);
+    color: var(--text-primary);
+    font-weight: var(--font-weight-bold);
   }
 
   .subtitle {
-    font-size: clamp(1.1rem, 2vw, 1.5rem);
-    color: var(--text-light);
+    font-size: clamp(calc(var(--font-size-lg) + 1px), 2vw, var(--font-size-2xl));
+    color: var(--text-secondary);
     max-width: 800px;
     margin: 0 auto;
+    line-height: var(--line-height-relaxed);
   }
 
   .content-section {
@@ -92,60 +146,195 @@ const description = 'Transforming how websites interact with their users through
   .content-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: var(--space-6);
     max-width: 900px;
     margin: 0 auto;
   }
 
   .content-block h2 {
-    margin-bottom: 1rem;
-    color: var(--text-dark);
+    margin-bottom: var(--space-2);
+    color: var(--text-primary);
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-semibold);
   }
 
   .content-block p {
-    color: var(--text-light);
-    line-height: 1.8;
+    color: var(--text-secondary);
+    line-height: var(--line-height-loose);
+    font-size: var(--font-size-lg);
+  }
+
+  .subsection {
+    margin-top: var(--space-5);
+    padding-left: var(--space-4);
+    border-left: 3px solid var(--brand-purple-primary);
+  }
+
+  .subsection h3 {
+    font-size: var(--font-size-xl);
+    color: var(--text-primary);
+    margin-bottom: var(--space-2);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .subsection p {
+    color: var(--text-secondary);
+    line-height: var(--line-height-loose);
+    font-size: var(--font-size-base);
+  }
+
+  .values-list {
+    list-style: none;
+    padding: 0;
+    margin-top: var(--space-4);
+  }
+
+  .values-list li {
+    padding: var(--space-3);
+    margin-bottom: var(--space-3);
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    line-height: var(--line-height-loose);
+    font-size: var(--font-size-base);
+    border-left: 3px solid var(--brand-purple-primary);
+  }
+
+  .values-list li strong {
+    color: var(--text-primary);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .why-choose-section {
+    padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
+    background: var(--bg-secondary);
+  }
+
+  .why-choose-section h2 {
+    text-align: center;
+    margin-bottom: var(--space-6);
+    font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-4xl));
+    color: var(--text-primary);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .reasons-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .reason-card {
+    background: var(--bg-primary);
+    padding: var(--space-6);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+  }
+
+  .reason-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .reason-card h3 {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--space-3);
+    color: var(--brand-purple-primary);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .reason-card p {
+    color: var(--text-secondary);
+    line-height: var(--line-height-loose);
+    font-size: var(--font-size-base);
   }
 
   .team-section {
     padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
-    background: var(--bg-light);
+    background: var(--bg-primary);
   }
 
   .team-section h2 {
     text-align: center;
-    margin-bottom: 3rem;
-    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    margin-bottom: var(--space-6);
+    font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-4xl));
+    color: var(--text-primary);
+    font-weight: var(--font-weight-bold);
   }
 
   .team-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2rem;
-    max-width: 800px;
+    gap: var(--space-5);
+    max-width: 900px;
     margin: 0 auto;
   }
 
   .team-member {
-    background: white;
-    padding: 2rem;
-    border-radius: 12px;
+    background: var(--bg-tertiary);
+    padding: var(--space-6);
+    border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    text-align: center;
+  }
+
+  .team-member:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--brand-purple-primary) 0%, var(--brand-purple-secondary) 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    margin: 0 auto var(--space-4);
+    box-shadow: 0 4px 12px rgba(138, 43, 226, 0.2);
   }
 
   .team-member h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--space-3);
+    color: var(--text-primary);
+    font-weight: var(--font-weight-semibold);
   }
 
-  .role {
-    color: var(--brand-blue);
-    font-weight: 600;
-    margin-bottom: 1rem;
+  .role-badge {
+    display: inline-block;
+    background: var(--brand-purple-primary);
+    color: white;
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-3);
+    box-shadow: 0 2px 8px rgba(138, 43, 226, 0.15);
+  }
+
+  .team-member p {
+    color: var(--text-secondary);
+    line-height: var(--line-height-loose);
+    font-size: var(--font-size-base);
   }
 
   @media (min-width: 768px) {
     .team-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .reasons-grid {
       grid-template-columns: repeat(2, 1fr);
     }
   }

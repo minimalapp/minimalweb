@@ -1,4 +1,6 @@
 ---
+import type { Locale } from '@/i18n/utils';
+
 export interface BenefitItem {
   icon: string;
   title: string;
@@ -17,13 +19,13 @@ export interface Props {
   marketing: BenefitItem[];
   developers: BenefitItem[];
   endUsers: BenefitItem[];
-  locale: string;
+  locale: Locale;
 }
 
 const { title, tabs, businessOwners, marketing, developers, endUsers, locale } = Astro.props;
 ---
 
-<section class="value-section" id="beneficios">
+<section class="value-section" id={locale === 'es' ? 'beneficios' : 'benefits'}>
   <div class="container">
     <h2 class="section-title">{title}</h2>
     <div class="tabs-wrapper">
@@ -72,7 +74,7 @@ const { title, tabs, businessOwners, marketing, developers, endUsers, locale } =
   const benefitList = document.querySelector('.benefit-list');
 
   tabButtons.forEach(button => {
-    button.addEventListener('click', function() {
+    button.addEventListener('click', function(this: HTMLButtonElement) {
       // Remove active from all buttons
       tabButtons.forEach(btn => btn.classList.remove('active'));
 
@@ -85,14 +87,16 @@ const { title, tabs, businessOwners, marketing, developers, endUsers, locale } =
 
       // Update benefit list with fade animation
       if (benefitList && content) {
+        const listElement = benefitList as HTMLElement;
+
         // Trigger fade out by removing animation
-        benefitList.style.animation = 'none';
+        listElement.style.animation = 'none';
 
         // Force reflow
-        void benefitList.offsetWidth;
+        void listElement.offsetWidth;
 
         // Update content
-        benefitList.innerHTML = content.map((item: any) => `
+        listElement.innerHTML = content.map((item: any) => `
           <div class="benefit-item">
             <div class="benefit-icon">${item.icon}</div>
             <div>
@@ -103,17 +107,17 @@ const { title, tabs, businessOwners, marketing, developers, endUsers, locale } =
         `).join('');
 
         // Trigger fade in
-        benefitList.style.animation = 'fadeIn 0.4s ease-out';
+        listElement.style.animation = 'fadeIn 0.4s ease-out';
       }
     });
   });
 </script>
 
 <!-- Hidden data for client-side script -->
-<script id="businessOwners-data" type="application/json" set:html={JSON.stringify(businessOwners)}></script>
-<script id="marketing-data" type="application/json" set:html={JSON.stringify(marketing)}></script>
-<script id="developers-data" type="application/json" set:html={JSON.stringify(developers)}></script>
-<script id="endUsers-data" type="application/json" set:html={JSON.stringify(endUsers)}></script>
+<script id="businessOwners-data" type="application/json" is:inline set:html={JSON.stringify(businessOwners)}></script>
+<script id="marketing-data" type="application/json" is:inline set:html={JSON.stringify(marketing)}></script>
+<script id="developers-data" type="application/json" is:inline set:html={JSON.stringify(developers)}></script>
+<script id="endUsers-data" type="application/json" is:inline set:html={JSON.stringify(endUsers)}></script>
 
 <style>
   .value-section {

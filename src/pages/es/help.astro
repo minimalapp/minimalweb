@@ -13,23 +13,322 @@ const locale = 'es';
       <div class="container">
         <h1>Centro de Ayuda</h1>
         <p class="subtitle">Obtén ayuda y encuentra respuestas a preguntas comunes sobre Minimal.</p>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+          <input type="text" class="search-input" placeholder="Buscar en la documentación..." />
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.35-4.35"></path>
+          </svg>
+        </div>
       </div>
     </section>
+
+    <!-- Help Categories -->
     <section class="content-section">
       <div class="container">
-        <div class="faq-grid">
-          <div class="faq-item">
-            <h3>¿Cómo empiezo?</h3>
-            <p>Simplemente regístrate, agrega la URL de tu sitio web, personaliza tus configuraciones y copia el código de integración a tu sitio.</p>
+        <h2>Explorar por Categoría</h2>
+        <div class="categories-grid">
+          <a href="#primeros-pasos" class="category-card">
+            <div class="category-icon">🚀</div>
+            <h3>Primeros Pasos</h3>
+            <p>Aprende lo básico y configura Minimal</p>
+          </a>
+
+          <a href="#integracion" class="category-card">
+            <div class="category-icon">🔌</div>
+            <h3>Guía de Integración</h3>
+            <p>Instrucciones específicas por plataforma</p>
+          </a>
+
+          <a href="#personalizacion" class="category-card">
+            <div class="category-icon">🎨</div>
+            <h3>Personalización</h3>
+            <p>Personaliza apariencia y comportamiento</p>
+          </a>
+
+          <a href="#analiticas" class="category-card">
+            <div class="category-icon">📊</div>
+            <h3>Analíticas</h3>
+            <p>Comprende tus métricas</p>
+          </a>
+
+          <a href="#solucion-problemas" class="category-card">
+            <div class="category-icon">🔧</div>
+            <h3>Solución de Problemas</h3>
+            <p>Problemas comunes y soluciones</p>
+          </a>
+
+          <a href="#api" class="category-card">
+            <div class="category-icon">💻</div>
+            <h3>Referencia API</h3>
+            <p>Documentación para desarrolladores</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Getting Started -->
+    <section id="primeros-pasos" class="content-section bg-secondary">
+      <div class="container">
+        <h2>🚀 Primeros Pasos con Minimal</h2>
+
+        <div class="steps-container">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3>Crea tu Cuenta</h3>
+              <p>Regístrate en <a href="https://minimal.lat" target="_blank">minimal.lat</a> con tu email. Obtendrás acceso al panel donde puedes administrar todos tus sitios.</p>
+            </div>
           </div>
-          <div class="faq-item">
-            <h3>¿Qué plataformas son compatibles?</h3>
-            <p>Minimal funciona con cualquier plataforma web incluyendo WordPress, Shopify, Wix, Squarespace y sitios personalizados.</p>
+
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3>Agrega tu Sitio Web</h3>
+              <p>Haz clic en "Agregar Nuevo Sitio" en tu panel, ingresa la URL de tu sitio web y recibirás un Site ID único. Este ID conecta Minimal con tu sitio web.</p>
+            </div>
           </div>
-          <div class="faq-item">
-            <h3>¿Cuánto cuesta?</h3>
-            <p>Ofrecemos planes desde $19/mes. Visita nuestra página de precios para información detallada.</p>
+
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3>Instala el Script</h3>
+              <p>Copia el script proporcionado y pégalo antes de la etiqueta de cierre <code>&lt;/body&gt;</code> en tu sitio web. El widget aparecerá automáticamente.</p>
+              <div class="code-block">
+                <code>&lt;script src="https://minimal.lat/embed.js" data-site-id="tu-site-id"&gt;&lt;/script&gt;</code>
+              </div>
+            </div>
           </div>
+
+          <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <h3>Personaliza y Lanza</h3>
+              <p>Desde tu panel, personaliza colores, posición, mensajes de saludo y más. Los cambios se aplican instantáneamente – ¡no necesitas actualizar tu código!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Advanced Customization -->
+    <section id="personalizacion" class="content-section">
+      <div class="container">
+        <h2>🎨 Personalización Avanzada</h2>
+
+        <h3>Configuración Usando Atributos</h3>
+        <p>Puedes personalizar Minimal directamente en la etiqueta script usando atributos de datos:</p>
+
+        <div class="code-block">
+          <code>&lt;script
+  src="https://minimal.lat/embed.js"
+  data-site-id="tu-site-id"
+  data-position="bottom-right"
+  data-theme="auto"
+  data-language="es"
+&gt;&lt;/script&gt;</code>
+        </div>
+
+        <h3>Opciones de Personalización</h3>
+        <div class="options-list">
+          <div class="option-item">
+            <strong>Posición:</strong> <code>bottom-right</code>, <code>bottom-left</code>, <code>top-right</code>, <code>top-left</code>
+          </div>
+          <div class="option-item">
+            <strong>Tema:</strong> <code>light</code>, <code>dark</code>, <code>auto</code> (sigue la preferencia del sistema)
+          </div>
+          <div class="option-item">
+            <strong>Idioma:</strong> <code>en</code>, <code>es</code>, <code>fr</code>, <code>de</code>, <code>pt</code>, y más
+          </div>
+          <div class="option-item">
+            <strong>Saludo:</strong> Cualquier texto personalizado para el mensaje inicial
+          </div>
+          <div class="option-item">
+            <strong>Color Primario:</strong> Código de color hexadecimal (ej. <code>#10b981</code>)
+          </div>
+        </div>
+
+        <h3>Configuración Avanzada con JavaScript</h3>
+        <p>Para mayor control, usa configuración JavaScript:</p>
+
+        <div class="code-block">
+          <pre><code>window.MinimalConfig = &#123;
+  siteId: 'tu-site-id',
+  position: 'bottom-right',
+  theme: 'auto',
+  language: 'es',
+  greeting: '¡Hola! ¿En qué podemos ayudarte?',
+  placeholder: 'Escribe tu mensaje...',
+
+  // Opciones avanzadas
+  autoOpen: false,
+  autoOpenDelay: 3000, // milisegundos
+  hideOnPages: ['/checkout', '/payment'],
+  showOnPages: ['*'], // todas las páginas por defecto
+
+  // Estilos
+  customColors: &#123;
+    primary: '#10b981',
+    background: '#ffffff',
+    text: '#1f2937'
+  &#125;,
+
+  // Comportamiento
+  collectEmail: true,
+  requireEmail: false,
+  enableFileUploads: true,
+  maxFileSize: 10 // MB
+&#125;;
+
+&lt;script src="https://minimal.lat/embed.js"&gt;&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Analytics -->
+    <section id="analiticas" class="content-section bg-secondary">
+      <div class="container">
+        <h2>📊 Comprende tus Analíticas</h2>
+
+        <div class="analytics-sections">
+          <div class="analytics-section">
+            <h3>Métricas de Engagement</h3>
+            <p>Rastrea cómo los visitantes interactúan con tu chat:</p>
+            <ul>
+              <li><strong>Vistas del Widget:</strong> Número de veces que se mostró el widget</li>
+              <li><strong>Tasa de Apertura:</strong> Porcentaje de visitantes que abrieron el chat</li>
+              <li><strong>Mensajes Enviados:</strong> Total de mensajes de visitantes</li>
+              <li><strong>Conversaciones Iniciadas:</strong> Nuevos hilos de conversación</li>
+              <li><strong>Tiempo Promedio de Respuesta:</strong> Qué tan rápido respondes</li>
+            </ul>
+          </div>
+
+          <div class="analytics-section">
+            <h3>Insights de Usuarios</h3>
+            <p>Comprende el comportamiento de tus visitantes:</p>
+            <ul>
+              <li><strong>Horas Pico:</strong> Cuándo los visitantes son más activos</li>
+              <li><strong>Páginas Populares:</strong> Dónde comienzan las conversaciones</li>
+              <li><strong>Desglose por Dispositivo:</strong> Uso de escritorio vs. móvil</li>
+              <li><strong>Datos Geográficos:</strong> De dónde vienen tus visitantes</li>
+              <li><strong>Visitantes Recurrentes:</strong> Rastrea interacciones repetidas</li>
+            </ul>
+          </div>
+
+          <div class="analytics-section">
+            <h3>Seguimiento de Conversiones</h3>
+            <p>Mide el impacto en el negocio:</p>
+            <ul>
+              <li><strong>Tasa de Captura de Leads:</strong> Porcentaje de chats que recopilan emails</li>
+              <li><strong>Leads Calificados:</strong> Conversaciones marcadas como listas para ventas</li>
+              <li><strong>Completaciones de Objetivos:</strong> Eventos de conversión personalizados</li>
+              <li><strong>Atribución de Ingresos:</strong> Ventas vinculadas a interacciones de chat</li>
+              <li><strong>Métricas de ROI:</strong> Cálculos de retorno de inversión</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="content-section">
+      <div class="container">
+        <h2>Preguntas Frecuentes</h2>
+
+        <div class="faq-container">
+          <details class="faq-item">
+            <summary>
+              <span class="faq-question">¿Cómo personalizo los colores del widget?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </summary>
+            <div class="faq-answer">
+              <p>Puedes personalizar los colores de dos maneras:</p>
+              <ol>
+                <li><strong>Panel:</strong> Ve a Configuración → Apariencia y usa el selector de color para elegir los colores de tu marca.</li>
+                <li><strong>Código:</strong> Usa la opción <code>customColors</code> en la configuración JavaScript:</li>
+              </ol>
+              <div class="code-block">
+                <pre><code>customColors: &#123;
+  primary: '#10b981',    // Color de acento principal
+  background: '#ffffff', // Fondo del chat
+  text: '#1f2937'       // Color del texto
+&#125;</code></pre>
+              </div>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span class="faq-question">¿Puedo ocultar el widget en páginas específicas?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </summary>
+            <div class="faq-answer">
+              <p>¡Sí! Usa la opción de configuración <code>hideOnPages</code>:</p>
+              <div class="code-block">
+                <code>hideOnPages: ['/checkout', '/payment', '/admin/*']</code>
+              </div>
+              <p>Soporta comodines para coincidencia de patrones. También puedes usar <code>showOnPages</code> para mostrar solo en páginas específicas.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span class="faq-question">¿Cómo integro con Google Analytics?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </summary>
+            <div class="faq-answer">
+              <p>Minimal rastrea automáticamente eventos que puedes capturar en Google Analytics:</p>
+              <div class="code-block">
+                <pre><code>window.addEventListener('minimal:message', function(e) &#123;
+  gtag('event', 'chat_message_sent', &#123;
+    'event_category': 'engagement',
+    'event_label': 'Chat Interaction'
+  &#125;);
+&#125;);</code></pre>
+              </div>
+              <p>Consulta nuestra <a href="/es/integration">Guía de Integración</a> para más plataformas de analytics.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span class="faq-question">¿Qué pasa si alcanzo los límites de mi plan?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </summary>
+            <div class="faq-answer">
+              <p>Te notificaremos por email cuando alcances el 80% de los límites de tu plan. Si excedes:</p>
+              <ul>
+                <li><strong>Conversaciones:</strong> El widget sigue funcionando, pero necesitarás actualizar para acceder a nuevas conversaciones en el panel.</li>
+                <li><strong>Vistas de Página:</strong> El seguimiento continúa y puedes actualizar en cualquier momento para acceder a analíticas completas.</li>
+              </ul>
+              <p>Tus visitantes nunca verán ninguna interrupción en el servicio.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Need More Help -->
+    <section class="content-section cta-section">
+      <div class="container">
+        <div class="cta-box">
+          <h2>¿Necesitas Más Ayuda?</h2>
+          <p>¿No encuentras lo que buscas? Nuestro equipo de soporte está aquí para ayudarte.</p>
+          <div class="cta-buttons">
+            <a href="/es/contact" class="btn btn-primary">Contactar Soporte</a>
+            <a href="https://docs.minimal.lat" class="btn btn-secondary" target="_blank">Ver Documentación Completa</a>
+          </div>
+          <p class="cta-subtext">Tiempo promedio de respuesta: <strong>menos de 2 horas</strong></p>
         </div>
       </div>
     </section>
@@ -39,12 +338,89 @@ const locale = 'es';
 
 <style>
   main { padding-top: 60px; }
-  .hero-section { padding: calc(var(--section-padding-y) + 2rem) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right); background: linear-gradient(180deg, #f7fafc 0%, #ffffff 100%); text-align: center; }
-  .hero-section h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1.5rem; }
-  .subtitle { font-size: clamp(1.1rem, 2vw, 1.5rem); color: var(--text-light); max-width: 800px; margin: 0 auto; }
+  .hero-section { padding: calc(var(--section-padding-y) + var(--space-4)) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right); background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%); text-align: center; }
+  .hero-section h1 { font-size: clamp(var(--font-size-3xl), 5vw, var(--font-size-5xl)); margin-bottom: var(--space-3); color: var(--text-primary); font-weight: var(--font-weight-bold); }
+  .subtitle { font-size: clamp(calc(var(--font-size-lg) + 1px), 2vw, var(--font-size-2xl)); color: var(--text-secondary); line-height: var(--line-height-relaxed); max-width: 800px; margin: 0 auto; margin-bottom: var(--space-6); }
+
+  /* Search Bar */
+  .search-container { position: relative; max-width: 600px; margin: 0 auto; }
+  .search-input { width: 100%; padding: var(--space-4) var(--space-5) var(--space-4) var(--space-12); font-size: var(--font-size-lg); border: 2px solid var(--border-primary); border-radius: var(--radius-full); background: var(--bg-primary); color: var(--text-primary); transition: border-color var(--transition-base); }
+  .search-input:focus { outline: none; border-color: var(--brand-green); }
+  .search-icon { position: absolute; left: var(--space-4); top: 50%; transform: translateY(-50%); width: 24px; height: 24px; color: var(--text-tertiary); pointer-events: none; }
+
+  /* Content Sections */
   .content-section { padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right); }
-  .faq-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; max-width: 900px; margin: 0 auto; }
-  .faq-item { background: white; padding: 2rem; border-radius: 12px; box-shadow: var(--shadow-sm); }
-  .faq-item h3 { margin-bottom: 1rem; }
-  .faq-item p { color: var(--text-light); line-height: 1.6; }
+  .content-section .container { max-width: 1200px; margin: 0 auto; }
+  .content-section h2 { color: var(--text-primary); font-size: var(--font-size-3xl); margin-bottom: var(--space-8); text-align: center; }
+  .content-section h3 { color: var(--text-primary); font-size: var(--font-size-2xl); margin-top: var(--space-8); margin-bottom: var(--space-4); }
+  .content-section p { color: var(--text-secondary); font-size: var(--font-size-lg); line-height: var(--line-height-relaxed); margin-bottom: var(--space-4); }
+  .content-section a { color: var(--brand-green); text-decoration: none; }
+  .content-section a:hover { text-decoration: underline; }
+  .content-section ul, .content-section ol { color: var(--text-secondary); font-size: var(--font-size-lg); line-height: var(--line-height-relaxed); margin-bottom: var(--space-4); padding-left: var(--space-6); }
+  .content-section li { margin-bottom: var(--space-2); }
+  .content-section code { background: var(--bg-secondary); color: var(--brand-green); padding: 2px 6px; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 0.9em; }
+  .content-section strong { color: var(--text-primary); }
+
+  .bg-secondary { background: var(--bg-secondary); }
+
+  /* Categories Grid */
+  .categories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-6); margin-top: var(--space-8); }
+  .category-card { display: flex; flex-direction: column; align-items: center; text-align: center; background: var(--bg-primary); border: 1px solid var(--border-primary); border-radius: var(--radius-lg); padding: var(--space-6); text-decoration: none; transition: all var(--transition-base); }
+  .category-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--brand-green); }
+  .category-icon { font-size: 3rem; margin-bottom: var(--space-3); }
+  .category-card h3 { color: var(--text-primary); font-size: var(--font-size-xl); margin-bottom: var(--space-2); }
+  .category-card p { color: var(--text-secondary); font-size: var(--font-size-base); }
+
+  /* Steps */
+  .steps-container { display: flex; flex-direction: column; gap: var(--space-6); margin-top: var(--space-6); max-width: 900px; margin-left: auto; margin-right: auto; }
+  .step { display: flex; gap: var(--space-4); align-items: flex-start; }
+  .step-number { flex-shrink: 0; width: 48px; height: 48px; background: linear-gradient(135deg, var(--brand-green) 0%, #059669 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: var(--font-size-xl); font-weight: var(--font-weight-bold); }
+  .step-content { flex: 1; }
+  .step-content h3 { margin-top: 0; }
+
+  /* Code blocks */
+  .code-block { background: #0F1419; color: var(--brand-green); padding: var(--space-6); border-radius: var(--radius-md); overflow-x: auto; margin: var(--space-5) 0; box-shadow: var(--shadow-md); border: 1px solid rgba(255, 255, 255, 0.1); }
+  .code-block code { font-family: 'Courier New', monospace; font-size: var(--font-size-sm); white-space: pre; display: block; line-height: 1.6; }
+
+  /* Options List */
+  .options-list { background: var(--bg-primary); border: 1px solid var(--border-primary); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-6) 0; }
+  .option-item { padding: var(--space-3) 0; border-bottom: 1px solid var(--border-primary); }
+  .option-item:last-child { border-bottom: none; }
+  .option-item strong { color: var(--text-primary); }
+
+  /* Analytics Sections */
+  .analytics-sections { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-6); margin-top: var(--space-6); }
+  .analytics-section { background: var(--bg-primary); border: 1px solid var(--border-primary); border-radius: var(--radius-lg); padding: var(--space-6); }
+  .analytics-section h3 { margin-top: 0; }
+
+  /* FAQ */
+  .faq-container { max-width: 900px; margin: 0 auto; }
+  .faq-item { background: var(--bg-primary); border: 1px solid var(--border-primary); border-radius: var(--radius-lg); margin-bottom: var(--space-4); overflow: hidden; }
+  .faq-item summary { display: flex; align-items: center; justify-content: space-between; padding: var(--space-5); cursor: pointer; font-weight: var(--font-weight-semibold); color: var(--text-primary); user-select: none; transition: background var(--transition-base); }
+  .faq-item summary:hover { background: var(--bg-secondary); }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-question { font-size: var(--font-size-lg); flex: 1; }
+  .faq-icon { width: 24px; height: 24px; transition: transform var(--transition-base); }
+  .faq-item[open] .faq-icon { transform: rotate(180deg); }
+  .faq-answer { padding: 0 var(--space-5) var(--space-5) var(--space-5); color: var(--text-secondary); line-height: var(--line-height-relaxed); }
+
+  /* CTA Section */
+  .cta-section { background: var(--bg-secondary); }
+  .cta-box { text-align: center; max-width: 700px; margin: 0 auto; background: var(--bg-primary); border: 1px solid var(--border-primary); border-radius: var(--radius-xl); padding: var(--space-10); }
+  .cta-box h2 { margin-bottom: var(--space-3); }
+  .cta-buttons { display: flex; gap: var(--space-4); justify-content: center; margin: var(--space-6) 0; flex-wrap: wrap; }
+  .btn { padding: var(--space-3) var(--space-6); border-radius: var(--radius-md); font-weight: var(--font-weight-semibold); font-size: var(--font-size-lg); text-decoration: none; transition: all var(--transition-base); display: inline-block; }
+  .btn-primary { background: var(--brand-green); color: white; }
+  .btn-primary:hover { background: #059669; transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .btn-secondary { background: transparent; color: var(--text-primary); border: 2px solid var(--border-primary); }
+  .btn-secondary:hover { border-color: var(--brand-green); color: var(--brand-green); }
+  .cta-subtext { color: var(--text-tertiary); font-size: var(--font-size-sm); margin-top: var(--space-4); }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .step { flex-direction: column; text-align: center; }
+    .step-number { margin: 0 auto; }
+    .categories-grid { grid-template-columns: 1fr; }
+    .cta-buttons { flex-direction: column; }
+  }
 </style>

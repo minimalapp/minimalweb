@@ -11,17 +11,387 @@ const locale = 'es';
   <main>
     <section class="hero-section">
       <div class="container">
-        <h1>Guías</h1>
-        <p class="subtitle">Guías paso a paso para ayudarte a aprovechar al máximo Minimal.</p>
+        <h1>Guías y Documentación</h1>
+        <p class="subtitle">Todo lo que necesitas para dominar Minimal y maximizar las conversiones de tu sitio web.</p>
       </div>
     </section>
+
+    <!-- Category Overview -->
     <section class="content-section">
       <div class="container">
+        <h2>Explorar Guías por Tema</h2>
         <div class="guide-grid">
-          <div class="guide-card"><h3>Comenzando</h3><p>Aprende cómo configurar Minimal en tu sitio web en minutos.</p></div>
-          <div class="guide-card"><h3>Personalización</h3><p>Personaliza colores, comportamiento y apariencia para que coincida con tu marca.</p></div>
-          <div class="guide-card"><h3>Analytics</h3><p>Comprende y aprovecha el panel de analytics para obtener insights.</p></div>
-          <div class="guide-card"><h3>Mejores Prácticas</h3><p>Consejos y trucos para maximizar conversiones y engagement.</p></div>
+          <div class="guide-card">
+            <div class="guide-icon">🚀</div>
+            <h3>Inicio Rápido</h3>
+            <p>Ponte en marcha en minutos con nuestra guía de instalación paso a paso.</p>
+          </div>
+          <div class="guide-card">
+            <div class="guide-icon">🎨</div>
+            <h3>Personalización</h3>
+            <p>Haz que Minimal se ajuste a tu marca con colores, posiciones y mensajes personalizados.</p>
+          </div>
+          <div class="guide-card">
+            <div class="guide-icon">✍️</div>
+            <h3>Contenido y Textos</h3>
+            <p>Escribe mensajes efectivos que impulsen el engagement y las conversiones.</p>
+          </div>
+          <div class="guide-card">
+            <div class="guide-icon">💬</div>
+            <h3>Diseño Conversacional</h3>
+            <p>Diseña flujos de conversación que se sientan naturales y útiles.</p>
+          </div>
+          <div class="guide-card">
+            <div class="guide-icon">📊</div>
+            <h3>Analítica y KPIs</h3>
+            <p>Rastrea lo que importa y realiza mejoras basadas en datos.</p>
+          </div>
+          <div class="guide-card">
+            <div class="guide-icon">⚙️</div>
+            <h3>Configuración Avanzada</h3>
+            <p>APIs JavaScript, eventos y opciones de configuración avanzada.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Start Guide -->
+    <section class="content-section bg-secondary">
+      <div class="container">
+        <h2>🚀 Guía de Inicio Rápido</h2>
+        <p class="section-intro">Sigue estos pasos para poner Minimal en funcionamiento en tu sitio web:</p>
+
+        <div class="steps-container">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3>Regístrate y Obtén tu ID de Sitio</h3>
+              <p>Crea tu cuenta gratuita en minimal.lat y agrega tu sitio web. Recibirás instantáneamente un ID de Sitio único.</p>
+              <div class="code-block">
+                <code>Your Site ID: xyz-abc-123</code>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3>Agrega el Código de Integración</h3>
+              <p>Copia este código y pégalo antes de la etiqueta de cierre <code>&lt;/body&gt;</code> en cada página donde quieras que Minimal aparezca:</p>
+              <div class="code-block">
+                <code>&lt;script src="https://minimal.lat/embed.js"
+       data-site-id="YOUR_SITE_ID"&gt;
+&lt;/script&gt;</code>
+              </div>
+              <div class="tip-box">
+                <strong>💡 Consejo:</strong> Para WordPress, usa un plugin como "Insert Headers and Footers" para agregar este código en todo el sitio.
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3>Personaliza tu Widget</h3>
+              <p>Visita tu panel de control para personalizar colores, posición, mensajes de bienvenida y más. ¡Los cambios se aplican instantáneamente!</p>
+              <ul>
+                <li>Elige la posición del widget (inferior derecha, inferior izquierda, etc.)</li>
+                <li>Configura los colores de tu marca para que coincidan con tu sitio web</li>
+                <li>Escribe un mensaje de bienvenida acogedor</li>
+                <li>Configura cuándo y dónde mostrar el widget</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <h3>Prueba y Monitorea</h3>
+              <p>Visita tu sitio web para ver Minimal en acción. Consulta tu panel de analíticas para rastrear el engagement y optimizar el rendimiento.</p>
+              <div class="note-box">
+                <strong>⚠️ Nota:</strong> Limpia la caché de tu navegador (Ctrl+Shift+R) si no ves el widget inmediatamente.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content Optimization -->
+    <section class="content-section">
+      <div class="container">
+        <h2>✍️ Optimización de Contenido</h2>
+        <p class="section-intro">Crear los mensajes correctos puede mejorar dramáticamente tus tasas de engagement.</p>
+
+        <div class="optimization-grid">
+          <div class="optimization-card">
+            <h3>Mensajes de Bienvenida</h3>
+            <p><strong>Mejores Prácticas:</strong></p>
+            <ul>
+              <li>Sé amigable y accesible</li>
+              <li>Ofrece ayuda específica (no solo "¿Cómo podemos ayudarte?")</li>
+              <li>Usa lenguaje orientado a la acción</li>
+            </ul>
+            <p><strong>Ejemplos:</strong></p>
+            <div class="examples">
+              <div class="example good">✅ "¡Hola! ¿Buscas el plan perfecto? ¡Encontrémoslo juntos!"</div>
+              <div class="example bad">❌ "Hola. ¿Cómo puedo ayudarte hoy?"</div>
+            </div>
+          </div>
+
+          <div class="optimization-card">
+            <h3>Plantillas de Respuesta</h3>
+            <p><strong>Estructura tus respuestas:</strong></p>
+            <ul>
+              <li>Reconoce la pregunta</li>
+              <li>Proporciona una respuesta clara y concisa</li>
+              <li>Ofrece el siguiente paso o ayuda relacionada</li>
+            </ul>
+            <p><strong>Ejemplo:</strong></p>
+            <div class="example good">
+              "¡Excelente pregunta! Nuestro plan Pro incluye conversaciones ilimitadas.
+              ¿Te gustaría ver una comparación detallada de características?"
+            </div>
+          </div>
+
+          <div class="optimization-card">
+            <h3>Llamado a la Acción</h3>
+            <p><strong>Impulsa conversiones con CTAs claros:</strong></p>
+            <ul>
+              <li>Usa verbos de acción específicos</li>
+              <li>Crea urgencia cuando sea apropiado</li>
+              <li>Haz que los próximos pasos sean obvios</li>
+            </ul>
+            <p><strong>Ejemplos:</strong></p>
+            <div class="examples">
+              <div class="example good">✅ "Inicia tu prueba gratuita de 14 días"</div>
+              <div class="example good">✅ "Agenda una demo con nuestro equipo"</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Conversational Design -->
+    <section class="content-section bg-secondary">
+      <div class="container">
+        <h2>💬 Principios de Diseño Conversacional</h2>
+
+        <div class="design-grid">
+          <div class="design-card">
+            <h3>🎯 Sé Intencional</h3>
+            <p>Cada mensaje debe tener un objetivo claro. No chatees solo por chatear.</p>
+            <ul>
+              <li>Define cómo se ve el éxito</li>
+              <li>Guía a los usuarios hacia las acciones deseadas</li>
+              <li>Evita intercambios innecesarios</li>
+            </ul>
+          </div>
+
+          <div class="design-card">
+            <h3>🗣️ Suena Humano</h3>
+            <p>Escribe como hablas. Usa lenguaje natural y muestra personalidad.</p>
+            <ul>
+              <li>Usa contracciones (estamos, harás, no puedes)</li>
+              <li>Muestra empatía y comprensión</li>
+              <li>Evita la jerga corporativa</li>
+            </ul>
+          </div>
+
+          <div class="design-card">
+            <h3>⚡ Sé Conciso</h3>
+            <p>Respeta el tiempo de tus visitantes. Ve al grano rápidamente.</p>
+            <ul>
+              <li>Mantén los mensajes en 2-3 oraciones</li>
+              <li>Divide las respuestas largas en múltiples mensajes</li>
+              <li>Usa viñetas para las listas</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Metrics -->
+    <section class="content-section">
+      <div class="container">
+        <h2>📊 Métricas Clave y KPIs</h2>
+        <p class="section-intro">Rastrea estas métricas para medir y mejorar el rendimiento de tu chat:</p>
+
+        <div class="metrics-section">
+          <h3>Métricas de Engagement</h3>
+          <div class="metric-list">
+            <div class="metric-item">
+              <strong>Tasa de Apertura de Chat</strong>
+              <p>Porcentaje de visitantes que abren el widget de chat</p>
+              <div class="benchmark">📈 Referencia de la Industria: 3-7%</div>
+            </div>
+            <div class="metric-item">
+              <strong>Tasa de Mensajes</strong>
+              <p>Porcentaje de aperturas que resultan en un mensaje enviado</p>
+              <div class="benchmark">📈 Referencia de la Industria: 30-50%</div>
+            </div>
+            <div class="metric-item">
+              <strong>Tiempo de Respuesta</strong>
+              <p>Tiempo promedio hasta la primera respuesta</p>
+              <div class="benchmark">📈 Objetivo: Menos de 1 minuto</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="metrics-section">
+          <h3>Métricas de Conversión</h3>
+          <div class="metric-list">
+            <div class="metric-item">
+              <strong>Tasa de Captura de Leads</strong>
+              <p>Porcentaje de chats donde recopilas email/información de contacto</p>
+              <div class="benchmark">📈 Referencia de la Industria: 20-40%</div>
+            </div>
+            <div class="metric-item">
+              <strong>Tasa de Conversión</strong>
+              <p>Porcentaje de chats que resultan en la acción deseada</p>
+              <div class="benchmark">📈 Referencia de la Industria: 10-25%</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="metrics-section">
+          <h3>Métricas de Satisfacción</h3>
+          <div class="metric-list">
+            <div class="metric-item">
+              <strong>Puntuación CSAT</strong>
+              <p>Calificación de satisfacción del cliente (1-5 estrellas)</p>
+              <div class="benchmark">📈 Objetivo: 4.5+ / 5.0</div>
+            </div>
+            <div class="metric-item">
+              <strong>Tasa de Resolución</strong>
+              <p>Porcentaje de chats resueltos sin escalamiento</p>
+              <div class="benchmark">📈 Objetivo: 80%+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Advanced Setup -->
+    <section class="content-section bg-secondary">
+      <div class="container">
+        <h2>⚙️ Configuración Avanzada</h2>
+
+        <h3>Configuración Personalizada</h3>
+        <p>Usa el objeto de configuración JavaScript para control avanzado:</p>
+        <div class="code-block">
+          <pre><code>window.MinimalConfig = &#123;
+  siteId: 'your-site-id',
+
+  // Appearance
+  position: 'bottom-right',
+  theme: 'auto', // light, dark, or auto
+  primaryColor: '#10b981',
+
+  // Behavior
+  autoOpen: false,
+  autoOpenDelay: 5000, // ms
+  hideOnPages: ['/checkout', '/cart'],
+  showOnPages: ['*'], // all pages
+
+  // User tracking
+  identifyUsers: true,
+  persistConversations: true,
+
+  // Advanced
+  enableFileUploads: true,
+  maxFileSize: 10, // MB
+  allowedFileTypes: ['image/*', 'application/pdf']
+&#125;;
+
+&lt;script src="https://minimal.lat/embed.js"&gt;&lt;/script&gt;</code></pre>
+        </div>
+
+        <h3>Eventos y Callbacks</h3>
+        <p>Escucha eventos del widget para integrar con tus análisis y flujos de trabajo:</p>
+        <div class="code-block">
+          <pre><code>// Widget loaded and ready
+window.addEventListener('minimal:ready', function() &#123;
+  console.log('Minimal is ready!');
+&#125;);
+
+// Widget opened by user
+window.addEventListener('minimal:open', function() &#123;
+  // Track in analytics
+  gtag('event', 'chat_opened');
+&#125;);
+
+// Message sent by visitor
+window.addEventListener('minimal:message', function(e) &#123;
+  console.log('Message sent:', e.detail.message);
+
+  // Track in analytics
+  gtag('event', 'chat_message', &#123;
+    message_length: e.detail.message.length
+  &#125;);
+&#125;);
+
+// Lead captured (email collected)
+window.addEventListener('minimal:lead', function(e) &#123;
+  console.log('Lead captured:', e.detail.email);
+
+  // Send to your CRM
+  sendToCRM(e.detail);
+&#125;);
+
+// Conversation completed
+window.addEventListener('minimal:complete', function(e) &#123;
+  console.log('Conversation completed');
+&#125;);</code></pre>
+        </div>
+
+        <h3>Métodos API</h3>
+        <p>Controla el widget programáticamente:</p>
+        <div class="code-block">
+          <pre><code>// Open the widget
+Minimal.open();
+
+// Close the widget
+Minimal.close();
+
+// Toggle widget
+Minimal.toggle();
+
+// Hide widget completely
+Minimal.hide();
+
+// Show widget
+Minimal.show();
+
+// Set user info for personalization
+Minimal.setUser(&#123;
+  id: '12345',
+  name: 'John Doe',
+  email: 'john@example.com',
+  properties: &#123;
+    plan: 'pro',
+    signupDate: '2024-01-15'
+  &#125;
+&#125;);
+
+// Send a custom event
+Minimal.track('button_clicked', &#123;
+  button: 'pricing_cta'
+&#125;);</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="content-section">
+      <div class="container">
+        <div class="cta-box">
+          <h2>¿Necesitas Ayuda Personalizada?</h2>
+          <p>Nuestro equipo puede ayudarte a configurar Minimal para tu caso de uso específico y optimizar para máximas conversiones.</p>
+          <div class="cta-buttons">
+            <a href="/es/contact" class="btn btn-primary">Agenda una Consultoría</a>
+            <a href="/es/help" class="btn btn-secondary">Visita el Centro de Ayuda</a>
+          </div>
         </div>
       </div>
     </section>
@@ -31,13 +401,79 @@ const locale = 'es';
 
 <style>
   main { padding-top: 60px; }
-  .hero-section { padding: calc(var(--section-padding-y) + 2rem) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right); background: linear-gradient(180deg, #f7fafc 0%, #ffffff 100%); text-align: center; }
-  .hero-section h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1.5rem; }
-  .subtitle { font-size: clamp(1.1rem, 2vw, 1.5rem); color: var(--text-light); max-width: 800px; margin: 0 auto; }
+  .hero-section { padding: calc(var(--section-padding-y) + var(--space-4)) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right); background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%); text-align: center; }
+  .hero-section h1 { font-size: clamp(var(--font-size-3xl), 5vw, var(--font-size-5xl)); margin-bottom: var(--space-3); color: var(--text-primary); font-weight: var(--font-weight-bold); }
+  .subtitle { font-size: clamp(calc(var(--font-size-lg) + 1px), 2vw, var(--font-size-2xl)); color: var(--text-secondary); line-height: var(--line-height-relaxed); max-width: 800px; margin: 0 auto; }
+
   .content-section { padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right); }
-  .guide-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; max-width: 1000px; margin: 0 auto; }
-  .guide-card { background: white; padding: 2rem; border-radius: 12px; box-shadow: var(--shadow-sm); }
-  .guide-card h3 { margin-bottom: 1rem; }
-  .guide-card p { color: var(--text-light); }
-  @media (min-width: 768px) { .guide-grid { grid-template-columns: repeat(2, 1fr); } }
+  .content-section .container { max-width: 1200px; margin: 0 auto; }
+  .content-section h2 { color: var(--text-primary); font-size: var(--font-size-3xl); margin-bottom: var(--space-6); text-align: center; }
+  .content-section h3 { color: var(--text-primary); font-size: var(--font-size-2xl); margin-top: var(--space-8); margin-bottom: var(--space-4); }
+  .content-section p { color: var(--text-secondary); font-size: var(--font-size-lg); line-height: var(--line-height-relaxed); margin-bottom: var(--space-4); }
+  .content-section ul { color: var(--text-secondary); font-size: var(--font-size-base); line-height: var(--line-height-relaxed); margin-bottom: var(--space-4); padding-left: var(--space-6); }
+  .content-section li { margin-bottom: var(--space-2); }
+  .content-section code { background: var(--bg-secondary); color: var(--brand-green); padding: 2px 6px; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 0.9em; }
+  .content-section strong { color: var(--text-primary); }
+
+  .bg-secondary { background: var(--bg-secondary); }
+  .section-intro { text-align: center; font-size: var(--font-size-xl); color: var(--text-secondary); margin-bottom: var(--space-8); max-width: 800px; margin-left: auto; margin-right: auto; }
+
+  /* Guide Grid */
+  .guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-6); margin-top: var(--space-8); }
+  .guide-card { background: var(--bg-primary); border: 1px solid var(--border-primary); border-radius: var(--radius-lg); padding: var(--space-6); text-align: center; transition: all var(--transition-base); }
+  .guide-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--brand-green); }
+  .guide-icon { font-size: 3rem; margin-bottom: var(--space-3); }
+  .guide-card h3 { margin-bottom: var(--space-2); }
+
+  /* Steps */
+  .steps-container { display: flex; flex-direction: column; gap: var(--space-8); margin-top: var(--space-8); max-width: 900px; margin-left: auto; margin-right: auto; }
+  .step { display: flex; gap: var(--space-4); align-items: flex-start; }
+  .step-number { flex-shrink: 0; width: 56px; height: 56px; background: linear-gradient(135deg, var(--brand-green) 0%, #059669 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: var(--font-size-2xl); font-weight: var(--font-weight-bold); box-shadow: var(--shadow-md); }
+  .step-content { flex: 1; }
+  .step-content h3 { margin-top: 0; margin-bottom: var(--space-3); }
+
+  /* Code blocks */
+  .code-block { background: #0F1419; color: var(--brand-green); padding: var(--space-6); border-radius: var(--radius-md); overflow-x: auto; margin: var(--space-5) 0; box-shadow: var(--shadow-md); border: 1px solid rgba(255, 255, 255, 0.1); }
+  .code-block code { font-family: 'Courier New', monospace; font-size: var(--font-size-sm); white-space: pre; display: block; line-height: 1.6; }
+
+  /* Tip and Note boxes */
+  .tip-box, .note-box { padding: var(--space-4); border-radius: var(--radius-md); margin: var(--space-4) 0; border-left: 4px solid; }
+  .tip-box { background: rgba(16, 185, 129, 0.1); border-color: var(--brand-green); }
+  .note-box { background: rgba(59, 130, 246, 0.1); border-color: #3b82f6; }
+
+  /* Optimization Grid */
+  .optimization-grid, .design-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-6); margin-top: var(--space-6); }
+  .optimization-card, .design-card { background: var(--bg-primary); border: 1px solid var(--border-primary); border-radius: var(--radius-lg); padding: var(--space-6); }
+  .optimization-card h3, .design-card h3 { margin-top: 0; margin-bottom: var(--space-4); }
+
+  .examples { display: flex; flex-direction: column; gap: var(--space-3); margin-top: var(--space-3); }
+  .example { padding: var(--space-3); border-radius: var(--radius-sm); font-size: var(--font-size-base); }
+  .example.good { background: rgba(16, 185, 129, 0.1); border-left: 3px solid var(--brand-green); }
+  .example.bad { background: rgba(239, 68, 68, 0.1); border-left: 3px solid #ef4444; }
+
+  /* Metrics */
+  .metrics-section { margin-top: var(--space-8); }
+  .metrics-section h3 { border-bottom: 2px solid var(--border-primary); padding-bottom: var(--space-3); }
+  .metric-list { display: flex; flex-direction: column; gap: var(--space-5); margin-top: var(--space-5); }
+  .metric-item { background: var(--bg-primary); border: 1px solid var(--border-primary); border-radius: var(--radius-md); padding: var(--space-5); }
+  .metric-item strong { display: block; font-size: var(--font-size-xl); color: var(--text-primary); margin-bottom: var(--space-2); }
+  .benchmark { margin-top: var(--space-2); padding: var(--space-2) var(--space-3); background: var(--bg-secondary); border-radius: var(--radius-sm); font-size: var(--font-size-sm); color: var(--text-secondary); }
+
+  /* CTA Section */
+  .cta-box { text-align: center; max-width: 700px; margin: 0 auto; background: var(--bg-primary); border: 1px solid var(--border-primary); border-radius: var(--radius-xl); padding: var(--space-10); }
+  .cta-box h2 { margin-bottom: var(--space-3); }
+  .cta-buttons { display: flex; gap: var(--space-4); justify-content: center; margin: var(--space-6) 0; flex-wrap: wrap; }
+  .btn { padding: var(--space-3) var(--space-6); border-radius: var(--radius-md); font-weight: var(--font-weight-semibold); font-size: var(--font-size-lg); text-decoration: none; transition: all var(--transition-base); display: inline-block; }
+  .btn-primary { background: var(--brand-green); color: white; }
+  .btn-primary:hover { background: #059669; transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .btn-secondary { background: transparent; color: var(--text-primary); border: 2px solid var(--border-primary); }
+  .btn-secondary:hover { border-color: var(--brand-green); color: var(--brand-green); }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .step { flex-direction: column; text-align: center; }
+    .step-number { margin: 0 auto; }
+    .optimization-grid, .design-grid { grid-template-columns: 1fr; }
+    .cta-buttons { flex-direction: column; }
+  }
 </style>

@@ -15,12 +15,493 @@ const locale = 'en';
         <p class="subtitle">One line of code, instant transformation. Works with any platform.</p>
       </div>
     </section>
+
+    <!-- Quick Integration -->
     <section class="content-section">
       <div class="container">
-        <h2>Easy Integration</h2>
-        <p>Add Minimal to your website with just one line of code. Compatible with WordPress, Shopify, React, Vue, Angular, and any other platform.</p>
+        <h2>🚀 Quick Integration (5 minutes)</h2>
+        <p class="section-intro">Get Minimal running on your website in three simple steps:</p>
+
+        <div class="steps-container">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3>Get Your Site ID</h3>
+              <p>Sign up at <a href="https://minimal.lat" target="_blank" rel="noopener">minimal.lat</a> and create a new site. You'll receive your unique Site ID.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3>Add the Script</h3>
+              <p>Copy and paste this code before the closing <code>&lt;/body&gt;</code> tag on every page where you want Minimal to appear:</p>
+              <div class="code-block">
+                <code>&lt;script src="https://minimal.lat/embed.js" data-site-id="your-site-id"&gt;&lt;/script&gt;</code>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3>Test and Customize</h3>
+              <p>Visit your website and you'll see Minimal live! Customize appearance and behavior from your dashboard.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Platform-Specific Guides -->
+    <section class="content-section bg-secondary">
+      <div class="container">
+        <h2>📝 Platform-Specific Integration Guides</h2>
+
+        <!-- WordPress -->
+        <div class="platform-guide">
+          <h3>📝 WordPress</h3>
+          <p><strong>Method 1: Using a Plugin</strong></p>
+          <ol>
+            <li>Install the "Insert Headers and Footers" plugin</li>
+            <li>Go to Settings → Insert Headers and Footers</li>
+            <li>Paste the Minimal script in the "Scripts in Footer" section</li>
+            <li>Click "Save"</li>
+          </ol>
+
+          <p><strong>Method 2: Editing the Theme</strong></p>
+          <ol>
+            <li>Go to Appearance → Theme Editor</li>
+            <li>Select your theme's <code>footer.php</code> file</li>
+            <li>Paste the script before the <code>&lt;/body&gt;</code> tag</li>
+            <li>Click "Update File"</li>
+          </ol>
+          <div class="code-block">
+            <code>&lt;script src="https://minimal.lat/embed.js" data-site-id="your-site-id"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code>
+          </div>
+        </div>
+
+        <!-- Shopify -->
+        <div class="platform-guide">
+          <h3>🛍️ Shopify</h3>
+          <ol>
+            <li>From your Shopify admin, go to Online Store → Themes</li>
+            <li>Click "Actions" → "Edit code"</li>
+            <li>In the Layout folder, click on <code>theme.liquid</code></li>
+            <li>Scroll down and find the closing <code>&lt;/body&gt;</code> tag</li>
+            <li>Paste the Minimal script right before it</li>
+            <li>Click "Save"</li>
+          </ol>
+          <div class="code-block">
+            <code>&lt;script src="https://minimal.lat/embed.js" data-site-id="your-site-id"&gt;&lt;/script&gt;
+&lt;/body&gt;</code>
+          </div>
+        </div>
+
+        <!-- React / Next.js -->
+        <div class="platform-guide">
+          <h3>⚛️ React / Next.js</h3>
+          <p><strong>For Next.js:</strong></p>
+          <p>Add to <code>pages/_document.js</code> or <code>app/layout.tsx</code>:</p>
+          <div class="code-block">
+            <pre><code>import Script from 'next/script'
+
+export default function RootLayout(&#123; children &#125;) &#123;
+  return (
+    &lt;html&gt;
+      &lt;body&gt;
+        &#123;children&#125;
+        &lt;Script
+          src="https://minimal.lat/embed.js"
+          data-site-id="your-site-id"
+          strategy="lazyOnload"
+        /&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+  )
+&#125;</code></pre>
+          </div>
+
+          <p><strong>For React (CRA or Vite):</strong></p>
+          <p>Add to your <code>public/index.html</code> before <code>&lt;/body&gt;</code>:</p>
+          <div class="code-block">
+            <code>&lt;script src="https://minimal.lat/embed.js" data-site-id="your-site-id"&gt;&lt;/script&gt;</code>
+          </div>
+        </div>
+
+        <!-- Vue.js / Nuxt.js -->
+        <div class="platform-guide">
+          <h3>🟢 Vue.js / Nuxt.js</h3>
+          <p><strong>For Nuxt.js:</strong></p>
+          <p>Add to <code>nuxt.config.js</code>:</p>
+          <div class="code-block">
+            <pre><code>export default &#123;
+  head: &#123;
+    script: [
+      &#123;
+        src: 'https://minimal.lat/embed.js',
+        'data-site-id': 'your-site-id',
+        body: true,
+        defer: true
+      &#125;
+    ]
+  &#125;
+&#125;</code></pre>
+          </div>
+
+          <p><strong>For Vue.js:</strong></p>
+          <p>Add to your <code>public/index.html</code> before <code>&lt;/body&gt;</code>:</p>
+          <div class="code-block">
+            <code>&lt;script src="https://minimal.lat/embed.js" data-site-id="your-site-id"&gt;&lt;/script&gt;</code>
+          </div>
+        </div>
+
+        <!-- Wix / Squarespace -->
+        <div class="platform-guide">
+          <h3>📱 Wix / Squarespace</h3>
+          <p><strong>For Wix:</strong></p>
+          <ol>
+            <li>Go to Settings → Custom Code</li>
+            <li>Click "+ Add Custom Code"</li>
+            <li>Paste the Minimal script</li>
+            <li>Set it to load on "All pages"</li>
+            <li>Place code in "Body - end"</li>
+            <li>Click "Apply"</li>
+          </ol>
+
+          <p><strong>For Squarespace:</strong></p>
+          <ol>
+            <li>Go to Settings → Advanced → Code Injection</li>
+            <li>Paste the script in "Footer"</li>
+            <li>Click "Save"</li>
+          </ol>
+          <div class="code-block">
+            <code>&lt;script src="https://minimal.lat/embed.js" data-site-id="your-site-id"&gt;&lt;/script&gt;</code>
+          </div>
+        </div>
+
+        <!-- Angular -->
+        <div class="platform-guide">
+          <h3>🅰️ Angular</h3>
+          <p>Add to your <code>src/index.html</code> before the closing <code>&lt;/body&gt;</code> tag:</p>
+          <div class="code-block">
+            <code>&lt;body&gt;
+  &lt;app-root&gt;&lt;/app-root&gt;
+  &lt;script src="https://minimal.lat/embed.js" data-site-id="your-site-id"&gt;&lt;/script&gt;
+&lt;/body&gt;</code>
+          </div>
+          <p>Or add programmatically in <code>app.component.ts</code>:</p>
+          <div class="code-block">
+            <pre><code>ngOnInit() &#123;
+  const script = document.createElement('script');
+  script.src = 'https://minimal.lat/embed.js';
+  script.setAttribute('data-site-id', 'your-site-id');
+  document.body.appendChild(script);
+&#125;</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Advanced Configuration -->
+    <section class="content-section">
+      <div class="container">
+        <h2>⚙️ Advanced Configuration</h2>
+
+        <h3>Customization Options</h3>
+        <p>You can customize Minimal's behavior using data attributes:</p>
+
         <div class="code-block">
-          <code>&lt;script src="https://minimal.lat/embed.js" data-site-id="your-id"&gt;&lt;/script&gt;</code>
+          <code>&lt;script
+  src="https://minimal.lat/embed.js"
+  data-site-id="your-site-id"
+  data-position="bottom-right"
+  data-theme="light"
+  data-language="en"
+  data-greeting="Hello! How can we help?"
+&gt;&lt;/script&gt;</code>
+        </div>
+
+        <div class="options-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Attribute</th>
+                <th>Options</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>data-position</code></td>
+                <td>bottom-right, bottom-left, top-right, top-left</td>
+                <td>Widget position on screen</td>
+              </tr>
+              <tr>
+                <td><code>data-theme</code></td>
+                <td>light, dark, auto</td>
+                <td>Color theme</td>
+              </tr>
+              <tr>
+                <td><code>data-language</code></td>
+                <td>en, es, fr, de, etc.</td>
+                <td>Interface language</td>
+              </tr>
+              <tr>
+                <td><code>data-greeting</code></td>
+                <td>Any text</td>
+                <td>Initial greeting message</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>JavaScript Configuration</h3>
+        <p>For more advanced control, configure Minimal via JavaScript:</p>
+        <div class="code-block">
+          <pre><code>window.MinimalConfig = &#123;
+  siteId: 'your-site-id',
+  position: 'bottom-right',
+  theme: 'auto',
+  language: 'en',
+  greeting: 'Welcome! How can we help you today?',
+  placeholder: 'Type your message...',
+  zIndex: 1000,
+  mobileBreakpoint: 768,
+  autoOpen: false,
+  autoOpenDelay: 3000,
+  hideOnPages: ['/checkout', '/admin'],
+  customColors: &#123;
+    primary: '#10b981',
+    background: '#ffffff',
+    text: '#1f2937'
+  &#125;
+&#125;;
+
+&lt;script src="https://minimal.lat/embed.js"&gt;&lt;/script&gt;</code></pre>
+        </div>
+
+        <h3>Events and Callbacks</h3>
+        <p>Listen to Minimal events:</p>
+        <div class="code-block">
+          <pre><code>// When Minimal is ready
+window.addEventListener('minimal:ready', function() &#123;
+  console.log('Minimal is loaded!');
+&#125;);
+
+// When chat is opened
+window.addEventListener('minimal:open', function() &#123;
+  console.log('Chat opened');
+&#125;);
+
+// When chat is closed
+window.addEventListener('minimal:close', function() &#123;
+  console.log('Chat closed');
+&#125;);
+
+// When message is sent
+window.addEventListener('minimal:message', function(e) &#123;
+  console.log('Message sent:', e.detail);
+&#125;);</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- API Reference -->
+    <section class="content-section bg-secondary">
+      <div class="container">
+        <h2>📚 API Reference</h2>
+        <p>Control Minimal programmatically using the JavaScript API:</p>
+
+        <h3>Available Methods</h3>
+        <div class="api-method">
+          <h4><code>Minimal.open()</code></h4>
+          <p>Opens the chat widget</p>
+          <div class="code-block">
+            <code>Minimal.open();</code>
+          </div>
+        </div>
+
+        <div class="api-method">
+          <h4><code>Minimal.close()</code></h4>
+          <p>Closes the chat widget</p>
+          <div class="code-block">
+            <code>Minimal.close();</code>
+          </div>
+        </div>
+
+        <div class="api-method">
+          <h4><code>Minimal.toggle()</code></h4>
+          <p>Toggles the chat widget open/closed</p>
+          <div class="code-block">
+            <code>Minimal.toggle();</code>
+          </div>
+        </div>
+
+        <div class="api-method">
+          <h4><code>Minimal.hide()</code></h4>
+          <p>Hides the widget completely</p>
+          <div class="code-block">
+            <code>Minimal.hide();</code>
+          </div>
+        </div>
+
+        <div class="api-method">
+          <h4><code>Minimal.show()</code></h4>
+          <p>Shows the widget if hidden</p>
+          <div class="code-block">
+            <code>Minimal.show();</code>
+          </div>
+        </div>
+
+        <div class="api-method">
+          <h4><code>Minimal.setUser(userData)</code></h4>
+          <p>Set user information for personalization</p>
+          <div class="code-block">
+            <pre><code>Minimal.setUser(&#123;
+  id: 'user123',
+  name: 'John Doe',
+  email: 'john@example.com',
+  customData: &#123;
+    plan: 'premium',
+    signupDate: '2024-01-15'
+  &#125;
+&#125;);</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Analytics Integration -->
+    <section class="content-section">
+      <div class="container">
+        <h2>📊 Analytics Integration</h2>
+
+        <h3>Google Analytics 4 (GA4)</h3>
+        <p>Track Minimal interactions in GA4:</p>
+        <div class="code-block">
+          <pre><code>window.addEventListener('minimal:message', function(e) &#123;
+  gtag('event', 'minimal_message_sent', &#123;
+    'event_category': 'engagement',
+    'event_label': 'Chat Message',
+    'value': e.detail.messageLength
+  &#125;);
+&#125;);
+
+window.addEventListener('minimal:open', function() &#123;
+  gtag('event', 'minimal_opened', &#123;
+    'event_category': 'engagement',
+    'event_label': 'Chat Opened'
+  &#125;);
+&#125;);</code></pre>
+        </div>
+
+        <h3>Facebook Pixel</h3>
+        <p>Track conversions with Facebook Pixel:</p>
+        <div class="code-block">
+          <pre><code>window.addEventListener('minimal:message', function() &#123;
+  fbq('track', 'Contact');
+&#125;);
+
+window.addEventListener('minimal:lead', function(e) &#123;
+  fbq('track', 'Lead', &#123;
+    content_name: 'Chat Lead',
+    value: e.detail.leadScore
+  &#125;);
+&#125;);</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- CRM Integration -->
+    <section class="content-section bg-secondary">
+      <div class="container">
+        <h2>🔗 CRM Integration</h2>
+
+        <h3>HubSpot Integration</h3>
+        <p>Sync chat data with HubSpot:</p>
+        <div class="code-block">
+          <pre><code>window.addEventListener('minimal:lead', function(e) &#123;
+  const leadData = e.detail;
+
+  // Create contact in HubSpot
+  fetch('https://api.hubapi.com/contacts/v1/contact/', &#123;
+    method: 'POST',
+    headers: &#123;
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer YOUR_HUBSPOT_API_KEY'
+    &#125;,
+    body: JSON.stringify(&#123;
+      properties: [
+        &#123; property: 'email', value: leadData.email &#125;,
+        &#123; property: 'firstname', value: leadData.name &#125;,
+        &#123; property: 'lead_source', value: 'Minimal Chat' &#125;
+      ]
+    &#125;)
+  &#125;);
+&#125;);</code></pre>
+        </div>
+
+        <div class="warning-box">
+          <strong>⚠️ Security Note:</strong> Never expose API keys in client-side code. Use a server-side proxy or serverless function to handle CRM integrations securely.
+        </div>
+      </div>
+    </section>
+
+    <!-- Troubleshooting -->
+    <section class="content-section">
+      <div class="container">
+        <h2>🔧 Troubleshooting</h2>
+
+        <div class="troubleshooting-item">
+          <h3>Widget not appearing?</h3>
+          <ul>
+            <li>Check that the script is placed before the closing <code>&lt;/body&gt;</code> tag</li>
+            <li>Verify your Site ID is correct</li>
+            <li>Check browser console for errors (F12)</li>
+            <li>Ensure no ad blockers are interfering</li>
+            <li>Clear your browser cache and hard refresh (Ctrl+Shift+R)</li>
+          </ul>
+        </div>
+
+        <div class="troubleshooting-item">
+          <h3>Widget appears but doesn't work?</h3>
+          <ul>
+            <li>Check your internet connection</li>
+            <li>Verify your site is active in the Minimal dashboard</li>
+            <li>Check for JavaScript conflicts with other plugins</li>
+            <li>Try disabling other scripts temporarily to isolate the issue</li>
+          </ul>
+        </div>
+
+        <div class="troubleshooting-item">
+          <h3>Validation Script</h3>
+          <p>Run this in your browser console to check integration:</p>
+          <div class="code-block">
+            <pre><code>// Check if Minimal is loaded
+if (typeof Minimal !== 'undefined') &#123;
+  console.log('✅ Minimal is loaded');
+  console.log('Version:', Minimal.version);
+  console.log('Site ID:', Minimal.config.siteId);
+&#125; else &#123;
+  console.error('❌ Minimal is not loaded');
+  console.log('Check if script tag is present:',
+    document.querySelector('script[src*="minimal.lat"]'));
+&#125;</code></pre>
+          </div>
+        </div>
+
+        <div class="troubleshooting-item">
+          <h3>Still having issues?</h3>
+          <p>Contact our support team at <a href="mailto:support@minimal.lat">support@minimal.lat</a> or use the chat widget on our website. Include:</p>
+          <ul>
+            <li>Your Site ID</li>
+            <li>URL where you're testing</li>
+            <li>Browser and version</li>
+            <li>Any console errors</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -30,10 +511,280 @@ const locale = 'en';
 
 <style>
   main { padding-top: 60px; }
-  .hero-section { padding: calc(var(--section-padding-y) + 2rem) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right); background: linear-gradient(180deg, #f7fafc 0%, #ffffff 100%); text-align: center; }
-  .hero-section h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1.5rem; }
-  .subtitle { font-size: clamp(1.1rem, 2vw, 1.5rem); color: var(--text-light); max-width: 800px; margin: 0 auto; }
-  .content-section { padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right); max-width: 800px; margin: 0 auto; }
-  .code-block { background: #1a202c; color: #4ade80; padding: 2rem; border-radius: 8px; overflow-x: auto; margin: 2rem 0; }
-  .code-block code { font-family: 'Courier New', monospace; }
+
+  /* Hero Section */
+  .hero-section {
+    padding: clamp(3rem, 8vw, 6rem) var(--section-padding-left) clamp(2rem, 5vw, 4rem) var(--section-padding-right);
+    background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+    text-align: center;
+  }
+  .hero-section h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: var(--space-4);
+    color: var(--text-primary);
+    font-weight: var(--font-weight-bold);
+  }
+  .subtitle {
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* Content Sections */
+  .content-section {
+    padding: clamp(3rem, 6vw, 5rem) var(--section-padding-left) clamp(3rem, 6vw, 5rem) var(--section-padding-right);
+  }
+  .content-section .container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .content-section h2 {
+    color: var(--text-primary);
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+    text-align: center;
+    font-weight: 700;
+  }
+  .content-section h3 {
+    color: var(--text-primary);
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
+    margin-top: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 1.25rem;
+    font-weight: 600;
+  }
+  .content-section h4 {
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  .content-section p {
+    color: var(--text-secondary);
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+  }
+  .content-section a {
+    color: var(--brand-green);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .content-section a:hover {
+    text-decoration: underline;
+  }
+  .content-section ul, .content-section ol {
+    color: var(--text-secondary);
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+  }
+  .content-section li {
+    margin-bottom: 0.75rem;
+  }
+  .content-section code {
+    background: var(--bg-secondary);
+    color: var(--brand-green);
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9375rem;
+    font-weight: 500;
+  }
+  .content-section strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .bg-secondary {
+    background: var(--bg-secondary);
+  }
+  .section-intro {
+    text-align: center;
+    font-size: 1.1875rem;
+    margin-bottom: 2.5rem;
+    color: var(--text-secondary);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Steps */
+  .steps-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    margin-top: 2.5rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .step {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+  .step-number {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, var(--brand-green) 0%, #059669 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+  }
+  .step-content {
+    flex: 1;
+  }
+  .step-content h3 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+  }
+
+  /* Code blocks */
+  .code-block {
+    background: #0F1419;
+    color: var(--brand-green);
+    padding: 1.5rem;
+    border-radius: 12px;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .code-block code {
+    font-family: 'Courier New', monospace;
+    font-size: 0.9375rem;
+    white-space: pre;
+    display: block;
+    line-height: 1.7;
+  }
+
+  /* Platform guides */
+  .platform-guide {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-primary);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+  .platform-guide h3 {
+    margin-top: 0;
+    margin-bottom: 1.25rem;
+    color: var(--text-primary);
+  }
+  .platform-guide ol {
+    margin-top: 1rem;
+  }
+  .platform-guide p {
+    margin-bottom: 1rem;
+  }
+
+  /* Options table */
+  .options-table {
+    overflow-x: auto;
+    margin: 2rem 0;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+  .options-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg-primary);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .options-table th {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    text-align: left;
+    padding: 1rem 1.25rem;
+    font-weight: 600;
+    font-size: 0.9375rem;
+  }
+  .options-table td {
+    padding: 1rem 1.25rem;
+    border-top: 1px solid var(--border-primary);
+    color: var(--text-secondary);
+    font-size: 0.9375rem;
+  }
+  .options-table tr:hover {
+    background: var(--bg-secondary);
+  }
+
+  /* API methods */
+  .api-method {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-primary);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+  .api-method h4 {
+    margin-top: 0;
+    color: var(--brand-green);
+    margin-bottom: 0.75rem;
+  }
+  .api-method p {
+    margin-bottom: 1rem;
+  }
+
+  /* Warning box */
+  .warning-box {
+    background: rgba(239, 68, 68, 0.08);
+    border-left: 4px solid #ef4444;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+  }
+  .warning-box strong {
+    color: #ef4444;
+    font-weight: 600;
+  }
+
+  /* Troubleshooting */
+  .troubleshooting-item {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-primary);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+  .troubleshooting-item h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .step {
+      flex-direction: column;
+      text-align: center;
+    }
+    .step-number {
+      margin: 0 auto;
+    }
+    .options-table {
+      font-size: 0.875rem;
+    }
+    .options-table th,
+    .options-table td {
+      padding: 0.75rem;
+    }
+    .platform-guide,
+    .api-method,
+    .troubleshooting-item {
+      padding: 1.5rem;
+    }
+  }
 </style>

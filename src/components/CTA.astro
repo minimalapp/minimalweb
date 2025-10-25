@@ -1,4 +1,6 @@
 ---
+import type { Locale } from '@/i18n/utils';
+
 export interface Props {
   title: string;
   subtitle: string;
@@ -6,12 +8,13 @@ export interface Props {
   urlPlaceholder: string;
   buttonText: string;
   footnote: string;
+  locale: Locale;
 }
 
-const { title, subtitle, emailPlaceholder, urlPlaceholder, buttonText, footnote } = Astro.props;
+const { title, subtitle, emailPlaceholder, urlPlaceholder, buttonText, footnote, locale } = Astro.props;
 ---
 
-<section class="cta" id="contacto">
+<section class="cta" id={locale === 'es' ? 'contacto' : 'contact'}>
   <div class="container">
     <h2 class="cta-title">{title}</h2>
     <p class="cta-subtitle">{subtitle}</p>

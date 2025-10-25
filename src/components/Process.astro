@@ -1,4 +1,6 @@
 ---
+import type { Locale } from '@/i18n/utils';
+
 export interface ProcessStep {
   title: string;
   description: string;
@@ -7,12 +9,13 @@ export interface ProcessStep {
 export interface Props {
   title: string;
   steps: ProcessStep[];
+  locale: Locale;
 }
 
-const { title, steps } = Astro.props;
+const { title, steps, locale } = Astro.props;
 ---
 
-<section class="process" id="como-funciona">
+<section class="process" id={locale === 'es' ? 'como-funciona' : 'how-it-works'}>
   <div class="container">
     <h2 class="section-title">{title}</h2>
     <div class="process-steps">

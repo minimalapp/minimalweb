@@ -4,28 +4,446 @@ import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 
 const locale = 'es';
+const title = 'Carreras - Minimal';
+const description = 'Únete a nuestro equipo y ayuda a transformar el futuro de la web con IA conversacional.';
 ---
 
-<BaseLayout title="Carreras - Minimal" description="Únete a nuestro equipo y ayuda a transformar el futuro de la web." locale={locale}>
+<BaseLayout title={title} description={description} locale={locale}>
   <Header locale={locale} />
   <main>
+    <!-- Hero Section -->
     <section class="hero-section">
       <div class="container">
-        <h1>Carreras</h1>
-        <p class="subtitle">Únete a nuestro equipo y ayuda a transformar el futuro de la web con IA conversacional.</p>
+        <h1>Únete a Nuestro Equipo</h1>
+        <p class="subtitle">Ayúdanos a transformar cómo las personas interactúan con la web a través de IA conversacional. Únete a un equipo de individuos talentosos y apasionados construyendo el futuro de las experiencias digitales.</p>
       </div>
     </section>
+
+    <!-- Our Culture Section -->
     <section class="content-section">
       <div class="container">
-        <h2>¿Por Qué Trabajar en Minimal?</h2>
-        <div class="benefits-grid">
-          <div class="benefit-card"><h3>Tecnología Innovadora</h3><p>Trabaja en IA de vanguardia e interfaces conversacionales.</p></div>
-          <div class="benefit-card"><h3>Remoto Primero</h3><p>Trabaja desde cualquier parte del mundo.</p></div>
-          <div class="benefit-card"><h3>Oportunidades de Crecimiento</h3><p>Aprende y crece con un startup de ritmo rápido.</p></div>
+        <h2>Nuestra Cultura</h2>
+        <p class="section-intro">Estamos construyendo más que un producto - estamos creando un ambiente donde la innovación prospera y las personas crecen.</p>
+
+        <div class="culture-grid">
+          <div class="culture-card">
+            <div class="culture-icon">🚀</div>
+            <h3>Innovación Constante</h3>
+            <p>Estamos a la vanguardia de la tecnología de IA conversacional. Cada día trae nuevos desafíos y oportunidades para superar límites. Trabajarás con tecnologías de punta y tendrás la libertad de experimentar, proponer nuevas ideas e implementar soluciones que impactan a millones de usuarios en todo el mundo.</p>
+            <ul>
+              <li>Experimenta con tecnologías emergentes de IA</li>
+              <li>Sprints de innovación y hackathons regulares</li>
+              <li>Libertad para explorar nuevos enfoques</li>
+              <li>Impacto directo en la dirección del producto</li>
+            </ul>
+          </div>
+
+          <div class="culture-card">
+            <div class="culture-icon">🎯</div>
+            <h3>Autonomía y Responsabilidad</h3>
+            <p>Confiamos en que los miembros de nuestro equipo sean dueños de su trabajo y tomen decisiones. Tendrás la autonomía para definir cómo trabajas, qué herramientas usas y cómo resuelves problemas. Con esa libertad viene la responsabilidad - esperamos que tomes propiedad de tus proyectos y entregues resultados excepcionales.</p>
+            <ul>
+              <li>Arreglos de trabajo y horarios flexibles</li>
+              <li>Propiedad de proyectos desde la concepción hasta la entrega</li>
+              <li>Autoridad para tomar decisiones en tu dominio</li>
+              <li>Enfocados en resultados, no en horas</li>
+            </ul>
+          </div>
+
+          <div class="culture-card">
+            <div class="culture-icon">📚</div>
+            <h3>Aprendizaje Continuo</h3>
+            <p>El panorama tecnológico evoluciona rápidamente, e invertimos en mantener a nuestro equipo a la vanguardia. Proporcionamos recursos, tiempo y apoyo para aprender nuevas habilidades, asistir a conferencias y obtener certificaciones. Tu crecimiento es nuestro crecimiento, y estamos comprometidos a ayudarte a convertirte en la mejor versión de ti mismo.</p>
+            <ul>
+              <li>Presupuesto de aprendizaje para cursos y conferencias</li>
+              <li>Sesiones semanales de intercambio de conocimientos</li>
+              <li>Programas de mentoría y coaching profesional</li>
+              <li>Acceso a plataformas de aprendizaje premium</li>
+            </ul>
+          </div>
         </div>
-        <div class="cta-section">
-          <h3>Posiciones Abiertas</h3>
-          <p>Siempre estamos buscando personas talentosas. Envía tu currículum a careers@minimal.lat</p>
+      </div>
+    </section>
+
+    <!-- Why Minimal Section -->
+    <section class="content-section bg-secondary">
+      <div class="container">
+        <h2>¿Por Qué Minimal?</h2>
+        <p class="section-intro">Únete a nosotros y sé parte de algo extraordinario.</p>
+
+        <div class="why-grid">
+          <div class="why-card">
+            <div class="why-icon">🌍</div>
+            <h3>Impacto Real</h3>
+            <p>Tu trabajo en Minimal será utilizado por millones de personas en miles de sitios web. Cada característica que construyas, cada optimización que hagas y cada bug que corrijas mejora directamente la experiencia digital de usuarios alrededor del mundo. Ve el impacto inmediato de tus contribuciones a través de analíticas, retroalimentación de usuarios y métricas de adopción.</p>
+            <div class="impact-stats">
+              <div class="stat-item">
+                <div class="stat-value">1M+</div>
+                <div class="stat-label">Usuarios mensuales</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">50+</div>
+                <div class="stat-label">Países alcanzados</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">10K+</div>
+                <div class="stat-label">Sitios web potenciados</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="why-card">
+            <div class="why-icon">👥</div>
+            <h3>Equipo de Clase Mundial</h3>
+            <p>Trabaja junto a ingenieros, diseñadores y líderes de producto excepcionales de las principales empresas tecnológicas. Nuestro equipo incluye graduados de Google, Meta, Amazon y startups líderes. Colaborarás con personas que te desafían, te apoyan y te ayudan a crecer. Valoramos las perspectivas diversas y creemos que las mejores soluciones provienen de reunir diferentes antecedentes y experiencias.</p>
+            <ul class="team-benefits">
+              <li>Aprende de veteranos de la industria y estrellas emergentes</li>
+              <li>Colabora entre disciplinas diariamente</li>
+              <li>Eventos regulares de formación de equipos y sociales</li>
+              <li>Ambiente de trabajo inclusivo y de apoyo</li>
+            </ul>
+          </div>
+
+          <div class="why-card">
+            <div class="why-icon">💻</div>
+            <h3>Tecnología de Vanguardia</h3>
+            <p>Trabaja con las últimas tecnologías en IA, aprendizaje automático y desarrollo web. Usamos stacks modernos, adoptamos nuevas herramientas y no tenemos miedo de probar enfoques innovadores. Desde modelos de lenguaje grandes hasta procesamiento de datos en tiempo real, obtendrás experiencia práctica con tecnologías que definen el futuro del desarrollo de software.</p>
+            <div class="tech-tags">
+              <span class="tech-tag">IA/ML</span>
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">Node.js</span>
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">TypeScript</span>
+              <span class="tech-tag">AWS</span>
+              <span class="tech-tag">Docker</span>
+              <span class="tech-tag">Kubernetes</span>
+            </div>
+          </div>
+
+          <div class="why-card">
+            <div class="why-icon">📈</div>
+            <h3>Crecimiento Acelerado</h3>
+            <p>En Minimal, no serás solo otro empleado - serás un jugador clave en nuestra historia de crecimiento. Asume responsabilidades que tomarían años acceder en empresas más grandes. Acelera tu carrera con oportunidades para liderar proyectos, mentorear a otros y dar forma a la dirección de la empresa. Promovemos desde adentro e invertimos en desarrollar futuros líderes.</p>
+            <ul class="growth-points">
+              <li><strong>Oportunidades de liderazgo:</strong> Lidera proyectos y equipos temprano en tu carrera</li>
+              <li><strong>Experiencia multifuncional:</strong> Trabaja en diferentes áreas del negocio</li>
+              <li><strong>Visibilidad:</strong> Acceso directo a fundadores y equipo ejecutivo</li>
+              <li><strong>Avance profesional:</strong> Caminos claros para progresión y promoción</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Values Section -->
+    <section class="content-section">
+      <div class="container">
+        <h2>Nuestros Valores</h2>
+        <p class="section-intro">Los principios que guían todo lo que hacemos.</p>
+
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon">🚀</div>
+            <h3>Moverse Rápido</h3>
+            <p>Nos inclinamos por la acción e iteramos rápidamente. La velocidad es una ventaja competitiva, y no tenemos miedo de tomar decisiones con información incompleta. Lanzamos temprano, aprendemos de los usuarios y mejoramos constantemente.</p>
+          </div>
+
+          <div class="value-card">
+            <div class="value-icon">🤝</div>
+            <h3>Colaborar Abiertamente</h3>
+            <p>Las grandes ideas vienen de todas partes. Compartimos conocimiento libremente, damos y recibimos retroalimentación constructivamente, y trabajamos juntos entre equipos. Sin silos, sin restricciones - solo colaboración abierta hacia objetivos comunes.</p>
+          </div>
+
+          <div class="value-card">
+            <div class="value-icon">💡</div>
+            <h3>Pensar Primero en el Usuario</h3>
+            <p>Cada decisión comienza con el usuario. Estamos obsesionados con crear valor y resolver problemas reales. No construimos características por el gusto de las características - construimos lo que los usuarios necesitan, validado por datos y retroalimentación.</p>
+          </div>
+
+          <div class="value-card">
+            <div class="value-icon">🎯</div>
+            <h3>Entregar Excelencia</h3>
+            <p>Nos enorgullecemos de nuestro trabajo y nos mantenemos en altos estándares. La calidad no es negociable - ya sea código, diseño o comunicación, nos esforzamos por la excelencia en todo lo que hacemos. Lo suficientemente bueno no es suficiente.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Open Positions Section -->
+    <section class="content-section bg-secondary">
+      <div class="container">
+        <h2>Posiciones Abiertas</h2>
+        <p class="section-intro">Únete a nosotros en la construcción del futuro de la IA conversacional.</p>
+
+        <div class="jobs-list">
+          <!-- Job 1: Senior Full-Stack Engineer -->
+          <div class="job-card">
+            <div class="job-header">
+              <div class="job-title-section">
+                <h3>Ingeniero Full-Stack Senior</h3>
+                <div class="job-tags">
+                  <span class="job-tag remote">🌍 Remoto</span>
+                  <span class="job-tag fulltime">⏰ Tiempo completo</span>
+                  <span class="job-tag level">⭐ Senior</span>
+                </div>
+              </div>
+            </div>
+            <p class="job-description">Lidera el desarrollo de nuestra plataforma central, trabajando en todo el stack para construir características escalables y de alto rendimiento que deleiten a los usuarios. Arquitecturarás soluciones, mentorearás ingenieros junior y tomarás decisiones técnicas clave que dan forma a nuestro producto.</p>
+            <div class="job-details">
+              <div class="job-section">
+                <h4>Responsabilidades:</h4>
+                <ul>
+                  <li>Diseñar e implementar características en nuestro frontend React y backend Node.js</li>
+                  <li>Construir APIs escalables y microservicios que manejen millones de solicitudes</li>
+                  <li>Optimizar el rendimiento y asegurar una experiencia de usuario excepcional</li>
+                  <li>Mentorear ingenieros junior y contribuir a la dirección técnica</li>
+                  <li>Participar en revisiones de código y discusiones arquitectónicas</li>
+                </ul>
+              </div>
+              <div class="job-section">
+                <h4>Requisitos:</h4>
+                <ul>
+                  <li>5+ años de experiencia en desarrollo full-stack</li>
+                  <li>Conocimiento experto de React, TypeScript y Node.js</li>
+                  <li>Experiencia con plataformas en la nube (AWS, GCP o Azure)</li>
+                  <li>Fuerte comprensión del diseño de sistemas y escalabilidad</li>
+                  <li>Excelentes habilidades de comunicación y colaboración</li>
+                </ul>
+              </div>
+            </div>
+            <div class="job-footer">
+              <a href="mailto:careers@minimal.lat?subject=Aplicación: Ingeniero Full-Stack Senior" class="job-apply-btn">Aplicar Ahora</a>
+            </div>
+          </div>
+
+          <!-- Job 2: Product Designer (UX/UI) -->
+          <div class="job-card">
+            <div class="job-header">
+              <div class="job-title-section">
+                <h3>Diseñador de Producto (UX/UI)</h3>
+                <div class="job-tags">
+                  <span class="job-tag remote">🌍 Remoto</span>
+                  <span class="job-tag fulltime">⏰ Tiempo completo</span>
+                  <span class="job-tag level">⭐ Mid-Senior</span>
+                </div>
+              </div>
+            </div>
+            <p class="job-description">Da forma al futuro de las interfaces conversacionales a través de diseño reflexivo y centrado en el usuario. Serás dueño del proceso de diseño de extremo a extremo, desde la investigación e ideación hasta maquetas de alta fidelidad y prototipos, creando experiencias que se sientan naturales y deliciosas.</p>
+            <div class="job-details">
+              <div class="job-section">
+                <h4>Responsabilidades:</h4>
+                <ul>
+                  <li>Diseñar interfaces intuitivas y hermosas para nuestra plataforma de IA conversacional</li>
+                  <li>Realizar investigación de usuarios y pruebas de usabilidad para validar decisiones de diseño</li>
+                  <li>Crear sistemas de diseño y mantener consistencia entre productos</li>
+                  <li>Colaborar con ingenieros para asegurar que los diseños se implementen perfectamente</li>
+                  <li>Iterar basándose en retroalimentación de usuarios y datos analíticos</li>
+                </ul>
+              </div>
+              <div class="job-section">
+                <h4>Requisitos:</h4>
+                <ul>
+                  <li>4+ años de experiencia en diseño de producto</li>
+                  <li>Portafolio mostrando excelente trabajo de UX/UI</li>
+                  <li>Competencia en Figma, Sketch o herramientas de diseño similares</li>
+                  <li>Experiencia con sistemas de diseño y bibliotecas de componentes</li>
+                  <li>Fuerte comprensión de tecnologías web y restricciones</li>
+                </ul>
+              </div>
+            </div>
+            <div class="job-footer">
+              <a href="mailto:careers@minimal.lat?subject=Aplicación: Diseñador de Producto (UX/UI)" class="job-apply-btn">Aplicar Ahora</a>
+            </div>
+          </div>
+
+          <!-- Job 3: DevOps Engineer -->
+          <div class="job-card">
+            <div class="job-header">
+              <div class="job-title-section">
+                <h3>Ingeniero DevOps</h3>
+                <div class="job-tags">
+                  <span class="job-tag remote">🌍 Remoto</span>
+                  <span class="job-tag fulltime">⏰ Tiempo completo</span>
+                  <span class="job-tag level">⭐ Senior</span>
+                </div>
+              </div>
+            </div>
+            <p class="job-description">Construye y mantiene la infraestructura que impulsa millones de conversaciones. Diseñarás pipelines de despliegue automatizados, asegurarás la confiabilidad del sistema y crearás herramientas que ayuden a nuestro equipo de ingeniería a lanzar más rápido y con confianza.</p>
+            <div class="job-details">
+              <div class="job-section">
+                <h4>Responsabilidades:</h4>
+                <ul>
+                  <li>Diseñar y mantener pipelines CI/CD para despliegues automatizados</li>
+                  <li>Gestionar y optimizar infraestructura en la nube (AWS/GCP)</li>
+                  <li>Implementar sistemas de monitoreo, registro y alertas</li>
+                  <li>Asegurar mejores prácticas de seguridad en toda la infraestructura</li>
+                  <li>Automatizar tareas operacionales y mejorar la experiencia del desarrollador</li>
+                </ul>
+              </div>
+              <div class="job-section">
+                <h4>Requisitos:</h4>
+                <ul>
+                  <li>5+ años de experiencia en DevOps o ingeniería de infraestructura</li>
+                  <li>Conocimiento experto de servicios AWS o GCP</li>
+                  <li>Experiencia con Kubernetes, Docker y orquestación de contenedores</li>
+                  <li>Fuertes habilidades de scripting (Python, Bash o similar)</li>
+                  <li>Experiencia con infraestructura como código (Terraform, CloudFormation)</li>
+                </ul>
+              </div>
+            </div>
+            <div class="job-footer">
+              <a href="mailto:careers@minimal.lat?subject=Aplicación: Ingeniero DevOps" class="job-apply-btn">Aplicar Ahora</a>
+            </div>
+          </div>
+
+          <!-- Job 4: Customer Success Manager -->
+          <div class="job-card">
+            <div class="job-header">
+              <div class="job-title-section">
+                <h3>Gerente de Éxito del Cliente</h3>
+                <div class="job-tags">
+                  <span class="job-tag remote">🌍 Remoto</span>
+                  <span class="job-tag fulltime">⏰ Tiempo completo</span>
+                  <span class="job-tag level">⭐ Nivel Medio</span>
+                </div>
+              </div>
+            </div>
+            <p class="job-description">Sé el asesor de confianza para nuestros clientes, ayudándolos a obtener el máximo valor de Minimal. Construirás relaciones, comprenderás sus objetivos y asegurarás que tengan éxito con nuestra plataforma mientras recopiles insights para mejorar nuestro producto.</p>
+            <div class="job-details">
+              <div class="job-section">
+                <h4>Responsabilidades:</h4>
+                <ul>
+                  <li>Incorporar nuevos clientes y asegurar una implementación fluida</li>
+                  <li>Construir relaciones sólidas con partes interesadas clave</li>
+                  <li>Monitorear métricas de salud del cliente e impulsar el compromiso</li>
+                  <li>Identificar oportunidades de expansión y reducir la rotación</li>
+                  <li>Recopilar retroalimentación y abogar por las necesidades del cliente internamente</li>
+                </ul>
+              </div>
+              <div class="job-section">
+                <h4>Requisitos:</h4>
+                <ul>
+                  <li>3+ años en éxito del cliente o gestión de cuentas (experiencia en SaaS preferida)</li>
+                  <li>Fuerte aptitud técnica y habilidad para aprender nuevas tecnologías</li>
+                  <li>Excelentes habilidades de comunicación y presentación</li>
+                  <li>Mentalidad orientada a datos con experiencia usando herramientas analíticas</li>
+                  <li>Historial comprobado de mantener alta satisfacción del cliente</li>
+                </ul>
+              </div>
+            </div>
+            <div class="job-footer">
+              <a href="mailto:careers@minimal.lat?subject=Aplicación: Gerente de Éxito del Cliente" class="job-apply-btn">Aplicar Ahora</a>
+            </div>
+          </div>
+
+          <!-- Job 5: Growth Marketing Lead -->
+          <div class="job-card">
+            <div class="job-header">
+              <div class="job-title-section">
+                <h3>Líder de Marketing de Crecimiento</h3>
+                <div class="job-tags">
+                  <span class="job-tag remote">🌍 Remoto</span>
+                  <span class="job-tag fulltime">⏰ Tiempo completo</span>
+                  <span class="job-tag level">⭐ Senior</span>
+                </div>
+              </div>
+            </div>
+            <p class="job-description">Impulsa la adquisición de usuarios y el crecimiento de ingresos a través de estrategias de marketing basadas en datos. Serás dueño de nuestro embudo de crecimiento, experimentarás con nuevos canales y escalarás lo que funciona para acelerar el crecimiento de nuestro negocio.</p>
+            <div class="job-details">
+              <div class="job-section">
+                <h4>Responsabilidades:</h4>
+                <ul>
+                  <li>Desarrollar y ejecutar estrategias de crecimiento en múltiples canales</li>
+                  <li>Optimizar embudos de conversión y mejorar métricas clave</li>
+                  <li>Ejecutar experimentos para descubrir nuevas oportunidades de crecimiento</li>
+                  <li>Gestionar campañas de adquisición pagada (SEM, social, display)</li>
+                  <li>Analizar datos para informar estrategia y medir ROI</li>
+                </ul>
+              </div>
+              <div class="job-section">
+                <h4>Requisitos:</h4>
+                <ul>
+                  <li>5+ años de experiencia en marketing de crecimiento en B2B SaaS</li>
+                  <li>Historial comprobado de impulsar el crecimiento de usuarios e ingresos</li>
+                  <li>Profunda experiencia en canales y tácticas de marketing digital</li>
+                  <li>Fuertes habilidades analíticas y experiencia con herramientas de analítica de marketing</li>
+                  <li>Experiencia con automatización de marketing y plataformas CRM</li>
+                </ul>
+              </div>
+            </div>
+            <div class="job-footer">
+              <a href="mailto:careers@minimal.lat?subject=Aplicación: Líder de Marketing de Crecimiento" class="job-apply-btn">Aplicar Ahora</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Selection Process Section -->
+    <section class="content-section">
+      <div class="container">
+        <h2>Proceso de Selección</h2>
+        <p class="section-intro">Nuestro proceso de contratación está diseñado para ser transparente, respetuoso y exhaustivo.</p>
+
+        <div class="process-steps">
+          <div class="process-step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3>Revisión de Aplicación</h3>
+              <p>Envía tu aplicación con currículum y muestras de trabajo relevantes. Nuestro equipo revisa cada aplicación cuidadosamente, usualmente dentro de 3-5 días hábiles. Buscamos pasión, potencial y alineación con nuestros valores.</p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3>Entrevista Inicial</h3>
+              <p>Una videollamada de 30 minutos con nuestro equipo de reclutamiento para discutir tu experiencia, intereses y lo que buscas en tu próximo rol. Esta también es tu oportunidad para aprender más sobre Minimal y hacer preguntas.</p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3>Evaluación Técnica/de Habilidades</h3>
+              <p>Dependiendo del rol, completarás una asignación para llevar a casa o una entrevista técnica en vivo. Nos enfocamos en problemas del mundo real que encontrarías en el rol, no en puzzles algorítmicos. Espera retroalimentación honesta sin importar el resultado.</p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <h3>Entrevistas con el Equipo</h3>
+              <p>Conoce a los miembros del equipo con los que trabajarías directamente - usualmente 2-3 conversaciones separadas. Evaluamos habilidades técnicas, capacidad de colaboración y ajuste cultural. También conocerás a tus potenciales colegas y podrás preguntarles sobre su experiencia.</p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="step-number">5</div>
+            <div class="step-content">
+              <h3>Decisión Final y Oferta</h3>
+              <p>Si todo se alinea, extenderemos una oferta incluyendo detalles de compensación, equity, beneficios y fecha de inicio. Nos movemos rápidamente en esta etapa y apuntamos a darte una respuesta dentro de 2-3 días de tu entrevista final.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="process-note">
+          <p><strong>Cronograma:</strong> El proceso completo típicamente toma 2-3 semanas desde la aplicación hasta la oferta. Valoramos tu tiempo y te mantendremos actualizado en cada etapa.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Don't See a Fit CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-content">
+          <h2>¿No Ves una Posición que Encaje?</h2>
+          <p>Siempre estamos buscando talento excepcional, incluso si no tenemos un rol abierto que coincida con tus habilidades en este momento. Envíanos tu currículum y cuéntanos sobre qué te apasiona - te tendremos en mente a medida que crezcamos.</p>
+          <div class="cta-buttons">
+            <a href="mailto:careers@minimal.lat?subject=Aplicación General" class="btn btn-primary">Enviar Aplicación General</a>
+            <a href="/es/contact" class="btn btn-secondary">Ponte en Contacto</a>
+          </div>
+          <p class="cta-note">Revisamos aplicaciones generales regularmente y nos contactamos cuando surgen oportunidades relevantes.</p>
         </div>
       </div>
     </section>
@@ -35,14 +453,489 @@ const locale = 'es';
 
 <style>
   main { padding-top: 60px; }
-  .hero-section { padding: calc(var(--section-padding-y) + 2rem) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right); background: linear-gradient(180deg, #f7fafc 0%, #ffffff 100%); text-align: center; }
-  .hero-section h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1.5rem; }
-  .subtitle { font-size: clamp(1.1rem, 2vw, 1.5rem); color: var(--text-light); max-width: 800px; margin: 0 auto; }
-  .content-section { padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right); max-width: 1000px; margin: 0 auto; }
-  .benefits-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin: 3rem 0; }
-  .benefit-card { background: white; padding: 2rem; border-radius: 12px; box-shadow: var(--shadow-sm); }
-  .benefit-card h3 { margin-bottom: 1rem; }
-  .benefit-card p { color: var(--text-light); }
-  .cta-section { text-align: center; margin-top: 4rem; padding: 3rem; background: var(--bg-light); border-radius: 12px; }
-  @media (min-width: 768px) { .benefits-grid { grid-template-columns: repeat(3, 1fr); } }
+
+  /* Hero Section */
+  .hero-section {
+    padding: calc(var(--section-padding-y) + var(--space-4)) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
+    background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+    text-align: center;
+  }
+  .hero-section h1 {
+    font-size: clamp(var(--font-size-3xl), 5vw, var(--font-size-5xl));
+    margin-bottom: var(--space-3);
+    color: var(--text-primary);
+    font-weight: var(--font-weight-bold);
+  }
+  .subtitle {
+    font-size: clamp(calc(var(--font-size-lg) + 1px), 2vw, var(--font-size-2xl));
+    color: var(--text-secondary);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: var(--line-height-relaxed);
+  }
+
+  /* Content Sections */
+  .content-section {
+    padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
+  }
+  .content-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .content-section h2 {
+    color: var(--text-primary);
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--space-4);
+    text-align: center;
+    font-weight: var(--font-weight-bold);
+  }
+  .section-intro {
+    text-align: center;
+    font-size: var(--font-size-xl);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-8);
+    line-height: var(--line-height-relaxed);
+  }
+  .bg-secondary {
+    background: var(--bg-secondary);
+  }
+
+  /* Culture Grid */
+  .culture-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+  .culture-card {
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+  }
+  .culture-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-3);
+  }
+  .culture-card h3 {
+    color: var(--text-primary);
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--space-3);
+    font-weight: var(--font-weight-semibold);
+  }
+  .culture-card p {
+    color: var(--text-secondary);
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--space-4);
+  }
+  .culture-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .culture-card li {
+    color: var(--text-secondary);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--space-2);
+    padding-left: var(--space-5);
+    position: relative;
+  }
+  .culture-card li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--brand-green);
+    font-weight: var(--font-weight-bold);
+  }
+
+  /* Why Grid */
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+  .why-card {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+  }
+  .why-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-3);
+  }
+  .why-card h3 {
+    color: var(--text-primary);
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--space-3);
+    font-weight: var(--font-weight-semibold);
+  }
+  .why-card p {
+    color: var(--text-secondary);
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--space-4);
+  }
+
+  /* Impact Stats */
+  .impact-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+    margin-top: var(--space-5);
+  }
+  .stat-item {
+    text-align: center;
+    background: var(--bg-secondary);
+    padding: var(--space-4);
+    border-radius: var(--radius-md);
+  }
+  .stat-value {
+    color: var(--brand-green);
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    display: block;
+    margin-bottom: var(--space-1);
+  }
+  .stat-label {
+    color: var(--text-tertiary);
+    font-size: var(--font-size-sm);
+  }
+
+  /* Team Benefits */
+  .team-benefits {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-4) 0 0 0;
+  }
+  .team-benefits li {
+    color: var(--text-secondary);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--space-2);
+    padding-left: var(--space-5);
+    position: relative;
+  }
+  .team-benefits li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--brand-green);
+    font-weight: var(--font-weight-bold);
+  }
+
+  /* Tech Tags */
+  .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+  }
+  .tech-tag {
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+    border: 1px solid var(--border-primary);
+  }
+
+  /* Growth Points */
+  .growth-points {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-4) 0 0 0;
+  }
+  .growth-points li {
+    color: var(--text-secondary);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--space-3);
+  }
+  .growth-points strong {
+    color: var(--text-primary);
+  }
+
+  /* Values Grid */
+  .values-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+  .value-card {
+    background: var(--bg-tertiary);
+    padding: var(--space-6);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+  }
+  .value-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  .value-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-3);
+  }
+  .value-card h3 {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--space-2);
+    color: var(--text-primary);
+    font-weight: var(--font-weight-semibold);
+  }
+  .value-card p {
+    color: var(--text-tertiary);
+    line-height: var(--line-height-relaxed);
+    font-size: 15px;
+  }
+
+  /* Jobs List */
+  .jobs-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+  .job-card {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    transition: box-shadow var(--transition-base);
+  }
+  .job-card:hover {
+    box-shadow: var(--shadow-md);
+  }
+  .job-header {
+    margin-bottom: var(--space-4);
+  }
+  .job-title-section h3 {
+    color: var(--text-primary);
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--space-3);
+    font-weight: var(--font-weight-semibold);
+  }
+  .job-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .job-tag {
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+  }
+  .job-tag.remote {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--brand-green);
+  }
+  .job-tag.fulltime {
+    background: rgba(59, 130, 246, 0.1);
+    color: #3b82f6;
+  }
+  .job-tag.level {
+    background: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+  }
+  .job-description {
+    color: var(--text-secondary);
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--space-5);
+  }
+  .job-details {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+    margin-bottom: var(--space-5);
+  }
+  .job-section h4 {
+    color: var(--text-primary);
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-3);
+    font-weight: var(--font-weight-semibold);
+  }
+  .job-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .job-section li {
+    color: var(--text-secondary);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--space-2);
+    padding-left: var(--space-5);
+    position: relative;
+  }
+  .job-section li::before {
+    content: "•";
+    position: absolute;
+    left: var(--space-2);
+    color: var(--brand-green);
+    font-weight: var(--font-weight-bold);
+  }
+  .job-footer {
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--border-primary);
+  }
+  .job-apply-btn {
+    display: inline-block;
+    padding: var(--space-3) var(--space-6);
+    background: var(--brand-green);
+    color: white;
+    border-radius: var(--radius-full);
+    text-decoration: none;
+    font-weight: var(--font-weight-semibold);
+    transition: all var(--transition-base);
+  }
+  .job-apply-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+  }
+
+  /* Process Steps */
+  .process-steps {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .process-step {
+    display: flex;
+    gap: var(--space-5);
+    margin-bottom: var(--space-6);
+    position: relative;
+  }
+  .process-step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 23px;
+    top: 60px;
+    width: 2px;
+    height: calc(100% + var(--space-6));
+    background: var(--border-primary);
+  }
+  .step-number {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    background: var(--brand-green);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    z-index: 1;
+  }
+  .step-content h3 {
+    color: var(--text-primary);
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-2);
+    font-weight: var(--font-weight-semibold);
+  }
+  .step-content p {
+    color: var(--text-secondary);
+    line-height: var(--line-height-relaxed);
+    font-size: var(--font-size-base);
+  }
+  .process-note {
+    margin-top: var(--space-8);
+    padding: var(--space-5);
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--brand-green);
+  }
+  .process-note p {
+    color: var(--text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin: 0;
+  }
+  .process-note strong {
+    color: var(--text-primary);
+  }
+
+  /* CTA Section */
+  .cta-section {
+    padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
+    background: linear-gradient(135deg, var(--brand-green) 0%, #059669 100%);
+    text-align: center;
+  }
+  .cta-content h2 {
+    color: white;
+    font-size: clamp(var(--font-size-2xl), 4vw, var(--font-size-4xl));
+    margin-bottom: var(--space-4);
+    font-weight: var(--font-weight-bold);
+  }
+  .cta-content > p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-6);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: var(--line-height-relaxed);
+  }
+  .cta-buttons {
+    display: flex;
+    gap: var(--space-4);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--space-4);
+  }
+  .btn {
+    padding: var(--space-4) var(--space-8);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    text-decoration: none;
+    transition: all var(--transition-base);
+    display: inline-block;
+  }
+  .btn-primary {
+    background: white;
+    color: var(--brand-green);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+  }
+  .btn-secondary:hover {
+    background: white;
+    color: var(--brand-green);
+  }
+  .cta-note {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: var(--font-size-sm);
+    margin-top: var(--space-3);
+  }
+
+  /* Responsive */
+  @media (min-width: 768px) {
+    .culture-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .why-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .values-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .job-details {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1024px) {
+    .values-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
 </style>

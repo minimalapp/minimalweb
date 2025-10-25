@@ -43,16 +43,19 @@ const t = homeTranslations[locale];
     <Problem
       title={t.problem.title}
       items={t.problem.items}
+      locale={locale}
     />
 
     <Features
       title={t.features.title}
       items={t.features.items}
+      locale={locale}
     />
 
     <Process
       title={t.process.title}
       steps={t.process.steps}
+      locale={locale}
     />
 
     <ValueTabs
@@ -69,11 +72,13 @@ const t = homeTranslations[locale];
       title={t.useCases.title}
       subtitle={t.useCases.subtitle}
       cases={t.useCases.cases}
+      locale={locale}
     />
 
     <Pricing
       title={t.pricing.title}
       plans={t.pricing.plans}
+      locale={locale}
     />
 
     <CTA
@@ -83,6 +88,7 @@ const t = homeTranslations[locale];
       urlPlaceholder={t.cta.urlPlaceholder}
       buttonText={t.cta.button}
       footnote={t.cta.footnote}
+      locale={locale}
     />
   </main>
 

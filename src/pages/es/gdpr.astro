@@ -6,38 +6,406 @@ import Footer from '@/components/Footer.astro';
 const locale = 'es';
 ---
 
-<BaseLayout title="Cumplimiento GDPR - Minimal" description="Información de cumplimiento GDPR para Minimal." locale={locale}>
+<BaseLayout title="Cumplimiento GDPR - Minimal" description="Información completa sobre cumplimiento GDPR y tus derechos de protección de datos." locale={locale}>
   <Header locale={locale} />
   <main>
-    <section class="legal-section">
+    <!-- Hero Section -->
+    <section class="hero-section">
       <div class="container">
+        <div class="gdpr-badge">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+        </div>
         <h1>Cumplimiento GDPR</h1>
+        <p class="subtitle">Tu privacidad y derechos de protección de datos nos importan. Estamos completamente comprometidos con el cumplimiento del Reglamento General de Protección de Datos (GDPR).</p>
         <p class="last-updated">Última actualización: Enero 2025</p>
-        <div class="legal-content">
-          <h2>1. Protección de Datos</h2>
-          <p>Minimal se compromete a proteger tus datos personales de acuerdo con el Reglamento General de Protección de Datos (GDPR).</p>
+      </div>
+    </section>
 
-          <h2>2. Base Legal para el Procesamiento</h2>
-          <p>Procesamos datos personales basados en consentimiento, ejecución de contrato, obligación legal e intereses legítimos.</p>
+    <!-- Data Protection -->
+    <section class="content-section">
+      <div class="container">
+        <h2>1. Compromiso con la Protección de Datos</h2>
+        <p class="section-intro">Minimal está comprometido con la protección de tus datos personales de acuerdo con el Reglamento General de Protección de Datos (GDPR) y el mantenimiento de los más altos estándares de privacidad y seguridad de datos.</p>
+        <div class="info-card">
+          <p>Implementamos medidas técnicas y organizativas completas para garantizar la seguridad, confidencialidad e integridad de tus datos personales. Nuestras prácticas de protección de datos están diseñadas para respetar tus derechos de privacidad y darte control sobre tu información personal.</p>
+          <p>Revisamos y actualizamos regularmente nuestras medidas de protección de datos para garantizar el cumplimiento continuo con los requisitos del GDPR y las mejores prácticas de la industria.</p>
+        </div>
+      </div>
+    </section>
 
-          <h2>3. Tus Derechos Bajo GDPR</h2>
-          <ul>
-            <li>Derecho de acceso a tus datos personales</li>
-            <li>Derecho de rectificación de datos inexactos</li>
-            <li>Derecho al olvido ("derecho a ser olvidado")</li>
-            <li>Derecho a restringir el procesamiento</li>
-            <li>Derecho a la portabilidad de datos</li>
-            <li>Derecho a objetar el procesamiento</li>
+    <!-- Legal Basis -->
+    <section class="content-section bg-secondary">
+      <div class="container">
+        <h2>2. Base Legal para el Procesamiento</h2>
+        <p class="section-intro">Procesamos tus datos personales solo cuando tenemos una base legal válida para hacerlo.</p>
+        <div class="legal-basis-grid">
+          <div class="basis-card">
+            <h3>Consentimiento</h3>
+            <p>Cuando has dado un consentimiento claro para que procesemos tus datos personales con fines específicos.</p>
+          </div>
+          <div class="basis-card">
+            <h3>Ejecución de Contrato</h3>
+            <p>Cuando el procesamiento es necesario para cumplir nuestras obligaciones contractuales contigo o para tomar medidas a tu solicitud.</p>
+          </div>
+          <div class="basis-card">
+            <h3>Obligación Legal</h3>
+            <p>Cuando necesitamos procesar tus datos para cumplir con requisitos legales o regulatorios.</p>
+          </div>
+          <div class="basis-card">
+            <h3>Intereses Legítimos</h3>
+            <p>Cuando el procesamiento es necesario para nuestros intereses comerciales legítimos, equilibrados con tus derechos y libertades.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Your Rights Under GDPR -->
+    <section class="content-section">
+      <div class="container">
+        <h2>3. Tus Derechos Bajo el GDPR</h2>
+        <p class="section-intro">El GDPR te otorga derechos específicos con respecto a tus datos personales. Estamos comprometidos a facilitar el ejercicio de estos derechos.</p>
+        <div class="rights-grid">
+          <div class="right-card">
+            <div class="right-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </div>
+            <h3>Derecho de Acceso</h3>
+            <p>Tienes derecho a solicitar acceso a tus datos personales y obtener información sobre cómo los procesamos. Te proporcionaremos una copia de tus datos personales sin costo alguno.</p>
+          </div>
+
+          <div class="right-card">
+            <div class="right-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+              </svg>
+            </div>
+            <h3>Derecho de Rectificación</h3>
+            <p>Puedes solicitar la corrección de datos personales inexactos o incompletos. Actualizaremos tu información de inmediato y notificaremos a terceros relevantes si es necesario.</p>
+          </div>
+
+          <div class="right-card">
+            <div class="right-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="3 6 5 6 21 6"/>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+              </svg>
+            </div>
+            <h3>Derecho de Supresión</h3>
+            <p>También conocido como el "derecho al olvido", puedes solicitar la eliminación de tus datos personales cuando no exista una razón convincente para su procesamiento continuo.</p>
+          </div>
+
+          <div class="right-card">
+            <div class="right-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+            </div>
+            <h3>Derecho de Restricción</h3>
+            <p>Puedes solicitar que restrinjamos el procesamiento de tus datos personales en ciertas circunstancias, como cuando cuestionas su exactitud u objetas el procesamiento.</p>
+          </div>
+
+          <div class="right-card">
+            <div class="right-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+            </div>
+            <h3>Derecho a la Portabilidad de Datos</h3>
+            <p>Tienes derecho a recibir tus datos personales en un formato estructurado, de uso común y legible por máquina, y a transmitirlos a otro responsable del tratamiento.</p>
+          </div>
+
+          <div class="right-card">
+            <div class="right-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="15" y1="9" x2="9" y2="15"/>
+                <line x1="9" y1="9" x2="15" y2="15"/>
+              </svg>
+            </div>
+            <h3>Derecho de Oposición</h3>
+            <p>Puedes oponerte al procesamiento de tus datos personales basado en intereses legítimos o con fines de marketing directo. Cesaremos el procesamiento a menos que tengamos motivos imperiosos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Data Minimization -->
+    <section class="content-section bg-secondary">
+      <div class="container">
+        <h2>4. Minimización de Datos</h2>
+        <p class="section-intro">Seguimos el principio de minimización de datos, recopilando solo los datos personales que son necesarios para nuestros propósitos especificados.</p>
+        <div class="info-card">
+          <ul class="minimization-list">
+            <li>Solo recopilamos datos personales que sean adecuados, relevantes y limitados a lo necesario</li>
+            <li>Revisamos regularmente los datos que recopilamos para asegurar que sigan siendo necesarios para nuestros propósitos</li>
+            <li>No recopilamos datos personales "por si acaso" puedan ser útiles en el futuro</li>
+            <li>Evitamos recopilar datos personales sensibles a menos que sea absolutamente necesario</li>
+            <li>Utilizamos técnicas de anonimización y seudonimización cuando es posible</li>
+            <li>Eliminamos o archivamos datos que ya no son necesarios para su propósito original</li>
+            <li>Proporcionamos información clara sobre por qué necesitamos cada dato que recopilamos</li>
           </ul>
+        </div>
+      </div>
+    </section>
 
-          <h2>4. Retención de Datos</h2>
-          <p>Retenemos datos personales solo el tiempo necesario para los propósitos descritos en nuestra Política de Privacidad.</p>
+    <!-- Consent Management -->
+    <section class="content-section">
+      <div class="container">
+        <h2>5. Gestión del Consentimiento</h2>
+        <p class="section-intro">Cuando nos basamos en el consentimiento como base legal para el procesamiento, nos aseguramos de que cumpla con los estándares del GDPR.</p>
+        <div class="consent-grid">
+          <div class="consent-card">
+            <h3>Libremente Dado</h3>
+            <p>El consentimiento debe ser una elección genuina. No condicionamos el acceso al servicio al consentimiento para procesamiento no esencial.</p>
+          </div>
+          <div class="consent-card">
+            <h3>Específico</h3>
+            <p>Obtenemos consentimiento separado para diferentes propósitos de procesamiento y explicamos claramente a qué estás consintiendo.</p>
+          </div>
+          <div class="consent-card">
+            <h3>Informado</h3>
+            <p>Proporcionamos información clara y transparente sobre el procesamiento de datos antes de obtener el consentimiento.</p>
+          </div>
+          <div class="consent-card">
+            <h3>Inequívoco</h3>
+            <p>El consentimiento requiere una acción afirmativa clara. No usamos casillas pre-marcadas ni asumimos consentimiento por silencio.</p>
+          </div>
+          <div class="consent-card">
+            <h3>Fácil de Retirar</h3>
+            <p>Puedes retirar el consentimiento en cualquier momento, y es tan fácil como darlo. La retirada no afecta el procesamiento previo.</p>
+          </div>
+          <div class="consent-card">
+            <h3>Documentado</h3>
+            <p>Mantenemos registros de cuándo y cómo se obtuvo el consentimiento, incluyendo lo que se te informó en ese momento.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-          <h2>5. Transferencias Internacionales</h2>
-          <p>Aseguramos que existan salvaguardas apropiadas para transferencias internacionales de datos.</p>
+    <!-- Data Retention -->
+    <section class="content-section bg-secondary">
+      <div class="container">
+        <h2>6. Retención de Datos</h2>
+        <p class="section-intro">Retenemos datos personales solo durante el tiempo necesario para los propósitos descritos en nuestra Política de Privacidad.</p>
+        <div class="info-card">
+          <p>Nuestros períodos de retención se basan en necesidades comerciales y requisitos legales. Revisamos regularmente los datos que tenemos y eliminamos o anonimizamos los datos que ya no son necesarios. Diferentes tipos de datos pueden tener diferentes períodos de retención según su propósito y requisitos legales aplicables.</p>
+          <p>Al determinar los períodos de retención, consideramos la naturaleza de los datos, el propósito para el cual fueron recopilados, las obligaciones legales y si el propósito puede lograrse por otros medios.</p>
+        </div>
+      </div>
+    </section>
 
-          <h2>6. Oficial de Protección de Datos</h2>
-          <p>Para consultas GDPR, contacta a nuestro DPO en dpo@minimal.lat</p>
+    <!-- International Transfers -->
+    <section class="content-section">
+      <div class="container">
+        <h2>7. Transferencias Internacionales</h2>
+        <p class="section-intro">Cuando transferimos datos personales fuera del Espacio Económico Europeo (EEE), nos aseguramos de que existan salvaguardas apropiadas.</p>
+        <div class="transfer-grid">
+          <div class="transfer-card">
+            <h3>Decisiones de Adecuación</h3>
+            <p>Priorizamos transferencias a países que la Comisión Europea ha considerado que proporcionan protección de datos adecuada.</p>
+          </div>
+          <div class="transfer-card">
+            <h3>Cláusulas Contractuales Estándar</h3>
+            <p>Utilizamos Cláusulas Contractuales Estándar (SCC) aprobadas por la UE con destinatarios de datos para garantizar protección apropiada.</p>
+          </div>
+          <div class="transfer-card">
+            <h3>Normas Corporativas Vinculantes</h3>
+            <p>Para transferencias intra-grupo, implementamos Normas Corporativas Vinculantes aprobadas por autoridades de protección de datos relevantes.</p>
+          </div>
+          <div class="transfer-card">
+            <h3>Salvaguardas Adicionales</h3>
+            <p>Implementamos medidas suplementarias, incluyendo cifrado y controles de acceso, para proteger datos durante transferencias internacionales.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Data Protection Officer -->
+    <section class="content-section bg-secondary">
+      <div class="container">
+        <h2>8. Delegado de Protección de Datos</h2>
+        <p class="section-intro">Nuestro Delegado de Protección de Datos (DPO) supervisa nuestra estrategia de protección de datos y cumplimiento del GDPR.</p>
+        <div class="dpo-card">
+          <div class="dpo-icon">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+          <h3>Contacta a Nuestro DPO</h3>
+          <p>Nuestro DPO es responsable de monitorear el cumplimiento del GDPR, asesorar sobre asuntos de protección de datos y servir como punto de contacto para sujetos de datos y autoridades supervisoras.</p>
+          <div class="dpo-contact">
+            <p><strong>Email:</strong> dpo@minimal.lat</p>
+            <p><strong>Tiempo de Respuesta:</strong> Nuestro objetivo es responder a todas las consultas del DPO dentro de 48 horas</p>
+            <p><strong>Alcance:</strong> Cumplimiento GDPR, consultas de protección de datos, solicitudes de derechos, quejas</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Breach Notification -->
+    <section class="content-section">
+      <div class="container">
+        <h2>9. Procedimientos de Notificación de Brechas</h2>
+        <p class="section-intro">Tenemos procedimientos robustos para detectar, reportar e investigar brechas de datos personales.</p>
+        <div class="breach-grid">
+          <div class="breach-card">
+            <div class="breach-number">1</div>
+            <h3>Detección</h3>
+            <p>Mantenemos sistemas de monitoreo de seguridad y detección de incidentes 24/7 para identificar posibles brechas rápidamente.</p>
+          </div>
+          <div class="breach-card">
+            <div class="breach-number">2</div>
+            <h3>Evaluación</h3>
+            <p>Al detectar una brecha, evaluamos inmediatamente la naturaleza, alcance e impacto potencial en los individuos afectados.</p>
+          </div>
+          <div class="breach-card">
+            <div class="breach-number">3</div>
+            <h3>Notificación a Autoridades</h3>
+            <p>Notificamos a la autoridad supervisora relevante dentro de 72 horas si la brecha representa un riesgo para los derechos y libertades de las personas.</p>
+          </div>
+          <div class="breach-card">
+            <div class="breach-number">4</div>
+            <h3>Notificación Individual</h3>
+            <p>Si la brecha representa un alto riesgo para tus derechos y libertades, te notificaremos directamente sin demora indebida.</p>
+          </div>
+          <div class="breach-card">
+            <div class="breach-number">5</div>
+            <h3>Contención</h3>
+            <p>Tomamos medidas inmediatas para contener la brecha, prevenir accesos no autorizados adicionales y mitigar el daño potencial.</p>
+          </div>
+          <div class="breach-card">
+            <div class="breach-number">6</div>
+            <h3>Documentación</h3>
+            <p>Documentamos todas las brechas, nuestras acciones de respuesta y sus efectos para demostrar cumplimiento con GDPR y mejorar nuestra seguridad.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Privacy by Design -->
+    <section class="content-section bg-secondary">
+      <div class="container">
+        <h2>10. Privacidad por Diseño y por Defecto</h2>
+        <p class="section-intro">Integramos la protección de datos en nuestros procesos de desarrollo y prácticas comerciales desde el principio.</p>
+        <div class="privacy-design-grid">
+          <div class="design-card">
+            <h3>Proactivo No Reactivo</h3>
+            <p>Anticipamos y prevenimos riesgos de privacidad antes de que ocurran en lugar de remediar problemas después de que suceden.</p>
+          </div>
+          <div class="design-card">
+            <h3>Privacidad por Defecto</h3>
+            <p>La configuración de privacidad se establece automáticamente al nivel más protector, sin requerir acción de los usuarios.</p>
+          </div>
+          <div class="design-card">
+            <h3>Privacidad Integrada</h3>
+            <p>La protección de datos está integrada en nuestra arquitectura de sistemas y prácticas comerciales, no se agrega como una ocurrencia tardía.</p>
+          </div>
+          <div class="design-card">
+            <h3>Funcionalidad Completa</h3>
+            <p>Aseguramos la privacidad sin disminuir la funcionalidad - no es un juego de suma cero.</p>
+          </div>
+          <div class="design-card">
+            <h3>Seguridad de Extremo a Extremo</h3>
+            <p>Los datos están protegidos durante todo su ciclo de vida, desde la recopilación hasta la eliminación.</p>
+          </div>
+          <div class="design-card">
+            <h3>Visibilidad y Transparencia</h3>
+            <p>Nuestras prácticas son abiertas y transparentes, permitiendo la verificación independiente de nuestras afirmaciones de privacidad.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filing a Complaint -->
+    <section class="content-section">
+      <div class="container">
+        <h2>11. Presentar una Queja</h2>
+        <p class="section-intro">Tienes derecho a presentar una queja ante una autoridad supervisora si crees que tus derechos de protección de datos han sido violados.</p>
+        <div class="complaint-process">
+          <div class="process-card">
+            <h3>Contáctanos Primero</h3>
+            <p>Te animamos a contactar primero a nuestro Delegado de Protección de Datos para que podamos intentar resolver tu preocupación directamente. Muchos problemas pueden resolverse rápida y satisfactoriamente a través de comunicación directa.</p>
+            <p><strong>Email:</strong> dpo@minimal.lat</p>
+          </div>
+          <div class="process-card">
+            <h3>Autoridad Supervisora</h3>
+            <p>Si no estás satisfecho con nuestra respuesta o prefieres ir directamente a una autoridad supervisora, tienes derecho a presentar una queja ante:</p>
+            <ul>
+              <li>La autoridad supervisora en tu país de residencia</li>
+              <li>La autoridad supervisora donde trabajas</li>
+              <li>La autoridad supervisora donde ocurrió una presunta infracción</li>
+            </ul>
+          </div>
+          <div class="process-card">
+            <h3>Autoridad Supervisora Principal</h3>
+            <p>Nuestra autoridad supervisora principal es la autoridad de protección de datos en nuestro establecimiento principal. Cooperaremos plenamente con todas las autoridades supervisoras y responderemos a sus consultas e investigaciones.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Exercising Your Rights -->
+    <section class="content-section bg-secondary">
+      <div class="container">
+        <h2>12. Ejercer Tus Derechos</h2>
+        <p class="section-intro">Hacer una solicitud para ejercer tus derechos GDPR es sencillo y gratuito.</p>
+        <div class="exercise-rights-card">
+          <div class="steps-grid">
+            <div class="step-card">
+              <div class="step-number">Paso 1</div>
+              <h3>Envía Tu Solicitud</h3>
+              <p>Contacta a nuestro Delegado de Protección de Datos en <strong>dpo@minimal.lat</strong> con tu solicitud. Por favor incluye información suficiente para identificarte y especifica qué derecho deseas ejercer.</p>
+            </div>
+            <div class="step-card">
+              <div class="step-number">Paso 2</div>
+              <h3>Verificación de Identidad</h3>
+              <p>Para proteger tu privacidad, es posible que necesitemos verificar tu identidad antes de procesar tu solicitud. Esto puede implicar confirmar detalles de tu cuenta o proporcionar identificación.</p>
+            </div>
+            <div class="step-card">
+              <div class="step-number">Paso 3</div>
+              <h3>Procesamiento</h3>
+              <p>Acusaremos recibo de tu solicitud dentro de 48 horas y responderemos sustancialmente dentro de un mes. Las solicitudes complejas pueden tardar hasta tres meses, pero te informaremos si necesitamos tiempo adicional.</p>
+            </div>
+            <div class="step-card">
+              <div class="step-number">Paso 4</div>
+              <h3>Respuesta</h3>
+              <p>Proporcionaremos una respuesta completa a tu solicitud, incluyendo cualquier dato o acción que solicitaste, o una explicación clara si no podemos cumplir tu solicitud.</p>
+            </div>
+          </div>
+          <div class="important-note">
+            <h3>Información Importante</h3>
+            <ul>
+              <li>Ejercer tus derechos GDPR es gratuito en la mayoría de los casos</li>
+              <li>Podemos cobrar una tarifa razonable por solicitudes manifiestamente infundadas o excesivas</li>
+              <li>Podemos rechazar solicitudes que sean manifiestamente infundadas o excesivas</li>
+              <li>Puedes autorizar a alguien para hacer una solicitud en tu nombre con documentación apropiada</li>
+              <li>Responderemos en un formato conciso, transparente y de fácil acceso</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+      <div class="container">
+        <h2>¿Preguntas Sobre GDPR?</h2>
+        <p>Si tienes preguntas sobre nuestro cumplimiento del GDPR, tus derechos de protección de datos, o deseas ejercer cualquiera de tus derechos, por favor contacta a nuestro Delegado de Protección de Datos.</p>
+        <div class="contact-info">
+          <p><strong>Delegado de Protección de Datos:</strong> dpo@minimal.lat</p>
+          <p><strong>Consultas de Privacidad:</strong> privacy@minimal.lat</p>
+          <p><strong>Soporte General:</strong> hello@minimal.lat</p>
         </div>
       </div>
     </section>
@@ -47,10 +415,541 @@ const locale = 'es';
 
 <style>
   main { padding-top: 60px; }
-  .legal-section { padding: calc(var(--section-padding-y) + 2rem) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right); max-width: 900px; margin: 0 auto; }
-  .legal-section h1 { margin-bottom: 1rem; }
-  .last-updated { color: var(--text-light); margin-bottom: 3rem; font-style: italic; }
-  .legal-content h2 { margin-top: 2rem; margin-bottom: 1rem; color: var(--text-dark); }
-  .legal-content p, .legal-content li { color: var(--text-light); line-height: 1.8; margin-bottom: 1rem; }
-  .legal-content ul { margin-left: 2rem; }
+
+  /* Hero Section */
+  .hero-section {
+    padding: calc(var(--section-padding-y) + var(--space-4)) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
+    background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .gdpr-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    background: var(--brand-green);
+    color: white;
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-4);
+  }
+  .hero-section h1 {
+    font-size: clamp(var(--font-size-3xl), 5vw, var(--font-size-5xl));
+    margin-bottom: var(--space-3);
+    color: var(--text-primary);
+    font-weight: var(--font-weight-bold);
+  }
+  .subtitle {
+    font-size: clamp(var(--font-size-lg), 2vw, var(--font-size-xl));
+    color: var(--text-secondary);
+    max-width: 800px;
+    margin: 0 auto var(--space-4);
+    line-height: var(--line-height-relaxed);
+  }
+  .last-updated {
+    color: var(--text-tertiary);
+    font-style: italic;
+    font-size: var(--font-size-sm);
+  }
+
+  /* Content Sections */
+  .content-section {
+    padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
+  }
+  .content-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .content-section h2 {
+    color: var(--text-primary);
+    font-size: clamp(var(--font-size-2xl), 4vw, var(--font-size-3xl));
+    margin-bottom: var(--space-4);
+    text-align: center;
+    font-weight: var(--font-weight-bold);
+  }
+  .section-intro {
+    text-align: center;
+    font-size: var(--font-size-lg);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-8);
+    line-height: var(--line-height-relaxed);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: var(--space-8);
+  }
+  .bg-secondary {
+    background: var(--bg-secondary);
+  }
+
+  /* Info Card */
+  .info-card {
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    border: 1px solid var(--border-primary);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .info-card p {
+    color: var(--text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--space-3);
+    font-size: var(--font-size-base);
+  }
+  .info-card p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Legal Basis Grid */
+  .legal-basis-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .basis-card {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-md);
+    padding: var(--space-5);
+  }
+  .basis-card h3 {
+    color: var(--text-primary);
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-2);
+    font-weight: var(--font-weight-semibold);
+  }
+  .basis-card p {
+    color: var(--text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin: 0;
+  }
+
+  /* Rights Grid */
+  .rights-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+  .right-card {
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+  }
+  .right-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  .right-icon {
+    color: var(--brand-green);
+    margin-bottom: var(--space-3);
+  }
+  .right-card h3 {
+    color: var(--text-primary);
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-3);
+    font-weight: var(--font-weight-semibold);
+  }
+  .right-card p {
+    color: var(--text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin: 0;
+  }
+
+  /* Minimization List */
+  .minimization-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .minimization-list li {
+    color: var(--text-secondary);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--space-3);
+    padding-left: var(--space-5);
+    position: relative;
+  }
+  .minimization-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--brand-green);
+    font-weight: var(--font-weight-bold);
+  }
+
+  /* Consent Grid */
+  .consent-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .consent-card {
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-md);
+    padding: var(--space-5);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+  }
+  .consent-card h3 {
+    color: var(--text-primary);
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-2);
+    font-weight: var(--font-weight-semibold);
+  }
+  .consent-card p {
+    color: var(--text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin: 0;
+    font-size: var(--font-size-sm);
+  }
+
+  /* Transfer Grid */
+  .transfer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .transfer-card {
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-md);
+    padding: var(--space-5);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+  }
+  .transfer-card h3 {
+    color: var(--text-primary);
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-2);
+    font-weight: var(--font-weight-semibold);
+  }
+  .transfer-card p {
+    color: var(--text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin: 0;
+  }
+
+  /* DPO Card */
+  .dpo-card {
+    background: var(--bg-primary);
+    border: 2px solid var(--brand-green);
+    border-radius: var(--radius-lg);
+    padding: var(--space-8);
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .dpo-icon {
+    color: var(--brand-green);
+    margin-bottom: var(--space-4);
+  }
+  .dpo-card h3 {
+    color: var(--text-primary);
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--space-3);
+    font-weight: var(--font-weight-bold);
+  }
+  .dpo-card > p {
+    color: var(--text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--space-5);
+  }
+  .dpo-contact {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    padding: var(--space-5);
+    text-align: left;
+  }
+  .dpo-contact p {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-2);
+    font-size: var(--font-size-base);
+  }
+  .dpo-contact p:last-child {
+    margin-bottom: 0;
+  }
+  .dpo-contact strong {
+    color: var(--text-primary);
+  }
+
+  /* Breach Grid */
+  .breach-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+  .breach-card {
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-md);
+    padding: var(--space-5);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    position: relative;
+    padding-top: calc(var(--space-5) + 40px);
+  }
+  .breach-number {
+    position: absolute;
+    top: var(--space-5);
+    left: var(--space-5);
+    width: 40px;
+    height: 40px;
+    background: var(--brand-green);
+    color: white;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-lg);
+  }
+  .breach-card h3 {
+    color: var(--text-primary);
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-2);
+    font-weight: var(--font-weight-semibold);
+  }
+  .breach-card p {
+    color: var(--text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin: 0;
+  }
+
+  /* Privacy Design Grid */
+  .privacy-design-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .design-card {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-md);
+    padding: var(--space-5);
+  }
+  .design-card h3 {
+    color: var(--text-primary);
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-2);
+    font-weight: var(--font-weight-semibold);
+  }
+  .design-card p {
+    color: var(--text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin: 0;
+    font-size: var(--font-size-sm);
+  }
+
+  /* Complaint Process */
+  .complaint-process {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .process-card {
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+  }
+  .process-card h3 {
+    color: var(--text-primary);
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-3);
+    font-weight: var(--font-weight-semibold);
+  }
+  .process-card p {
+    color: var(--text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--space-3);
+  }
+  .process-card p:last-child {
+    margin-bottom: 0;
+  }
+  .process-card ul {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-3) 0 0 0;
+  }
+  .process-card li {
+    color: var(--text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--space-2);
+    padding-left: var(--space-5);
+    position: relative;
+  }
+  .process-card li::before {
+    content: "•";
+    position: absolute;
+    left: var(--space-2);
+    color: var(--brand-green);
+    font-weight: var(--font-weight-bold);
+  }
+  .process-card strong {
+    color: var(--text-primary);
+  }
+
+  /* Exercise Rights */
+  .exercise-rights-card {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .steps-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+    margin-bottom: var(--space-8);
+  }
+  .step-card {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+  }
+  .step-number {
+    display: inline-block;
+    background: var(--brand-green);
+    color: white;
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-full);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-3);
+  }
+  .step-card h3 {
+    color: var(--text-primary);
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-2);
+    font-weight: var(--font-weight-semibold);
+  }
+  .step-card p {
+    color: var(--text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin: 0;
+  }
+  .step-card strong {
+    color: var(--text-primary);
+  }
+  .important-note {
+    background: var(--bg-tertiary);
+    border-left: 4px solid var(--brand-green);
+    border-radius: var(--radius-md);
+    padding: var(--space-6);
+  }
+  .important-note h3 {
+    color: var(--text-primary);
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-3);
+    font-weight: var(--font-weight-semibold);
+  }
+  .important-note ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .important-note li {
+    color: var(--text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--space-2);
+    padding-left: var(--space-5);
+    position: relative;
+  }
+  .important-note li::before {
+    content: "•";
+    position: absolute;
+    left: var(--space-2);
+    color: var(--brand-green);
+    font-weight: var(--font-weight-bold);
+  }
+
+  /* Contact Section */
+  .contact-section {
+    padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
+    background: linear-gradient(135deg, var(--brand-green) 0%, #059669 100%);
+    text-align: center;
+  }
+  .contact-section h2 {
+    color: white;
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--space-4);
+    font-weight: var(--font-weight-bold);
+  }
+  .contact-section > .container > p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-6);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: var(--line-height-relaxed);
+  }
+  .contact-info {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .contact-info p {
+    color: white;
+    font-size: var(--font-size-base);
+    margin-bottom: var(--space-2);
+  }
+  .contact-info p:last-child {
+    margin-bottom: 0;
+  }
+  .contact-info strong {
+    font-weight: var(--font-weight-semibold);
+  }
+
+  /* Responsive */
+  @media (min-width: 768px) {
+    .legal-basis-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .rights-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .consent-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .transfer-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .breach-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .privacy-design-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .steps-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1024px) {
+    .rights-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .consent-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .breach-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .privacy-design-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
 </style>

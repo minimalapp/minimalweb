@@ -18,13 +18,13 @@ const t = commonTranslations[locale];
       </a>
     </div>
     <ul class="nav-links">
-      <li><a href="#producto">{t.nav.product}</a></li>
-      <li><a href="#como-funciona">{t.nav.howItWorks}</a></li>
-      <li><a href="#beneficios">{t.nav.benefits}</a></li>
-      <li><a href="#casos">{t.nav.useCases}</a></li>
-      <li><a href="#precios">{t.nav.pricing}</a></li>
+      <li><a href={locale === 'es' ? '#producto' : '#product'}>{t.nav.product}</a></li>
+      <li><a href={locale === 'es' ? '#como-funciona' : '#how-it-works'}>{t.nav.howItWorks}</a></li>
+      <li><a href={locale === 'es' ? '#beneficios' : '#benefits'}>{t.nav.benefits}</a></li>
+      <li><a href={locale === 'es' ? '#casos' : '#use-cases'}>{t.nav.useCases}</a></li>
+      <li><a href={locale === 'es' ? '#precios' : '#pricing'}>{t.nav.pricing}</a></li>
     </ul>
-    <a href="#contacto" class="cta-button">{t.nav.tryFree}</a>
+    <a href={locale === 'es' ? '#contacto' : '#contact'} class="cta-button">{t.nav.tryFree}</a>
     <button class="mobile-menu" id="mobileMenuButton">☰</button>
   </nav>
 </header>
@@ -33,13 +33,13 @@ const t = commonTranslations[locale];
 <div class="mobile-nav-overlay" id="mobileNavOverlay">
   <button class="mobile-close" id="mobileCloseButton">×</button>
   <ul class="mobile-nav-links">
-    <li><a href="#producto">{t.nav.product}</a></li>
-    <li><a href="#como-funciona">{t.nav.howItWorks}</a></li>
-    <li><a href="#beneficios">{t.nav.benefits}</a></li>
-    <li><a href="#casos">{t.nav.useCases}</a></li>
-    <li><a href="#precios">{t.nav.pricing}</a></li>
+    <li><a href={locale === 'es' ? '#producto' : '#product'}>{t.nav.product}</a></li>
+    <li><a href={locale === 'es' ? '#como-funciona' : '#how-it-works'}>{t.nav.howItWorks}</a></li>
+    <li><a href={locale === 'es' ? '#beneficios' : '#benefits'}>{t.nav.benefits}</a></li>
+    <li><a href={locale === 'es' ? '#casos' : '#use-cases'}>{t.nav.useCases}</a></li>
+    <li><a href={locale === 'es' ? '#precios' : '#pricing'}>{t.nav.pricing}</a></li>
   </ul>
-  <a href="#contacto" class="cta-button">{t.nav.tryFree}</a>
+  <a href={locale === 'es' ? '#contacto' : '#contact'} class="cta-button">{t.nav.tryFree}</a>
 </div>
 
 <style>

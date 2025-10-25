@@ -3,7 +3,8 @@ export interface Props {
   locale: string;
 }
 
-const { locale } = Astro.props;
+// Locale prop available for future use if needed
+const { locale: _locale } = Astro.props;
 ---
 
 <div class="magic-hero" id="magicHero">

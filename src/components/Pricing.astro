@@ -1,4 +1,6 @@
 ---
+import type { Locale } from '@/i18n/utils';
+
 export interface PricingPlan {
   name: string;
   price: string;
@@ -11,12 +13,13 @@ export interface PricingPlan {
 export interface Props {
   title: string;
   plans: PricingPlan[];
+  locale: Locale;
 }
 
-const { title, plans } = Astro.props;
+const { title, plans, locale } = Astro.props;
 ---
 
-<section class="pricing" id="precios">
+<section class="pricing" id={locale === 'es' ? 'precios' : 'pricing'}>
   <div class="container">
     <h2 class="section-title">{title}</h2>
     <div class="pricing-grid">

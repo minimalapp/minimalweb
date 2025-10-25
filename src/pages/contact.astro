@@ -12,21 +12,161 @@ const locale = 'en';
     <section class="hero-section">
       <div class="container">
         <h1>Contact Us</h1>
-        <p class="subtitle">Have questions? We'd love to hear from you.</p>
+        <p class="subtitle">Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
       </div>
     </section>
+
+    <!-- Contact Form Section -->
     <section class="content-section">
       <div class="container">
-        <form class="contact-form">
-          <input type="text" placeholder="Name" required />
-          <input type="email" placeholder="Email" required />
-          <input type="text" placeholder="Subject" required />
-          <textarea placeholder="Message" rows="6" required></textarea>
-          <button type="submit">Send Message</button>
-        </form>
-        <div class="contact-info">
-          <p><strong>Email:</strong> hello@minimal.lat</p>
-          <p><strong>Support:</strong> support@minimal.lat</p>
+        <div class="contact-grid">
+          <!-- Form -->
+          <div class="form-container">
+            <h2>Send us a Message</h2>
+            <form class="contact-form">
+              <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input type="text" id="name" name="name" placeholder="John Doe" required />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" placeholder="john@example.com" required />
+              </div>
+
+              <div class="form-group">
+                <label for="company">Company</label>
+                <input type="text" id="company" name="company" placeholder="Your Company Name" />
+              </div>
+
+              <div class="form-group">
+                <label for="website">Website</label>
+                <input type="url" id="website" name="website" placeholder="https://example.com" />
+              </div>
+
+              <div class="form-group">
+                <label for="subject">Subject *</label>
+                <select id="subject" name="subject" required>
+                  <option value="">Select an option</option>
+                  <option value="demo">Request Demo</option>
+                  <option value="pricing">Pricing Information</option>
+                  <option value="integration">Integration Question</option>
+                  <option value="support">Technical Support</option>
+                  <option value="partnership">Partnership Opportunity</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message *</label>
+                <textarea id="message" name="message" placeholder="Tell us how we can help..." rows="6" required></textarea>
+              </div>
+
+              <button type="submit" class="btn-submit">Send Message</button>
+            </form>
+          </div>
+
+          <!-- Contact Info Cards -->
+          <div class="info-container">
+            <h2>Get in Touch</h2>
+
+            <div class="contact-card">
+              <div class="card-icon">📧</div>
+              <h3>Email Us</h3>
+              <p>For general inquiries</p>
+              <a href="mailto:hello@minimal.lat">hello@minimal.lat</a>
+            </div>
+
+            <div class="contact-card">
+              <div class="card-icon">🔧</div>
+              <h3>Technical Support</h3>
+              <p>Need help with integration?</p>
+              <a href="mailto:support@minimal.lat">support@minimal.lat</a>
+            </div>
+
+            <!-- Prefer to Talk Directly -->
+            <div class="info-box">
+              <h3>Prefer to Talk Directly?</h3>
+              <p>We're available Monday through Friday, 9 AM - 6 PM EST. Schedule a call with our team to discuss your needs in detail.</p>
+              <a href="#" class="btn-secondary">Schedule a Call</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="content-section bg-secondary">
+      <div class="container">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-container">
+          <details class="faq-item">
+            <summary>
+              <span class="faq-question">How quickly can I expect a response?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </summary>
+            <div class="faq-answer">
+              <p>We typically respond to all inquiries within 24 hours during business days. For technical support requests, our average response time is under 2 hours. Urgent issues are prioritized and handled immediately.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span class="faq-question">Can I schedule a demo of Minimal?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </summary>
+            <div class="faq-answer">
+              <p>Absolutely! Select "Request Demo" from the subject dropdown when filling out the contact form. Our team will reach out to schedule a personalized demo at your convenience. We'll walk you through all features and answer any questions you have.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span class="faq-question">Do you offer custom enterprise solutions?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </summary>
+            <div class="faq-answer">
+              <p>Yes! We provide custom enterprise solutions with dedicated support, custom integrations, and SLA guarantees. Select "Partnership Opportunity" in the contact form, and our enterprise team will discuss your specific requirements and create a tailored solution.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span class="faq-question">What information should I include in my support request?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </summary>
+            <div class="faq-answer">
+              <p>To help us assist you quickly, please include:</p>
+              <ul>
+                <li>Your website URL and Site ID</li>
+                <li>Browser and device information</li>
+                <li>Detailed description of the issue</li>
+                <li>Screenshots or screen recordings if applicable</li>
+                <li>Any error messages you're seeing</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span class="faq-question">Is there a phone number I can call?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </summary>
+            <div class="faq-answer">
+              <p>We primarily support customers through email and scheduled calls to ensure quality responses. Use the "Schedule a Call" option above to book a time that works for you. For enterprise customers, we provide dedicated phone support as part of your plan.</p>
+            </div>
+          </details>
         </div>
       </div>
     </section>
@@ -36,14 +176,315 @@ const locale = 'en';
 
 <style>
   main { padding-top: 60px; }
-  .hero-section { padding: calc(var(--section-padding-y) + 2rem) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right); background: linear-gradient(180deg, #f7fafc 0%, #ffffff 100%); text-align: center; }
-  .hero-section h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1.5rem; }
-  .subtitle { font-size: clamp(1.1rem, 2vw, 1.5rem); color: var(--text-light); max-width: 800px; margin: 0 auto; }
-  .content-section { padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right); max-width: 600px; margin: 0 auto; }
-  .contact-form { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 3rem; }
-  .contact-form input, .contact-form textarea { padding: 1rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem; }
-  .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--brand-blue); }
-  .contact-form button { padding: 1rem 2rem; background: var(--gradient-primary); color: white; border: none; border-radius: 50px; font-size: 1.1rem; font-weight: 600; cursor: pointer; }
-  .contact-info { text-align: center; }
-  .contact-info p { margin: 0.5rem 0; color: var(--text-light); }
+
+  /* Hero Section */
+  .hero-section {
+    padding: calc(var(--section-padding-y) + var(--space-4)) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
+    background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+    text-align: center;
+  }
+  .hero-section h1 {
+    font-size: clamp(var(--font-size-3xl), 5vw, var(--font-size-5xl));
+    margin-bottom: var(--space-3);
+    color: var(--text-primary);
+    font-weight: var(--font-weight-bold);
+  }
+  .subtitle {
+    font-size: clamp(calc(var(--font-size-lg) + 1px), 2vw, var(--font-size-2xl));
+    color: var(--text-secondary);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: var(--line-height-relaxed);
+  }
+
+  /* Content Section */
+  .content-section {
+    padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
+  }
+  .content-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .content-section h2 {
+    color: var(--text-primary);
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--space-8);
+    text-align: center;
+  }
+
+  .bg-secondary {
+    background: var(--bg-secondary);
+  }
+
+  /* Contact Grid */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-10);
+    align-items: start;
+  }
+
+  /* Form Container */
+  .form-container h2 {
+    text-align: left;
+    margin-bottom: var(--space-6);
+    font-size: var(--font-size-2xl);
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .form-group label {
+    color: var(--text-primary);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    padding: 16px 24px;
+    min-height: 52px;
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-base);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .contact-form select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 20px;
+    padding-right: 48px;
+  }
+
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder {
+    color: var(--text-quaternary);
+  }
+
+  .contact-form input:focus,
+  .contact-form select:focus,
+  .contact-form textarea:focus {
+    outline: none;
+    border-color: var(--brand-purple-primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  }
+
+  .contact-form textarea {
+    resize: vertical;
+    min-height: 150px;
+  }
+
+  .btn-submit {
+    padding: 16px 40px;
+    min-height: 52px;
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-md);
+  }
+
+  .btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .btn-submit:active {
+    transform: translateY(0);
+  }
+
+  .btn-submit:focus-visible {
+    outline: 2px solid var(--brand-purple-primary);
+    outline-offset: 2px;
+  }
+
+  /* Info Container */
+  .info-container h2 {
+    text-align: left;
+    margin-bottom: var(--space-6);
+    font-size: var(--font-size-2xl);
+  }
+
+  .contact-card {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    margin-bottom: var(--space-4);
+    text-align: center;
+    transition: all var(--transition-base);
+  }
+
+  .contact-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--brand-green);
+  }
+
+  .card-icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-3);
+  }
+
+  .contact-card h3 {
+    color: var(--text-primary);
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-2);
+  }
+
+  .contact-card p {
+    color: var(--text-secondary);
+    font-size: var(--font-size-base);
+    margin-bottom: var(--space-3);
+  }
+
+  .contact-card a {
+    color: var(--brand-green);
+    text-decoration: none;
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-lg);
+  }
+
+  .contact-card a:hover {
+    text-decoration: underline;
+  }
+
+  /* Info Box */
+  .info-box {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+    border: 2px solid var(--brand-purple-primary);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    margin-top: var(--space-6);
+  }
+
+  .info-box h3 {
+    color: var(--text-primary);
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-3);
+  }
+
+  .info-box p {
+    color: var(--text-secondary);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--space-4);
+  }
+
+  .btn-secondary {
+    display: inline-block;
+    padding: var(--space-3) var(--space-6);
+    background: transparent;
+    color: var(--text-primary);
+    border: 2px solid var(--border-primary);
+    border-radius: var(--radius-md);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-base);
+    text-decoration: none;
+    transition: all var(--transition-base);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--brand-green);
+    color: var(--brand-green);
+    transform: translateY(-2px);
+  }
+
+  /* FAQ Section */
+  .faq-container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-4);
+    overflow: hidden;
+  }
+
+  .faq-item summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-5);
+    cursor: pointer;
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-primary);
+    user-select: none;
+    transition: background var(--transition-base);
+  }
+
+  .faq-item summary:hover {
+    background: var(--bg-secondary);
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question {
+    font-size: var(--font-size-lg);
+    flex: 1;
+  }
+
+  .faq-icon {
+    width: 24px;
+    height: 24px;
+    transition: transform var(--transition-base);
+  }
+
+  .faq-item[open] .faq-icon {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding: 0 var(--space-5) var(--space-5) var(--space-5);
+    color: var(--text-secondary);
+    line-height: var(--line-height-relaxed);
+  }
+
+  .faq-answer p {
+    margin-bottom: var(--space-3);
+    font-size: var(--font-size-base);
+  }
+
+  .faq-answer ul {
+    margin-top: var(--space-2);
+    padding-left: var(--space-6);
+  }
+
+  .faq-answer li {
+    margin-bottom: var(--space-2);
+  }
+
+  /* Responsive */
+  @media (max-width: 968px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+  }
 </style>
