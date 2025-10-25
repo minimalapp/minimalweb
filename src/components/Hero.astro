@@ -36,11 +36,24 @@ const { title, subtitle, inputPlaceholder, buttonText, locale } = Astro.props;
 
 <style>
   .hero {
-    padding: calc(80px + var(--section-padding-y)) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
+    padding: 2rem var(--section-padding-left) 5rem var(--section-padding-right);
     text-align: center;
     background: linear-gradient(180deg, #f7fafc 0%, #ffffff 100%);
     position: relative;
     overflow: hidden;
+  }
+
+  @media (min-width: 768px) {
+    .hero {
+      padding-top: 3rem;
+      padding-bottom: 6rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero {
+      padding-bottom: 7rem;
+    }
   }
 
   .hero-content {
@@ -73,10 +86,17 @@ const { title, subtitle, inputPlaceholder, buttonText, locale } = Astro.props;
   }
 
   .hero-title {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
+    font-size: clamp(1.75rem, 5.5vw, 4.5rem);
+    line-height: 1.15;
+    margin-bottom: 2rem;
     font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  /* Ensure line breaks are preserved even on small screens */
+  .hero-title :global(br) {
+    display: block;
+    content: "";
   }
 
   .hero-title :global(.highlight) {
@@ -95,6 +115,27 @@ const { title, subtitle, inputPlaceholder, buttonText, locale } = Astro.props;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     animation: rainbowSlide 6s linear infinite;
+    display: inline;
+  }
+
+  /* Specific font size adjustments for better readability on small screens */
+  @media (max-width: 480px) {
+    .hero-title {
+      font-size: clamp(1.5rem, 7vw, 2rem);
+      line-height: 1.2;
+    }
+  }
+
+  @media (min-width: 481px) and (max-width: 768px) {
+    .hero-title {
+      font-size: clamp(2rem, 6vw, 3rem);
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .hero-title {
+      font-size: clamp(2.5rem, 5.5vw, 3.5rem);
+    }
   }
 
   @keyframes rainbowSlide {
@@ -107,10 +148,17 @@ const { title, subtitle, inputPlaceholder, buttonText, locale } = Astro.props;
   }
 
   .hero-subtitle {
-    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    font-size: clamp(1.125rem, 2.5vw, 1.625rem);
     color: var(--text-light);
     margin-bottom: 2.5rem;
     line-height: 1.6;
+    max-width: 90%;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-subtitle {
+      max-width: 100%;
+    }
   }
 
   .hero-input-group {

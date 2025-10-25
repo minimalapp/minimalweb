@@ -9,7 +9,7 @@
       "phrases": ["your website", "your brand", "your business"]
     },
     "hero": {
-      "title": "Transform your Website into an <span class=\"highlight\">Intelligent Conversational Experience</span>",
+      "title": "Transform your Website<br/>into an <span class=\"highlight\">Intelligent</span><br/><span class=\"highlight\">Conversational Experience</span>",
       "subtitle": "Minimal converts static sites into dynamic AI interfaces that capture your visitors' real intent",
       "inputPlaceholder": "Enter your website URL",
       "button": "Generate Preview",
@@ -322,7 +322,7 @@
       "phrases": ["tu sitio web", "tu marca", "tu negocio"]
     },
     "hero": {
-      "title": "Transforma tu Sitio Web en una <span class=\"highlight\">Experiencia Conversacional Inteligente</span>",
+      "title": "Transforma tu Sitio Web<br/>en una <span class=\"highlight\">Experiencia</span><br/><span class=\"highlight\">Conversacional Inteligente</span>",
       "subtitle": "Minimal convierte sitios estáticos en interfaces dinámicas de IA que capturan la intención real de tus visitantes",
       "inputPlaceholder": "Ingresa la URL de tu sitio",
       "button": "Generar Vista Previa",
