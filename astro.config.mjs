@@ -19,8 +19,8 @@ export default defineConfig({
   // Integrations
   integrations: [
     tailwind({
-      // Disable Tailwind's default preflight to use custom styles
-      applyBaseStyles: false,
+      // Enable Tailwind's preflight for better utility class support
+      applyBaseStyles: true,
     }),
     sitemap({
       i18n: {

@@ -24,17 +24,26 @@ const icons: Record<string, string> = {
 };
 ---
 
-<section class="problem" id={locale === 'es' ? 'problema' : 'problem'}>
-  <div class="container">
-    <h2 class="section-title">{title}</h2>
-    <div class="problem-grid">
+<section
+  class="py-12 md:py-16 px-[var(--section-padding-right)] pl-[var(--section-padding-left)] bg-bg-secondary"
+  id={locale === 'es' ? 'problema' : 'problem'}
+>
+  <div class="mx-auto max-w-[1200px]">
+    <h2 class="text-center mb-6 text-text-primary section-title">
+      {title}
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
       {items.map((item) => (
-        <div class="problem-card">
-          <div class="icon-wrapper">
-            <span class="icon" set:html={icons[item.icon] || icons.search}></span>
+        <div class="problem-card bg-bg-primary p-4 rounded-md border border-black/[0.06] shadow-sm transition-[transform,box-shadow] duration-base hover:-translate-y-0.5 hover:shadow-md">
+          <div class="mb-2">
+            <span class="icon inline-flex items-center justify-center w-12 h-12 text-brand-purple-primary" set:html={icons[item.icon] || icons.search}></span>
           </div>
-          <h3>{item.title}</h3>
-          <p>{item.description}</p>
+          <h3 class="text-[calc(var(--font-size-2xl)+2px)] font-semibold mb-2 text-text-primary leading-snug">
+            {item.title}
+          </h3>
+          <p class="text-[15px] text-text-tertiary leading-relaxed">
+            {item.description}
+          </p>
         </div>
       ))}
     </div>
@@ -42,83 +51,14 @@ const icons: Record<string, string> = {
 </section>
 
 <style>
-  .problem {
-    padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
-    background: var(--bg-secondary); /* Changed from white to #F9FAFB */
-  }
-
+  /* Title responsive font sizing */
   .section-title {
-    text-align: center;
-    margin-bottom: var(--space-6); /* Increased from 3rem to 48px */
     font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-4xl));
-    color: var(--text-primary);
   }
 
-  .problem-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-3); /* Reduced from 2rem to 24px */
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .problem-card {
-    background: var(--bg-primary);
-    padding: var(--space-4); /* Standardized to 32px all sides */
-    border-radius: var(--radius-md); /* Standardized to 12px */
-    border: 1px solid rgba(0, 0, 0, 0.06); /* Added subtle border */
-    box-shadow: var(--shadow-sm);
-    transition: transform var(--transition-base), box-shadow var(--transition-base);
-  }
-
-  .problem-card:hover {
-    transform: translateY(-2px); /* Reduced from -5px for subtlety */
-    box-shadow: var(--shadow-md);
-  }
-
-  /* Icon styling */
-  .icon-wrapper {
-    margin-bottom: var(--space-2); /* 16px spacing from icon to title */
-  }
-
-  .icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px; /* Consistent icon size */
-    height: 48px;
-    color: var(--brand-purple-primary);
-  }
-
+  /* SVG full width/height within icon wrapper */
   .icon :global(svg) {
     width: 100%;
     height: 100%;
-  }
-
-  .problem-card h3 {
-    font-size: calc(var(--font-size-2xl) + 2px); /* Increased by 2px */
-    font-weight: var(--font-weight-semibold); /* Changed to 600 */
-    margin-bottom: var(--space-2);
-    color: var(--text-primary);
-    line-height: var(--line-height-snug);
-  }
-
-  .problem-card p {
-    font-size: 15px; /* Increased from 14px */
-    color: var(--text-tertiary); /* Darkened to #4B5563 for WCAG AA */
-    line-height: var(--line-height-relaxed); /* Set to 1.6 */
-  }
-
-  /* Mobile: 1 column */
-  @media (min-width: 640px) {
-    .problem-grid {
-      grid-template-columns: repeat(2, 1fr); /* Tablet: 2 columns */
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .problem-grid {
-      grid-template-columns: repeat(4, 1fr); /* Desktop: 4 columns */
-    }
   }
 </style>

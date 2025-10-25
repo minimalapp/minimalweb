@@ -25,32 +25,34 @@ export interface Props {
 const { title, tabs, businessOwners, marketing, developers, endUsers, locale } = Astro.props;
 ---
 
-<section class="value-section" id={locale === 'es' ? 'beneficios' : 'benefits'}>
-  <div class="container">
-    <h2 class="section-title">{title}</h2>
-    <div class="tabs-wrapper">
-      <div class="tab-buttons">
-        <button class="tab-button active" data-tab="businessOwners">
+<section class="py-12 md:py-14 px-4 md:px-6 lg:px-8 bg-bg-primary" id={locale === 'es' ? 'beneficios' : 'benefits'}>
+  <div class="max-w-content mx-auto">
+    <h2 class="text-center mb-6 text-3xl md:text-4xl text-text-primary font-bold">{title}</h2>
+    <div class="max-w-[1000px] mx-auto">
+      <div class="flex flex-wrap gap-2 justify-center mb-4">
+        <button class="tab-button active px-7 py-3.5 bg-bg-secondary rounded-sm cursor-pointer transition-all duration-base text-base font-medium text-text-secondary opacity-70 relative border-b-[3px] border-transparent hover:bg-bg-tertiary hover:opacity-90 focus-visible:outline-2 focus-visible:outline-brand-purple-primary focus-visible:outline-offset-2" data-tab="businessOwners">
           {tabs.businessOwners}
         </button>
-        <button class="tab-button" data-tab="marketing">
+        <button class="tab-button px-7 py-3.5 bg-bg-secondary rounded-sm cursor-pointer transition-all duration-base text-base font-medium text-text-secondary opacity-70 relative border-b-[3px] border-transparent hover:bg-bg-tertiary hover:opacity-90 focus-visible:outline-2 focus-visible:outline-brand-purple-primary focus-visible:outline-offset-2" data-tab="marketing">
           {tabs.marketing}
         </button>
-        <button class="tab-button" data-tab="developers">
+        <button class="tab-button px-7 py-3.5 bg-bg-secondary rounded-sm cursor-pointer transition-all duration-base text-base font-medium text-text-secondary opacity-70 relative border-b-[3px] border-transparent hover:bg-bg-tertiary hover:opacity-90 focus-visible:outline-2 focus-visible:outline-brand-purple-primary focus-visible:outline-offset-2" data-tab="developers">
           {tabs.developers}
         </button>
-        <button class="tab-button" data-tab="endUsers">
+        <button class="tab-button px-7 py-3.5 bg-bg-secondary rounded-sm cursor-pointer transition-all duration-base text-base font-medium text-text-secondary opacity-70 relative border-b-[3px] border-transparent hover:bg-bg-tertiary hover:opacity-90 focus-visible:outline-2 focus-visible:outline-brand-purple-primary focus-visible:outline-offset-2" data-tab="endUsers">
           {tabs.endUsers}
         </button>
       </div>
-      <div class="tab-content">
-        <div class="benefit-list">
+      <div class="pt-3">
+        <div class="benefit-list grid grid-cols-1 md:grid-cols-2 gap-4 opacity-100">
           {businessOwners.map((item) => (
-            <div class="benefit-item">
-              <div class="benefit-icon">{item.icon}</div>
+            <div class="flex gap-3 items-start p-4 bg-bg-tertiary rounded-md shadow-sm transition-all duration-base border border-black/[0.04] hover:-translate-y-0.5 hover:shadow-md">
+              <div class="text-2xl flex-shrink-0 w-[42px] h-[42px] flex items-center justify-center bg-brand-purple-primary/8 rounded-sm text-brand-purple-primary font-bold">
+                {item.icon}
+              </div>
               <div>
-                <h4>{item.title}</h4>
-                <p>{item.description}</p>
+                <h4 class="m-0 mb-1 text-xl text-text-primary font-semibold">{item.title}</h4>
+                <p class="m-0 text-text-tertiary leading-relaxed text-[15px]">{item.description}</p>
               </div>
             </div>
           ))}
@@ -97,11 +99,13 @@ const { title, tabs, businessOwners, marketing, developers, endUsers, locale } =
 
         // Update content
         listElement.innerHTML = content.map((item: any) => `
-          <div class="benefit-item">
-            <div class="benefit-icon">${item.icon}</div>
+          <div class="flex gap-3 items-start p-4 bg-bg-tertiary rounded-md shadow-sm transition-all duration-base border border-black/[0.04] hover:-translate-y-0.5 hover:shadow-md">
+            <div class="text-2xl flex-shrink-0 w-[42px] h-[42px] flex items-center justify-center bg-brand-purple-primary/8 rounded-sm text-brand-purple-primary font-bold">
+              ${item.icon}
+            </div>
             <div>
-              <h4>${item.title}</h4>
-              <p>${item.description}</p>
+              <h4 class="m-0 mb-1 text-xl text-text-primary font-semibold">${item.title}</h4>
+              <p class="m-0 text-text-tertiary leading-relaxed text-[15px]">${item.description}</p>
             </div>
           </div>
         `).join('');
@@ -120,76 +124,16 @@ const { title, tabs, businessOwners, marketing, developers, endUsers, locale } =
 <script id="endUsers-data" type="application/json" is:inline set:html={JSON.stringify(endUsers)}></script>
 
 <style>
-  .value-section {
-    padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
-    background: var(--bg-primary); /* Changed from #f7fafc */
-  }
-
-  .section-title {
-    text-align: center;
-    margin-bottom: var(--space-6); /* Changed from 3rem to 48px */
-    font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-4xl));
-    color: var(--text-primary);
-  }
-
-  .tabs-wrapper {
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  .tab-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2); /* Changed from 1rem to 16px */
-    justify-content: center;
-    margin-bottom: var(--space-4); /* Changed from 3rem to 32px */
-  }
-
-  .tab-button {
-    padding: 14px 28px; /* Increased from 0.75rem 1.5rem */
-    border: none; /* Removed border */
-    border-bottom: 3px solid transparent; /* Added for active state */
-    background: var(--bg-secondary); /* Changed from white */
-    border-radius: var(--radius-sm); /* Changed from 25px to 8px */
-    cursor: pointer;
-    transition: all var(--transition-base);
-    font-size: var(--font-size-base);
-    font-weight: var(--font-weight-medium);
-    color: var(--text-secondary);
-    opacity: 0.7; /* Inactive state opacity */
-    position: relative;
-  }
-
-  .tab-button:hover {
-    background: var(--bg-tertiary); /* Changed from #f8f9fa */
-    opacity: 0.9; /* Slightly more visible on hover */
-  }
-
+  /* Tab active state styles - keep in scoped CSS for specificity */
   .tab-button.active {
-    background: var(--bg-primary); /* Changed from gradient */
-    color: var(--brand-purple-primary); /* Changed to purple text */
-    opacity: 1; /* Full opacity when active */
-    border-bottom-color: var(--brand-purple-primary); /* 3px purple underline */
-    font-weight: var(--font-weight-semibold); /* Bolder when active */
-  }
-
-  .tab-button:focus-visible {
-    outline: 2px solid var(--brand-purple-primary);
-    outline-offset: 2px;
-  }
-
-  .tab-content {
-    padding-top: var(--space-3); /* Added 20px+ top padding */
-  }
-
-  .benefit-list {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-4); /* Changed from 2rem to 32px */
+    background: var(--bg-primary);
+    color: var(--brand-purple-primary);
     opacity: 1;
-    animation: fadeIn 0.4s ease-out; /* Added fade animation */
+    border-bottom-color: var(--brand-purple-primary);
+    font-weight: var(--font-weight-semibold);
   }
 
+  /* Fade animation - keep in scoped CSS */
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -201,54 +145,7 @@ const { title, tabs, businessOwners, marketing, developers, endUsers, locale } =
     }
   }
 
-  .benefit-item {
-    display: flex;
-    gap: var(--space-3); /* Changed from 1.5rem to 24px */
-    align-items: flex-start;
-    padding: var(--space-4); /* Changed from 1.5rem to 32px */
-    background: var(--bg-tertiary); /* Changed from white */
-    border-radius: var(--radius-md); /* Consistent 12px */
-    box-shadow: var(--shadow-sm);
-    transition: transform var(--transition-base), box-shadow var(--transition-base);
-    border: 1px solid rgba(0, 0, 0, 0.04); /* Subtle border */
-  }
-
-  .benefit-item:hover {
-    transform: translateY(-2px); /* Reduced from -4px */
-    box-shadow: var(--shadow-md); /* Increased shadow */
-  }
-
-  .benefit-icon {
-    font-size: 1.5rem; /* Reduced by ~15% from 2rem */
-    flex-shrink: 0;
-    width: 42px; /* Reduced by ~15% from 50px */
-    height: 42px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(99, 102, 241, 0.08); /* Brand purple instead of blue */
-    border-radius: var(--radius-sm); /* Consistent 8px */
-    color: var(--brand-purple-primary); /* Purple checkmark */
-    font-weight: var(--font-weight-bold);
-  }
-
-  .benefit-item h4 {
-    margin: 0 0 var(--space-1) 0; /* Changed from 0.5rem to 8px */
-    font-size: var(--font-size-xl); /* Increased from 1.25rem */
-    color: var(--text-primary);
-    font-weight: var(--font-weight-semibold); /* Changed to 600 */
-  }
-
-  .benefit-item p {
-    margin: 0;
-    color: var(--text-tertiary); /* Darkened from var(--text-light) */
-    line-height: var(--line-height-relaxed); /* 1.6 */
-    font-size: 15px; /* Slightly increased */
-  }
-
-  @media (min-width: 768px) {
-    .benefit-list {
-      grid-template-columns: repeat(2, 1fr);
-    }
+  .benefit-list {
+    animation: fadeIn 0.4s ease-out;
   }
 </style>

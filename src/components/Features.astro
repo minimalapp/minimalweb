@@ -26,17 +26,26 @@ const icons: Record<string, string> = {
 };
 ---
 
-<section class="features" id={locale === 'es' ? 'producto' : 'product'}>
+<section
+  class="py-12 md:py-16 px-[var(--section-padding-right)] pl-[var(--section-padding-left)] bg-bg-primary"
+  id={locale === 'es' ? 'producto' : 'product'}
+>
   <div class="container">
-    <h2 class="section-title">{title}</h2>
-    <div class="features-grid">
+    <h2 class="text-center mb-6 text-text-primary section-title">
+      {title}
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-5 gap-x-4 max-w-[1200px] mx-auto">
       {items.map((item) => (
-        <div class="feature-card">
-          <div class="icon-container">
-            <span class="feature-icon" set:html={icons[item.icon] || icons.palette}></span>
+        <div class="text-center p-4 bg-bg-tertiary border border-black/[0.06] rounded-md transition-[transform,box-shadow] duration-base hover:-translate-y-[2px] hover:shadow-md">
+          <div class="inline-flex items-center justify-center w-16 h-16 mb-2 bg-brand-purple-primary/[0.08] rounded-full">
+            <span class="inline-flex w-12 h-12 text-brand-purple-primary feature-icon" set:html={icons[item.icon] || icons.palette}></span>
           </div>
-          <h3>{item.title}</h3>
-          <p>{item.description}</p>
+          <h3 class="text-2xl font-semibold mb-2 text-text-primary">
+            {item.title}
+          </h3>
+          <p class="text-[15px] text-text-tertiary leading-loose">
+            {item.description}
+          </p>
         </div>
       ))}
     </div>
@@ -44,85 +53,14 @@ const icons: Record<string, string> = {
 </section>
 
 <style>
-  .features {
-    padding: calc(var(--section-padding-y) + var(--space-5)) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
-    background: var(--bg-primary);
-  }
-
+  /* Section title with fluid typography */
   .section-title {
-    text-align: center;
-    margin-bottom: var(--space-6);
     font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-4xl));
-    color: var(--text-primary);
   }
 
-  .features-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-5) var(--space-4); /* vertical: 40px, horizontal: 32px */
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .feature-card {
-    text-align: center;
-    padding: var(--space-4);
-    background: var(--bg-tertiary);
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    border-radius: var(--radius-md);
-    transition: transform var(--transition-base), box-shadow var(--transition-base);
-  }
-
-  .feature-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-  }
-
-  .icon-container {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 64px;
-    height: 64px;
-    margin-bottom: var(--space-2);
-    background: rgba(99, 102, 241, 0.08); /* 8% opacity brand purple */
-    border-radius: 50%;
-  }
-
-  .feature-icon {
-    display: inline-flex;
-    width: 48px;
-    height: 48px;
-    color: var(--brand-purple-primary);
-  }
-
+  /* Ensure SVG icons fill container */
   .feature-icon :global(svg) {
     width: 100%;
     height: 100%;
-  }
-
-  .feature-card h3 {
-    font-size: var(--font-size-2xl);
-    font-weight: var(--font-weight-semibold);
-    margin-bottom: var(--space-2);
-    color: var(--text-primary);
-  }
-
-  .feature-card p {
-    font-size: 15px;
-    color: var(--text-tertiary);
-    line-height: var(--line-height-loose);
-  }
-
-  @media (min-width: 640px) {
-    .features-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .features-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
   }
 </style>

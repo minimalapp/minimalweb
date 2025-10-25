@@ -13,92 +13,35 @@ export interface Props {
 const { title, subtitle, inputPlaceholder, buttonText, locale } = Astro.props;
 ---
 
-<section class="hero" id="mainHero" style="opacity: 0;">
-  <div class="hero-content">
-    <div class="hero-text">
-      <h1 class="hero-title" set:html={title}></h1>
-      <p class="hero-subtitle">{subtitle}</p>
-      <div class="hero-input-group">
+<section class="hero px-4 md:px-8 lg:px-12 pt-10 pb-8 md:pt-12 md:pb-12 lg:pb-28 text-center bg-gradient-to-b from-gray-50 to-white relative overflow-hidden" id="mainHero" style="opacity: 0;">
+  <div class="max-w-content mx-auto flex flex-col lg:grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16 lg:items-center">
+    <div class="hero-text text-center lg:text-left">
+      <h1 class="hero-title text-[clamp(1.5rem,7vw,2rem)] sm:text-[clamp(2rem,6vw,3rem)] md:text-[clamp(2.5rem,5.5vw,3.5rem)] lg:text-[clamp(1.75rem,5.5vw,4.5rem)] leading-tight sm:leading-tight md:leading-tight lg:leading-tight mb-8 font-bold tracking-tight" set:html={title}></h1>
+      <p class="text-[clamp(1.125rem,2.5vw,1.625rem)] text-text-light mb-10 leading-relaxed max-w-[90%] lg:max-w-full mx-auto lg:mx-0">{subtitle}</p>
+      <div class="flex flex-col sm:flex-row gap-3 max-w-[600px] mx-auto lg:mx-0">
         <input
           type="url"
           placeholder={inputPlaceholder}
-          class="hero-input url-input"
+          class="px-5 py-2 border-2 border-gray-200 rounded-full text-base transition-colors duration-base w-full focus:outline-none focus:border-brand-blue"
           aria-label="Website URL"
         />
-        <button class="hero-button cta-button">{buttonText}</button>
+        <button class="px-7 py-2 bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white border-none rounded-full text-base font-semibold cursor-pointer transition-all duration-base hover:-translate-y-0.5 hover:shadow-hover sm:whitespace-nowrap">{buttonText}</button>
       </div>
     </div>
-    <div class="hero-visual">
+    <div class="hero-visual w-full">
       <DemoComparison locale={locale} />
     </div>
   </div>
 </section>
 
 <style>
-  .hero {
-    padding: 2rem var(--section-padding-left) 5rem var(--section-padding-right);
-    text-align: center;
-    background: linear-gradient(180deg, #f7fafc 0%, #ffffff 100%);
-    position: relative;
-    overflow: hidden;
-  }
-
-  @media (min-width: 768px) {
-    .hero {
-      padding-top: 3rem;
-      padding-bottom: 6rem;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .hero {
-      padding-bottom: 7rem;
-    }
-  }
-
-  .hero-content {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-  }
-
-  .hero-text {
-    text-align: center;
-  }
-
-  .hero-visual {
-    width: 100%;
-  }
-
-  @media (min-width: 1024px) {
-    .hero-content {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 4rem;
-      align-items: center;
-    }
-
-    .hero-text {
-      text-align: left;
-    }
-  }
-
-  .hero-title {
-    font-size: clamp(1.75rem, 5.5vw, 4.5rem);
-    line-height: 1.15;
-    margin-bottom: 2rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-  }
-
-  /* Ensure line breaks are preserved even on small screens */
+  /* Preserve line breaks in title */
   .hero-title :global(br) {
     display: block;
     content: "";
   }
 
+  /* Rainbow gradient animation for highlight text */
   .hero-title :global(.highlight) {
     background: linear-gradient(
       90deg,
@@ -118,99 +61,12 @@ const { title, subtitle, inputPlaceholder, buttonText, locale } = Astro.props;
     display: inline;
   }
 
-  /* Specific font size adjustments for better readability on small screens */
-  @media (max-width: 480px) {
-    .hero-title {
-      font-size: clamp(1.5rem, 7vw, 2rem);
-      line-height: 1.2;
-    }
-  }
-
-  @media (min-width: 481px) and (max-width: 768px) {
-    .hero-title {
-      font-size: clamp(2rem, 6vw, 3rem);
-    }
-  }
-
-  @media (min-width: 769px) and (max-width: 1024px) {
-    .hero-title {
-      font-size: clamp(2.5rem, 5.5vw, 3.5rem);
-    }
-  }
-
   @keyframes rainbowSlide {
     0% {
       background-position: 0% 50%;
     }
     100% {
       background-position: 300% 50%;
-    }
-  }
-
-  .hero-subtitle {
-    font-size: clamp(1.125rem, 2.5vw, 1.625rem);
-    color: var(--text-light);
-    margin-bottom: 2.5rem;
-    line-height: 1.6;
-    max-width: 90%;
-  }
-
-  @media (min-width: 1024px) {
-    .hero-subtitle {
-      max-width: 100%;
-    }
-  }
-
-  .hero-input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  .hero-input {
-    padding: 1rem 1.5rem;
-    border: 2px solid #e2e8f0;
-    border-radius: 50px;
-    font-size: 1rem;
-    transition: border-color 0.3s;
-    width: 100%;
-  }
-
-  .hero-input:focus {
-    outline: none;
-    border-color: var(--brand-blue);
-  }
-
-  .hero-button {
-    padding: 1rem 2.5rem;
-    background: var(--gradient-primary);
-    color: white;
-    border: none;
-    border-radius: 50px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-
-  .hero-button:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-hover);
-  }
-
-  @media (min-width: 640px) {
-    .hero-input-group {
-      flex-direction: row;
-    }
-
-    .hero-input {
-      flex: 1;
-    }
-
-    .hero-button {
-      white-space: nowrap;
     }
   }
 </style>

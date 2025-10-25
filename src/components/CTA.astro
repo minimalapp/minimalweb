@@ -14,69 +14,61 @@ export interface Props {
 const { title, subtitle, emailPlaceholder, urlPlaceholder, buttonText, footnote, locale } = Astro.props;
 ---
 
-<section class="cta" id={locale === 'es' ? 'contacto' : 'contact'}>
-  <div class="container">
-    <h2 class="cta-title">{title}</h2>
-    <p class="cta-subtitle">{subtitle}</p>
-    <form class="cta-form">
-      <input
-        type="email"
-        placeholder={emailPlaceholder}
-        class="cta-input"
-        aria-label="Email"
-        required
-      />
-      <input
-        type="url"
-        placeholder={urlPlaceholder}
-        class="cta-input"
-        aria-label="Website URL"
-        required
-      />
-      <button type="submit" class="cta-button">{buttonText}</button>
+<section
+  class="relative overflow-hidden text-center text-white bg-gradient-to-br from-brand-purple-primary via-brand-purple-dark to-[#5B21B6] pt-12 pb-16 md:pt-16 md:pb-20 [clip-path:polygon(0_0,100%_4%,100%_100%,0_96%)] animate-fadeIn motion-reduce:animate-none"
+  id={locale === 'es' ? 'contacto' : 'contact'}
+  style="padding-left: var(--section-padding-left); padding-right: var(--section-padding-right);"
+>
+  <!-- Noise overlay for texture -->
+  <div
+    class="absolute inset-0 pointer-events-none opacity-[0.05]"
+    style="background-image: url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E&quot;)"
+  ></div>
+
+  <!-- Gradient orb animation -->
+  <div
+    class="absolute w-[500px] h-[500px] rounded-full -top-[250px] -right-[100px] pointer-events-none animate-float"
+    style="background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%)"
+  ></div>
+
+  <div class="max-w-[800px] mx-auto relative z-10">
+    <h2 class="text-[clamp(var(--font-size-3xl),4vw,var(--font-size-4xl))] mb-2 font-bold leading-tight">
+      {title}
+    </h2>
+    <p class="text-[calc(var(--font-size-lg)+2px)] mb-6 opacity-95 leading-relaxed">
+      {subtitle}
+    </p>
+    <form class="flex flex-col gap-3 mb-3 max-w-[600px] mx-auto">
+      <div class="flex flex-col sm:flex-row gap-3">
+        <input
+          type="email"
+          placeholder={emailPlaceholder}
+          class="px-4 py-2.5 border-2 border-white/25 rounded-lg text-[15px] bg-white/10 text-white transition-all duration-base shadow-sm placeholder:text-white/60 focus:outline-none focus:border-white/60 focus:bg-white/15 sm:flex-1"
+          aria-label="Email"
+          required
+        />
+        <input
+          type="url"
+          placeholder={urlPlaceholder}
+          class="px-4 py-2.5 border-2 border-white/25 rounded-lg text-[15px] bg-white/10 text-white transition-all duration-base shadow-sm placeholder:text-white/60 focus:outline-none focus:border-white/60 focus:bg-white/15 sm:flex-1"
+          aria-label="Website URL"
+          required
+        />
+      </div>
+      <button
+        type="submit"
+        class="px-7 py-2 bg-white text-brand-purple-primary border-none rounded-full text-base font-semibold cursor-pointer transition-all duration-base hover:-translate-y-0.5 hover:shadow-hover hover:bg-gray-50"
+      >
+        {buttonText}
+      </button>
     </form>
-    <p class="cta-footnote">{footnote}</p>
+    <p class="text-base opacity-90 mt-2">
+      {footnote}
+    </p>
   </div>
 </section>
 
 <style>
-  .cta {
-    padding: var(--space-10) var(--section-padding-left) calc(var(--space-10) + var(--space-3)) var(--section-padding-right); /* 80px top, 100px bottom */
-    background: linear-gradient(135deg, var(--brand-purple-primary) 0%, var(--brand-purple-dark) 50%, #5B21B6 100%); /* Dynamic purple gradient */
-    color: white;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    clip-path: polygon(0 0, 100% 4%, 100% 100%, 0 96%); /* Angled clip-path */
-  }
-
-  /* Noise overlay for texture */
-  .cta::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    opacity: 0.05;
-    pointer-events: none;
-  }
-
-  /* Gradient orb animation */
-  .cta::after {
-    content: '';
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-    border-radius: 50%;
-    top: -250px;
-    right: -100px;
-    animation: float 20s ease-in-out infinite;
-    pointer-events: none;
-  }
-
   @keyframes float {
     0%, 100% {
       transform: translate(0, 0) scale(1);
@@ -89,113 +81,20 @@ const { title, subtitle, emailPlaceholder, urlPlaceholder, buttonText, footnote,
     }
   }
 
-  .container {
-    max-width: 800px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
-  }
-
-  .cta-title {
-    font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-4xl)); /* Increased */
-    margin-bottom: var(--space-2); /* 16px */
-    font-weight: var(--font-weight-bold);
-    line-height: var(--line-height-tight);
-  }
-
-  .cta-subtitle {
-    font-size: calc(var(--font-size-lg) + 2px); /* Increased by 2px to ~20px */
-    margin-bottom: var(--space-6); /* Increased from 2.5rem to 48px */
-    opacity: 0.95;
-    line-height: var(--line-height-relaxed);
-  }
-
-  .cta-form {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2); /* 16px */
-    margin-bottom: var(--space-3); /* 24px */
-  }
-
-  .cta-input {
-    padding: 16px 24px; /* 52px total height */
-    height: 52px;
-    border: 2px solid rgba(255, 255, 255, 0.25);
-    border-radius: 12px; /* Changed from 50px to 12px */
-    font-size: var(--font-size-base);
-    background: rgba(255, 255, 255, 0.12);
-    color: white;
-    transition: all var(--transition-base);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Added shadow */
-  }
-
-  .cta-input::placeholder {
-    color: rgba(255, 255, 255, 0.65);
-  }
-
-  .cta-input:focus {
-    outline: none;
-    border-color: rgba(255, 255, 255, 0.7);
-    background: rgba(255, 255, 255, 0.18);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25); /* Enhanced shadow on focus */
-    transform: translateY(-1px);
-  }
-
-  .cta-button {
-    padding: 16px 40px; /* Increased padding */
-    min-height: 52px; /* Match input height */
-    background: white;
-    color: var(--brand-purple-primary);
-    border: none;
-    border-radius: var(--radius-md); /* Changed from 50px to 12px */
-    font-size: var(--font-size-lg); /* Increased */
-    font-weight: var(--font-weight-semibold);
-    cursor: pointer;
-    transition: all var(--transition-base);
-    box-shadow: var(--shadow-lg);
-  }
-
-  .cta-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35); /* Enhanced shadow */
-    background: var(--gray-50); /* Slight color change */
-  }
-
-  .cta-button:active {
-    transform: translateY(0);
-  }
-
-  .cta-button:focus-visible {
-    outline: 2px solid white;
-    outline-offset: 2px;
-  }
-
-  .cta-footnote {
-    font-size: var(--font-size-base); /* Increased from 0.9rem */
-    opacity: 0.9;
-    margin-top: var(--space-2);
-  }
-
-  @media (min-width: 640px) {
-    .cta-form {
-      flex-direction: row;
-      flex-wrap: wrap;
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
     }
-
-    .cta-input {
-      flex: 1;
-      min-width: 200px;
-    }
-
-    .cta-button {
-      flex-shrink: 0;
+    to {
+      opacity: 1;
     }
   }
 
-  /* Scroll animation */
-  @media (prefers-reduced-motion: no-preference) {
-    .cta {
-      animation: fadeIn 0.8s ease-out;
-    }
+  .animate-float {
+    animation: float 20s ease-in-out infinite;
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.8s ease-out;
   }
 </style>

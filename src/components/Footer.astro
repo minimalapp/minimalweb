@@ -27,278 +27,135 @@ const trustIcons = {
 };
 ---
 
-<footer>
-  <div class="footer-content">
+<footer class="py-12 md:py-14 px-4 md:px-6 lg:px-8 bg-[#0F1419] text-white">
+  <div class="max-w-[1100px] mx-auto mb-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
     <div class="footer-column">
-      <h4>{t.footer.product}</h4>
-      <ul>
-        <li><a href={`${basePath}/features`}>{t.footer.features}</a></li>
-        <li><a href={`${basePath}/integration`}>{t.footer.integration}</a></li>
+      <h4 class="mb-3 text-lg text-white font-semibold">{t.footer.product}</h4>
+      <ul class="list-none p-0 m-0">
+        <li class="mb-1">
+          <a href={`${basePath}/features`} class="text-[#9CA3AF] no-underline transition-all duration-base text-[14px] min-h-[44px] inline-block py-1 leading-normal hover:text-brand-purple-light hover:translate-x-0.5 focus-visible:outline-2 focus-visible:outline-brand-purple-primary focus-visible:outline-offset-2">
+            {t.footer.features}
+          </a>
+        </li>
+        <li class="mb-1">
+          <a href={`${basePath}/integration`} class="text-[#9CA3AF] no-underline transition-all duration-base text-[14px] min-h-[44px] inline-block py-1 leading-normal hover:text-brand-purple-light hover:translate-x-0.5 focus-visible:outline-2 focus-visible:outline-brand-purple-primary focus-visible:outline-offset-2">
+            {t.footer.integration}
+          </a>
+        </li>
       </ul>
     </div>
     <div class="footer-column">
-      <h4>{t.footer.company}</h4>
-      <ul>
-        <li><a href={`${basePath}/about`}>{t.footer.about}</a></li>
-        <li><a href={`${basePath}/careers`}>{t.footer.careers}</a></li>
-        <li><a href={`${basePath}/contact`}>{t.footer.contact}</a></li>
+      <h4 class="mb-3 text-lg text-white font-semibold">{t.footer.company}</h4>
+      <ul class="list-none p-0 m-0">
+        <li class="mb-1">
+          <a href={`${basePath}/about`} class="text-[#9CA3AF] no-underline transition-all duration-base text-[14px] min-h-[44px] inline-block py-1 leading-normal hover:text-brand-purple-light hover:translate-x-0.5 focus-visible:outline-2 focus-visible:outline-brand-purple-primary focus-visible:outline-offset-2">
+            {t.footer.about}
+          </a>
+        </li>
+        <li class="mb-1">
+          <a href={`${basePath}/careers`} class="text-[#9CA3AF] no-underline transition-all duration-base text-[14px] min-h-[44px] inline-block py-1 leading-normal hover:text-brand-purple-light hover:translate-x-0.5 focus-visible:outline-2 focus-visible:outline-brand-purple-primary focus-visible:outline-offset-2">
+            {t.footer.careers}
+          </a>
+        </li>
+        <li class="mb-1">
+          <a href={`${basePath}/contact`} class="text-[#9CA3AF] no-underline transition-all duration-base text-[14px] min-h-[44px] inline-block py-1 leading-normal hover:text-brand-purple-light hover:translate-x-0.5 focus-visible:outline-2 focus-visible:outline-brand-purple-primary focus-visible:outline-offset-2">
+            {t.footer.contact}
+          </a>
+        </li>
       </ul>
     </div>
     <div class="footer-column">
-      <h4>{t.footer.resources}</h4>
-      <ul>
-        <li><a href={`${basePath}/help`}>{t.footer.help}</a></li>
-        <li><a href={`${basePath}/guides`}>{t.footer.guides}</a></li>
-        <li><a href={`${basePath}/community`}>{t.footer.community}</a></li>
+      <h4 class="mb-3 text-lg text-white font-semibold">{t.footer.resources}</h4>
+      <ul class="list-none p-0 m-0">
+        <li class="mb-1">
+          <a href={`${basePath}/help`} class="text-[#9CA3AF] no-underline transition-all duration-base text-[14px] min-h-[44px] inline-block py-1 leading-normal hover:text-brand-purple-light hover:translate-x-0.5 focus-visible:outline-2 focus-visible:outline-brand-purple-primary focus-visible:outline-offset-2">
+            {t.footer.help}
+          </a>
+        </li>
+        <li class="mb-1">
+          <a href={`${basePath}/guides`} class="text-[#9CA3AF] no-underline transition-all duration-base text-[14px] min-h-[44px] inline-block py-1 leading-normal hover:text-brand-purple-light hover:translate-x-0.5 focus-visible:outline-2 focus-visible:outline-brand-purple-primary focus-visible:outline-offset-2">
+            {t.footer.guides}
+          </a>
+        </li>
+        <li class="mb-1">
+          <a href={`${basePath}/community`} class="text-[#9CA3AF] no-underline transition-all duration-base text-[14px] min-h-[44px] inline-block py-1 leading-normal hover:text-brand-purple-light hover:translate-x-0.5 focus-visible:outline-2 focus-visible:outline-brand-purple-primary focus-visible:outline-offset-2">
+            {t.footer.community}
+          </a>
+        </li>
       </ul>
     </div>
     <div class="footer-column">
-      <h4>{t.footer.legal}</h4>
-      <ul>
-        <li><a href={`${basePath}/terms`}>{t.footer.terms}</a></li>
-        <li><a href={`${basePath}/privacy`}>{t.footer.privacy}</a></li>
-        <li><a href={`${basePath}/gdpr`}>{t.footer.gdpr}</a></li>
-        <li><a href={`${basePath}/security`}>{t.footer.security}</a></li>
+      <h4 class="mb-3 text-lg text-white font-semibold">{t.footer.legal}</h4>
+      <ul class="list-none p-0 m-0">
+        <li class="mb-1">
+          <a href={`${basePath}/terms`} class="text-[#9CA3AF] no-underline transition-all duration-base text-[14px] min-h-[44px] inline-block py-1 leading-normal hover:text-brand-purple-light hover:translate-x-0.5 focus-visible:outline-2 focus-visible:outline-brand-purple-primary focus-visible:outline-offset-2">
+            {t.footer.terms}
+          </a>
+        </li>
+        <li class="mb-1">
+          <a href={`${basePath}/privacy`} class="text-[#9CA3AF] no-underline transition-all duration-base text-[14px] min-h-[44px] inline-block py-1 leading-normal hover:text-brand-purple-light hover:translate-x-0.5 focus-visible:outline-2 focus-visible:outline-brand-purple-primary focus-visible:outline-offset-2">
+            {t.footer.privacy}
+          </a>
+        </li>
+        <li class="mb-1">
+          <a href={`${basePath}/gdpr`} class="text-[#9CA3AF] no-underline transition-all duration-base text-[14px] min-h-[44px] inline-block py-1 leading-normal hover:text-brand-purple-light hover:translate-x-0.5 focus-visible:outline-2 focus-visible:outline-brand-purple-primary focus-visible:outline-offset-2">
+            {t.footer.gdpr}
+          </a>
+        </li>
+        <li class="mb-1">
+          <a href={`${basePath}/security`} class="text-[#9CA3AF] no-underline transition-all duration-base text-[14px] min-h-[44px] inline-block py-1 leading-normal hover:text-brand-purple-light hover:translate-x-0.5 focus-visible:outline-2 focus-visible:outline-brand-purple-primary focus-visible:outline-offset-2">
+            {t.footer.security}
+          </a>
+        </li>
       </ul>
     </div>
   </div>
 
   <!-- Social Media & Language Selector Section -->
-  <div class="footer-social-section">
-    <div class="social-links">
-      <a href="https://twitter.com/minimal" aria-label="Twitter" class="social-icon" set:html={socialIcons.twitter}></a>
-      <a href="https://github.com/minimal" aria-label="GitHub" class="social-icon" set:html={socialIcons.github}></a>
-      <a href="https://linkedin.com/company/minimal" aria-label="LinkedIn" class="social-icon" set:html={socialIcons.linkedin}></a>
+  <div class="max-w-content mx-auto mb-6 pt-6 border-t border-white/10 flex flex-col md:flex-row gap-4 items-center md:justify-between">
+    <div class="flex gap-3">
+      <a href="https://twitter.com/minimal" aria-label="Twitter" class="w-10 h-10 inline-flex items-center justify-center text-[#9CA3AF] bg-white/5 rounded-sm transition-all duration-base hover:text-white hover:bg-brand-purple-primary hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-brand-purple-primary focus-visible:outline-offset-2" set:html={socialIcons.twitter}></a>
+      <a href="https://github.com/minimal" aria-label="GitHub" class="w-10 h-10 inline-flex items-center justify-center text-[#9CA3AF] bg-white/5 rounded-sm transition-all duration-base hover:text-white hover:bg-brand-purple-primary hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-brand-purple-primary focus-visible:outline-offset-2" set:html={socialIcons.github}></a>
+      <a href="https://linkedin.com/company/minimal" aria-label="LinkedIn" class="w-10 h-10 inline-flex items-center justify-center text-[#9CA3AF] bg-white/5 rounded-sm transition-all duration-base hover:text-white hover:bg-brand-purple-primary hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-brand-purple-primary focus-visible:outline-offset-2" set:html={socialIcons.linkedin}></a>
     </div>
 
-    <div class="language-selector">
-      <a href="/" class={locale === 'en' ? 'active' : ''}>English</a>
-      <span class="separator">|</span>
-      <a href="/es/" class={locale === 'es' ? 'active' : ''}>Español</a>
+    <div class="flex items-center gap-2 text-[14px]">
+      <a href="/" class={`text-[#9CA3AF] no-underline py-2 px-4 rounded-sm transition-all duration-base hover:text-white hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-brand-purple-primary focus-visible:outline-offset-2 ${locale === 'en' ? 'text-brand-purple-primary font-semibold' : ''}`}>English</a>
+      <span class="text-white/30">|</span>
+      <a href="/es/" class={`text-[#9CA3AF] no-underline py-2 px-4 rounded-sm transition-all duration-base hover:text-white hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-brand-purple-primary focus-visible:outline-offset-2 ${locale === 'es' ? 'text-brand-purple-primary font-semibold' : ''}`}>Español</a>
     </div>
 
-    <div class="trust-badges">
-      <div class="trust-badge" title="SSL Secured">
-        <span class="trust-icon" set:html={trustIcons.ssl}></span>
-        <span class="trust-text">SSL</span>
+    <div class="flex gap-4 flex-wrap justify-center">
+      <div class="flex items-center gap-2 py-2 px-4 bg-white/5 rounded-sm border border-white/10" title="SSL Secured">
+        <span class="w-5 h-5 text-brand-green inline-flex" set:html={trustIcons.ssl}></span>
+        <span class="text-[13px] text-[#9CA3AF] font-medium">SSL</span>
       </div>
-      <div class="trust-badge" title="GDPR Compliant">
-        <span class="trust-icon" set:html={trustIcons.gdpr}></span>
-        <span class="trust-text">GDPR</span>
+      <div class="flex items-center gap-2 py-2 px-4 bg-white/5 rounded-sm border border-white/10" title="GDPR Compliant">
+        <span class="w-5 h-5 text-brand-green inline-flex" set:html={trustIcons.gdpr}></span>
+        <span class="text-[13px] text-[#9CA3AF] font-medium">GDPR</span>
       </div>
-      <div class="trust-badge" title="Enterprise Security">
-        <span class="trust-icon" set:html={trustIcons.security}></span>
-        <span class="trust-text">Secure</span>
+      <div class="flex items-center gap-2 py-2 px-4 bg-white/5 rounded-sm border border-white/10" title="Enterprise Security">
+        <span class="w-5 h-5 text-brand-green inline-flex" set:html={trustIcons.security}></span>
+        <span class="text-[13px] text-[#9CA3AF] font-medium">Secure</span>
       </div>
     </div>
   </div>
 
-  <div class="footer-bottom">
-    <p>{t.footer.copyright}</p>
+  <div class="text-center mt-4 pt-6 border-t border-white/10 text-[#9CA3AF] text-sm">
+    <p class="m-0">{t.footer.copyright}</p>
   </div>
 </footer>
 
 <style>
-  /* Footer Component Styles */
-  footer {
-    padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
-    background: #0F1419; /* Changed from var(--text-dark) to specific dark blue-gray */
-    color: white;
-  }
-
-  .footer-content {
-    max-width: var(--content-max-width);
-    margin: 0 auto var(--space-6);
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-5); /* Changed from 2rem to 40px */
-  }
-
-  .footer-column h4 {
-    margin-bottom: var(--space-3); /* Changed from 1.5rem to 24px */
-    font-size: var(--font-size-lg); /* Changed from 1.25rem */
-    color: white;
-    font-weight: var(--font-weight-semibold);
-  }
-
-  .footer-column ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .footer-column li {
-    margin-bottom: var(--space-1); /* Changed from 0.25rem to 8px */
-  }
-
-  .footer-column a {
-    color: #9CA3AF; /* Changed from #ccc to lighter gray */
-    text-decoration: none;
-    transition: color var(--transition-base);
-    font-size: 14px; /* Changed from 0.9rem to exact 14px */
-    min-height: var(--min-touch-target);
-    display: inline-block;
-    padding: 0.25rem 0;
-    line-height: var(--line-height-normal);
-  }
-
-  .footer-column a:hover {
-    color: var(--brand-purple-light); /* Changed from white to brand purple */
-    transform: translateX(2px); /* Subtle slide effect */
-  }
-
-  .footer-column a:focus-visible {
-    outline: 2px solid var(--brand-purple-primary);
-    outline-offset: 2px;
-  }
-
-  /* Social Media & Language Section */
-  .footer-social-section {
-    max-width: var(--content-max-width);
-    margin: 0 auto var(--space-6);
-    padding-top: var(--space-6);
-    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Subtle separator */
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
-    align-items: center;
-  }
-
-  /* Social Links */
-  .social-links {
-    display: flex;
-    gap: var(--space-3);
-  }
-
-  .social-icon {
-    width: 40px;
-    height: 40px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: #9CA3AF;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: var(--radius-sm);
-    transition: all var(--transition-base);
-  }
-
-  .social-icon:hover {
-    color: white;
-    background: var(--brand-purple-primary);
-    transform: translateY(-2px);
-  }
-
-  .social-icon:focus-visible {
-    outline: 2px solid var(--brand-purple-primary);
-    outline-offset: 2px;
-  }
-
-  .social-icon :global(svg) {
+  /* SVG sizing for social icons */
+  a :global(svg) {
     width: 20px;
     height: 20px;
   }
 
-  /* Language Selector */
-  .language-selector {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    font-size: 14px;
-  }
-
-  .language-selector a {
-    color: #9CA3AF;
-    text-decoration: none;
-    padding: 8px 16px;
-    border-radius: var(--radius-sm);
-    transition: all var(--transition-base);
-  }
-
-  .language-selector a:hover {
-    color: white;
-    background: rgba(255, 255, 255, 0.05);
-  }
-
-  .language-selector a.active {
-    color: var(--brand-purple-primary);
-    font-weight: var(--font-weight-semibold);
-  }
-
-  .language-selector a:focus-visible {
-    outline: 2px solid var(--brand-purple-primary);
-    outline-offset: 2px;
-  }
-
-  .language-selector .separator {
-    color: rgba(255, 255, 255, 0.3);
-  }
-
-  /* Trust Badges */
-  .trust-badges {
-    display: flex;
-    gap: var(--space-4);
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .trust-badge {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 16px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: var(--radius-sm);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .trust-icon {
-    width: 20px;
-    height: 20px;
-    color: var(--brand-green);
-    display: inline-flex;
-  }
-
+  /* SVG sizing for trust icons */
   .trust-icon :global(svg) {
     width: 100%;
     height: 100%;
-  }
-
-  .trust-text {
-    font-size: 13px;
-    color: #9CA3AF;
-    font-weight: var(--font-weight-medium);
-  }
-
-  /* Footer Bottom */
-  .footer-bottom {
-    text-align: center;
-    margin-top: var(--space-4);
-    padding-top: var(--space-6);
-    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Changed from #555 */
-    color: #9CA3AF; /* Changed from #ccc */
-    font-size: var(--font-size-sm);
-  }
-
-  .footer-bottom p {
-    margin: 0;
-  }
-
-  /* Tablet (768px+) */
-  @media (min-width: 768px) {
-    .footer-content {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .footer-social-section {
-      flex-direction: row;
-      justify-content: space-between;
-    }
-  }
-
-  /* Desktop (1024px+) */
-  @media (min-width: 1024px) {
-    .footer-content {
-      grid-template-columns: repeat(4, 1fr);
-    }
   }
 </style>

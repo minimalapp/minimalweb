@@ -28,21 +28,21 @@ const icons: Record<string, string> = {
 };
 ---
 
-<section class="use-cases" id={locale === 'es' ? 'casos' : 'use-cases'}>
+<section class="py-12 md:py-16 px-[clamp(1rem,4vw,3rem)] bg-bg-secondary" id={locale === 'es' ? 'casos' : 'use-cases'}>
   <div class="container">
-    <h2 class="section-title">{title}</h2>
-    <p class="section-subtitle">{subtitle}</p>
-    <div class="cases-grid">
+    <h2 class="text-center mb-2 text-[clamp(var(--font-size-3xl),4vw,var(--font-size-4xl))] text-text-primary">{title}</h2>
+    <p class="text-center text-text-secondary text-[calc(1.1rem+1px)] mb-6 max-w-[700px] mx-auto">{subtitle}</p>
+    <div class="grid grid-cols-1 gap-y-5 gap-x-4 max-w-[1200px] mx-auto sm:grid-cols-2 lg:grid-cols-3">
       {cases.map((useCase) => (
-        <div class="case-card">
-          <div class="icon-container">
-            <span class="case-icon" set:html={icons[useCase.icon] || icons.laptop}></span>
+        <div class="bg-bg-primary p-6 rounded-md shadow-md transition-all duration-base hover:-translate-y-0.5 hover:shadow-lg">
+          <div class="mb-3">
+            <span class="inline-flex w-14 h-14 text-brand-purple-primary" set:html={icons[useCase.icon] || icons.laptop}></span>
           </div>
-          <h3>{useCase.title}</h3>
-          <p class="case-description">{useCase.description}</p>
-          <ul class="case-benefits">
+          <h3 class="text-[calc(var(--font-size-2xl)+1px)] font-bold mb-2 text-text-primary">{useCase.title}</h3>
+          <p class="text-[15px] text-text-tertiary mb-4 leading-loose">{useCase.description}</p>
+          <ul class="list-none p-0">
             {useCase.benefits.map((benefit) => (
-              <li>{benefit}</li>
+              <li class="text-sm text-text-tertiary mb-1 pl-3 relative before:content-['✓'] before:absolute before:left-0 before:text-brand-green before:font-bold">{benefit}</li>
             ))}
           </ul>
         </div>
@@ -52,109 +52,8 @@ const icons: Record<string, string> = {
 </section>
 
 <style>
-  .use-cases {
-    padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
-    background: var(--bg-secondary);
-  }
-
-  .section-title {
-    text-align: center;
-    margin-bottom: var(--space-2); /* Increased to 16px */
-    font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-4xl));
-    color: var(--text-primary);
-  }
-
-  .section-subtitle {
-    text-align: center;
-    color: var(--text-secondary);
-    font-size: calc(1.1rem + 1px); /* Increased by 1px */
-    margin-bottom: var(--space-6);
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .cases-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-5) var(--space-4); /* 40px vertical, 32px horizontal */
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .case-card {
-    background: var(--bg-primary);
-    padding: var(--space-6);
-    border-radius: var(--radius-md); /* 12px */
-    box-shadow: var(--shadow-md); /* Increased shadow for depth */
-    transition: transform var(--transition-base), box-shadow var(--transition-base);
-  }
-
-  .case-card:hover {
-    transform: translateY(-2px); /* Reduced from -5px */
-    box-shadow: var(--shadow-lg); /* Increased shadow */
-  }
-
-  .icon-container {
-    margin-bottom: var(--space-3);
-  }
-
-  .case-icon {
-    display: inline-flex;
-    width: 56px; /* Consistent 56x56px */
-    height: 56px;
-    color: var(--brand-purple-primary);
-  }
-
   .case-icon :global(svg) {
     width: 100%;
     height: 100%;
-  }
-
-  .case-card h3 {
-    font-size: calc(var(--font-size-2xl) + 1px); /* Increased by 1px */
-    font-weight: var(--font-weight-bold); /* 600-700 */
-    margin-bottom: var(--space-2);
-    color: var(--text-primary);
-  }
-
-  .case-description {
-    font-size: 15px; /* Increased from ~14px */
-    color: var(--text-tertiary); /* #4B5563 */
-    margin-bottom: var(--space-4);
-    line-height: var(--line-height-loose); /* 1.7 */
-  }
-
-  .case-benefits {
-    list-style: none;
-    padding: 0;
-  }
-
-  .case-benefits li {
-    font-size: 14px; /* Increased from 13px */
-    color: var(--text-tertiary);
-    margin-bottom: var(--space-1); /* 8px spacing */
-    padding-left: var(--space-3); /* Slight indentation */
-    position: relative;
-  }
-
-  .case-benefits li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: var(--brand-green);
-    font-weight: var(--font-weight-bold);
-  }
-
-  @media (min-width: 640px) {
-    .cases-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .cases-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
   }
 </style>

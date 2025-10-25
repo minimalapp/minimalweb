@@ -19,24 +19,30 @@ export interface Props {
 const { title, plans, locale } = Astro.props;
 ---
 
-<section class="pricing" id={locale === 'es' ? 'precios' : 'pricing'}>
+<section class="py-12 md:py-16 px-[clamp(1rem,4vw,3rem)] bg-bg-secondary" id={locale === 'es' ? 'precios' : 'pricing'}>
   <div class="container">
-    <h2 class="section-title">{title}</h2>
-    <div class="pricing-grid">
+    <h2 class="text-center mb-6 text-[clamp(var(--font-size-3xl),4vw,var(--font-size-4xl))] text-text-primary">{title}</h2>
+    <div class="grid grid-cols-1 gap-3 max-w-[1200px] mx-auto items-stretch md:grid-cols-3">
       {plans.map((plan) => (
-        <div class={`pricing-card ${plan.badge ? 'featured' : ''}`}>
-          {plan.badge && <div class="badge">{plan.badge}</div>}
-          <h3 class="plan-name">{plan.name}</h3>
-          <div class="plan-price">
-            <span class="price">{plan.price}</span>
-            <span class="period">{plan.period}</span>
+        <div class={`relative bg-bg-primary px-4 py-6 rounded-lg shadow-sm text-center transition-all duration-base flex flex-col hover:-translate-y-0.5 hover:shadow-lg ${
+          plan.badge ? 'border-2 border-brand-purple-primary bg-[linear-gradient(180deg,rgba(99,102,241,0.02)_0%,var(--bg-primary)_100%)]' : ''
+        }`}>
+          {plan.badge && <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white py-2 px-4 rounded-[20px] text-sm font-bold shadow-lg z-10">{plan.badge}</div>}
+          <h3 class="text-2xl mb-2 text-text-primary font-bold">{plan.name}</h3>
+          <div class="mb-6 flex items-baseline justify-center gap-2">
+            <span class="text-[clamp(2.5rem,5vw,3rem)] font-bold text-text-primary leading-none">{plan.price}</span>
+            <span class="text-lg text-text-quaternary">{plan.period}</span>
           </div>
-          <ul class="plan-features">
+          <ul class="list-none mb-auto pb-4 text-left">
             {plan.features.map((feature) => (
-              <li>{feature}</li>
+              <li class="py-3 text-[15px] text-text-tertiary border-b border-gray-200 last:border-b-0">{feature}</li>
             ))}
           </ul>
-          <button class="plan-button">{plan.button}</button>
+          <button class={`w-full py-2 px-7 border-2 rounded-full text-base font-semibold cursor-pointer transition-all duration-base mt-4 ${
+            plan.badge
+              ? 'bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white border-none hover:-translate-y-0.5 hover:shadow-hover'
+              : 'bg-transparent border-brand-purple-primary text-brand-purple-primary hover:bg-brand-purple-primary hover:text-white hover:-translate-y-0.5 hover:shadow-md'
+          }`}>{plan.button}</button>
         </div>
       ))}
     </div>
@@ -44,64 +50,6 @@ const { title, plans, locale } = Astro.props;
 </section>
 
 <style>
-  .pricing {
-    padding: calc(var(--section-padding-y) + var(--space-5)) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
-    background: var(--bg-secondary);
-  }
-
-  .section-title {
-    text-align: center;
-    margin-bottom: var(--space-6);
-    font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-4xl));
-    color: var(--text-primary);
-  }
-
-  .pricing-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-3); /* Reduced gap from 2rem to 24px */
-    max-width: 1200px;
-    margin: 0 auto;
-    align-items: stretch; /* Equal heights */
-  }
-
-  .pricing-card {
-    background: var(--bg-primary);
-    padding: var(--space-6) var(--space-4);
-    border-radius: var(--radius-lg); /* Increased to 16px */
-    box-shadow: var(--shadow-sm);
-    text-align: center;
-    position: relative;
-    transition: transform var(--transition-base), box-shadow var(--transition-base);
-    display: flex;
-    flex-direction: column;
-  }
-
-  .pricing-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
-  }
-
-  .pricing-card.featured {
-    border: 2px solid var(--brand-purple-primary);
-    background: linear-gradient(180deg, rgba(99, 102, 241, 0.02) 0%, var(--bg-primary) 100%);
-  }
-
-  .badge {
-    position: absolute;
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--gradient-primary);
-    color: white;
-    padding: 8px 16px; /* Increased padding */
-    border-radius: 20px;
-    font-size: calc(var(--font-size-sm) - 1px); /* Slightly smaller */
-    font-weight: var(--font-weight-bold); /* Bolder: 700 */
-    box-shadow: var(--shadow-lg); /* Doubled shadow */
-    animation: pulse 2s ease-in-out infinite;
-  }
-
   @keyframes pulse {
     0%, 100% {
       transform: translateX(-50%) scale(1);
@@ -111,112 +59,7 @@ const { title, plans, locale } = Astro.props;
     }
   }
 
-  .plan-name {
-    font-size: var(--font-size-2xl);
-    margin-bottom: var(--space-2);
-    color: var(--text-primary);
-    font-weight: var(--font-weight-bold);
-  }
-
-  .plan-price {
-    margin-bottom: var(--space-6);
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
-    gap: 0.5rem;
-  }
-
-  .price {
-    font-size: clamp(2.5rem, 5vw, 3rem);
-    font-weight: var(--font-weight-bold);
-    color: var(--text-primary);
-    line-height: 1;
-  }
-
-  .period {
-    font-size: var(--font-size-lg); /* Increased by 2px */
-    color: var(--text-quaternary);
-  }
-
-  .plan-features {
-    list-style: none;
-    margin-bottom: auto; /* Push button to bottom */
-    padding-bottom: var(--space-4);
-    text-align: left;
-  }
-
-  .plan-features li {
-    padding: 12px 0; /* Increased spacing */
-    font-size: 15px; /* Increased from 14px */
-    color: var(--text-tertiary); /* Darkened to #4B5563 */
-    border-bottom: 1px solid var(--gray-200);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .plan-features li::before {
-    content: '✓';
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    height: 20px;
-    flex-shrink: 0;
-    color: var(--brand-green);
-    font-weight: var(--font-weight-bold);
-  }
-
-  /* Remove checkmark emoji from text */
-  .plan-features li:global {
-    text-indent: -2px;
-  }
-
-  .plan-features li:last-child {
-    border-bottom: none;
-  }
-
-  .plan-button {
-    width: 100%;
-    padding: 14px 32px; /* Increased padding */
-    border: 2px solid transparent;
-    border-radius: var(--radius-full);
-    font-size: var(--font-size-lg);
-    font-weight: var(--font-weight-semibold);
-    cursor: pointer;
-    transition: all var(--transition-base);
-    margin-top: var(--space-4);
-  }
-
-  /* Featured card button - solid purple */
-  .featured .plan-button {
-    background: var(--gradient-primary);
-    color: white;
-    border-color: transparent;
-  }
-
-  .featured .plan-button:hover {
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: var(--shadow-hover);
-  }
-
-  /* Other cards - outlined style */
-  .pricing-card:not(.featured) .plan-button {
-    background: transparent;
-    border-color: var(--brand-purple-primary);
-    color: var(--brand-purple-primary);
-  }
-
-  .pricing-card:not(.featured) .plan-button:hover {
-    background: var(--brand-purple-primary);
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-  }
-
-  @media (min-width: 768px) {
-    .pricing-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
+  .animate-pulse {
+    animation: pulse 2s ease-in-out infinite;
   }
 </style>
