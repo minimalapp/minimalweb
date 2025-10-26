@@ -10,7 +10,7 @@ const { locale } = Astro.props;
 const t = commonTranslations[locale];
 ---
 
-<header class="fixed top-0 w-full bg-white/95 backdrop-blur-md z-[1000] shadow-sm opacity-0 transition-opacity duration-500" id="mainHeader">
+<header class="fixed top-0 w-full bg-white/95 backdrop-blur-md z-[1000] shadow-sm opacity-0 transition-opacity duration-500" id="mainHeader" data-header-initialized="false">
   <nav class="flex justify-between items-center px-4 md:px-8 lg:px-12 py-2 md:py-3 max-w-content mx-auto min-h-[50px]">
     <div class="logo flex items-center h-8 md:h-10">
       <a href={locale === 'es' ? '/es' : '/'}>
@@ -30,7 +30,7 @@ const t = commonTranslations[locale];
 </header>
 
 <!-- Mobile Navigation Overlay -->
-<div class="mobile-nav-overlay fixed top-0 left-0 w-full h-screen bg-white/98 backdrop-blur-xl z-[1001] -translate-x-full transition-transform duration-300 ease-in-out flex flex-col items-center justify-center gap-8" id="mobileNavOverlay">
+<div class="fixed top-0 left-0 w-full h-screen bg-white/98 backdrop-blur-xl z-[1001] -translate-x-full transition-transform duration-300 ease-in-out flex flex-col items-center justify-center gap-8 data-[open=true]:translate-x-0" id="mobileNavOverlay" data-open="false">
   <button class="mobile-close absolute top-4 right-4 bg-transparent border-none text-4xl cursor-pointer text-text-primary min-h-[44px] min-w-[44px] flex items-center justify-center hover:text-brand-blue" id="mobileCloseButton">×</button>
   <ul class="mobile-nav-links list-none text-center gap-6 flex flex-col">
     <li><a href={locale === 'es' ? '#producto' : '#product'} class="no-underline text-text-primary font-semibold text-xl transition-colors duration-base hover:text-brand-blue min-h-[44px] flex items-center justify-center">{t.nav.product}</a></li>
@@ -42,18 +42,14 @@ const t = commonTranslations[locale];
   <a href={locale === 'es' ? '#contacto' : '#contact'} class="cta-button inline-flex items-center justify-center px-7 py-2 bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white border-none rounded-full text-base font-semibold cursor-pointer transition-all duration-base hover:-translate-y-0.5 hover:shadow-hover no-underline">{t.nav.tryFree}</a>
 </div>
 
-<style>
-  .mobile-nav-overlay.active {
-    transform: translateX(0);
-  }
-</style>
-
 <script>
   // Show header after intro animation
   setTimeout(() => {
     const header = document.getElementById('mainHeader');
-    if (header) {
-      header.style.opacity = '1';
+    if (header && header.dataset.headerInitialized === 'false') {
+      header.classList.remove('opacity-0');
+      header.classList.add('opacity-100');
+      header.dataset.headerInitialized = 'true';
     }
   }, 2000);
 
@@ -65,17 +61,17 @@ const t = commonTranslations[locale];
 
     if (mobileMenuButton && mobileNavOverlay && mobileCloseButton) {
       mobileMenuButton.addEventListener('click', () => {
-        mobileNavOverlay.classList.add('active');
+        mobileNavOverlay.dataset.open = 'true';
       });
 
       mobileCloseButton.addEventListener('click', () => {
-        mobileNavOverlay.classList.remove('active');
+        mobileNavOverlay.dataset.open = 'false';
       });
 
       // Close mobile menu when clicking on overlay
       mobileNavOverlay.addEventListener('click', (e) => {
         if (e.target === mobileNavOverlay) {
-          mobileNavOverlay.classList.remove('active');
+          mobileNavOverlay.dataset.open = 'false';
         }
       });
 
@@ -83,7 +79,7 @@ const t = commonTranslations[locale];
       const mobileNavLinks = mobileNavOverlay.querySelectorAll('a');
       mobileNavLinks.forEach(link => {
         link.addEventListener('click', () => {
-          mobileNavOverlay.classList.remove('active');
+          mobileNavOverlay.dataset.open = 'false';
         });
       });
     }

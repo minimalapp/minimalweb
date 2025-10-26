@@ -1,7 +1,6 @@
 ---
 import '@/styles/global.css';
 import '@/styles/animations.css';
-import GradientOverlays from '@/components/GradientOverlays.astro';
 
 export interface Props {
   title: string;
@@ -99,6 +98,5 @@ const alternateEs = new URL('/es' + Astro.url.pathname, Astro.site);
 </head>
 <body>
   <slot />
-  <GradientOverlays />
 </body>
 </html>

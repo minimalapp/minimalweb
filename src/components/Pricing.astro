@@ -28,7 +28,7 @@ const { title, plans, locale } = Astro.props;
           {plan.badge && <div class="absolute -top-3 left-1/2 -translate-x-1/2 text-white py-2 px-4 rounded-[20px] text-sm font-bold shadow-lg z-10 btn-primary">{plan.badge}</div>}
           <h3 class="text-2xl mb-2 text-text-primary font-bold">{plan.name}</h3>
           <div class="mb-6 flex items-baseline justify-center gap-2">
-            <span class="text-[clamp(2.5rem,5vw,3rem)] font-bold text-text-primary leading-none">{plan.price}</span>
+            <span class="text-pricing-amount font-bold text-text-primary leading-none">{plan.price}</span>
             <span class="text-lg text-text-quaternary">{plan.period}</span>
           </div>
           <ul class="list-none mb-auto pb-4 text-left">

@@ -17,7 +17,7 @@ const { title, subtitle, inputPlaceholder, buttonText, locale } = Astro.props;
   <div class="max-w-content mx-auto flex flex-col lg:grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16 lg:items-center">
     <div class="hero-text text-center lg:text-left">
       <h1 class="hero-title mb-8 font-bold tracking-tight leading-tight" set:html={title}></h1>
-      <p class="text-text-light mb-10 leading-relaxed max-w-[90%] lg:max-w-full mx-auto lg:mx-0 text-[clamp(1.125rem,2.5vw,1.625rem)]">{subtitle}</p>
+      <p class="text-text-light mb-10 leading-relaxed max-w-[90%] lg:max-w-full mx-auto lg:mx-0 text-hero-subtitle">{subtitle}</p>
       <div class="flex flex-col sm:flex-row gap-3 max-w-xs sm:max-w-[600px] mx-auto lg:mx-0">
         <input
           type="url"
@@ -35,7 +35,7 @@ const { title, subtitle, inputPlaceholder, buttonText, locale } = Astro.props;
 </section>
 
 <style>
-  /* Rainbow gradient animation for highlight text */
+  /* Rainbow gradient animation for highlight text - uses Tailwind's rainbowSlide keyframes */
   .hero-title :global(.highlight) {
     background: linear-gradient(90deg, #FF5757 0%, #FFA500 16.66%, #FFD700 33.33%, #4CAF50 50%, #2196F3 66.66%, #3F51B5 83.33%, #FF5757 100%);
     background-size: 300% 100%;
@@ -44,14 +44,5 @@ const { title, subtitle, inputPlaceholder, buttonText, locale } = Astro.props;
     background-clip: text;
     animation: rainbowSlide 6s linear infinite;
     display: inline;
-  }
-
-  @keyframes rainbowSlide {
-    0% {
-      background-position: 0% 50%;
-    }
-    100% {
-      background-position: 300% 50%;
-    }
   }
 </style>

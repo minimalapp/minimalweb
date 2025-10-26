@@ -108,6 +108,7 @@ export default {
 				'hero-lg': 'clamp(1.75rem, 5.5vw, 4.5rem)',
 				'hero-subtitle': 'clamp(1.125rem, 2.5vw, 1.625rem)',
 				'section-title': 'clamp(var(--font-size-3xl), 4vw, var(--font-size-4xl))',
+				'pricing-amount': 'clamp(2.5rem, 5vw, 3rem)',
 			},
 			// Font Weight
 			fontWeight: {
