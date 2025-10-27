@@ -1,5 +1,6 @@
 ---
 import type { Locale } from '@/i18n/utils';
+import IconFeatureCard from '@/components/IconFeatureCard.astro';
 
 export interface FeatureItem {
   icon: string;
@@ -30,23 +31,20 @@ const icons: Record<string, string> = {
   class="section-padding bg-bg-primary"
   id={locale === 'es' ? 'producto' : 'product'}
 >
-  <div class="container">
+  <div class="mx-auto max-w-container">
     <h2 class="section-title">
       {title}
     </h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-5 gap-x-4 max-w-container mx-auto">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {items.map((item) => (
-        <div class="text-center p-4 bg-bg-tertiary border border-border-subtle rounded-md transition-all duration-base hover:-translate-y-0.5 hover:shadow-md">
-          <div class="inline-flex items-center justify-center w-16 h-16 mb-2 rounded-full icon-feature">
-            <span class="inline-flex w-12 h-12 text-brand-purple-primary" set:html={icons[item.icon] || icons.palette}></span>
-          </div>
-          <h3 class="text-2xl font-semibold mb-2 text-text-primary">
-            {item.title}
-          </h3>
-          <p class="text-text-tertiary leading-loose text-[15px]">
-            {item.description}
-          </p>
-        </div>
+        <IconFeatureCard
+          icon={icons[item.icon] || icons.palette}
+          iconType="svg"
+          title={item.title}
+          description={item.description}
+          centered={true}
+          variant="tertiary"
+        />
       ))}
     </div>
   </div>

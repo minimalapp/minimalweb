@@ -1,0 +1,39 @@
+---
+/**
+ * MetricCard Component
+ *
+ * A card component for displaying analytics metrics and statistics.
+ * Used in features.astro Analytics section and similar metric displays.
+ *
+ * @param label - Metric label/title
+ * @param description - Metric description
+ * @param variant - Visual style: 'primary' or 'secondary' (default: 'primary')
+ * @param className - Additional CSS classes
+ */
+
+interface Props {
+  label: string;
+  description: string;
+  variant?: 'primary' | 'secondary';
+  className?: string;
+}
+
+const {
+  label,
+  description,
+  variant = 'primary',
+  className = ''
+} = Astro.props;
+
+const bgClass = variant === 'primary' ? 'bg-[var(--bg-primary)]' : 'bg-[var(--bg-secondary)]';
+---
+
+<div class={`${bgClass} p-4 rounded-lg border border-[var(--border-primary)] ${className}`}>
+  <span class="block text-[var(--text-primary)] font-semibold mb-1 text-base">
+    {label}
+  </span>
+  <span class="text-[var(--text-tertiary)] text-sm">
+    {description}
+  </span>
+  <slot />
+</div>

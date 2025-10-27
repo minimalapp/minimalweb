@@ -1,0 +1,29 @@
+---
+interface Props {
+  avatar: string;
+  name: string;
+  role: string;
+  description?: string;
+  className?: string;
+}
+
+const { avatar, name, role, description, className = '' } = Astro.props;
+---
+
+<div class={`bg-[var(--bg-tertiary)] p-6 lg:p-8 rounded-xl shadow-sm border border-black/[0.04] text-center transition-all duration-200 hover:-translate-y-1 hover:shadow-lg ${className}`}>
+  <div class="w-20 h-20 rounded-full bg-gradient-to-br from-[var(--brand-purple-primary)] to-[var(--brand-purple-secondary)] text-white flex items-center justify-center text-2xl font-bold mx-auto mb-4 shadow-[0_4px_12px_rgba(138,43,226,0.2)]">
+    {avatar}
+  </div>
+  <h3 class="text-xl lg:text-2xl mb-3 text-[var(--text-primary)] font-semibold">
+    {name}
+  </h3>
+  <span class="inline-block bg-[var(--brand-purple-primary)] text-white px-4 py-1 rounded-full font-semibold text-sm mb-3 shadow-[0_2px_8px_rgba(138,43,226,0.15)]">
+    {role}
+  </span>
+  {description && (
+    <p class="text-[var(--text-secondary)] leading-loose text-base">
+      {description}
+    </p>
+  )}
+  <slot />
+</div>

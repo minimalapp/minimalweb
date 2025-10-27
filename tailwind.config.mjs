@@ -164,6 +164,7 @@ export default {
 			padding: {
 				'section-x': 'clamp(1rem, 4vw, 3rem)',
 				'section-y': 'clamp(3rem, 8vw, 6rem)',
+				'header': '60px', // Header height offset
 			},
 			// Keyframes for animations
 			keyframes: {

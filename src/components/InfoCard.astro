@@ -1,0 +1,27 @@
+---
+interface Props {
+  icon: string;
+  title: string;
+  description: string;
+  interactive?: boolean;
+  className?: string;
+}
+
+const { icon, title, description, interactive = false, className = '' } = Astro.props;
+
+const hoverClass = interactive ? 'transition-all duration-200 hover:-translate-y-1 hover:shadow-xl hover:border-[var(--brand-green)]' : '';
+---
+
+<div class={`flex items-center gap-4 bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-xl p-6 lg:p-8 shadow-sm ${hoverClass} ${className}`}>
+  <div class="text-4xl lg:text-5xl flex-shrink-0">
+    {icon}
+  </div>
+  <div class="flex-1">
+    <h3 class="text-lg lg:text-xl text-[var(--text-primary)] font-semibold mb-1">
+      {title}
+    </h3>
+    <p class="text-sm lg:text-base text-[var(--text-secondary)]">
+      {description}
+    </p>
+  </div>
+</div>

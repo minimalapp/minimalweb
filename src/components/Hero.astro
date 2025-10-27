@@ -1,5 +1,6 @@
 ---
 import DemoComparison from './DemoComparison.astro';
+import Button from './Button.astro';
 import type { Locale } from '@/i18n/utils';
 
 export interface Props {
@@ -13,8 +14,8 @@ export interface Props {
 const { title, subtitle, inputPlaceholder, buttonText, locale } = Astro.props;
 ---
 
-<section class="hero px-4 md:px-8 lg:px-12 pt-10 pb-8 md:pt-12 md:pb-12 lg:pb-28 text-center bg-gradient-to-b from-gray-50 to-white relative overflow-hidden opacity-0" id="mainHero">
-  <div class="max-w-content mx-auto flex flex-col lg:grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16 lg:items-center">
+<section class="hero section-padding text-center bg-gradient-to-b from-gray-50 to-white relative overflow-hidden opacity-0" id="mainHero">
+  <div class="max-w-content mx-auto flex flex-col lg:grid lg:grid-cols-[1fr_1.2fr] gap-8 lg:gap-12 lg:items-center">
     <div class="hero-text text-center lg:text-left">
       <h1 class="hero-title mb-8 font-bold tracking-tight leading-tight" set:html={title}></h1>
       <p class="text-text-light mb-10 leading-relaxed max-w-[90%] lg:max-w-full mx-auto lg:mx-0 text-hero-subtitle">{subtitle}</p>
@@ -22,10 +23,12 @@ const { title, subtitle, inputPlaceholder, buttonText, locale } = Astro.props;
         <input
           type="url"
           placeholder={inputPlaceholder}
-          class="px-5 py-2 border-2 border-gray-200 rounded-full text-base transition-colors duration-base w-full focus:outline-none focus:border-brand-blue"
+          class="px-4 py-2 border-2 border-gray-200 rounded-full text-base transition-colors duration-base w-full focus:outline-none focus:border-brand-blue"
           aria-label="Website URL"
         />
-        <button class="btn-primary px-7 py-2 text-white border-none rounded-full text-base font-semibold cursor-pointer transition-all duration-base hover:-translate-y-0.5 hover:shadow-hover sm:whitespace-nowrap">{buttonText}</button>
+        <Button variant="primary" size="md" type="button" className="sm:whitespace-nowrap">
+          {buttonText}
+        </Button>
       </div>
     </div>
     <div class="hero-visual w-full">

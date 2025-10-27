@@ -2,6 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
+import Button from '@/components/Button.astro';
 
 const locale = 'es';
 ---
@@ -325,8 +326,12 @@ const locale = 'es';
           <h2>¿Necesitas Más Ayuda?</h2>
           <p>¿No encuentras lo que buscas? Nuestro equipo de soporte está aquí para ayudarte.</p>
           <div class="cta-buttons">
-            <a href="/es/contact" class="btn btn-primary">Contactar Soporte</a>
-            <a href="https://docs.minimal.lat" class="btn btn-secondary" target="_blank">Ver Documentación Completa</a>
+            <Button variant="primary" size="lg" href="/es/contact">
+              Contactar Soporte
+            </Button>
+            <Button variant="secondary" size="lg" href="https://docs.minimal.lat">
+              Ver Documentación Completa
+            </Button>
           </div>
           <p class="cta-subtext">Tiempo promedio de respuesta: <strong>menos de 2 horas</strong></p>
         </div>

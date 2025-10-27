@@ -2,6 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
+import Button from '@/components/Button.astro';
 
 const locale = 'es';
 ---
@@ -62,7 +63,9 @@ const locale = 'es';
                 <textarea id="message" name="message" placeholder="Cuéntanos cómo podemos ayudarte..." rows="6" required></textarea>
               </div>
 
-              <button type="submit" class="btn-submit">Enviar Mensaje</button>
+              <Button type="submit" variant="primary" size="lg" className="w-full">
+                Enviar Mensaje
+              </Button>
             </form>
           </div>
 
@@ -88,7 +91,9 @@ const locale = 'es';
             <div class="info-box">
               <h3>¿Prefieres Hablar Directamente?</h3>
               <p>Estamos disponibles de lunes a viernes, de 9 AM a 6 PM EST. Agenda una llamada con nuestro equipo para discutir tus necesidades en detalle.</p>
-              <a href="#" class="btn-secondary">Agendar una Llamada</a>
+              <Button variant="secondary" href="#" className="w-full">
+                Agendar una Llamada
+              </Button>
             </div>
           </div>
         </div>

@@ -1,0 +1,49 @@
+---
+interface MetricItem {
+  label: string;
+  description: string;
+}
+
+interface Props {
+  icon?: string;
+  title: string;
+  description: string;
+  items?: MetricItem[];
+  className?: string;
+}
+
+const { icon, title, description, items, className = '' } = Astro.props;
+---
+
+<div class={`bg-[var(--bg-tertiary)] rounded-xl p-6 lg:p-8 shadow-sm border border-black/[0.04] ${className}`}>
+  {icon && (
+    <div class="text-4xl mb-4">
+      {icon}
+    </div>
+  )}
+
+  <h3 class="text-xl lg:text-2xl text-[var(--text-primary)] font-semibold mb-4">
+    {title}
+  </h3>
+
+  <p class="text-[var(--text-secondary)] leading-relaxed mb-6 text-base lg:text-lg">
+    {description}
+  </p>
+
+  {items && items.length > 0 && (
+    <div class="flex flex-col gap-3">
+      {items.map(item => (
+        <div class="bg-[var(--bg-primary)] p-4 rounded-lg border border-[var(--border-primary)]">
+          <span class="block text-[var(--text-primary)] font-semibold mb-1 text-base">
+            {item.label}
+          </span>
+          <span class="text-[var(--text-tertiary)] text-sm">
+            {item.description}
+          </span>
+        </div>
+      ))}
+    </div>
+  )}
+
+  <slot />
+</div>

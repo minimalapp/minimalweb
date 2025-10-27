@@ -1,0 +1,27 @@
+---
+interface Props {
+  icon?: string;
+  title: string;
+  description?: string;
+  className?: string;
+}
+
+const { icon, title, description, className = '' } = Astro.props;
+---
+
+<div class={`bg-[var(--bg-tertiary)] p-4 lg:p-6 rounded-xl shadow-sm border border-black/[0.04] transition-all duration-200 hover:-translate-y-1 hover:shadow-lg ${className}`}>
+  {icon && (
+    <div class="text-4xl lg:text-5xl mb-4">
+      {icon}
+    </div>
+  )}
+  <h3 class="text-xl lg:text-2xl mb-3 text-[var(--text-primary)] font-semibold">
+    {title}
+  </h3>
+  {description && (
+    <p class="text-[var(--text-secondary)] leading-relaxed text-base">
+      {description}
+    </p>
+  )}
+  <slot />
+</div>

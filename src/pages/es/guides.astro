@@ -2,6 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
+import Button from '@/components/Button.astro';
 
 const locale = 'es';
 ---
@@ -389,8 +390,12 @@ Minimal.track('button_clicked', &#123;
           <h2>¿Necesitas Ayuda Personalizada?</h2>
           <p>Nuestro equipo puede ayudarte a configurar Minimal para tu caso de uso específico y optimizar para máximas conversiones.</p>
           <div class="cta-buttons">
-            <a href="/es/contact" class="btn btn-primary">Agenda una Consultoría</a>
-            <a href="/es/help" class="btn btn-secondary">Visita el Centro de Ayuda</a>
+            <Button variant="primary" size="lg" href="/es/contact">
+              Agenda una Consultoría
+            </Button>
+            <Button variant="secondary" size="lg" href="/es/help">
+              Visita el Centro de Ayuda
+            </Button>
           </div>
         </div>
       </div>

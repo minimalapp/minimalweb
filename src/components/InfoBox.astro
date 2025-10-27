@@ -1,0 +1,70 @@
+---
+/**
+ * InfoBox Component
+ *
+ * A comprehensive information box component for displaying detailed features with icons,
+ * titles, descriptions, and optional bulleted lists. Perfect for technical feature sections.
+ *
+ * @param icon - Icon string (emoji like "🧠" or SVG markup)
+ * @param iconType - 'emoji' for emoji icons, 'svg' for SVG markup (default: 'emoji')
+ * @param title - Box title
+ * @param description - Main description paragraph
+ * @param items - Optional array of list items (strings)
+ * @param variant - Background variant: 'primary', 'tertiary', or 'secondary' (default: 'primary')
+ * @param className - Additional CSS classes
+ */
+
+interface Props {
+  icon?: string;
+  iconType?: 'emoji' | 'svg';
+  title: string;
+  description: string;
+  items?: string[];
+  variant?: 'primary' | 'tertiary' | 'secondary';
+  className?: string;
+}
+
+const {
+  icon,
+  iconType = 'emoji',
+  title,
+  description,
+  items = [],
+  variant = 'primary',
+  className = ''
+} = Astro.props;
+
+const bgClass = {
+  'primary': 'bg-[var(--bg-primary)] border border-[var(--border-primary)]',
+  'tertiary': 'bg-[var(--bg-tertiary)] border border-[var(--border-subtle)]',
+  'secondary': 'bg-[var(--bg-secondary)] border border-[var(--border-primary)]'
+}[variant];
+---
+
+<div class={`${bgClass} rounded-xl p-6 lg:p-8 shadow-sm ${className}`}>
+  {icon && (
+    <div class="text-4xl mb-4">
+      {iconType === 'emoji' ? icon : <span set:html={icon}></span>}
+    </div>
+  )}
+
+  <h3 class="text-[var(--text-primary)] text-2xl mb-4 font-semibold">
+    {title}
+  </h3>
+
+  <p class="text-[var(--text-secondary)] text-lg leading-relaxed mb-6">
+    {description}
+  </p>
+
+  {items.length > 0 && (
+    <ul class="list-none p-0 m-0 space-y-3">
+      {items.map(item => (
+        <li class="text-[var(--text-secondary)] text-base leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold">
+          {item}
+        </li>
+      ))}
+    </ul>
+  )}
+
+  <slot />
+</div>

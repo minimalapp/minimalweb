@@ -2,6 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
+import Button from '@/components/Button.astro';
 
 const locale = 'es';
 const title = 'Carreras - Minimal';
@@ -212,7 +213,9 @@ const description = 'Únete a nuestro equipo y ayuda a transformar el futuro de 
               </div>
             </div>
             <div class="job-footer">
-              <a href="mailto:careers@minimal.lat?subject=Aplicación: Ingeniero Full-Stack Senior" class="job-apply-btn">Aplicar Ahora</a>
+              <Button variant="primary" href="mailto:careers@minimal.lat?subject=Aplicación: Ingeniero Full-Stack Senior">
+                Aplicar Ahora
+              </Button>
             </div>
           </div>
 
@@ -252,7 +255,9 @@ const description = 'Únete a nuestro equipo y ayuda a transformar el futuro de 
               </div>
             </div>
             <div class="job-footer">
-              <a href="mailto:careers@minimal.lat?subject=Aplicación: Diseñador de Producto (UX/UI)" class="job-apply-btn">Aplicar Ahora</a>
+              <Button variant="primary" href="mailto:careers@minimal.lat?subject=Aplicación: Diseñador de Producto (UX/UI)">
+                Aplicar Ahora
+              </Button>
             </div>
           </div>
 
@@ -292,7 +297,9 @@ const description = 'Únete a nuestro equipo y ayuda a transformar el futuro de 
               </div>
             </div>
             <div class="job-footer">
-              <a href="mailto:careers@minimal.lat?subject=Aplicación: Ingeniero DevOps" class="job-apply-btn">Aplicar Ahora</a>
+              <Button variant="primary" href="mailto:careers@minimal.lat?subject=Aplicación: Ingeniero DevOps">
+                Aplicar Ahora
+              </Button>
             </div>
           </div>
 
@@ -332,7 +339,9 @@ const description = 'Únete a nuestro equipo y ayuda a transformar el futuro de 
               </div>
             </div>
             <div class="job-footer">
-              <a href="mailto:careers@minimal.lat?subject=Aplicación: Gerente de Éxito del Cliente" class="job-apply-btn">Aplicar Ahora</a>
+              <Button variant="primary" href="mailto:careers@minimal.lat?subject=Aplicación: Gerente de Éxito del Cliente">
+                Aplicar Ahora
+              </Button>
             </div>
           </div>
 
@@ -372,7 +381,9 @@ const description = 'Únete a nuestro equipo y ayuda a transformar el futuro de 
               </div>
             </div>
             <div class="job-footer">
-              <a href="mailto:careers@minimal.lat?subject=Aplicación: Líder de Marketing de Crecimiento" class="job-apply-btn">Aplicar Ahora</a>
+              <Button variant="primary" href="mailto:careers@minimal.lat?subject=Aplicación: Líder de Marketing de Crecimiento">
+                Aplicar Ahora
+              </Button>
             </div>
           </div>
         </div>
@@ -440,8 +451,12 @@ const description = 'Únete a nuestro equipo y ayuda a transformar el futuro de 
           <h2>¿No Ves una Posición que Encaje?</h2>
           <p>Siempre estamos buscando talento excepcional, incluso si no tenemos un rol abierto que coincida con tus habilidades en este momento. Envíanos tu currículum y cuéntanos sobre qué te apasiona - te tendremos en mente a medida que crezcamos.</p>
           <div class="cta-buttons">
-            <a href="mailto:careers@minimal.lat?subject=Aplicación General" class="btn btn-primary">Enviar Aplicación General</a>
-            <a href="/es/contact" class="btn btn-secondary">Ponte en Contacto</a>
+            <Button variant="primary" size="lg" href="mailto:careers@minimal.lat?subject=Aplicación General">
+              Enviar Aplicación General
+            </Button>
+            <Button variant="secondary" size="lg" href="/es/contact">
+              Ponte en Contacto
+            </Button>
           </div>
           <p class="cta-note">Revisamos aplicaciones generales regularmente y nos contactamos cuando surgen oportunidades relevantes.</p>
         </div>

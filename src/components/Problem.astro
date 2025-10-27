@@ -1,5 +1,6 @@
 ---
 import type { Locale } from '@/i18n/utils';
+import IconFeatureCard from '@/components/IconFeatureCard.astro';
 
 export interface ProblemItem {
   title: string;
@@ -32,19 +33,16 @@ const icons: Record<string, string> = {
     <h2 class="section-title">
       {title}
     </h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
       {items.map((item) => (
-        <div class="bg-bg-primary p-4 rounded-md border border-border-subtle shadow-sm transition-all duration-base hover:-translate-y-0.5 hover:shadow-md">
-          <div class="mb-2">
-            <span class="inline-flex items-center justify-center w-12 h-12 text-brand-purple-primary [&>svg]:w-full [&>svg]:h-full" set:html={icons[item.icon] || icons.search}></span>
-          </div>
-          <h3 class="text-2xl font-semibold mb-2 text-text-primary leading-snug">
-            {item.title}
-          </h3>
-          <p class="text-text-tertiary leading-relaxed text-[15px]">
-            {item.description}
-          </p>
-        </div>
+        <IconFeatureCard
+          icon={icons[item.icon] || icons.search}
+          iconType="svg"
+          title={item.title}
+          description={item.description}
+          centered={false}
+          variant="primary"
+        />
       ))}
     </div>
   </div>

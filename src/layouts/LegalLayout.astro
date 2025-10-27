@@ -1,0 +1,53 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  locale?: string;
+  lastUpdated?: string;
+}
+
+const { title, description, locale = 'en', lastUpdated } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} locale={locale}>
+  <Header locale={locale} />
+
+  <main class="pt-header">
+    <section class="py-24 lg:py-32 px-6 md:px-8 max-w-4xl mx-auto">
+      <h1 class="text-4xl lg:text-5xl mb-3 text-[var(--text-primary)] font-bold">
+        {title.replace(' - Minimal', '')}
+      </h1>
+      {lastUpdated && (
+        <p class="text-[var(--text-tertiary)] mb-10 italic">
+          Last updated: {lastUpdated}
+        </p>
+      )}
+
+      <div class="
+        [&_h2]:mt-12 [&_h2]:mb-6 [&_h2]:text-[var(--text-primary)] [&_h2]:font-semibold [&_h2]:text-3xl
+        [&_h3]:mt-8 [&_h3]:mb-4 [&_h3]:text-[var(--text-primary)] [&_h3]:font-medium [&_h3]:text-2xl
+        [&_p]:text-[var(--text-secondary)] [&_p]:leading-relaxed [&_p]:mb-6
+        [&_ul]:my-6 [&_ul]:pl-8 [&_ul]:text-[var(--text-secondary)] [&_ul]:leading-relaxed
+        [&_ol]:my-6 [&_ol]:pl-8 [&_ol]:text-[var(--text-secondary)] [&_ol]:leading-relaxed
+        [&_li]:mb-3
+        [&_strong]:text-[var(--text-primary)] [&_strong]:font-medium
+        [&_code]:bg-[var(--bg-tertiary)] [&_code]:text-[var(--brand-green)] [&_code]:px-2 [&_code]:py-1 [&_code]:rounded [&_code]:text-sm
+        [&_a]:text-[var(--brand-green)] [&_a]:underline hover:[&_a]:text-[#059669]
+        [&_.important-callout]:bg-[var(--bg-tertiary)] [&_.important-callout]:border-l-4 [&_.important-callout]:border-[var(--brand-green)] [&_.important-callout]:rounded-xl [&_.important-callout]:p-8 [&_.important-callout]:my-8
+        [&_.important-callout_h3]:text-[var(--brand-green)] [&_.important-callout_h3]:text-lg [&_.important-callout_h3]:mt-0 [&_.important-callout_h3]:mb-3 [&_.important-callout_h3]:font-semibold
+        [&_.important-callout_p]:mb-0
+        [&_.contact-info]:bg-[var(--bg-secondary)] [&_.contact-info]:p-6 [&_.contact-info]:rounded-xl [&_.contact-info]:mt-6
+        [&_.contact-info_p]:mb-3
+        [&_.contact-info_p:last-child]:mb-0
+      ">
+        <slot />
+      </div>
+    </section>
+  </main>
+
+  <Footer locale={locale} />
+</BaseLayout>
