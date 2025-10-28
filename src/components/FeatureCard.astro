@@ -1,4 +1,18 @@
 ---
+/**
+ * FeatureCard Component
+ *
+ * A card component for displaying features with SVG icons from the centralized icon library.
+ * Now uses the Icon component for consistent rendering across the site.
+ *
+ * @param icon - Icon identifier from the icon library (e.g., 'rocket', 'paint-brush', 'chart-bar')
+ * @param title - Card title
+ * @param description - Card description text (optional)
+ * @param className - Additional CSS classes
+ */
+
+import Icon from '@/components/Icon.astro';
+
 interface Props {
   icon?: string;
   title: string;
@@ -11,8 +25,8 @@ const { icon, title, description, className = '' } = Astro.props;
 
 <div class={`bg-[var(--bg-tertiary)] p-4 lg:p-6 rounded-xl shadow-sm border border-black/[0.04] transition-all duration-200 hover:-translate-y-1 hover:shadow-lg ${className}`}>
   {icon && (
-    <div class="text-4xl lg:text-5xl mb-4">
-      {icon}
+    <div class="mb-4 text-brand-purple-primary">
+      <Icon name={icon} size="xl" />
     </div>
   )}
   <h3 class="text-xl lg:text-2xl mb-3 text-[var(--text-primary)] font-semibold">

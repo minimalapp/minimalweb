@@ -1,0 +1,45 @@
+---
+/**
+ * Icon Component
+ *
+ * A universal component for rendering SVG icons from the centralized icon library.
+ * Uses Heroicons for consistency across the entire site.
+ *
+ * @param name - Icon identifier from the icon library (e.g., 'rocket', 'paint-brush', 'chart-bar')
+ * @param size - Icon size: 'sm' (w-4 h-4), 'md' (w-6 h-6), 'lg' (w-8 h-8), 'xl' (w-12 h-12), 'custom' (inherits from parent)
+ * @param className - Additional CSS classes for custom styling
+ *
+ * Example usage:
+ * <Icon name="rocket" size="xl" />
+ * <Icon name="chart-bar" size="md" className="text-brand-green" />
+ */
+
+import { icons } from '@/lib/icons';
+
+interface Props {
+  name: string;
+  size?: 'sm' | 'md' | 'lg' | 'xl' | 'custom';
+  className?: string;
+}
+
+const { name, size = 'xl', className = '' } = Astro.props;
+
+// Get icon from library, fallback to a default icon if not found
+const iconSvg = icons[name] || icons['sparkles'];
+
+// Size mapping using Tailwind utilities
+const sizeClasses = {
+  'sm': 'w-4 h-4',
+  'md': 'w-6 h-6',
+  'lg': 'w-8 h-8',
+  'xl': 'w-12 h-12',
+  'custom': 'w-full h-full'
+};
+
+const sizeClass = sizeClasses[size];
+---
+
+<span
+  class={`inline-flex items-center justify-center ${sizeClass} ${className} [&>svg]:w-full [&>svg]:h-full`}
+  set:html={iconSvg}
+/>

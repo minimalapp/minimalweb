@@ -1,4 +1,19 @@
 ---
+/**
+ * InfoCard Component
+ *
+ * A horizontal card component for displaying information with SVG icons.
+ * Now uses the Icon component for consistent rendering.
+ *
+ * @param icon - Icon identifier from the icon library
+ * @param title - Card title
+ * @param description - Card description
+ * @param interactive - Whether to show hover effects
+ * @param className - Additional CSS classes
+ */
+
+import Icon from '@/components/Icon.astro';
+
 interface Props {
   icon: string;
   title: string;
@@ -13,8 +28,8 @@ const hoverClass = interactive ? 'transition-all duration-200 hover:-translate-y
 ---
 
 <div class={`flex items-center gap-4 bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-xl p-6 lg:p-8 shadow-sm ${hoverClass} ${className}`}>
-  <div class="text-4xl lg:text-5xl flex-shrink-0">
-    {icon}
+  <div class="flex-shrink-0 text-brand-purple-primary">
+    <Icon name={icon} size="xl" />
   </div>
   <div class="flex-1">
     <h3 class="text-lg lg:text-xl text-[var(--text-primary)] font-semibold mb-1">

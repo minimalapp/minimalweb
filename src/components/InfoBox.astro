@@ -4,9 +4,9 @@
  *
  * A comprehensive information box component for displaying detailed features with icons,
  * titles, descriptions, and optional bulleted lists. Perfect for technical feature sections.
+ * Now uses the Icon component for consistent SVG rendering.
  *
- * @param icon - Icon string (emoji like "🧠" or SVG markup)
- * @param iconType - 'emoji' for emoji icons, 'svg' for SVG markup (default: 'emoji')
+ * @param icon - Icon identifier from the icon library (e.g., 'lightbulb', 'puzzle-piece', 'chart-bar')
  * @param title - Box title
  * @param description - Main description paragraph
  * @param items - Optional array of list items (strings)
@@ -14,9 +14,10 @@
  * @param className - Additional CSS classes
  */
 
+import Icon from '@/components/Icon.astro';
+
 interface Props {
   icon?: string;
-  iconType?: 'emoji' | 'svg';
   title: string;
   description: string;
   items?: string[];
@@ -26,7 +27,6 @@ interface Props {
 
 const {
   icon,
-  iconType = 'emoji',
   title,
   description,
   items = [],
@@ -43,8 +43,8 @@ const bgClass = {
 
 <div class={`${bgClass} rounded-xl p-6 lg:p-8 shadow-sm ${className}`}>
   {icon && (
-    <div class="text-4xl mb-4">
-      {iconType === 'emoji' ? icon : <span set:html={icon}></span>}
+    <div class="mb-4 text-brand-purple-primary">
+      <Icon name={icon} size="xl" />
     </div>
   )}
 

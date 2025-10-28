@@ -9,6 +9,7 @@ import CTASection from '@/components/CTASection.astro';
 import Button from '@/components/Button.astro';
 import InfoBox from '@/components/InfoBox.astro';
 import MetricCard from '@/components/MetricCard.astro';
+import Icon from '@/components/Icon.astro';
 
 const locale = 'en';
 const title = 'Features - Minimal';
@@ -27,22 +28,22 @@ const description = 'Discover all the functionalities that will transform your w
     <!-- Main Features -->
     <ContentSection>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <FeatureCard icon="🤖" title="Advanced Conversational AI">
+        <FeatureCard icon="cpu-chip" title="Advanced Conversational AI">
           <p class="text-[var(--text-tertiary)] leading-relaxed text-[15px]">State-of-the-art natural language processing that understands context and user intentions.</p>
         </FeatureCard>
-        <FeatureCard icon="🎨" title="Brand Preservation">
+        <FeatureCard icon="paint-brush" title="Brand Preservation">
           <p class="text-[var(--text-tertiary)] leading-relaxed text-[15px]">The conversational interface automatically adapts to your website's colors, fonts, and visual style.</p>
         </FeatureCard>
-        <FeatureCard icon="⚡" title="1-Line Integration">
+        <FeatureCard icon="bolt" title="1-Line Integration">
           <p class="text-[var(--text-tertiary)] leading-relaxed text-[15px]">Ultra-fast implementation that requires only adding one line of JavaScript code to your website.</p>
         </FeatureCard>
-        <FeatureCard icon="📊" title="Intelligent Analytics">
+        <FeatureCard icon="chart-bar" title="Intelligent Analytics">
           <p class="text-[var(--text-tertiary)] leading-relaxed text-[15px]">Get deep insights into your users' real intentions and behavior patterns.</p>
         </FeatureCard>
-        <FeatureCard icon="🔄" title="Automatic Synchronization">
+        <FeatureCard icon="arrow-path" title="Automatic Synchronization">
           <p class="text-[var(--text-tertiary)] leading-relaxed text-[15px]">Your website content syncs automatically, allowing AI to always have updated information.</p>
         </FeatureCard>
-        <FeatureCard icon="🌍" title="Multi-language Support">
+        <FeatureCard icon="globe-alt" title="Multi-language Support">
           <p class="text-[var(--text-tertiary)] leading-relaxed text-[15px]">Conversational interface that automatically adapts to your website's language.</p>
         </FeatureCard>
       </div>
@@ -55,7 +56,7 @@ const description = 'Discover all the functionalities that will transform your w
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <InfoBox
-          icon="🧠"
+          icon="light-bulb"
           title="Intelligent Processing"
           description="Our advanced AI engine leverages state-of-the-art natural language processing to understand user queries with remarkable accuracy. The system learns from every interaction, continuously improving its ability to provide relevant, contextual responses."
           items={[
@@ -69,7 +70,7 @@ const description = 'Discover all the functionalities that will transform your w
         />
 
         <InfoBox
-          icon="🔌"
+          icon="puzzle-piece"
           title="Frictionless Integration"
           description="Designed for developers and non-developers alike, Minimal integrates seamlessly with any website or platform. No complex setup, no backend changes required - just add one line of code and you're ready to go."
           items={[
@@ -91,7 +92,7 @@ const description = 'Discover all the functionalities that will transform your w
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <InfoBox
-          icon="📈"
+          icon="arrow-trending-up"
           title="Engagement Metrics"
           description="Track how users interact with your conversational interface in real-time. Monitor conversation rates, message volumes, user satisfaction scores, and engagement patterns to understand what resonates with your audience."
           variant="tertiary"
@@ -104,7 +105,7 @@ const description = 'Discover all the functionalities that will transform your w
         </InfoBox>
 
         <InfoBox
-          icon="👥"
+          icon="user-group"
           title="User Insights"
           description="Understand your users like never before. See what questions they ask, what problems they're trying to solve, and what information they're seeking. Identify trends, common pain points, and opportunities for improvement."
           variant="tertiary"
@@ -117,7 +118,7 @@ const description = 'Discover all the functionalities that will transform your w
         </InfoBox>
 
         <InfoBox
-          icon="📋"
+          icon="clipboard-document-list"
           title="Actionable Reports"
           description="Transform raw data into actionable insights with comprehensive reports. Export data, create custom dashboards, and integrate with your existing analytics tools to get a complete picture of your website's performance."
           variant="tertiary"
@@ -138,7 +139,9 @@ const description = 'Discover all the functionalities that will transform your w
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div class="bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-xl p-6 lg:p-8">
-          <div class="text-4xl mb-4">🔒</div>
+          <div class="mb-4 text-brand-purple-primary">
+            <Icon name="lock-closed" size="xl" />
+          </div>
           <h3 class="text-[var(--text-primary)] text-2xl mb-4 font-semibold">Data Protection</h3>
           <p class="text-[var(--text-secondary)] text-lg leading-relaxed mb-6">Your data security is our top priority. We employ industry-leading encryption, comply with international privacy regulations, and implement strict access controls to ensure your information remains safe and private.</p>
           <ul class="list-none p-0 m-0 space-y-3">
@@ -151,7 +154,9 @@ const description = 'Discover all the functionalities that will transform your w
         </div>
 
         <div class="bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-xl p-6 lg:p-8">
-          <div class="text-4xl mb-4">⚙️</div>
+          <div class="mb-4 text-brand-purple-primary">
+            <Icon name="cog" size="xl" />
+          </div>
           <h3 class="text-[var(--text-primary)] text-2xl mb-4 font-semibold">Robust Infrastructure</h3>
           <p class="text-[var(--text-secondary)] text-lg leading-relaxed mb-6">Built on world-class infrastructure with redundancy at every level. Our distributed architecture ensures your conversational interface is always available, fast, and responsive, no matter where your users are located.</p>
           <ul class="list-none p-0 m-0 space-y-3">
@@ -164,7 +169,9 @@ const description = 'Discover all the functionalities that will transform your w
         </div>
 
         <div class="bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-xl p-6 lg:p-8">
-          <div class="text-4xl mb-4">📈</div>
+          <div class="mb-4 text-brand-purple-primary">
+            <Icon name="arrow-trending-up" size="xl" />
+          </div>
           <h3 class="text-[var(--text-primary)] text-2xl mb-4 font-semibold">Scalability</h3>
           <p class="text-[var(--text-secondary)] text-lg leading-relaxed mb-6">From startups to enterprises, Minimal scales with your business. Our infrastructure automatically adjusts to handle traffic spikes, seasonal variations, and growth without any intervention required from you.</p>
           <ul class="list-none p-0 m-0 space-y-3">
