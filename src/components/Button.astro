@@ -1,6 +1,18 @@
 ---
+/**
+ * Button Component - Consistent, accessible button with multiple variants
+ *
+ * Variants:
+ * - primary: Gradient background, white text (for light backgrounds)
+ * - secondary: Transparent with border, adapts to context
+ * - outline: White background with colored text/border (for dark backgrounds)
+ * - outline-light: Light outline for dark backgrounds with better contrast
+ *
+ * Sizes follow consistent spacing scale
+ */
+
 interface Props {
-  variant?: 'primary' | 'secondary' | 'outline';
+  variant?: 'primary' | 'secondary' | 'outline' | 'outline-light';
   size?: 'sm' | 'md' | 'lg';
   href?: string;
   type?: 'button' | 'submit';
@@ -9,18 +21,29 @@ interface Props {
 
 const { variant = 'primary', size = 'md', href, type = 'button', className = '' } = Astro.props;
 
-const baseClasses = 'inline-flex items-center justify-center font-semibold rounded-full transition-all duration-200';
+// Base classes - Tailwind utilities for consistency
+const baseClasses = 'inline-flex items-center justify-center font-semibold rounded-full transition-all duration-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-purple-primary';
 
+// Variant classes using Tailwind utilities and CSS variables
 const variantClasses = {
-  primary: 'bg-[var(--gradient-primary)] text-white shadow-md hover:-translate-y-0.5 hover:shadow-lg',
-  secondary: 'bg-transparent text-[var(--text-primary)] border-2 border-[var(--border-primary)] hover:border-[var(--brand-green)] hover:text-[var(--brand-green)] hover:-translate-y-0.5',
-  outline: 'bg-white text-[var(--brand-green)] border-2 border-white hover:-translate-y-0.5 hover:shadow-xl'
+  // Primary: gradient background, white text - use on light backgrounds
+  primary: 'bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white shadow-md hover:-translate-y-0.5 hover:shadow-hover active:translate-y-0',
+
+  // Secondary: transparent with border - adapts to parent context
+  secondary: 'bg-transparent text-text-primary border-2 border-gray-300 hover:border-brand-purple-primary hover:text-brand-purple-primary hover:-translate-y-0.5 active:translate-y-0',
+
+  // Outline: white background with colored elements - for dark/colored backgrounds
+  outline: 'bg-white text-brand-purple-primary border-2 border-white hover:bg-white/90 hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0',
+
+  // Outline-light: semi-transparent light button - best for dark backgrounds with high contrast
+  'outline-light': 'bg-white/10 text-white border-2 border-white/30 backdrop-blur-sm hover:bg-white/20 hover:border-white/50 hover:-translate-y-0.5 active:translate-y-0'
 }[variant];
 
+// Size classes - consistent with design system spacing
 const sizeClasses = {
-  sm: 'px-4 py-2 text-sm',
-  md: 'px-6 py-2 text-base',
-  lg: 'px-8 py-4 text-lg'
+  sm: 'px-4 py-1.5 text-sm min-h-[36px]',
+  md: 'px-6 py-2.5 text-base min-h-[44px]',
+  lg: 'px-8 py-3 text-lg min-h-[52px]'
 }[size];
 
 const Tag = href ? 'a' : 'button';

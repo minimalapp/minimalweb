@@ -135,12 +135,12 @@ function finishIntro(isScrollTriggered = false): void {
     //   window.removeEventListener('scroll', handleScroll);
     // }
 
-    // Use much faster transitions when triggered by scroll
-    const fadeOutDuration = isScrollTriggered ? '0.15s' : '0.8s';
-    const fadeInDuration = isScrollTriggered ? '0.2s' : '1s';
-    const fadeInDelay = isScrollTriggered ? 50 : 500;
-    const activateModeDelay = isScrollTriggered ? 200 : 1000;
-    const removeDomDelay = isScrollTriggered ? 400 : 1500;
+    // Use immediate transitions when triggered by scroll - ULTRA fast
+    const fadeOutDuration = isScrollTriggered ? '0.05s' : '0.8s';
+    const fadeInDuration = isScrollTriggered ? '0.1s' : '1s';
+    const fadeInDelay = isScrollTriggered ? 10 : 500;
+    const activateModeDelay = isScrollTriggered ? 50 : 1000;
+    const removeDomDelay = isScrollTriggered ? 100 : 1500;
 
     // Add scroll-triggered class for faster CSS transition
     if (isScrollTriggered) {
@@ -191,9 +191,9 @@ function finishIntro(isScrollTriggered = false): void {
   }
 }
 
-// Add click to skip intro functionality
+// Add click to skip intro functionality - immediate dismissal
 function skipIntro(): void {
-  finishIntro();
+  finishIntro(true); // Pass true for immediate transition
 }
 
   // Initialize and start magic hero animation
@@ -247,44 +247,15 @@ export function initMagicHero(translations: MagicTranslations): void {
       // Also add click listener to document during intro
       document.addEventListener('click', skipIntro);
 
-      // Add scroll listener to fade out intro on scroll
+      // Add scroll listener to immediately dismiss intro on any scroll
       handleScroll = function () {
         const scrollY = window.scrollY || document.documentElement.scrollTop;
 
         if (!introFinished) {
-          // Start fading the intro opacity based on scroll position
-          const maxScroll = 30;
-          const opacity = Math.max(0, 1 - scrollY / maxScroll);
-          magicHero.style.opacity = opacity.toString();
-
-          // Update CSS variables for gradient overlay transforms
-          const maxScrollEffect = 100; // Max scroll distance for full effect
-          const scrollProgress = Math.min(scrollY / maxScrollEffect, 1);
-
-          const leftOverlay = document.querySelector('.gradient-overlay-left') as HTMLElement;
-          const rightOverlay = document.querySelector('.gradient-overlay-right') as HTMLElement;
-
-          if (leftOverlay && rightOverlay) {
-            // Update --scroll-transform-after
-            const rotateAfter = scrollProgress * 360; // Rotate 360 degrees over maxScrollEffect
-            const translateYAfter = scrollProgress * 50; // Translate Y by 50px
-            leftOverlay.style.setProperty('--scroll-transform-after', `translateY(${translateYAfter}px) rotate(${rotateAfter}deg)`);
-            rightOverlay.style.setProperty('--scroll-transform-after', `translateY(${translateYAfter}px) rotate(${rotateAfter}deg)`);
-
-            // Update --scroll-transform-before
-            const rotateBefore = scrollProgress * -180; // Rotate -180 degrees
-            const translateYBefore = scrollProgress * -30; // Translate Y by -30px
-            leftOverlay.style.setProperty('--scroll-transform-before', `translateY(${translateYBefore}px) rotate(${rotateBefore}deg)`);
-            rightOverlay.style.setProperty('--scroll-transform-before', `translateY(${translateYBefore}px) rotate(${rotateBefore}deg)`);
+          // Immediately finish intro on any scroll - no debounce, no fade
+          if (scrollY > 0) {
+            finishIntro(true); // Pass true to indicate scroll-triggered
           }
-
-          // Debounce the intro finish check to avoid triggering too quickly during scroll
-          clearTimeout(introScrollTimeout);
-          introScrollTimeout = setTimeout(() => {
-            if (scrollY > 5) {
-              finishIntro(true); // Pass true to indicate scroll-triggered
-            }
-          }, 50);
         } else {
           // Continuous parallax logic for main page - gradients animate throughout entire scroll
           const mainPageScrollY = window.scrollY || document.documentElement.scrollTop;

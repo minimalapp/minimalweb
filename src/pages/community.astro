@@ -26,13 +26,13 @@ const locale = 'en';
     />
 
     <ContentSection>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-16">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-8 mt-8">
         <StatCard number="10K+" label="Active Users" color="var(--brand-green)" />
         <StatCard number="50+" label="Countries" color="var(--brand-purple-primary)" />
         <StatCard number="1M+" label="Conversations Daily" color="var(--brand-green)" />
       </div>
 
-      <h2 class="text-3xl lg:text-4xl mb-10 text-center text-[var(--text-primary)] font-bold">Connect With Us</h2>
+      <h2 class="text-3xl lg:text-4xl mb-8 text-center text-[var(--text-primary)] font-bold">Connect With Us</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
         <FeatureCard icon="💬" title="Discord Server" description="Join our active Discord community for real-time help, discussions, and announcements. 5,000+ members online." />
         <FeatureCard icon="🐦" title="Twitter / X" description="Follow us for product updates, tips, and industry insights. Join the conversation with #MinimalChat." />
@@ -44,8 +44,8 @@ const locale = 'en';
     </ContentSection>
 
     <ContentSection background="secondary">
-      <h2 class="text-3xl lg:text-4xl mb-10 text-center text-[var(--text-primary)] font-bold">Community Guidelines</h2>
-      <div class="max-w-4xl mx-auto space-y-4">
+      <h2 class="text-3xl lg:text-4xl mb-8 text-center text-[var(--text-primary)] font-bold">Community Guidelines</h2>
+      <div class="max-w-3xl mx-auto mt-6 space-y-4">
         <ValueCard
           title="🤝 Be Respectful"
           description="Treat everyone with respect. Harassment, hate speech, and discrimination are not tolerated. We're building an inclusive community for all."
@@ -70,7 +70,7 @@ const locale = 'en';
     </ContentSection>
 
     <ContentSection>
-      <h2 class="text-3xl lg:text-4xl mb-10 text-center text-[var(--text-primary)] font-bold">Featured Community Members</h2>
+      <h2 class="text-3xl lg:text-4xl mb-8 text-center text-[var(--text-primary)] font-bold">Featured Community Members</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
         <TeamCard
           avatar="SK"
@@ -94,7 +94,7 @@ const locale = 'en';
     </ContentSection>
 
     <ContentSection background="secondary">
-      <h2 class="text-3xl lg:text-4xl mb-10 text-center text-[var(--text-primary)] font-bold">Upcoming Events</h2>
+      <h2 class="text-3xl lg:text-4xl mb-8 text-center text-[var(--text-primary)] font-bold">Upcoming Events</h2>
       <div class="max-w-4xl mx-auto space-y-6 lg:space-y-8">
         <EventCard
           date="March 15, 2025 • 2:00 PM EST"
@@ -127,7 +127,7 @@ const locale = 'en';
     </ContentSection>
 
     <ContentSection>
-      <h2 class="text-3xl lg:text-4xl mb-10 text-center text-[var(--text-primary)] font-bold">Success Stories</h2>
+      <h2 class="text-3xl lg:text-4xl mb-8 text-center text-[var(--text-primary)] font-bold">Success Stories</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
         <TestimonialCard
           avatar="TC"
@@ -167,13 +167,13 @@ const locale = 'en';
     <CTASection
       title="Join the Community"
       description="Connect with thousands of builders creating better web experiences with conversational AI."
-      background="purple"
+      background="secondary"
     >
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <Button variant="outline" size="lg" href="https://discord.gg/minimal">
+        <Button variant="primary" size="lg" href="https://discord.gg/minimal">
           Join Discord
         </Button>
-        <Button variant="outline" size="lg" href="https://twitter.com/minimal">
+        <Button variant="secondary" size="lg" href="https://twitter.com/minimal">
           Follow on Twitter
         </Button>
       </div>

@@ -105,12 +105,12 @@
     --space-12: 96px;
 
     /* Semantic spacing */
-    --section-spacing: var(--space-10);     /* 80px - between sections */
-    --component-spacing: var(--space-6);    /* 48px - between components */
-    --element-spacing: var(--space-2);      /* 16px - between elements */
+    --section-spacing: var(--space-8);      /* 64px - between sections */
+    --component-spacing: var(--space-5);    /* 40px - between components */
+    --element-spacing: var(--space-3);      /* 24px - between elements */
 
     /* Responsive section padding */
-    --section-padding-y: clamp(3rem, 8vw, 6rem);
+    --section-padding-y: clamp(2rem, 6vw, 4rem);
     --section-padding-left: clamp(1rem, 4vw, 3rem);
     --section-padding-right: clamp(1rem, 4vw, 3rem);
     --content-max-width: 1400px;
@@ -164,28 +164,29 @@
 
   /* Typography - Standardized Scale (30% smaller) */
   h1, h2, h3, h4, h5, h6 {
-    @apply text-text-primary font-bold leading-snug mb-2;
+    @apply text-text-primary font-bold leading-snug mb-4;
   }
 
   h1 {
-    @apply leading-tight;
+    @apply leading-tight mb-5;
     font-size: clamp(calc(var(--font-size-4xl) * 0.7), 3.5vw, calc(var(--font-size-5xl) * 0.7));
   }
 
   h2 {
+    @apply mb-5;
     font-size: clamp(calc(var(--font-size-3xl) * 0.7), 2.8vw, calc(var(--font-size-4xl) * 0.7));
   }
 
   h3 {
-    @apply text-lg;
+    @apply text-lg mb-3;
   }
 
   h4 {
-    @apply text-base;
+    @apply text-base mb-3;
   }
 
   p {
-    @apply mb-2 text-text-secondary leading-relaxed;
+    @apply mb-4 text-text-secondary leading-relaxed;
   }
 
   a {
@@ -217,13 +218,13 @@
 
   /* Section title - consistent heading style (30% smaller) */
   .section-title {
-    @apply text-center mb-6 text-text-primary font-bold;
+    @apply text-center mb-5 text-text-primary font-bold;
     font-size: clamp(calc(var(--font-size-3xl) * 0.7), 2.8vw, calc(var(--font-size-4xl) * 0.7));
   }
 
   /* Section padding utility */
   .section-padding {
-    @apply py-8 md:py-12;
+    @apply py-10 md:py-14;
     padding-left: clamp(1rem, 4vw, 3rem);
     padding-right: clamp(1rem, 4vw, 3rem);
   }
@@ -239,6 +240,17 @@
   .highlight {
     @apply bg-clip-text text-transparent;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+
+  /* Header offset - ensures content doesn't overlap with fixed header */
+  .pt-header {
+    padding-top: 70px;
+  }
+
+  @media (min-width: 768px) {
+    .pt-header {
+      padding-top: 80px;
+    }
   }
 }
 

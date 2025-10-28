@@ -10,7 +10,7 @@ const { locale } = Astro.props;
 const t = commonTranslations[locale];
 ---
 
-<header class="fixed top-0 w-full bg-white/95 backdrop-blur-md z-[1000] shadow-sm opacity-0 transition-opacity duration-500" id="mainHeader" data-header-initialized="false">
+<header class="fixed top-0 w-full bg-white/95 backdrop-blur-md z-[1000] shadow-sm opacity-100 transition-opacity duration-500" id="mainHeader" data-header-initialized="true">
   <nav class="flex justify-between items-center px-4 md:px-8 lg:px-12 py-2 md:py-3 max-w-content mx-auto min-h-[50px]">
     <div class="logo flex items-center h-8 md:h-10">
       <a href={locale === 'es' ? '/es' : '/'}>
@@ -43,15 +43,7 @@ const t = commonTranslations[locale];
 </div>
 
 <script>
-  // Show header after intro animation
-  setTimeout(() => {
-    const header = document.getElementById('mainHeader');
-    if (header && header.dataset.headerInitialized === 'false') {
-      header.classList.remove('opacity-0');
-      header.classList.add('opacity-100');
-      header.dataset.headerInitialized = 'true';
-    }
-  }, 2000);
+  // Header is now visible immediately - no delay needed
 
   // Mobile menu functionality
   function initMobileMenu() {
