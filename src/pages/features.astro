@@ -138,50 +138,44 @@ const description = 'Discover all the functionalities that will transform your w
       <p class="text-center text-xl text-[var(--text-secondary)] mb-8 max-w-4xl mx-auto leading-relaxed">Enterprise-grade security and infrastructure you can trust.</p>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-xl p-6 lg:p-8">
-          <div class="mb-4 text-brand-purple-primary">
-            <Icon name="lock-closed" size="xl" />
-          </div>
-          <h3 class="text-[var(--text-primary)] text-2xl mb-4 font-semibold">Data Protection</h3>
-          <p class="text-[var(--text-secondary)] text-lg leading-relaxed mb-6">Your data security is our top priority. We employ industry-leading encryption, comply with international privacy regulations, and implement strict access controls to ensure your information remains safe and private.</p>
-          <ul class="list-none p-0 m-0 space-y-3">
-            <li class="text-[var(--text-secondary)] text-base leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">End-to-end encryption</strong> for all data transmission</li>
-            <li class="text-[var(--text-secondary)] text-base leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">GDPR, CCPA, and SOC 2</strong> compliance</li>
-            <li class="text-[var(--text-secondary)] text-base leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Regular security audits</strong> by third-party experts</li>
-            <li class="text-[var(--text-secondary)] text-base leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Data anonymization</strong> and privacy protection</li>
-            <li class="text-[var(--text-secondary)] text-base leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Secure data centers</strong> with 24/7 monitoring</li>
-          </ul>
-        </div>
+        <InfoBox
+          icon="lock-closed"
+          title="Data Protection"
+          description="Your data security is our top priority. We employ industry-leading encryption, comply with international privacy regulations, and implement strict access controls to ensure your information remains safe and private."
+          items={[
+            'End-to-end encryption for all data transmission',
+            'GDPR, CCPA, and SOC 2 compliance',
+            'Regular security audits by third-party experts',
+            'Data anonymization and privacy protection',
+            'Secure data centers with 24/7 monitoring'
+          ]}
+        />
 
-        <div class="bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-xl p-6 lg:p-8">
-          <div class="mb-4 text-brand-purple-primary">
-            <Icon name="cog" size="xl" />
-          </div>
-          <h3 class="text-[var(--text-primary)] text-2xl mb-4 font-semibold">Robust Infrastructure</h3>
-          <p class="text-[var(--text-secondary)] text-lg leading-relaxed mb-6">Built on world-class infrastructure with redundancy at every level. Our distributed architecture ensures your conversational interface is always available, fast, and responsive, no matter where your users are located.</p>
-          <ul class="list-none p-0 m-0 space-y-3">
-            <li class="text-[var(--text-secondary)] text-base leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">99.9% uptime guarantee</strong> with SLA backing</li>
-            <li class="text-[var(--text-secondary)] text-base leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Global CDN</strong> for lightning-fast delivery</li>
-            <li class="text-[var(--text-secondary)] text-base leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Automatic failover</strong> and disaster recovery</li>
-            <li class="text-[var(--text-secondary)] text-base leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Load balancing</strong> for optimal performance</li>
-            <li class="text-[var(--text-secondary)] text-base leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Real-time monitoring</strong> and alerting</li>
-          </ul>
-        </div>
+        <InfoBox
+          icon="cog"
+          title="Robust Infrastructure"
+          description="Built on world-class infrastructure with redundancy at every level. Our distributed architecture ensures your conversational interface is always available, fast, and responsive, no matter where your users are located."
+          items={[
+            '99.9% uptime guarantee with SLA backing',
+            'Global CDN for lightning-fast delivery',
+            'Automatic failover and disaster recovery',
+            'Load balancing for optimal performance',
+            'Real-time monitoring and alerting'
+          ]}
+        />
 
-        <div class="bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-xl p-6 lg:p-8">
-          <div class="mb-4 text-brand-purple-primary">
-            <Icon name="arrow-trending-up" size="xl" />
-          </div>
-          <h3 class="text-[var(--text-primary)] text-2xl mb-4 font-semibold">Scalability</h3>
-          <p class="text-[var(--text-secondary)] text-lg leading-relaxed mb-6">From startups to enterprises, Minimal scales with your business. Our infrastructure automatically adjusts to handle traffic spikes, seasonal variations, and growth without any intervention required from you.</p>
-          <ul class="list-none p-0 m-0 space-y-3">
-            <li class="text-[var(--text-secondary)] text-base leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Auto-scaling infrastructure</strong> handles any traffic volume</li>
-            <li class="text-[var(--text-secondary)] text-base leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">No performance degradation</strong> during high traffic</li>
-            <li class="text-[var(--text-secondary)] text-base leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Resource optimization</strong> for cost efficiency</li>
-            <li class="text-[var(--text-secondary)] text-base leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Enterprise support</strong> for large-scale deployments</li>
-            <li class="text-[var(--text-secondary)] text-base leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Custom solutions</strong> for specific requirements</li>
-          </ul>
-        </div>
+        <InfoBox
+          icon="arrow-trending-up"
+          title="Scalability"
+          description="From startups to enterprises, Minimal scales with your business. Our infrastructure automatically adjusts to handle traffic spikes, seasonal variations, and growth without any intervention required from you."
+          items={[
+            'Auto-scaling infrastructure handles any traffic volume',
+            'No performance degradation during high traffic',
+            'Resource optimization for cost efficiency',
+            'Enterprise support for large-scale deployments',
+            'Custom solutions for specific requirements'
+          ]}
+        />
       </div>
     </ContentSection>
 

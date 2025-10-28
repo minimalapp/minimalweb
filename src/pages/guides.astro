@@ -7,6 +7,7 @@ import ContentSection from '@/components/ContentSection.astro';
 import CodeBlock from '@/components/CodeBlock.astro';
 import FeatureCard from '@/components/FeatureCard.astro';
 import Button from '@/components/Button.astro';
+import ListCard from '@/components/ListCard.astro';
 
 const locale = 'en';
 ---
@@ -110,28 +111,30 @@ const locale = 'en';
         <h2 class="text-3xl lg:text-4xl mb-8 text-[var(--text-primary)] font-bold">Writing Effective Conversations</h2>
         <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-6">Craft messages that engage users and drive conversions:</p>
 
-        <div class="space-y-8">
-          <div class="bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-xl p-6 lg:p-8">
-            <h3 class="text-xl text-[var(--text-primary)] font-semibold mb-4">✅ Best Practices</h3>
-            <ul class="text-[var(--text-secondary)] leading-relaxed space-y-2 list-none pl-0">
-              <li class="pl-6 relative before:content-['•'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold">Keep greetings warm and conversational, not corporate</li>
-              <li class="pl-6 relative before:content-['•'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold">Ask open-ended questions to understand user needs</li>
-              <li class="pl-6 relative before:content-['•'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold">Provide quick replies for common questions</li>
-              <li class="pl-6 relative before:content-['•'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold">Use your brand's voice and personality</li>
-              <li class="pl-6 relative before:content-['•'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold">Set expectations for response times</li>
-            </ul>
-          </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <ListCard
+            title="Best Practices"
+            items={[
+              'Keep greetings warm and conversational, not corporate',
+              'Ask open-ended questions to understand user needs',
+              'Provide quick replies for common questions',
+              "Use your brand's voice and personality",
+              'Set expectations for response times'
+            ]}
+            bulletType="checkmark"
+          />
 
-          <div class="bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-xl p-6 lg:p-8">
-            <h3 class="text-xl text-[var(--text-primary)] font-semibold mb-4">❌ What to Avoid</h3>
-            <ul class="text-[var(--text-secondary)] leading-relaxed space-y-2 list-none pl-0">
-              <li class="pl-6 relative before:content-['•'] before:absolute before:left-0 before:text-red-500 before:font-bold">Generic greetings like "Hello" or "Welcome"</li>
-              <li class="pl-6 relative before:content-['•'] before:absolute before:left-0 before:text-red-500 before:font-bold">Overly formal or robotic language</li>
-              <li class="pl-6 relative before:content-['•'] before:absolute before:left-0 before:text-red-500 before:font-bold">Asking for information you already have</li>
-              <li class="pl-6 relative before:content-['•'] before:absolute before:left-0 before:text-red-500 before:font-bold">Too many messages at once (overwhelming users)</li>
-              <li class="pl-6 relative before:content-['•'] before:absolute before:left-0 before:text-red-500 before:font-bold">Unclear calls-to-action</li>
-            </ul>
-          </div>
+          <ListCard
+            title="What to Avoid"
+            items={[
+              'Generic greetings like "Hello" or "Welcome"',
+              'Overly formal or robotic language',
+              'Asking for information you already have',
+              'Too many messages at once (overwhelming users)',
+              'Unclear calls-to-action'
+            ]}
+            bulletType="x"
+          />
         </div>
       </div>
     </ContentSection>

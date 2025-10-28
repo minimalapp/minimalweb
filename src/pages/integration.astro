@@ -7,6 +7,7 @@ import ContentSection from '@/components/ContentSection.astro';
 import CodeBlock from '@/components/CodeBlock.astro';
 import FeatureCard from '@/components/FeatureCard.astro';
 import Button from '@/components/Button.astro';
+import ListCard from '@/components/ListCard.astro';
 
 const locale = 'en';
 ---
@@ -62,21 +63,30 @@ import MinimalPlugin from '@minimal/vue';
 const app = createApp(App);
 app.use(MinimalPlugin, { siteId: 'your-site-id' });`} />
 
-      <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">WordPress</h3>
-      <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Install plugin and configure in Settings → Minimal:</p>
-      <ul class="list-disc list-inside space-y-2 my-4">
-          <ol class="list-decimal pl-6 space-y-2 text-[var(--text-secondary)]">
-            <li>Download Minimal plugin from WordPress repository</li>
-            <li>Upload and activate in Plugins → Add New</li>
-            <li>Navigate to Settings → Minimal</li>
-            <li>Enter your Site ID and customize appearance</li>
-            <li>Save changes - widget appears automatically</li>
-          </ol>
-        </div>
+      <div class="space-y-6">
+        <ListCard
+          title="WordPress"
+          description="Install plugin and configure in Settings → Minimal:"
+          items={[
+            'Download Minimal plugin from WordPress repository',
+            'Upload and activate in Plugins → Add New',
+            'Navigate to Settings → Minimal',
+            'Enter your Site ID and customize appearance',
+            'Save changes - widget appears automatically'
+          ]}
+        />
 
-      <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">Shopify Stores</h3>
-      <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Install from Shopify App Store:</p>
-      <ul class="list-disc list-inside space-y-2 my-4">
+        <ListCard
+          title="Shopify Stores"
+          description="Install from Shopify App Store:"
+          items={[
+            'Visit Shopify App Store and search for Minimal',
+            'Click Install App and authorize permissions',
+            'Enter your Site ID in the app settings',
+            'Customize widget appearance',
+            'Widget automatically appears on all pages'
+          ]}
+        />
       </div>
     </ContentSection>
 

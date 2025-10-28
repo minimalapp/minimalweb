@@ -1,0 +1,94 @@
+---
+/**
+ * ListCard Component
+ *
+ * A standardized card component for displaying content with bullet lists.
+ * Based on homepage UseCases pattern with green checkmarks.
+ * Follows Astro and Tailwind best practices for consistency.
+ *
+ * @param icon - Optional icon identifier from the icon library
+ * @param title - Card title
+ * @param description - Card description text (optional)
+ * @param items - Array of list items (strings)
+ * @param bulletType - Type of bullet: 'checkmark' (✓) or 'bullet' (•) or 'x' (✗) - default: 'checkmark'
+ * @param variant - Background variant: 'primary', 'tertiary', or 'secondary' (default: 'primary')
+ * @param className - Additional CSS classes
+ *
+ * Example usage:
+ * <ListCard
+ *   icon="rocket"
+ *   title="Best Practices"
+ *   description="Follow these guidelines"
+ *   items={['Item 1', 'Item 2', 'Item 3']}
+ *   bulletType="checkmark"
+ * />
+ */
+
+import Icon from '@/components/Icon.astro';
+
+interface Props {
+  icon?: string;
+  title: string;
+  description?: string;
+  items: string[];
+  bulletType?: 'checkmark' | 'bullet' | 'x';
+  variant?: 'primary' | 'tertiary' | 'secondary';
+  className?: string;
+}
+
+const {
+  icon,
+  title,
+  description,
+  items = [],
+  bulletType = 'checkmark',
+  variant = 'primary',
+  className = ''
+} = Astro.props;
+
+// Background variants based on homepage pattern
+const bgClass = {
+  'primary': 'bg-[var(--bg-primary)]',
+  'tertiary': 'bg-[var(--bg-tertiary)]',
+  'secondary': 'bg-[var(--bg-secondary)]'
+}[variant];
+
+// Bullet character and color based on type
+const bulletConfig = {
+  'checkmark': { char: '✓', color: 'before:text-[var(--brand-green)]' },
+  'bullet': { char: '•', color: 'before:text-[var(--brand-green)]' },
+  'x': { char: '✗', color: 'before:text-red-500' }
+};
+
+const bullet = bulletConfig[bulletType];
+---
+
+<div class={`${bgClass} p-6 lg:p-8 rounded-xl border border-[var(--border-primary)] shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg ${className}`}>
+  {icon && (
+    <div class="mb-4 text-brand-purple-primary">
+      <Icon name={icon} size="xl" />
+    </div>
+  )}
+
+  <h3 class="text-xl lg:text-2xl mb-3 text-[var(--text-primary)] font-semibold">
+    {title}
+  </h3>
+
+  {description && (
+    <p class="text-[var(--text-secondary)] leading-relaxed mb-4">
+      {description}
+    </p>
+  )}
+
+  {items.length > 0 && (
+    <ul class="list-none p-0 m-0 space-y-2">
+      {items.map(item => (
+        <li class={`text-[var(--text-secondary)] text-base leading-relaxed pl-6 relative ${bullet.color} before:content-['${bullet.char}'] before:absolute before:left-0 before:font-bold`}>
+          {item}
+        </li>
+      ))}
+    </ul>
+  )}
+
+  <slot />
+</div>

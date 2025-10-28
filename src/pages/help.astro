@@ -11,6 +11,7 @@ import Button from '@/components/Button.astro';
 import StepSection from '@/components/StepSection.astro';
 import CategoryCard from '@/components/CategoryCard.astro';
 import MetricBox from '@/components/MetricBox.astro';
+import InfoBox from '@/components/InfoBox.astro';
 
 const locale = 'en';
 
@@ -232,41 +233,41 @@ const faqItems = [
         <h2 class="text-3xl lg:text-4xl mb-8 text-center text-[var(--text-primary)] font-bold">Understand Your Analytics</h2>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-xl p-6 lg:p-8">
-            <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">Engagement Metrics</h3>
-            <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-3">Track how visitors interact with your chat:</p>
-            <ul class="text-[var(--text-secondary)] text-base leading-relaxed pl-6 space-y-2">
-              <li><strong class="text-[var(--text-primary)]">Widget Views:</strong> Number of times the widget was displayed</li>
-              <li><strong class="text-[var(--text-primary)]">Open Rate:</strong> Percentage of visitors who opened the chat</li>
-              <li><strong class="text-[var(--text-primary)]">Messages Sent:</strong> Total messages from visitors</li>
-              <li><strong class="text-[var(--text-primary)]">Conversations Started:</strong> New conversation threads</li>
-              <li><strong class="text-[var(--text-primary)]">Average Response Time:</strong> How quickly you respond</li>
-            </ul>
-          </div>
+          <InfoBox
+            title="Engagement Metrics"
+            description="Track how visitors interact with your chat:"
+            items={[
+              'Widget Views: Number of times the widget was displayed',
+              'Open Rate: Percentage of visitors who opened the chat',
+              'Messages Sent: Total messages from visitors',
+              'Conversations Started: New conversation threads',
+              'Average Response Time: How quickly you respond'
+            ]}
+          />
 
-          <div class="bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-xl p-6 lg:p-8">
-            <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">User Insights</h3>
-            <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-3">Understand your visitor behavior:</p>
-            <ul class="text-[var(--text-secondary)] text-base leading-relaxed pl-6 space-y-2">
-              <li><strong class="text-[var(--text-primary)]">Peak Hours:</strong> When visitors are most active</li>
-              <li><strong class="text-[var(--text-primary)]">Popular Pages:</strong> Where conversations start</li>
-              <li><strong class="text-[var(--text-primary)]">Device Breakdown:</strong> Desktop vs. mobile usage</li>
-              <li><strong class="text-[var(--text-primary)]">Geographic Data:</strong> Where your visitors come from</li>
-              <li><strong class="text-[var(--text-primary)]">Returning Visitors:</strong> Track repeat interactions</li>
-            </ul>
-          </div>
+          <InfoBox
+            title="User Insights"
+            description="Understand your visitor behavior:"
+            items={[
+              'Peak Hours: When visitors are most active',
+              'Popular Pages: Where conversations start',
+              'Device Breakdown: Desktop vs. mobile usage',
+              'Geographic Data: Where your visitors come from',
+              'Returning Visitors: Track repeat interactions'
+            ]}
+          />
 
-          <div class="bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-xl p-6 lg:p-8">
-            <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">Conversion Tracking</h3>
-            <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-3">Measure business impact:</p>
-            <ul class="text-[var(--text-secondary)] text-base leading-relaxed pl-6 space-y-2">
-              <li><strong class="text-[var(--text-primary)]">Lead Capture Rate:</strong> Percentage of chats that collect emails</li>
-              <li><strong class="text-[var(--text-primary)]">Qualified Leads:</strong> Conversations marked as sales-ready</li>
-              <li><strong class="text-[var(--text-primary)]">Goal Completions:</strong> Custom conversion events</li>
-              <li><strong class="text-[var(--text-primary)]">Revenue Attribution:</strong> Sales linked to chat interactions</li>
-              <li><strong class="text-[var(--text-primary)]">ROI Metrics:</strong> Return on investment calculations</li>
-            </ul>
-          </div>
+          <InfoBox
+            title="Conversion Tracking"
+            description="Measure business impact:"
+            items={[
+              'Lead Capture Rate: Percentage of chats that collect emails',
+              'Qualified Leads: Conversations marked as sales-ready',
+              'Goal Completions: Custom conversion events',
+              'Revenue Attribution: Sales linked to chat interactions',
+              'ROI Metrics: Return on investment calculations'
+            ]}
+          />
         </div>
       </div>
     </ContentSection>
