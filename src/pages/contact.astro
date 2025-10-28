@@ -51,10 +51,10 @@ const faqItems = [
     />
 
     <ContentSection>
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
         <!-- Form -->
         <div>
-          <h2 class="text-2xl lg:text-3xl text-[var(--text-primary)] font-bold mb-8">Send us a Message</h2>
+          <h2 class="text-2xl lg:text-3xl text-[var(--text-primary)] font-bold mb-6">Send us a Message</h2>
           <form class="flex flex-col gap-6">
             <div class="flex flex-col gap-2">
               <label for="name" class="text-[var(--text-primary)] text-base font-semibold">Full Name *</label>
@@ -108,7 +108,7 @@ const faqItems = [
 
         <!-- Contact Info Cards -->
         <div>
-          <h2 class="text-2xl lg:text-3xl text-[var(--text-primary)] font-bold mb-8">Get in Touch</h2>
+          <h2 class="text-2xl lg:text-3xl text-[var(--text-primary)] font-bold mb-6">Get in Touch</h2>
 
           <div class="mb-6 text-center">
             <InfoCard
@@ -119,7 +119,7 @@ const faqItems = [
             />
           </div>
 
-          <div class="mb-8 text-center">
+          <div class="mb-6 text-center">
             <InfoCard
               icon="🔧"
               title="Technical Support"
@@ -140,7 +140,7 @@ const faqItems = [
     </ContentSection>
 
     <ContentSection background="secondary">
-      <h2 class="text-3xl lg:text-4xl mb-10 text-center text-[var(--text-primary)] font-bold">Frequently Asked Questions</h2>
+      <h2 class="text-3xl lg:text-4xl mb-8 text-center text-[var(--text-primary)] font-bold">Frequently Asked Questions</h2>
       <FAQ items={faqItems} />
     </ContentSection>
   </main>

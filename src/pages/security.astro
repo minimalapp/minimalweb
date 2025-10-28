@@ -17,10 +17,8 @@ const locale = 'en';
       title="Security"
       subtitle="Comprehensive security practices and measures protecting your data at Minimal."
     >
-      <p class="text-[var(--text-tertiary)] italic text-base mt-2">Last updated: January 2025</p>
-
-      <!-- Certification Badges -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 max-w-4xl mx-auto mt-10">
+      <p class="text-center text-lg text-[var(--text-secondary)] mt-4">Last updated: January 2025</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
         <InfoCard
           icon="🛡️"
           title="SOC 2 Type II"
@@ -41,11 +39,10 @@ const locale = 'en';
 
     <ContentSection maxWidth="lg">
       <div class="prose prose-lg max-w-none">
-        <h2 class="text-3xl lg:text-4xl mb-4 text-[var(--text-primary)] font-semibold">Our Commitment to Security</h2>
-        <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-8">Security is at the core of everything we do at Minimal. We understand that you're entrusting us with your valuable data, and we take that responsibility seriously. Our comprehensive security program is designed to protect your information through multiple layers of protection, continuous monitoring, and strict compliance with industry standards.</p>
-
-        <h2 class="text-3xl lg:text-4xl mb-4 mt-12 text-[var(--text-primary)] font-semibold">Infrastructure Security</h2>
-        <ul class="list-none pl-0 space-y-3 mb-8">
+              <h2 class="text-3xl lg:text-4xl mb-8 text-[var(--text-primary)] font-bold">Our Commitment to Security</h2>
+              <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-6">Security is at the core of everything we do at Minimal. We understand that you're entrusting us with your valuable data, and we take that responsibility seriously. Our comprehensive security program is designed to protect your information through multiple layers of protection, continuous monitoring, and strict compliance with industry standards.</p>
+      <h2 class="text-3xl lg:text-4xl mb-8 text-[var(--text-primary)] font-bold">Infrastructure Security</h2>
+      <ul class="list-none p-0 m-0 space-y-3 my-4">
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Enterprise-Grade Cloud Infrastructure:</strong> Hosted on industry-leading cloud providers with SOC 2 Type II and ISO 27001 certifications</li>
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Geographic Redundancy:</strong> Multi-region deployment with automatic failover to ensure continuous availability</li>
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Network Segmentation:</strong> Isolated network zones with strict firewall rules and access controls</li>
@@ -53,26 +50,26 @@ const locale = 'en';
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Physical Security:</strong> Data centers with 24/7 monitoring, biometric access, and environmental controls</li>
         </ul>
 
-        <h2 class="text-3xl lg:text-4xl mb-4 mt-12 text-[var(--text-primary)] font-semibold">Data Protection</h2>
+      <h2 class="text-3xl lg:text-4xl mb-8 text-[var(--text-primary)] font-bold">Data Protection</h2>
 
-        <h3 class="text-2xl mb-3 mt-8 text-[var(--text-primary)] font-semibold">Encryption</h3>
-        <ul class="list-none pl-0 space-y-3 mb-8">
+      <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">Encryption</h3>
+      <ul class="list-none p-0 m-0 space-y-3 my-4">
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">In-Transit Encryption:</strong> TLS 1.3 with perfect forward secrecy for all data transmission</li>
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">At-Rest Encryption:</strong> AES-256 encryption for all stored data and backups</li>
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Key Management:</strong> Hardware security modules (HSM) for cryptographic key storage</li>
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">End-to-End Encryption:</strong> Optional E2E encryption for sensitive data fields</li>
         </ul>
 
-        <h3 class="text-2xl mb-3 mt-8 text-[var(--text-primary)] font-semibold">Access Control</h3>
-        <ul class="list-none pl-0 space-y-3 mb-8">
+        <h3 class="text-2xl text-[var(--text-primary)] font-semibold mt-8 mb-4">Access Control</h3>
+        <ul class="list-none p-0 m-0 space-y-3 my-4">
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Role-Based Access Control (RBAC):</strong> Granular permissions based on job function and necessity</li>
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Multi-Factor Authentication (MFA):</strong> Required for all team members and available for customers</li>
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Single Sign-On (SSO):</strong> Support for SAML 2.0 and OAuth 2.0 enterprise integrations</li>
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Access Logging:</strong> Complete audit trail of all access to customer data</li>
         </ul>
 
-        <h2 class="text-3xl lg:text-4xl mb-4 mt-12 text-[var(--text-primary)] font-semibold">Application Security</h2>
-        <ul class="list-none pl-0 space-y-3 mb-8">
+        <h2 class="text-3xl lg:text-4xl mb-8 mt-12 text-[var(--text-primary)] font-semibold">Application Security</h2>
+        <ul class="list-none pl-0 space-y-3 my-4">
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Secure Development Lifecycle:</strong> Security integrated into every phase of development</li>
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Code Review Process:</strong> Mandatory peer review and automated security scanning</li>
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Dependency Management:</strong> Automated vulnerability scanning of third-party libraries</li>
@@ -81,8 +78,8 @@ const locale = 'en';
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Session Management:</strong> Secure session handling with automatic timeout and rotation</li>
         </ul>
 
-        <h2 class="text-3xl lg:text-4xl mb-4 mt-12 text-[var(--text-primary)] font-semibold">Regulatory Compliance</h2>
-        <ul class="list-none pl-0 space-y-3 mb-8">
+      <h2 class="text-3xl lg:text-4xl mb-8 text-[var(--text-primary)] font-bold">Regulatory Compliance</h2>
+      <ul class="list-none p-0 m-0 space-y-3 my-4">
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">GDPR (General Data Protection Regulation):</strong> Full compliance with EU data protection requirements</li>
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">CCPA (California Consumer Privacy Act):</strong> Compliance with California privacy regulations</li>
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">SOC 2 Type II:</strong> Annual independent audit of security, availability, and confidentiality controls</li>
@@ -90,8 +87,8 @@ const locale = 'en';
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">HIPAA:</strong> Healthcare data protection for eligible customers</li>
         </ul>
 
-        <h2 class="text-3xl lg:text-4xl mb-4 mt-12 text-[var(--text-primary)] font-semibold">Monitoring & Incident Response</h2>
-        <ul class="list-none pl-0 space-y-3 mb-8">
+      <h2 class="text-3xl lg:text-4xl mb-8 text-[var(--text-primary)] font-bold">Monitoring & Incident Response</h2>
+      <ul class="list-none p-0 m-0 space-y-3 my-4">
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">24/7 Security Monitoring:</strong> Real-time threat detection and automated response systems</li>
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Incident Response Team:</strong> Dedicated security team with defined escalation procedures</li>
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Vulnerability Management:</strong> Regular security assessments and penetration testing</li>
@@ -99,25 +96,25 @@ const locale = 'en';
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Customer Notification:</strong> Transparent communication in case of security incidents</li>
         </ul>
 
-        <h2 class="text-3xl lg:text-4xl mb-4 mt-12 text-[var(--text-primary)] font-semibold">Business Continuity</h2>
-        <ul class="list-none pl-0 space-y-3 mb-8">
+      <h2 class="text-3xl lg:text-4xl mb-8 text-[var(--text-primary)] font-bold">Business Continuity</h2>
+      <ul class="list-none p-0 m-0 space-y-3 my-4">
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Automated Backups:</strong> Continuous data backup with point-in-time recovery</li>
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Disaster Recovery:</strong> Tested disaster recovery procedures with defined RTO and RPO</li>
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">High Availability:</strong> Redundant systems across multiple availability zones</li>
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Service Level Agreement:</strong> 99.9% uptime guarantee with proactive monitoring</li>
         </ul>
 
-        <h2 class="text-3xl lg:text-4xl mb-4 mt-12 text-[var(--text-primary)] font-semibold">Employee Security</h2>
-        <ul class="list-none pl-0 space-y-3 mb-8">
+      <h2 class="text-3xl lg:text-4xl mb-8 text-[var(--text-primary)] font-bold">Employee Security</h2>
+      <ul class="list-none p-0 m-0 space-y-3 my-4">
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Background Checks:</strong> Comprehensive screening for all employees with access to customer data</li>
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Security Training:</strong> Regular security awareness training and simulated phishing exercises</li>
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Confidentiality Agreements:</strong> All employees sign strict NDAs and security policies</li>
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Least Privilege Access:</strong> Access to systems and data limited to job requirements</li>
         </ul>
 
-        <h2 class="text-3xl lg:text-4xl mb-4 mt-12 text-[var(--text-primary)] font-semibold">Customer Security Controls</h2>
-        <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-6">We provide customers with powerful security controls:</p>
-        <ul class="list-none pl-0 space-y-3 mb-8">
+      <h2 class="text-3xl lg:text-4xl mb-8 text-[var(--text-primary)] font-bold">Customer Security Controls</h2>
+      <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-6">We provide customers with powerful security controls:</p>
+      <ul class="list-none p-0 m-0 space-y-3 my-4">
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Access Management:</strong> Manage team member permissions and access levels</li>
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Audit Logs:</strong> Complete activity logs for compliance and forensics</li>
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">IP Allowlisting:</strong> Restrict access to specific IP addresses or ranges</li>
@@ -126,11 +123,15 @@ const locale = 'en';
         </ul>
 
         <div class="bg-[var(--bg-secondary)] p-6 lg:p-8 rounded-xl mt-12">
-          <h2 class="text-2xl lg:text-3xl mb-4 text-[var(--text-primary)] font-semibold mt-0">Report a Security Issue</h2>
-          <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">If you discover a security vulnerability, please report it responsibly to our security team:</p>
-          <p class="text-[var(--text-primary)] mb-2"><strong>Email:</strong> security@minimal.lat</p>
-          <p class="text-[var(--text-primary)] mb-2"><strong>PGP Key:</strong> Available upon request</p>
-          <p class="text-[var(--text-secondary)] text-base">We appreciate responsible disclosure and will respond promptly to all security reports.</p>
+      <h2 class="text-3xl lg:text-4xl mb-8 text-[var(--text-primary)] font-bold">Report a Security Issue</h2>
+      <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-6">If you discover a security vulnerability, please report it responsibly to our security team:</p>
+        <p class="my-2">
+          <strong class="text-[var(--text-primary)]">Email:</strong> security@minimal.lat
+        </p>
+        <p class="my-2">
+          <strong class="text-[var(--text-primary)]">PGP Key:</strong> Available upon request
+        </p>
+          <p class="text-[var(--text-secondary)] text-base mt-4">We appreciate responsible disclosure and will respond promptly to all security reports.</p>
         </div>
       </div>
     </ContentSection>

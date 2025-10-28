@@ -21,7 +21,7 @@ const locale = 'en';
     />
 
     <ContentSection>
-      <h2 class="text-3xl lg:text-4xl mb-10 text-center text-[var(--text-primary)] font-bold">Supported Platforms</h2>
+      <h2 class="text-3xl lg:text-4xl mb-8 text-center text-[var(--text-primary)] font-bold">Supported Platforms</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
         <FeatureCard icon="⚛️" title="React" description="Seamless integration with React applications using our official component library." />
         <FeatureCard icon="🅰️" title="Angular" description="Native Angular module with TypeScript support and dependency injection." />
@@ -34,17 +34,16 @@ const locale = 'en';
 
     <ContentSection background="secondary">
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl lg:text-4xl mb-6 text-[var(--text-primary)] font-bold">Universal Installation</h2>
-        <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-6">Works with any website regardless of tech stack:</p>
+      <h2 class="text-3xl lg:text-4xl mb-8 text-center text-[var(--text-primary)] font-bold">Universal Installation</h2>
+      <p class="text-center text-xl text-[var(--text-secondary)] mb-6 max-w-4xl mx-auto leading-relaxed">Works with any website regardless of tech stack:</p>
 
-        <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4 mt-8">HTML Websites</h3>
-        <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Add before closing &lt;/body&gt; tag:</p>
-        <CodeBlock code={`<script src="https://minimal.lat/embed.js" data-site-id="your-site-id"></script>`} />
+      <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">HTML Websites</h3>
+      <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Add before closing &lt;/body&gt; tag:</p>
+      <CodeBlock code={`<script src="https://minimal.lat/embed.js" data-site-id="your-site-id"></script>`} />
 
-        <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4 mt-8">React Applications</h3>
-        <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Install via npm and use as component:</p>
-        <CodeBlock code={`npm install @minimal/react
-
+      <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">React Applications</h3>
+      <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Install via npm and use as component:</p>
+      <CodeBlock code={`npm install @minimal/react
 import { MinimalChat } from '@minimal/react';
 
 function App() {
@@ -55,18 +54,17 @@ function App() {
   );
 }`} />
 
-        <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4 mt-8">Vue.js Applications</h3>
-        <CodeBlock code={`npm install @minimal/vue
-
+      <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">Vue.js Applications</h3>
+      <CodeBlock code={`npm install @minimal/vue
 import { createApp } from 'vue';
 import MinimalPlugin from '@minimal/vue';
 
 const app = createApp(App);
 app.use(MinimalPlugin, { siteId: 'your-site-id' });`} />
 
-        <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4 mt-8">WordPress</h3>
-        <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Install plugin and configure in Settings → Minimal:</p>
-        <div class="bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-xl p-6 my-6">
+      <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">WordPress</h3>
+      <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Install plugin and configure in Settings → Minimal:</p>
+      <ul class="list-disc list-inside space-y-2 my-4">
           <ol class="list-decimal pl-6 space-y-2 text-[var(--text-secondary)]">
             <li>Download Minimal plugin from WordPress repository</li>
             <li>Upload and activate in Plugins → Add New</li>
@@ -76,26 +74,19 @@ app.use(MinimalPlugin, { siteId: 'your-site-id' });`} />
           </ol>
         </div>
 
-        <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4 mt-8">Shopify Stores</h3>
-        <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Install from Shopify App Store:</p>
-        <div class="bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-xl p-6 my-6">
-          <ol class="list-decimal pl-6 space-y-2 text-[var(--text-secondary)]">
-            <li>Visit Shopify App Store and search "Minimal Chat"</li>
-            <li>Click "Add app" and authorize permissions</li>
-            <li>Configure widget settings in your Shopify admin</li>
-            <li>Widget automatically tracks cart and product views</li>
-          </ol>
-        </div>
+      <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">Shopify Stores</h3>
+      <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Install from Shopify App Store:</p>
+      <ul class="list-disc list-inside space-y-2 my-4">
       </div>
     </ContentSection>
 
     <ContentSection>
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl lg:text-4xl mb-6 text-[var(--text-primary)] font-bold">Advanced Configuration</h2>
+      <h2 class="text-3xl lg:text-4xl mb-8 text-center text-[var(--text-primary)] font-bold">Advanced Configuration</h2>
 
-        <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4 mt-8">Custom Triggers</h3>
-        <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Open widget based on user actions:</p>
-        <CodeBlock code={`// Open after time delay
+      <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">Custom Triggers</h3>
+      <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Open widget based on user actions:</p>
+      <CodeBlock code={`// Open after time delay
 setTimeout(() => {
   Minimal.open();
 }, 30000); // 30 seconds
@@ -115,9 +106,9 @@ window.addEventListener('scroll', () => {
   }
 });`} />
 
-        <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4 mt-8">E-commerce Tracking</h3>
-        <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Send cart and product data to AI:</p>
-        <CodeBlock code={`// Track product views
+      <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">E-commerce Tracking</h3>
+      <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Send cart and product data to AI:</p>
+      <CodeBlock code={`// Track product views
 Minimal.trackEvent('product_view', {
   productId: '12345',
   productName: 'Premium Widget',
@@ -136,9 +127,9 @@ Minimal.setContext({
   items: ['Widget A', 'Widget B']
 });`} />
 
-        <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4 mt-8">User Identification</h3>
-        <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Identify returning users:</p>
-        <CodeBlock code={`// Set user information
+      <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">User Identification</h3>
+      <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Identify returning users:</p>
+      <CodeBlock code={`// Set user information
 Minimal.identify({
   userId: 'user_123',
   email: 'john@example.com',
@@ -154,13 +145,13 @@ Minimal.identify({
 
     <ContentSection background="secondary">
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl lg:text-4xl mb-6 text-[var(--text-primary)] font-bold">Third-Party Integrations</h2>
-        <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-8">Connect Minimal with your favorite tools:</p>
+      <h2 class="text-3xl lg:text-4xl mb-8 text-center text-[var(--text-primary)] font-bold">Third-Party Integrations</h2>
+      <p class="text-center text-xl text-[var(--text-secondary)] mb-6 max-w-4xl mx-auto leading-relaxed">Connect Minimal with your favorite tools:</p>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-xl p-6">
-            <h3 class="text-xl text-[var(--text-primary)] font-semibold mb-3">📊 Analytics</h3>
-            <ul class="space-y-2 text-[var(--text-secondary)]">
+          <h3 class="text-xl text-[var(--text-primary)] font-semibold mb-4">📊 Analytics</h3>
+          <ul class="list-disc list-inside space-y-2 my-4">
               <li>• Google Analytics</li>
               <li>• Mixpanel</li>
               <li>• Segment</li>
@@ -169,8 +160,8 @@ Minimal.identify({
           </div>
 
           <div class="bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-xl p-6">
-            <h3 class="text-xl text-[var(--text-primary)] font-semibold mb-3">💼 CRM</h3>
-            <ul class="space-y-2 text-[var(--text-secondary)]">
+          <h3 class="text-xl text-[var(--text-primary)] font-semibold mb-4">💼 CRM</h3>
+          <ul class="list-disc list-inside space-y-2 my-4">
               <li>• Salesforce</li>
               <li>• HubSpot</li>
               <li>• Pipedrive</li>
@@ -179,8 +170,8 @@ Minimal.identify({
           </div>
 
           <div class="bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-xl p-6">
-            <h3 class="text-xl text-[var(--text-primary)] font-semibold mb-3">📧 Email Marketing</h3>
-            <ul class="space-y-2 text-[var(--text-secondary)]">
+          <h3 class="text-xl text-[var(--text-primary)] font-semibold mb-4">📧 Email Marketing</h3>
+          <ul class="list-disc list-inside space-y-2 my-4">
               <li>• Mailchimp</li>
               <li>• SendGrid</li>
               <li>• ConvertKit</li>
@@ -189,8 +180,8 @@ Minimal.identify({
           </div>
 
           <div class="bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-xl p-6">
-            <h3 class="text-xl text-[var(--text-primary)] font-semibold mb-3">💬 Support</h3>
-            <ul class="space-y-2 text-[var(--text-secondary)]">
+          <h3 class="text-xl text-[var(--text-primary)] font-semibold mb-4">💬 Support</h3>
+          <ul class="list-disc list-inside space-y-2 my-4">
               <li>• Zendesk</li>
               <li>• Intercom</li>
               <li>• Freshdesk</li>
@@ -200,16 +191,16 @@ Minimal.identify({
         </div>
 
         <div class="mt-8 bg-gradient-to-r from-purple-500/10 to-green-500/10 border border-[var(--brand-purple-primary)] rounded-xl p-6">
-          <h3 class="text-xl text-[var(--text-primary)] font-semibold mb-3">🔌 Zapier Integration</h3>
-          <p class="text-[var(--text-secondary)] leading-relaxed">Connect Minimal to 5,000+ apps using Zapier. Trigger actions, sync data, and automate workflows without writing code.</p>
+        <h3 class="text-xl text-[var(--text-primary)] font-semibold mb-4">🔌 Zapier Integration</h3>
+        <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Connect Minimal to 5,000+ apps using Zapier. Trigger actions, sync data, and automate workflows without writing code.</p>
         </div>
       </div>
     </ContentSection>
 
     <ContentSection>
       <div class="max-w-3xl mx-auto text-center">
-        <h2 class="text-3xl lg:text-4xl mb-6 text-[var(--text-primary)] font-bold">Need Integration Help?</h2>
-        <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-8">Our team can help with custom integrations and technical setup.</p>
+      <h2 class="text-3xl lg:text-4xl mb-8 text-center text-[var(--text-primary)] font-bold">Need Integration Help?</h2>
+      <p class="text-center text-xl text-[var(--text-secondary)] mb-6 max-w-4xl mx-auto leading-relaxed">Our team can help with custom integrations and technical setup.</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <Button variant="primary" size="lg" href="/help">
             View Documentation
