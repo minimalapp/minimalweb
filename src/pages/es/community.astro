@@ -2,1036 +2,158 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
+import PageHero from '@/components/PageHero.astro';
+import ContentSection from '@/components/ContentSection.astro';
+import SectionTitle from '@/components/SectionTitle.astro';
+import FeatureCard from '@/components/FeatureCard.astro';
+import CTASection from '@/components/CTASection.astro';
+import Button from '@/components/Button.astro';
+import StatCard from '@/components/StatCard.astro';
+import EventCard from '@/components/EventCard.astro';
+import TestimonialCard from '@/components/TestimonialCard.astro';
 
 const locale = 'es';
-const title = 'Comunidad - Minimal';
-const description = 'Únete a la comunidad Minimal de innovadores transformando la web. Conéctate con más de 12,000 miembros en todo el mundo.';
 ---
 
-<BaseLayout title={title} description={description} locale={locale}>
+<BaseLayout title="Comunidad - Minimal" description="Únete a la comunidad Minimal de desarrolladores, diseñadores y constructores de productos." locale={locale}>
   <Header locale={locale} />
 
-  <main>
-    <section class="hero-section">
-      <div class="container">
-        <h1>Comunidad</h1>
-        <p class="subtitle">Únete a miles de innovadores transformando su presencia web con Minimal.</p>
-      </div>
-    </section>
+  <main class="pt-header">
+    <PageHero
+      title="Comunidad Minimal"
+      subtitle="Únete a miles de desarrolladores, diseñadores y constructores de productos creando mejores experiencias web."
+    />
 
-    <section class="stats-section">
-      <div class="container">
-        <h2>Nuestra Comunidad en Números</h2>
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-number">12,000+</div>
-            <div class="stat-label">Miembros Activos</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">500+</div>
-            <div class="stat-label">Sitios Transformados</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">50+</div>
-            <div class="stat-label">Países Representados</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">95%</div>
-            <div class="stat-label">Satisfacción de Usuarios</div>
-          </div>
-        </div>
+    <ContentSection>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-8 mt-8">
+        <StatCard number="10K+" label="Usuarios Activos" color="var(--brand-green)" />
+        <StatCard number="50+" label="Países" color="var(--brand-purple-primary)" />
+        <StatCard number="1M+" label="Conversaciones Diarias" color="var(--brand-green)" />
       </div>
-    </section>
 
-    <section class="channels-section">
-      <div class="container">
-        <h2>Canales de Comunidad</h2>
-        <p class="section-intro">Conéctate con nosotros en múltiples plataformas y elige cómo quieres participar.</p>
-        <div class="channels-grid">
-          <div class="channel-card">
-            <div class="channel-icon">💬</div>
-            <h3>Servidor Discord</h3>
-            <p class="channel-count">8,500+ miembros</p>
-            <p>Únete a conversaciones en tiempo real, obtén soporte instantáneo y conéctate con otros usuarios de Minimal en nuestra activa comunidad Discord.</p>
-            <a href="#" class="channel-link">Unirse a Discord</a>
-          </div>
-          <div class="channel-card">
-            <div class="channel-icon">📖</div>
-            <h3>Comunidad GitHub</h3>
-            <p class="channel-count">3,200+ seguidores</p>
-            <p>Contribuye a nuestros proyectos de código abierto, reporta problemas, solicita funciones y colabora en mejorar Minimal.</p>
-            <a href="#" class="channel-link">Ver GitHub</a>
-          </div>
-          <div class="channel-card">
-            <div class="channel-icon">🐦</div>
-            <h3>Comunidad Twitter/X</h3>
-            <p class="channel-count">15,000+ seguidores</p>
-            <p>Mantente actualizado con las últimas noticias, anuncios de funciones, consejos e información del sector del equipo de Minimal.</p>
-            <a href="#" class="channel-link">Seguirnos</a>
-          </div>
-          <div class="channel-card">
-            <div class="channel-icon">💼</div>
-            <h3>Red LinkedIn</h3>
-            <p class="channel-count">5,800+ conexiones</p>
-            <p>Conéctate profesionalmente, comparte historias de éxito, explora oportunidades laborales y haz networking con líderes de la industria.</p>
-            <a href="#" class="channel-link">Conectar en LinkedIn</a>
-          </div>
-          <div class="channel-card">
-            <div class="channel-icon">🎥</div>
-            <h3>Canal YouTube</h3>
-            <p class="channel-count">12,500+ suscriptores</p>
-            <p>Mira tutoriales, demos de funciones, casos de estudio y aprende mejores prácticas de nuestra completa biblioteca de contenido en video.</p>
-            <a href="#" class="channel-link">Suscribirse Ahora</a>
-          </div>
-          <div class="channel-card">
-            <div class="channel-icon">📰</div>
-            <h3>Newsletter Semanal</h3>
-            <p class="channel-count">9,300+ suscriptores</p>
-            <p>Recibe información curada, actualizaciones de producto, destacados de la comunidad y consejos de expertos en tu bandeja de entrada cada semana.</p>
-            <a href="#" class="channel-link">Suscribirse</a>
-          </div>
-        </div>
+      <SectionTitle title="Conéctate con Nosotros" centered={true} />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        <FeatureCard icon="chat-bubble" title="Servidor Discord" description="Únete a nuestra activa comunidad Discord para ayuda en tiempo real, discusiones y anuncios. Más de 5,000 miembros en línea." />
+        <FeatureCard icon="twitter" title="Twitter / X" description="Síguenos para actualizaciones de producto, consejos e información del sector. Únete a la conversación con #MinimalChat." />
+        <FeatureCard icon="youtube" title="Canal de YouTube" description="Tutoriales, casos de estudio y contenido detrás de escena. Suscríbete para videos semanales." />
+        <FeatureCard icon="document-text" title="Blog" description="Profundizaciones en IA conversacional, mejores prácticas e historias de éxito de clientes." />
+        <FeatureCard icon="github" title="GitHub" description="Explora nuestras herramientas de código abierto, ejemplos y contribuye al ecosistema." />
+        <FeatureCard icon="envelope" title="Newsletter" description="Resumen mensual de funciones, consejos y destacados de la comunidad entregado a tu bandeja de entrada." />
       </div>
-    </section>
+    </ContentSection>
 
-    <section class="guidelines-section">
-      <div class="container">
-        <h2>Directrices de la Comunidad</h2>
-        <p class="section-intro">Para mantener un ambiente acogedor y productivo, pedimos a todos los miembros que sigan estas directrices:</p>
-        <div class="guidelines-list">
-          <div class="guideline-item">
-            <div class="guideline-number">1</div>
-            <div class="guideline-content">
-              <h3>Sé Respetuoso e Inclusivo</h3>
-              <p>Trata a todos los miembros de la comunidad con respeto y amabilidad. Abrazamos la diversidad y damos la bienvenida a personas de todos los orígenes, experiencias y niveles de habilidad. No se tolerará el acoso, discriminación o comportamiento hostil.</p>
-            </div>
-          </div>
-          <div class="guideline-item">
-            <div class="guideline-number">2</div>
-            <div class="guideline-content">
-              <h3>Mantén Conversaciones Constructivas</h3>
-              <p>Enfócate en discusiones útiles y constructivas. Al proporcionar retroalimentación o críticas, sé específico y orientado a soluciones. Evita la negatividad no constructiva, trolling o desviar conversaciones.</p>
-            </div>
-          </div>
-          <div class="guideline-item">
-            <div class="guideline-number">3</div>
-            <div class="guideline-content">
-              <h3>Comparte Conocimiento Generosamente</h3>
-              <p>Ayuda a otros a aprender y crecer. Comparte tus experiencias, soluciones e ideas. Ninguna pregunta es demasiado básica—todos fuimos principiantes alguna vez. Al responder preguntas, sé paciente y claro.</p>
-            </div>
-          </div>
-          <div class="guideline-item">
-            <div class="guideline-number">4</div>
-            <div class="guideline-content">
-              <h3>Respeta la Privacidad y la PI</h3>
-              <p>No compartas información privada de otros sin permiso. Respeta los derechos de propiedad intelectual y términos de licencia. Al compartir código o contenido, asegúrate de tener el derecho de hacerlo.</p>
-            </div>
-          </div>
-          <div class="guideline-item">
-            <div class="guideline-number">5</div>
-            <div class="guideline-content">
-              <h3>Mantente en el Tema</h3>
-              <p>Mantén las discusiones relevantes a Minimal, desarrollo web, IA y tecnologías relacionadas. Usa canales apropiados para diferentes tipos de contenido. Evita la autopromoción excesiva o spam.</p>
-            </div>
-          </div>
-        </div>
+    <ContentSection background="secondary">
+      <SectionTitle title="Directrices de la Comunidad" centered={true} />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        <FeatureCard
+          icon="users"
+          title="Sé Respetuoso"
+          description="Trata a todos con respeto. No se toleran el acoso, el discurso de odio y la discriminación. Estamos construyendo una comunidad inclusiva para todos."
+        />
+        <FeatureCard
+          icon="lightbulb"
+          title="Comparte Conocimiento"
+          description="Ayuda a otros a aprender y crecer. Comparte tus experiencias, responde preguntas y contribuye a las discusiones. La perspectiva de todos aporta valor."
+        />
+        <FeatureCard
+          icon="arrow-right"
+          title="Mantente en el Tema"
+          description="Mantén las discusiones relevantes a Minimal y la IA conversacional. Usa los canales apropiados para diferentes temas."
+        />
+        <FeatureCard
+          icon="shield-exclamation"
+          title="No Spam"
+          description="No hagas spam, autopromoción excesiva o publiques contenido duplicado. La calidad sobre la cantidad."
+        />
       </div>
-    </section>
+    </ContentSection>
 
-    <section class="contribute-section">
-      <div class="container">
-        <h2>Formas de Contribuir</h2>
-        <p class="section-intro">Cada contribución hace más fuerte a nuestra comunidad. Aquí está cómo puedes involucrarte:</p>
-        <div class="contribute-grid">
-          <div class="contribute-card">
-            <div class="contribute-icon">🐛</div>
-            <h3>Reportar Bugs</h3>
-            <p>Ayúdanos a mejorar reportando bugs que encuentres. Los reportes detallados con pasos de reproducción son invaluables para mantener la calidad y confiabilidad.</p>
-          </div>
-          <div class="contribute-card">
-            <div class="contribute-icon">🔍</div>
-            <h3>Probar Funciones</h3>
-            <p>Únete a nuestro programa de pruebas beta y sé el primero en probar nuevas funciones. Tu retroalimentación ayuda a dar forma al futuro de Minimal y asegura que construyamos lo que los usuarios necesitan.</p>
-          </div>
-          <div class="contribute-card">
-            <div class="contribute-icon">📚</div>
-            <h3>Mejorar Documentación</h3>
-            <p>Ayuda a otros a aprender mejorando la documentación, escribiendo tutoriales, creando ejemplos o traduciendo contenido para hacer Minimal accesible mundialmente.</p>
-          </div>
-          <div class="contribute-card">
-            <div class="contribute-icon">🎯</div>
-            <h3>Compartir Casos de Uso</h3>
-            <p>Inspira a otros compartiendo cómo usas Minimal. Escribe publicaciones de blog, crea videos o presenta en meetups para mostrar aplicaciones del mundo real.</p>
-          </div>
-          <div class="contribute-card">
-            <div class="contribute-icon">🤝</div>
-            <h3>Ayudar a Otros</h3>
-            <p>Responde preguntas, proporciona soporte y tutoriza a recién llegados. Compartir tu conocimiento ayuda a toda la comunidad a prosperar y crecer junta.</p>
-          </div>
-        </div>
+    <ContentSection background="secondary">
+      <SectionTitle title="Próximos Eventos" centered={true} />
+      <div class="max-w-4xl mx-auto space-y-6 lg:space-y-8">
+        <EventCard
+          date="15 de marzo, 2025 • 2:00 PM EST"
+          title="Taller de IA Conversacional"
+          description="Aprende mejores prácticas para diseñar experiencias conversacionales. Taller interactivo con preguntas y respuestas en vivo."
+          tags={["Virtual", "Gratis"]}
+          buttonText="Registrarse"
+          buttonHref="/es/contact"
+          dateColor="var(--brand-green)"
+        />
+        <EventCard
+          date="22 de marzo, 2025 • 1:00 PM EST"
+          title="Llamada Mensual de la Comunidad"
+          description="Únete a nuestra llamada mensual de la comunidad para actualizaciones de producto, discusiones de hoja de ruta y exhibiciones de la comunidad."
+          tags={["Virtual", "Gratis"]}
+          buttonText="Unirse a la Llamada"
+          buttonHref="/es/contact"
+          dateColor="var(--brand-purple-primary)"
+        />
+        <EventCard
+          date="5 de abril, 2025 • 10:00 AM EST"
+          title="Hackathon: Construye con IA"
+          description="Hackathon virtual de 48 horas. Construye experiencias conversacionales innovadoras. ¡Premios y regalos para los ganadores!"
+          tags={["Virtual", "48 Horas"]}
+          buttonText="Inscribirse"
+          buttonHref="/es/contact"
+          dateColor="var(--brand-green)"
+        />
       </div>
-    </section>
+    </ContentSection>
 
-    <section class="events-section">
-      <div class="container">
-        <h2>Próximos Eventos</h2>
-        <div class="events-grid">
-          <div class="event-card">
-            <div class="event-date">
-              <span class="event-day">15</span>
-              <span class="event-month">Nov</span>
-            </div>
-            <div class="event-details">
-              <h3>Llamada Mensual de Comunidad</h3>
-              <p class="event-time">10:00 AM PST - Virtual</p>
-              <p>Únete a nuestra llamada mensual de comunidad para discutir actualizaciones del roadmap, compartir comentarios y conectar con el equipo y otros miembros de la comunidad.</p>
-              <a href="#" class="event-link">Registrarse Ahora</a>
-            </div>
-          </div>
-          <div class="event-card">
-            <div class="event-date">
-              <span class="event-day">22</span>
-              <span class="event-month">Nov</span>
-            </div>
-            <div class="event-details">
-              <h3>Taller de Implementación Avanzada</h3>
-              <p class="event-time">2:00 PM EST - Virtual</p>
-              <p>Profundiza en funciones avanzadas de Minimal y patrones de integración. Perfecto para desarrolladores que buscan maximizar su implementación.</p>
-              <a href="#" class="event-link">Reservar tu Lugar</a>
-            </div>
-          </div>
-          <div class="event-card">
-            <div class="event-date">
-              <span class="event-day">06</span>
-              <span class="event-month">Dic</span>
-            </div>
-            <div class="event-details">
-              <h3>Webinar de IA y Diseño Conversacional</h3>
-              <p class="event-time">11:00 AM GMT - Virtual</p>
-              <p>Aprende mejores prácticas para diseñar experiencias conversacionales que deleiten a los usuarios y generen resultados comerciales de expertos de la industria.</p>
-              <a href="#" class="event-link">Unirse al Webinar</a>
-            </div>
-          </div>
-          <div class="event-card">
-            <div class="event-date">
-              <span class="event-day">14</span>
-              <span class="event-month">Dic</span>
-            </div>
-            <div class="event-details">
-              <h3>Showcase Comunitario de Fin de Año</h3>
-              <p class="event-time">3:00 PM PST - Virtual</p>
-              <p>Celebra los logros del año, ve proyectos increíbles de la comunidad y obtén un adelanto de lo que viene en 2026.</p>
-              <a href="#" class="event-link">Confirmar Asistencia</a>
-            </div>
-          </div>
-        </div>
+    <ContentSection>
+      <SectionTitle title="Historias de Éxito" centered={true} />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
+        <TestimonialCard
+          avatar="TC"
+          company="TechCo Inc."
+          industry="Plataforma SaaS"
+          quote="Minimal nos ayudó a aumentar el compromiso del cliente en un 300%. La IA entiende nuestro producto complejo y proporciona respuestas precisas. La configuración tomó menos de 30 minutos."
+          author="Alex Chen, Director de Producto"
+          avatarColor="from-[var(--brand-green)] to-[#059669]"
+        />
+        <TestimonialCard
+          avatar="SS"
+          company="StyleShop"
+          industry="E-commerce"
+          quote="Nuestra tasa de conversión se duplicó después de agregar Minimal. La IA ayuda a los clientes a encontrar productos y responde preguntas sobre tallas al instante. Un cambio radical para nuestro negocio."
+          author="Maria García, Fundadora"
+          avatarColor="from-[var(--brand-purple-primary)] to-[var(--brand-purple-dark)]"
+        />
+        <TestimonialCard
+          avatar="ED"
+          company="EduPlatform"
+          industry="Tecnología Educativa"
+          quote="¡A los estudiantes les encanta! Obtienen ayuda instantánea con preguntas del curso 24/7. El volumen de tickets de soporte disminuyó un 60% mientras que la satisfacción estudiantil aumentó."
+          author="Dr. James Wilson, CTO"
+          avatarColor="from-[var(--brand-green)] to-[#059669]"
+        />
+        <TestimonialCard
+          avatar="FG"
+          company="FinanceGuru"
+          industry="Fintech"
+          quote="Los análisis son increíbles. Ahora entendemos exactamente lo que nuestros usuarios están buscando y hemos mejorado nuestra hoja de ruta de producto basándose en datos de conversación."
+          author="Rachel Park, Gerente de Producto"
+          avatarColor="from-[var(--brand-purple-primary)] to-[var(--brand-purple-dark)]"
+        />
       </div>
-    </section>
+    </ContentSection>
 
-    <section class="testimonials-section">
-      <div class="container">
-        <h2>Historias de Éxito de la Comunidad</h2>
-        <div class="testimonials-grid">
-          <div class="testimonial-card">
-            <p class="testimonial-quote">"La comunidad Minimal me ayudó a transformar el sitio web de nuestra empresa en solo dos semanas. El soporte en Discord fue increíble—obtuve respuestas en minutos cada vez que tenía una pregunta."</p>
-            <div class="testimonial-author">
-              <div class="author-avatar">SM</div>
-              <div class="author-info">
-                <div class="author-name">Sarah Martínez</div>
-                <div class="author-title">Product Manager, TechStart</div>
-              </div>
-            </div>
-          </div>
-          <div class="testimonial-card">
-            <p class="testimonial-quote">"Contribuir a los proyectos de código abierto de Minimal me enseñó más sobre IA y desarrollo web que cualquier curso. La comunidad es acogedora y las revisiones de código son educativas."</p>
-            <div class="testimonial-author">
-              <div class="author-avatar">DK</div>
-              <div class="author-info">
-                <div class="author-name">David Kim</div>
-                <div class="author-title">Ingeniero de Software, DevFlow</div>
-              </div>
-            </div>
-          </div>
-          <div class="testimonial-card">
-            <p class="testimonial-quote">"Me uní como principiante y ahora estoy ayudando a otros a implementar Minimal. Los recursos de aprendizaje y mentoría en esta comunidad son excepcionales. Ha transformado mi carrera."</p>
-            <div class="testimonial-author">
-              <div class="author-avatar">AL</div>
-              <div class="author-info">
-                <div class="author-name">Ana López</div>
-                <div class="author-title">Desarrolladora Web, Creative Studio</div>
-              </div>
-            </div>
-          </div>
-          <div class="testimonial-card">
-            <p class="testimonial-quote">"Las llamadas semanales de la comunidad y los talleres han sido invaluables. He hecho conexiones profesionales en todo el mundo y aprendido estrategias de implementación que nunca habría descubierto solo."</p>
-            <div class="testimonial-author">
-              <div class="author-avatar">JC</div>
-              <div class="author-info">
-                <div class="author-name">James Chen</div>
-                <div class="author-title">CTO, InnovateLab</div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <CTASection
+      title="Únete a la Comunidad"
+      description="Conéctate con miles de constructores creando mejores experiencias web con IA conversacional."
+      background="secondary"
+    >
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button variant="primary" size="lg" href="https://discord.gg/minimal">
+          Únete a Discord
+        </Button>
+        <Button variant="secondary" size="lg" href="https://twitter.com/minimal">
+          Síguenos en Twitter
+        </Button>
       </div>
-    </section>
-
-    <section class="resources-section">
-      <div class="container">
-        <h2>Recursos de la Comunidad</h2>
-        <div class="resources-grid">
-          <div class="resources-column">
-            <h3>Recursos de Aprendizaje</h3>
-            <ul class="resources-list">
-              <li><a href="#">Guía de Inicio</a></li>
-              <li><a href="#">Biblioteca de Tutoriales en Video</a></li>
-              <li><a href="#">Documentación de Mejores Prácticas</a></li>
-              <li><a href="#">Referencia de API</a></li>
-              <li><a href="#">Repositorio de Ejemplos de Código</a></li>
-              <li><a href="#">Wiki de la Comunidad</a></li>
-            </ul>
-          </div>
-          <div class="resources-column">
-            <h3>Soporte y Ayuda</h3>
-            <ul class="resources-list">
-              <li><a href="#">Preguntas Frecuentes y Solución de Problemas</a></li>
-              <li><a href="#">Canales de Soporte en Discord</a></li>
-              <li><a href="#">Problemas en GitHub</a></li>
-              <li><a href="#">Etiqueta Stack Overflow</a></li>
-              <li><a href="#">Contactar Soporte</a></li>
-              <li><a href="#">Reportar un Bug</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="ambassador-section">
-      <div class="container">
-        <div class="ambassador-content">
-          <h2>Programa de Embajadores</h2>
-          <p class="ambassador-intro">Únete a nuestro Programa de Embajadores y conviértete en un líder en la comunidad Minimal. Comparte tu experiencia, inspira a otros y obtén beneficios exclusivos.</p>
-          <div class="benefits-grid">
-            <div class="benefit-item">
-              <span class="benefit-icon">🎯</span>
-              <span>Acceso anticipado a nuevas funciones y programas beta</span>
-            </div>
-            <div class="benefit-item">
-              <span class="benefit-icon">🎓</span>
-              <span>Oportunidades exclusivas de capacitación y certificación</span>
-            </div>
-            <div class="benefit-item">
-              <span class="benefit-icon">🎤</span>
-              <span>Oportunidades de hablar en eventos y webinars</span>
-            </div>
-            <div class="benefit-item">
-              <span class="benefit-icon">🏆</span>
-              <span>Reconocimiento en nuestro sitio web y redes sociales</span>
-            </div>
-            <div class="benefit-item">
-              <span class="benefit-icon">🤝</span>
-              <span>Conexión directa con el equipo central de Minimal</span>
-            </div>
-            <div class="benefit-item">
-              <span class="benefit-icon">🎁</span>
-              <span>Merchandising exclusivo y beneficios de embajador</span>
-            </div>
-          </div>
-          <a href="#" class="cta-button">Aplicar al Programa de Embajadores</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="final-cta-section">
-      <div class="container">
-        <h2>¡Únete a Nuestra Comunidad Hoy!</h2>
-        <p>Sé parte de una próspera comunidad de desarrolladores, diseñadores e innovadores transformando la web.</p>
-        <div class="cta-buttons">
-          <a href="#" class="cta-primary">Comenzar con Minimal</a>
-          <a href="#" class="cta-secondary">Unirse a la Comunidad Discord</a>
-        </div>
-      </div>
-    </section>
+    </CTASection>
   </main>
 
   <Footer locale={locale} />
 </BaseLayout>
-
-<style>
-  main {
-    padding-top: 60px;
-  }
-
-  .hero-section {
-    padding: calc(var(--section-padding-y) + var(--space-4)) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
-    background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
-    text-align: center;
-  }
-
-  .hero-section h1 {
-    font-size: clamp(var(--font-size-3xl), 5vw, var(--font-size-5xl));
-    margin-bottom: var(--space-3);
-    color: var(--text-primary);
-    font-weight: var(--font-weight-bold);
-  }
-
-  .subtitle {
-    font-size: clamp(calc(var(--font-size-lg) + 1px), 2vw, var(--font-size-2xl));
-    color: var(--text-secondary);
-    max-width: 800px;
-    margin: 0 auto;
-    line-height: var(--line-height-relaxed);
-  }
-
-  .stats-section {
-    padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
-    background: var(--bg-primary);
-  }
-
-  .stats-section h2 {
-    text-align: center;
-    margin-bottom: var(--space-6);
-    font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-4xl));
-    color: var(--text-primary);
-    font-weight: var(--font-weight-bold);
-  }
-
-  .stats-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-4);
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .stat-card {
-    background: var(--bg-tertiary);
-    padding: var(--space-6);
-    border-radius: var(--radius-md);
-    text-align: center;
-    box-shadow: var(--shadow-sm);
-    border: 1px solid rgba(0, 0, 0, 0.04);
-    transition: transform var(--transition-base), box-shadow var(--transition-base);
-  }
-
-  .stat-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-  }
-
-  .stat-number {
-    font-size: clamp(var(--font-size-3xl), 5vw, var(--font-size-5xl));
-    font-weight: var(--font-weight-bold);
-    background: linear-gradient(135deg, var(--brand-purple-primary) 0%, var(--brand-purple-secondary) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: var(--space-2);
-  }
-
-  .stat-label {
-    font-size: var(--font-size-lg);
-    color: var(--text-secondary);
-    font-weight: var(--font-weight-medium);
-  }
-
-  .channels-section {
-    padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
-    background: var(--bg-secondary);
-  }
-
-  .channels-section h2 {
-    text-align: center;
-    margin-bottom: var(--space-3);
-    font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-4xl));
-    color: var(--text-primary);
-    font-weight: var(--font-weight-bold);
-  }
-
-  .section-intro {
-    text-align: center;
-    color: var(--text-secondary);
-    font-size: var(--font-size-lg);
-    max-width: 800px;
-    margin: 0 auto var(--space-6);
-    line-height: var(--line-height-relaxed);
-  }
-
-  .channels-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-5);
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .channel-card {
-    background: var(--bg-primary);
-    padding: var(--space-6);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
-    border: 1px solid rgba(0, 0, 0, 0.04);
-    transition: transform var(--transition-base), box-shadow var(--transition-base);
-  }
-
-  .channel-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-  }
-
-  .channel-icon {
-    font-size: var(--font-size-4xl);
-    margin-bottom: var(--space-3);
-  }
-
-  .channel-card h3 {
-    font-size: var(--font-size-2xl);
-    color: var(--text-primary);
-    margin-bottom: var(--space-2);
-    font-weight: var(--font-weight-semibold);
-  }
-
-  .channel-count {
-    color: var(--brand-purple-primary);
-    font-weight: var(--font-weight-semibold);
-    font-size: var(--font-size-base);
-    margin-bottom: var(--space-3);
-  }
-
-  .channel-card > p {
-    color: var(--text-secondary);
-    line-height: var(--line-height-loose);
-    margin-bottom: var(--space-4);
-    font-size: var(--font-size-base);
-  }
-
-  .channel-link {
-    display: inline-block;
-    color: var(--brand-purple-primary);
-    text-decoration: none;
-    font-weight: var(--font-weight-semibold);
-    transition: color var(--transition-base);
-  }
-
-  .channel-link:hover {
-    color: var(--brand-purple-secondary);
-    text-decoration: underline;
-  }
-
-  .guidelines-section {
-    padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
-    background: var(--bg-primary);
-  }
-
-  .guidelines-section h2 {
-    text-align: center;
-    margin-bottom: var(--space-3);
-    font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-4xl));
-    color: var(--text-primary);
-    font-weight: var(--font-weight-bold);
-  }
-
-  .guidelines-list {
-    max-width: 900px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-5);
-  }
-
-  .guideline-item {
-    display: flex;
-    gap: var(--space-4);
-    align-items: flex-start;
-  }
-
-  .guideline-number {
-    flex-shrink: 0;
-    width: 48px;
-    height: 48px;
-    background: linear-gradient(135deg, var(--brand-purple-primary) 0%, var(--brand-purple-secondary) 100%);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: var(--font-size-xl);
-    font-weight: var(--font-weight-bold);
-    box-shadow: 0 4px 12px rgba(138, 43, 226, 0.2);
-  }
-
-  .guideline-content h3 {
-    font-size: var(--font-size-xl);
-    color: var(--text-primary);
-    margin-bottom: var(--space-2);
-    font-weight: var(--font-weight-semibold);
-  }
-
-  .guideline-content p {
-    color: var(--text-secondary);
-    line-height: var(--line-height-loose);
-    font-size: var(--font-size-base);
-  }
-
-  .contribute-section {
-    padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
-    background: var(--bg-secondary);
-  }
-
-  .contribute-section h2 {
-    text-align: center;
-    margin-bottom: var(--space-3);
-    font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-4xl));
-    color: var(--text-primary);
-    font-weight: var(--font-weight-bold);
-  }
-
-  .contribute-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-5);
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .contribute-card {
-    background: var(--bg-primary);
-    padding: var(--space-6);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
-    border: 1px solid rgba(0, 0, 0, 0.04);
-    transition: transform var(--transition-base), box-shadow var(--transition-base);
-  }
-
-  .contribute-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-  }
-
-  .contribute-icon {
-    font-size: var(--font-size-4xl);
-    margin-bottom: var(--space-3);
-  }
-
-  .contribute-card h3 {
-    font-size: var(--font-size-xl);
-    color: var(--text-primary);
-    margin-bottom: var(--space-3);
-    font-weight: var(--font-weight-semibold);
-  }
-
-  .contribute-card p {
-    color: var(--text-secondary);
-    line-height: var(--line-height-loose);
-    font-size: var(--font-size-base);
-  }
-
-  .events-section {
-    padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
-    background: var(--bg-primary);
-  }
-
-  .events-section h2 {
-    text-align: center;
-    margin-bottom: var(--space-6);
-    font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-4xl));
-    color: var(--text-primary);
-    font-weight: var(--font-weight-bold);
-  }
-
-  .events-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-5);
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  .event-card {
-    display: flex;
-    gap: var(--space-4);
-    background: var(--bg-tertiary);
-    padding: var(--space-5);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
-    border: 1px solid rgba(0, 0, 0, 0.04);
-    transition: transform var(--transition-base), box-shadow var(--transition-base);
-  }
-
-  .event-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-  }
-
-  .event-date {
-    flex-shrink: 0;
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(135deg, var(--brand-purple-primary) 0%, var(--brand-purple-secondary) 100%);
-    border-radius: var(--radius-md);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    box-shadow: 0 4px 12px rgba(138, 43, 226, 0.2);
-  }
-
-  .event-day {
-    font-size: var(--font-size-3xl);
-    font-weight: var(--font-weight-bold);
-    line-height: 1;
-  }
-
-  .event-month {
-    font-size: var(--font-size-sm);
-    text-transform: uppercase;
-    margin-top: var(--space-1);
-    font-weight: var(--font-weight-semibold);
-  }
-
-  .event-details {
-    flex: 1;
-  }
-
-  .event-details h3 {
-    font-size: var(--font-size-xl);
-    color: var(--text-primary);
-    margin-bottom: var(--space-2);
-    font-weight: var(--font-weight-semibold);
-  }
-
-  .event-time {
-    color: var(--brand-purple-primary);
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-semibold);
-    margin-bottom: var(--space-2);
-  }
-
-  .event-details > p {
-    color: var(--text-secondary);
-    line-height: var(--line-height-loose);
-    margin-bottom: var(--space-3);
-    font-size: var(--font-size-base);
-  }
-
-  .event-link {
-    display: inline-block;
-    color: var(--brand-purple-primary);
-    text-decoration: none;
-    font-weight: var(--font-weight-semibold);
-    font-size: var(--font-size-sm);
-    transition: color var(--transition-base);
-  }
-
-  .event-link:hover {
-    color: var(--brand-purple-secondary);
-    text-decoration: underline;
-  }
-
-  .testimonials-section {
-    padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
-    background: var(--bg-secondary);
-  }
-
-  .testimonials-section h2 {
-    text-align: center;
-    margin-bottom: var(--space-6);
-    font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-4xl));
-    color: var(--text-primary);
-    font-weight: var(--font-weight-bold);
-  }
-
-  .testimonials-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-5);
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .testimonial-card {
-    background: var(--bg-primary);
-    padding: var(--space-6);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
-    border: 1px solid rgba(0, 0, 0, 0.04);
-  }
-
-  .testimonial-quote {
-    color: var(--text-secondary);
-    line-height: var(--line-height-loose);
-    font-size: var(--font-size-lg);
-    margin-bottom: var(--space-5);
-    font-style: italic;
-  }
-
-  .testimonial-author {
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
-  }
-
-  .author-avatar {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--brand-purple-primary) 0%, var(--brand-purple-secondary) 100%);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: var(--font-size-lg);
-    font-weight: var(--font-weight-bold);
-    flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(138, 43, 226, 0.2);
-  }
-
-  .author-name {
-    font-size: var(--font-size-base);
-    color: var(--text-primary);
-    font-weight: var(--font-weight-semibold);
-  }
-
-  .author-title {
-    font-size: var(--font-size-sm);
-    color: var(--text-secondary);
-  }
-
-  .resources-section {
-    padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
-    background: var(--bg-primary);
-  }
-
-  .resources-section h2 {
-    text-align: center;
-    margin-bottom: var(--space-6);
-    font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-4xl));
-    color: var(--text-primary);
-    font-weight: var(--font-weight-bold);
-  }
-
-  .resources-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-6);
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  .resources-column h3 {
-    font-size: var(--font-size-2xl);
-    color: var(--text-primary);
-    margin-bottom: var(--space-4);
-    font-weight: var(--font-weight-semibold);
-  }
-
-  .resources-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .resources-list li {
-    margin-bottom: var(--space-3);
-  }
-
-  .resources-list a {
-    color: var(--text-secondary);
-    text-decoration: none;
-    font-size: var(--font-size-base);
-    line-height: var(--line-height-loose);
-    transition: color var(--transition-base);
-    display: inline-block;
-  }
-
-  .resources-list a:hover {
-    color: var(--brand-purple-primary);
-  }
-
-  .resources-list a::before {
-    content: "→ ";
-    color: var(--brand-purple-primary);
-    margin-right: var(--space-2);
-  }
-
-  .ambassador-section {
-    padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
-    background: linear-gradient(135deg, var(--brand-purple-primary) 0%, var(--brand-purple-secondary) 100%);
-  }
-
-  .ambassador-content {
-    max-width: 1000px;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .ambassador-section h2 {
-    color: white;
-    font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-4xl));
-    margin-bottom: var(--space-3);
-    font-weight: var(--font-weight-bold);
-  }
-
-  .ambassador-intro {
-    color: rgba(255, 255, 255, 0.95);
-    font-size: var(--font-size-lg);
-    line-height: var(--line-height-relaxed);
-    margin-bottom: var(--space-6);
-  }
-
-  .benefits-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-4);
-    margin-bottom: var(--space-6);
-  }
-
-  .benefit-item {
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
-    background: rgba(255, 255, 255, 0.15);
-    padding: var(--space-4);
-    border-radius: var(--radius-md);
-    color: white;
-    font-size: var(--font-size-base);
-    text-align: left;
-    backdrop-filter: blur(10px);
-  }
-
-  .benefit-icon {
-    font-size: var(--font-size-2xl);
-    flex-shrink: 0;
-  }
-
-  .cta-button {
-    display: inline-block;
-    padding: 16px 40px;
-    background: white;
-    color: var(--brand-purple-primary);
-    text-decoration: none;
-    border-radius: var(--radius-md);
-    font-weight: var(--font-weight-semibold);
-    font-size: var(--font-size-lg);
-    transition: transform var(--transition-base), box-shadow var(--transition-base);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  }
-
-  .cta-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
-  }
-
-  .final-cta-section {
-    padding: var(--section-padding-y) var(--section-padding-left) var(--section-padding-y) var(--section-padding-right);
-    background: var(--bg-secondary);
-    text-align: center;
-  }
-
-  .final-cta-section h2 {
-    font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-4xl));
-    margin-bottom: var(--space-3);
-    color: var(--text-primary);
-    font-weight: var(--font-weight-bold);
-  }
-
-  .final-cta-section > p {
-    color: var(--text-secondary);
-    font-size: var(--font-size-lg);
-    max-width: 700px;
-    margin: 0 auto var(--space-6);
-    line-height: var(--line-height-relaxed);
-  }
-
-  .cta-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-    align-items: center;
-  }
-
-  .cta-primary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 16px 40px;
-    background: var(--gradient-primary);
-    color: white;
-    text-decoration: none;
-    border-radius: var(--radius-md);
-    font-weight: var(--font-weight-semibold);
-    font-size: var(--font-size-lg);
-    transition: transform var(--transition-base), box-shadow var(--transition-base);
-    box-shadow: var(--shadow-md);
-  }
-
-  .cta-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
-  }
-
-  .cta-secondary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 16px 40px;
-    background: transparent;
-    color: var(--brand-purple-primary);
-    text-decoration: none;
-    border-radius: var(--radius-md);
-    font-weight: var(--font-weight-semibold);
-    font-size: var(--font-size-lg);
-    border: 2px solid var(--brand-purple-primary);
-    transition: all var(--transition-base);
-  }
-
-  .cta-secondary:hover {
-    background: var(--brand-purple-primary);
-    color: white;
-    transform: translateY(-2px);
-  }
-
-  @media (min-width: 640px) {
-    .stats-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .cta-buttons {
-      flex-direction: row;
-      justify-content: center;
-    }
-
-    .benefits-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (min-width: 768px) {
-    .channels-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .contribute-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .testimonials-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .resources-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .stats-grid {
-      grid-template-columns: repeat(4, 1fr);
-    }
-
-    .channels-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-</style>
