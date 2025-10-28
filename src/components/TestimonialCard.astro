@@ -1,0 +1,45 @@
+---
+interface Props {
+  avatar: string;
+  company: string;
+  industry: string;
+  quote: string;
+  author: string;
+  avatarColor?: string;
+  className?: string;
+}
+
+const {
+  avatar,
+  company,
+  industry,
+  quote,
+  author,
+  avatarColor = 'from-[var(--brand-green)] to-[#059669]',
+  className = ''
+} = Astro.props;
+---
+
+<div class={`bg-bg-tertiary rounded-md p-6 shadow-md ${className}`}>
+  <div class="flex items-center gap-4 mb-4">
+    <div class={`w-14 h-14 rounded-full bg-gradient-to-br ${avatarColor} text-white flex items-center justify-center text-xl font-bold flex-shrink-0`}>
+      {avatar}
+    </div>
+    <div>
+      <div class="text-lg font-semibold text-[var(--text-primary)]">
+        {company}
+      </div>
+      <div class="text-sm text-[var(--text-secondary)]">
+        {industry}
+      </div>
+    </div>
+  </div>
+
+  <p class="text-[var(--text-secondary)] leading-relaxed italic mb-4 text-[15px]">
+    "{quote}"
+  </p>
+
+  <div class="text-sm text-[var(--text-tertiary)]">
+    — {author}
+  </div>
+</div>

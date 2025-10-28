@@ -1,0 +1,50 @@
+---
+import Badge from './Badge.astro';
+import Button from './Button.astro';
+
+interface Props {
+  date: string;
+  title: string;
+  description: string;
+  tags: string[];
+  buttonText: string;
+  buttonHref: string;
+  dateColor?: string;
+  className?: string;
+}
+
+const {
+  date,
+  title,
+  description,
+  tags,
+  buttonText,
+  buttonHref,
+  dateColor = 'var(--brand-green)',
+  className = ''
+} = Astro.props;
+---
+
+<div class={`bg-bg-primary p-6 rounded-md shadow-md transition-all duration-base hover:-translate-y-0.5 hover:shadow-lg ${className}`}>
+  <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+    <div class="flex-1">
+      <div class="text-sm font-semibold mb-2" style={`color: ${dateColor}`}>
+        📅 {date}
+      </div>
+      <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-3">
+        {title}
+      </h3>
+      <p class="text-[var(--text-secondary)] leading-relaxed mb-4 text-[15px]">
+        {description}
+      </p>
+      <div class="flex flex-wrap gap-2">
+        {tags.map(tag => (
+          <Badge text={tag} variant="secondary" />
+        ))}
+      </div>
+    </div>
+    <Button variant="primary" href={buttonHref}>
+      {buttonText}
+    </Button>
+  </div>
+</div>

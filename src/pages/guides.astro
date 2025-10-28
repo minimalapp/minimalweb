@@ -1,0 +1,310 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import PageHero from '@/components/PageHero.astro';
+import ContentSection from '@/components/ContentSection.astro';
+import SectionTitle from '@/components/SectionTitle.astro';
+import CodeBlock from '@/components/CodeBlock.astro';
+import FeatureCard from '@/components/FeatureCard.astro';
+import CategoryCard from '@/components/CategoryCard.astro';
+import Button from '@/components/Button.astro';
+import ListCard from '@/components/ListCard.astro';
+
+const locale = 'en';
+---
+
+<BaseLayout title="Guides - Minimal" description="Everything you need to master Minimal and maximize your website's conversions." locale={locale}>
+  <Header locale={locale} />
+
+  <main class="pt-header">
+    <PageHero
+      title="Guides & Documentation"
+      subtitle="Everything you need to master Minimal and maximize your website's conversions."
+    >
+      <div class="relative max-w-2xl mx-auto mt-8">
+        <svg class="absolute left-6 top-1/2 -translate-y-1/2 w-6 h-6 text-[var(--text-tertiary)] pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.35-4.35"></path>
+        </svg>
+        <input type="text" class="w-full px-6 py-4 pl-[100px] text-lg border-2 border-[var(--border-primary)] rounded-full bg-[var(--bg-primary)] text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)] transition-colors focus:outline-none focus:border-[var(--brand-green)]" placeholder="Search guides..." />
+      </div>
+    </PageHero>
+
+    <ContentSection>
+      <SectionTitle title="Browse Guides by Topic" centered={true} />
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <CategoryCard href="#quick-start" icon="rocket" title="Quick Start" description="Get up and running in minutes with our step-by-step installation guide." />
+        <CategoryCard href="#customization" icon="paint-brush" title="Customization" description="Make Minimal match your brand with custom colors, positions, and messages." />
+        <CategoryCard href="#content-copy" icon="pencil-square" title="Content & Copy" description="Write effective messages that drive engagement and conversions." />
+        <CategoryCard href="#conversation-design" icon="chat-bubble-left-right" title="Conversation Design" description="Design conversation flows that feel natural and helpful." />
+        <CategoryCard href="#analytics" icon="chart-bar" title="Analytics & KPIs" description="Track what matters and make data-driven improvements." />
+        <CategoryCard href="#advanced" icon="cog" title="Advanced Features" description="Unlock powerful integrations and programmatic control." />
+      </div>
+    </ContentSection>
+
+    <ContentSection id="quick-start" background="secondary" className="scroll-mt-32">
+      <div class="max-w-4xl mx-auto">
+      <SectionTitle title="Quick Start Guide" centered={true} />
+      <p class="text-center text-xl text-[var(--text-secondary)] mb-6 max-w-4xl mx-auto leading-relaxed">Follow these three simple steps to add Minimal to your website:</p>
+
+        <div class="space-y-8">
+          <div>
+          <h3 class="text-xl lg:text-2xl mb-4 text-[var(--text-primary)] font-semibold">Step 1: Sign Up & Create Project</h3>
+            <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Visit <a href="https://minimal.lat" class="text-[var(--brand-green)] hover:underline">minimal.lat</a> and create a free account. Once logged in, click "Add New Site" and enter your website URL. You'll instantly receive a unique Site ID.</p>
+          </div>
+
+          <div>
+          <h3 class="text-xl lg:text-2xl mb-4 text-[var(--text-primary)] font-semibold">Step 2: Install the Script</h3>
+          <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">
+            Copy the installation script from your dashboard and paste it before the closing <code class="bg-[var(--bg-tertiary)] text-[var(--brand-green)] px-2 py-1 rounded text-sm">&lt;/body&gt;</code> tag on your website:
+          </p>
+          <CodeBlock code={`<script src="https://minimal.lat/embed.js" data-site-id="your-site-id"></script>`} />
+          </div>
+
+          <div>
+          <h3 class="text-xl lg:text-2xl mb-4 text-[var(--text-primary)] font-semibold">Step 3: Customize & Launch</h3>
+            <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">The widget appears automatically! Customize its appearance, greeting message, and behavior from your dashboard. All changes apply instantly without touching your code.</p>
+          </div>
+        </div>
+      </div>
+    </ContentSection>
+
+    <ContentSection id="customization" className="scroll-mt-32">
+      <div class="max-w-4xl mx-auto">
+      <SectionTitle title="Customization Options" centered={true} />
+      <p class="text-center text-xl text-[var(--text-secondary)] mb-6 max-w-4xl mx-auto leading-relaxed">Personalize Minimal to match your brand perfectly:</p>
+
+        <div class="space-y-8">
+          <div>
+            <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">Basic Configuration</h3>
+            <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Configure Minimal directly in the script tag using data attributes:</p>
+            <CodeBlock code={`<script
+  src="https://minimal.lat/embed.js"
+  data-site-id="your-site-id"
+  data-position="bottom-right"
+  data-theme="auto"
+  data-primary-color="#10b981"
+></script>`} />
+          </div>
+
+          <div>
+            <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">Advanced JavaScript Configuration</h3>
+            <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">For more control, use the JavaScript API:</p>
+            <CodeBlock code={`window.MinimalConfig = {
+  siteId: 'your-site-id',
+  position: 'bottom-right',
+  theme: 'auto',
+  greeting: 'Hi! How can we help you today?',
+  placeholder: 'Type your message...',
+
+  // Visual customization
+  customColors: {
+    primary: '#10b981',
+    background: '#ffffff',
+    text: '#1f2937'
+  },
+
+  // Behavior options
+  autoOpen: false,
+  autoOpenDelay: 5000,
+  hideOnPages: ['/checkout'],
+  collectEmail: true
+};`} />
+          </div>
+        </div>
+      </div>
+    </ContentSection>
+
+    <ContentSection id="content-copy" background="secondary" className="scroll-mt-32">
+      <div class="max-w-4xl mx-auto">
+        <SectionTitle title="Writing Effective Conversations" centered={true} />
+        <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-6">Craft messages that engage users and drive conversions:</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <ListCard
+            title="Best Practices"
+            items={[
+              'Keep greetings warm and conversational, not corporate',
+              'Ask open-ended questions to understand user needs',
+              'Provide quick replies for common questions',
+              "Use your brand's voice and personality",
+              'Set expectations for response times'
+            ]}
+            bulletType="checkmark"
+          />
+
+          <ListCard
+            title="What to Avoid"
+            items={[
+              'Generic greetings like "Hello" or "Welcome"',
+              'Overly formal or robotic language',
+              'Asking for information you already have',
+              'Too many messages at once (overwhelming users)',
+              'Unclear calls-to-action'
+            ]}
+            bulletType="x"
+          />
+        </div>
+      </div>
+    </ContentSection>
+
+    <ContentSection id="conversation-design" className="scroll-mt-32">
+      <div class="max-w-4xl mx-auto">
+        <SectionTitle title="Conversation Design" centered={true} />
+        <p class="text-center text-xl text-[var(--text-secondary)] mb-8 max-w-4xl mx-auto leading-relaxed">Design conversation flows that feel natural and guide users to their goals.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <FeatureCard
+            icon="chat-bubble-left-right"
+            title="Natural Flow"
+            description="Keep conversations feeling human and helpful. Use short messages, ask one question at a time, and acknowledge user responses before moving forward."
+          />
+          <FeatureCard
+            icon="arrow-path"
+            title="Quick Replies"
+            description="Offer suggested responses for common questions. This speeds up interactions and helps users who aren't sure what to ask."
+          />
+          <FeatureCard
+            icon="light-bulb"
+            title="Smart Routing"
+            description="Guide users to the right information based on their questions. Use context from previous messages to provide relevant follow-ups."
+          />
+          <FeatureCard
+            icon="check-circle"
+            title="Clear CTAs"
+            description="Every conversation should have a purpose. Make it easy for users to take the next step with clear, actionable suggestions."
+          />
+        </div>
+      </div>
+    </ContentSection>
+
+    <ContentSection id="analytics" background="secondary" className="scroll-mt-32">
+      <div class="max-w-4xl mx-auto">
+        <SectionTitle title="Tracking Key Metrics" centered={true} />
+        <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-6">Monitor these essential KPIs to measure success:</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-bg-tertiary rounded-md p-6 shadow-md transition-all duration-base hover:-translate-y-0.5 hover:shadow-lg">
+            <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">Engagement Rate</h3>
+            <p class="text-[var(--text-secondary)] leading-relaxed mb-3 text-[15px]">Percentage of visitors who interact with the widget</p>
+            <p class="text-3xl font-bold text-[var(--brand-green)]">15-25%</p>
+            <p class="text-sm text-[var(--text-tertiary)]">Industry benchmark</p>
+          </div>
+
+          <div class="bg-bg-tertiary rounded-md p-6 shadow-md transition-all duration-base hover:-translate-y-0.5 hover:shadow-lg">
+            <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">Conversation Quality</h3>
+            <p class="text-[var(--text-secondary)] leading-relaxed mb-3 text-[15px]">Average messages per conversation</p>
+            <p class="text-3xl font-bold text-[var(--brand-green)]">4-6</p>
+            <p class="text-sm text-[var(--text-tertiary)]">Optimal range</p>
+          </div>
+
+          <div class="bg-bg-tertiary rounded-md p-6 shadow-md transition-all duration-base hover:-translate-y-0.5 hover:shadow-lg">
+            <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">Lead Capture</h3>
+            <p class="text-[var(--text-secondary)] leading-relaxed mb-3 text-[15px]">Percentage of conversations that collect contact info</p>
+            <p class="text-3xl font-bold text-[var(--brand-green)]">30-40%</p>
+            <p class="text-sm text-[var(--text-tertiary)]">Good performance</p>
+          </div>
+
+          <div class="bg-bg-tertiary rounded-md p-6 shadow-md transition-all duration-base hover:-translate-y-0.5 hover:shadow-lg">
+            <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">User Satisfaction</h3>
+            <p class="text-[var(--text-secondary)] leading-relaxed mb-3 text-[15px]">Post-conversation rating scores</p>
+            <p class="text-3xl font-bold text-[var(--brand-green)]">4.5+</p>
+            <p class="text-sm text-[var(--text-tertiary)]">Out of 5 stars</p>
+          </div>
+        </div>
+      </div>
+    </ContentSection>
+
+    <ContentSection id="advanced" className="scroll-mt-32">
+      <div class="max-w-4xl mx-auto">
+        <SectionTitle title="Advanced Integration" centered={true} />
+        <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-6">Unlock powerful features with the JavaScript API:</p>
+
+        <div class="space-y-8">
+          <div>
+            <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">Widget Control Methods</h3>
+            <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Control the widget programmatically:</p>
+            <CodeBlock code={`// Open the widget
+Minimal.open();
+
+// Close the widget
+Minimal.close();
+
+// Toggle widget state
+Minimal.toggle();
+
+// Check if widget is open
+const isOpen = Minimal.isOpen(); // returns boolean`} />
+          </div>
+
+          <div>
+            <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">Event Tracking</h3>
+            <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Track custom events and set user context:</p>
+            <CodeBlock code={`// Track custom events
+Minimal.trackEvent('event_name', {
+  customData: 'value',
+  userId: '12345'
+});
+
+// Set user context
+Minimal.setContext({
+  userId: 'user_123',
+  email: 'user@example.com',
+  plan: 'premium'
+});
+
+// Identify user
+Minimal.identify({
+  userId: 'user_123',
+  name: 'John Doe',
+  email: 'john@example.com'
+});`} />
+          </div>
+
+          <div>
+            <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">Event Listeners</h3>
+            <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Listen to widget events in your application:</p>
+            <CodeBlock code={`// Listen for widget open
+window.addEventListener('minimal:open', () => {
+  console.log('Widget opened');
+  gtag('event', 'chat_opened');
+});
+
+// Listen for widget close
+window.addEventListener('minimal:close', () => {
+  console.log('Widget closed');
+});
+
+// Listen for messages
+window.addEventListener('minimal:message', (event) => {
+  console.log('Message sent:', event.detail);
+});
+
+// Widget ready
+window.addEventListener('minimal:ready', () => {
+  console.log('Widget initialized');
+});`} />
+          </div>
+        </div>
+      </div>
+    </ContentSection>
+
+    <ContentSection>
+      <div class="max-w-3xl mx-auto text-center">
+        <SectionTitle title="Need More Help?" centered={true} />
+        <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-6">Our documentation covers everything from basic setup to advanced integrations.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button variant="primary" size="lg" href="/help">
+            Visit Help Center
+          </Button>
+          <Button variant="secondary" size="lg" href="/contact">
+            Contact Support
+          </Button>
+        </div>
+      </div>
+    </ContentSection>
+  </main>
+
+  <Footer locale={locale} />
+</BaseLayout>

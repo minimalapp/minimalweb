@@ -1,0 +1,159 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import PageHero from '@/components/PageHero.astro';
+import ContentSection from '@/components/ContentSection.astro';
+import SectionTitle from '@/components/SectionTitle.astro';
+import FeatureCard from '@/components/FeatureCard.astro';
+import CTASection from '@/components/CTASection.astro';
+import Button from '@/components/Button.astro';
+import StatCard from '@/components/StatCard.astro';
+import EventCard from '@/components/EventCard.astro';
+import TestimonialCard from '@/components/TestimonialCard.astro';
+
+const locale = 'es';
+---
+
+<BaseLayout title="Comunidad - Minimal" description="Únete a la comunidad Minimal de desarrolladores, diseñadores y constructores de productos." locale={locale}>
+  <Header locale={locale} />
+
+  <main class="pt-header">
+    <PageHero
+      title="Comunidad Minimal"
+      subtitle="Únete a miles de desarrolladores, diseñadores y constructores de productos creando mejores experiencias web."
+    />
+
+    <ContentSection>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-8 mt-8">
+        <StatCard number="10K+" label="Usuarios Activos" color="var(--brand-green)" />
+        <StatCard number="50+" label="Países" color="var(--brand-purple-primary)" />
+        <StatCard number="1M+" label="Conversaciones Diarias" color="var(--brand-green)" />
+      </div>
+
+      <SectionTitle title="Conéctate con Nosotros" centered={true} />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        <FeatureCard icon="chat-bubble" title="Servidor Discord" description="Únete a nuestra activa comunidad Discord para ayuda en tiempo real, discusiones y anuncios. Más de 5,000 miembros en línea." />
+        <FeatureCard icon="twitter" title="Twitter / X" description="Síguenos para actualizaciones de producto, consejos e información del sector. Únete a la conversación con #MinimalChat." />
+        <FeatureCard icon="youtube" title="Canal de YouTube" description="Tutoriales, casos de estudio y contenido detrás de escena. Suscríbete para videos semanales." />
+        <FeatureCard icon="document-text" title="Blog" description="Profundizaciones en IA conversacional, mejores prácticas e historias de éxito de clientes." />
+        <FeatureCard icon="github" title="GitHub" description="Explora nuestras herramientas de código abierto, ejemplos y contribuye al ecosistema." />
+        <FeatureCard icon="envelope" title="Newsletter" description="Resumen mensual de funciones, consejos y destacados de la comunidad entregado a tu bandeja de entrada." />
+      </div>
+    </ContentSection>
+
+    <ContentSection background="secondary">
+      <SectionTitle title="Directrices de la Comunidad" centered={true} />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        <FeatureCard
+          icon="users"
+          title="Sé Respetuoso"
+          description="Trata a todos con respeto. No se toleran el acoso, el discurso de odio y la discriminación. Estamos construyendo una comunidad inclusiva para todos."
+        />
+        <FeatureCard
+          icon="lightbulb"
+          title="Comparte Conocimiento"
+          description="Ayuda a otros a aprender y crecer. Comparte tus experiencias, responde preguntas y contribuye a las discusiones. La perspectiva de todos aporta valor."
+        />
+        <FeatureCard
+          icon="arrow-right"
+          title="Mantente en el Tema"
+          description="Mantén las discusiones relevantes a Minimal y la IA conversacional. Usa los canales apropiados para diferentes temas."
+        />
+        <FeatureCard
+          icon="shield-exclamation"
+          title="No Spam"
+          description="No hagas spam, autopromoción excesiva o publiques contenido duplicado. La calidad sobre la cantidad."
+        />
+      </div>
+    </ContentSection>
+
+    <ContentSection background="secondary">
+      <SectionTitle title="Próximos Eventos" centered={true} />
+      <div class="max-w-4xl mx-auto space-y-6 lg:space-y-8">
+        <EventCard
+          date="15 de marzo, 2025 • 2:00 PM EST"
+          title="Taller de IA Conversacional"
+          description="Aprende mejores prácticas para diseñar experiencias conversacionales. Taller interactivo con preguntas y respuestas en vivo."
+          tags={["Virtual", "Gratis"]}
+          buttonText="Registrarse"
+          buttonHref="/es/contact"
+          dateColor="var(--brand-green)"
+        />
+        <EventCard
+          date="22 de marzo, 2025 • 1:00 PM EST"
+          title="Llamada Mensual de la Comunidad"
+          description="Únete a nuestra llamada mensual de la comunidad para actualizaciones de producto, discusiones de hoja de ruta y exhibiciones de la comunidad."
+          tags={["Virtual", "Gratis"]}
+          buttonText="Unirse a la Llamada"
+          buttonHref="/es/contact"
+          dateColor="var(--brand-purple-primary)"
+        />
+        <EventCard
+          date="5 de abril, 2025 • 10:00 AM EST"
+          title="Hackathon: Construye con IA"
+          description="Hackathon virtual de 48 horas. Construye experiencias conversacionales innovadoras. ¡Premios y regalos para los ganadores!"
+          tags={["Virtual", "48 Horas"]}
+          buttonText="Inscribirse"
+          buttonHref="/es/contact"
+          dateColor="var(--brand-green)"
+        />
+      </div>
+    </ContentSection>
+
+    <ContentSection>
+      <SectionTitle title="Historias de Éxito" centered={true} />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
+        <TestimonialCard
+          avatar="TC"
+          company="TechCo Inc."
+          industry="Plataforma SaaS"
+          quote="Minimal nos ayudó a aumentar el compromiso del cliente en un 300%. La IA entiende nuestro producto complejo y proporciona respuestas precisas. La configuración tomó menos de 30 minutos."
+          author="Alex Chen, Director de Producto"
+          avatarColor="from-[var(--brand-green)] to-[#059669]"
+        />
+        <TestimonialCard
+          avatar="SS"
+          company="StyleShop"
+          industry="E-commerce"
+          quote="Nuestra tasa de conversión se duplicó después de agregar Minimal. La IA ayuda a los clientes a encontrar productos y responde preguntas sobre tallas al instante. Un cambio radical para nuestro negocio."
+          author="Maria García, Fundadora"
+          avatarColor="from-[var(--brand-purple-primary)] to-[var(--brand-purple-dark)]"
+        />
+        <TestimonialCard
+          avatar="ED"
+          company="EduPlatform"
+          industry="Tecnología Educativa"
+          quote="¡A los estudiantes les encanta! Obtienen ayuda instantánea con preguntas del curso 24/7. El volumen de tickets de soporte disminuyó un 60% mientras que la satisfacción estudiantil aumentó."
+          author="Dr. James Wilson, CTO"
+          avatarColor="from-[var(--brand-green)] to-[#059669]"
+        />
+        <TestimonialCard
+          avatar="FG"
+          company="FinanceGuru"
+          industry="Fintech"
+          quote="Los análisis son increíbles. Ahora entendemos exactamente lo que nuestros usuarios están buscando y hemos mejorado nuestra hoja de ruta de producto basándose en datos de conversación."
+          author="Rachel Park, Gerente de Producto"
+          avatarColor="from-[var(--brand-purple-primary)] to-[var(--brand-purple-dark)]"
+        />
+      </div>
+    </ContentSection>
+
+    <CTASection
+      title="Únete a la Comunidad"
+      description="Conéctate con miles de constructores creando mejores experiencias web con IA conversacional."
+      background="secondary"
+    >
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button variant="primary" size="lg" href="https://discord.gg/minimal">
+          Únete a Discord
+        </Button>
+        <Button variant="secondary" size="lg" href="https://twitter.com/minimal">
+          Síguenos en Twitter
+        </Button>
+      </div>
+    </CTASection>
+  </main>
+
+  <Footer locale={locale} />
+</BaseLayout>

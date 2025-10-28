@@ -1,0 +1,71 @@
+---
+/**
+ * InfoBox Component
+ *
+ * A comprehensive information box component for displaying detailed features with icons,
+ * titles, descriptions, and optional bulleted lists. Perfect for technical feature sections.
+ * Now uses the Icon component for consistent SVG rendering.
+ *
+ * @param icon - Icon identifier from the icon library (e.g., 'lightbulb', 'puzzle-piece', 'chart-bar')
+ * @param title - Box title
+ * @param description - Main description paragraph
+ * @param items - Optional array of list items (strings)
+ * @param variant - Background variant: 'primary', 'tertiary', or 'secondary' (default: 'primary')
+ * @param className - Additional CSS classes
+ */
+
+import Icon from '@/components/Icon.astro';
+
+interface Props {
+  icon?: string;
+  title: string;
+  description: string;
+  items?: string[];
+  variant?: 'primary' | 'tertiary' | 'secondary';
+  className?: string;
+}
+
+const {
+  icon,
+  title,
+  description,
+  items = [],
+  variant = 'primary',
+  className = ''
+} = Astro.props;
+
+// Match homepage UseCases pattern - no borders, rounded-md, shadow-md
+const bgClass = {
+  'primary': 'bg-bg-primary',
+  'tertiary': 'bg-bg-tertiary',
+  'secondary': 'bg-bg-secondary'
+}[variant];
+---
+
+<div class={`${bgClass} rounded-md p-6 shadow-md transition-all duration-base hover:-translate-y-0.5 hover:shadow-lg ${className}`}>
+  {icon && (
+    <div class="mb-4 text-brand-purple-primary">
+      <Icon name={icon} size="xl" />
+    </div>
+  )}
+
+  <h3 class="text-[var(--text-primary)] text-2xl mb-4 font-semibold">
+    {title}
+  </h3>
+
+  <p class="text-[var(--text-secondary)] text-[15px] leading-relaxed mb-6">
+    {description}
+  </p>
+
+  {items.length > 0 && (
+    <ul class="list-none p-0 m-0">
+      {items.map(item => (
+        <li class="text-sm text-text-tertiary mb-1 pl-3 relative before:content-['✓'] before:absolute before:left-0 before:text-brand-green before:font-bold">
+          {item}
+        </li>
+      ))}
+    </ul>
+  )}
+
+  <slot />
+</div>

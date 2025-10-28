@@ -1,0 +1,60 @@
+---
+import Badge from './Badge.astro';
+import Button from './Button.astro';
+
+interface Props {
+  title: string;
+  category: string;
+  categoryColor?: 'primary' | 'secondary' | 'outline' | 'success' | 'info';
+  location: string;
+  type: string;
+  description: string;
+  requirements: string[];
+  buttonHref: string;
+  buttonText?: string;
+  className?: string;
+}
+
+const {
+  title,
+  category,
+  categoryColor = 'success',
+  location,
+  type,
+  description,
+  requirements,
+  buttonHref,
+  buttonText = 'Apply Now',
+  className = ''
+} = Astro.props;
+---
+
+<div class={`bg-bg-tertiary p-6 rounded-md shadow-md transition-all duration-base hover:-translate-y-0.5 hover:shadow-lg ${className}`}>
+  <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
+    <div>
+      <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-3">
+        {title}
+      </h3>
+      <div class="flex flex-wrap gap-2">
+        <Badge text={category} variant={categoryColor} />
+        <Badge text={location} variant="secondary" />
+        <Badge text={type} variant="secondary" />
+      </div>
+    </div>
+    <Button variant="primary" href={buttonHref}>
+      {buttonText}
+    </Button>
+  </div>
+
+  <p class="text-[var(--text-secondary)] leading-relaxed mb-4 text-[15px]">
+    {description}
+  </p>
+
+  <ul class="list-none pl-0 m-0">
+    {requirements.map(req => (
+      <li class="text-sm text-text-tertiary mb-1 pl-3 relative before:content-['✓'] before:absolute before:left-0 before:text-brand-green before:font-bold">
+        {req}
+      </li>
+    ))}
+  </ul>
+</div>

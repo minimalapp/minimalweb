@@ -1,0 +1,213 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import PageHero from '@/components/PageHero.astro';
+import ContentSection from '@/components/ContentSection.astro';
+import SectionTitle from '@/components/SectionTitle.astro';
+import CodeBlock from '@/components/CodeBlock.astro';
+import FeatureCard from '@/components/FeatureCard.astro';
+import Button from '@/components/Button.astro';
+import ListCard from '@/components/ListCard.astro';
+import CTASection from '@/components/CTASection.astro';
+import Icon from '@/components/Icon.astro';
+
+const locale = 'en';
+---
+
+<BaseLayout title="Integration - Minimal" description="Integrate Minimal with your platform in minutes." locale={locale}>
+  <Header locale={locale} />
+
+  <main class="pt-header">
+    <PageHero
+      title="Platform Integration"
+      subtitle="Integrate Minimal with your platform in minutes. Compatible with all major web technologies."
+    />
+
+    <ContentSection>
+      <SectionTitle title="Supported Platforms" centered={true} />
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <FeatureCard icon="react" title="React" description="Seamless integration with React applications using our official component library." href="#react" />
+        <FeatureCard icon="angular" title="Angular" description="Native Angular module with TypeScript support and dependency injection." href="#angular" />
+        <FeatureCard icon="vue" title="Vue.js" description="Vue 3 plugin with composition API support and reactive state management." href="#vue" />
+        <FeatureCard icon="next" title="Next.js" description="Optimized for Next.js with SSR support and automatic code splitting." href="#nextjs" />
+        <FeatureCard icon="bolt" title="WordPress" description="Simple WordPress plugin - install and configure in your admin panel." href="#wordpress" />
+        <FeatureCard icon="shopping-bag" title="Shopify" description="Shopify app integration for ecommerce stores with cart tracking." href="#shopify" />
+      </div>
+    </ContentSection>
+
+    <ContentSection background="secondary">
+      <div class="max-w-4xl mx-auto">
+      <SectionTitle title="Universal Installation" centered={true} />
+      <p class="text-center text-xl text-[var(--text-secondary)] mb-6 max-w-4xl mx-auto leading-relaxed">Works with any website regardless of tech stack:</p>
+
+      <h3 id="html" class="text-2xl text-[var(--text-primary)] font-semibold mb-4 scroll-mt-32">HTML Websites</h3>
+      <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Add before closing &lt;/body&gt; tag:</p>
+      <CodeBlock code={`<script src="https://minimal.lat/embed.js" data-site-id="your-site-id"></script>`} />
+
+      <h3 id="react" class="text-2xl text-[var(--text-primary)] font-semibold mb-4 scroll-mt-32">React Applications</h3>
+      <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Install via npm and use as component:</p>
+      <CodeBlock code={`npm install @minimal/react
+import { MinimalChat } from '@minimal/react';
+
+function App() {
+  return (
+    <div>
+      <MinimalChat siteId="your-site-id" />
+    </div>
+  );
+}`} />
+
+      <h3 id="angular" class="text-2xl text-[var(--text-primary)] font-semibold mb-4 scroll-mt-32">Angular Applications</h3>
+      <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Install via npm and import in your module:</p>
+      <CodeBlock code={`npm install @minimal/angular
+
+import { MinimalModule } from '@minimal/angular';
+
+@NgModule({
+  imports: [
+    MinimalModule.forRoot({ siteId: 'your-site-id' })
+  ]
+})
+export class AppModule { }`} />
+
+      <h3 id="vue" class="text-2xl text-[var(--text-primary)] font-semibold mb-4 scroll-mt-32">Vue.js Applications</h3>
+      <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Install via npm and use as plugin:</p>
+      <CodeBlock code={`npm install @minimal/vue
+import { createApp } from 'vue';
+import MinimalPlugin from '@minimal/vue';
+
+const app = createApp(App);
+app.use(MinimalPlugin, { siteId: 'your-site-id' });`} />
+
+      <h3 id="nextjs" class="text-2xl text-[var(--text-primary)] font-semibold mb-4 scroll-mt-32">Next.js Applications</h3>
+      <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Install via npm and add to your layout or app component:</p>
+      <CodeBlock code={`npm install @minimal/react
+
+// app/layout.tsx (App Router)
+import { MinimalChat } from '@minimal/react';
+
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <body>
+        {children}
+        <MinimalChat siteId="your-site-id" />
+      </body>
+    </html>
+  );
+}`} />
+
+      <div class="space-y-6">
+        <div id="wordpress" class="scroll-mt-32">
+        <ListCard
+          title="WordPress"
+          description="Install plugin and configure in Settings → Minimal:"
+          items={[
+            'Download Minimal plugin from WordPress repository',
+            'Upload and activate in Plugins → Add New',
+            'Navigate to Settings → Minimal',
+            'Enter your Site ID and customize appearance',
+            'Save changes - widget appears automatically'
+          ]}
+        />
+        </div>
+
+        <div id="shopify" class="scroll-mt-32">
+        <ListCard
+          title="Shopify Stores"
+          description="Install from Shopify App Store:"
+          items={[
+            'Visit Shopify App Store and search for Minimal',
+            'Click Install App and authorize permissions',
+            'Enter your Site ID in the app settings',
+            'Customize widget appearance',
+            'Widget automatically appears on all pages'
+          ]}
+        />
+        </div>
+      </div>
+      </div>
+    </ContentSection>
+
+    <ContentSection>
+      <div class="max-w-4xl mx-auto">
+      <SectionTitle title="Advanced Configuration" centered={true} />
+
+      <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">Custom Triggers</h3>
+      <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Open widget based on user actions:</p>
+      <CodeBlock code={`// Open after time delay
+setTimeout(() => {
+  Minimal.open();
+}, 30000); // 30 seconds
+
+// Open on exit intent
+document.addEventListener('mouseout', (e) => {
+  if (e.clientY < 0) {
+    Minimal.open();
+  }
+});
+
+// Open on scroll depth
+window.addEventListener('scroll', () => {
+  const scrolled = (window.scrollY / document.body.scrollHeight) * 100;
+  if (scrolled > 50 && !Minimal.isOpen()) {
+    Minimal.open();
+  }
+});`} />
+
+      <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">E-commerce Tracking</h3>
+      <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Send cart and product data to AI:</p>
+      <CodeBlock code={`// Track product views
+Minimal.trackEvent('product_view', {
+  productId: '12345',
+  productName: 'Premium Widget',
+  price: 99.99
+});
+
+// Track cart updates
+Minimal.trackEvent('add_to_cart', {
+  items: cartItems,
+  total: cartTotal
+});
+
+// Pre-fill checkout questions
+Minimal.setContext({
+  cartValue: 299.99,
+  items: ['Widget A', 'Widget B']
+});`} />
+
+      <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">User Identification</h3>
+      <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Identify returning users:</p>
+      <CodeBlock code={`// Set user information
+Minimal.identify({
+  userId: 'user_123',
+  email: 'john@example.com',
+  name: 'John Doe',
+  plan: 'premium',
+  customAttributes: {
+    signupDate: '2024-01-15',
+    lastPurchase: '2024-03-20'
+  }
+});`} />
+      </div>
+    </ContentSection>
+
+    <CTASection
+      title="Need Integration Help?"
+      description="Our team can help with custom integrations and technical setup."
+      background="secondary"
+    >
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button variant="primary" size="lg" href="/help">
+          View Documentation
+        </Button>
+        <Button variant="secondary" size="lg" href="/contact">
+          Contact Support
+        </Button>
+      </div>
+    </CTASection>
+  </main>
+
+  <Footer locale={locale} />
+</BaseLayout>

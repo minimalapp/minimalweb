@@ -1,0 +1,239 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import PageHero from '@/components/PageHero.astro';
+import ContentSection from '@/components/ContentSection.astro';
+import SectionTitle from '@/components/SectionTitle.astro';
+import FeatureCard from '@/components/FeatureCard.astro';
+import CTASection from '@/components/CTASection.astro';
+import Button from '@/components/Button.astro';
+import InfoBox from '@/components/InfoBox.astro';
+import Icon from '@/components/Icon.astro';
+
+const locale = 'en';
+const title = 'Features - Minimal';
+const description = 'Discover all the functionalities that will transform your website into an intelligent conversational experience.';
+---
+
+<BaseLayout title={title} description={description} locale={locale}>
+  <Header locale={locale} />
+
+  <main class="pt-header">
+    <PageHero
+      title="Minimal Features"
+      subtitle="Discover all the functionalities that will transform your website into an intelligent conversational experience."
+    />
+
+    <!-- Main Features -->
+    <ContentSection>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <FeatureCard icon="cpu-chip" title="Advanced Conversational AI" description="State-of-the-art natural language processing that understands context and user intentions." />
+        <FeatureCard icon="paint-brush" title="Brand Preservation" description="The conversational interface automatically adapts to your website's colors, fonts, and visual style." />
+        <FeatureCard icon="bolt" title="1-Line Integration" description="Ultra-fast implementation that requires only adding one line of JavaScript code to your website." />
+        <FeatureCard icon="chart-bar" title="Intelligent Analytics" description="Get deep insights into your users' real intentions and behavior patterns." />
+        <FeatureCard icon="arrow-path" title="Automatic Synchronization" description="Your website content syncs automatically, allowing AI to always have updated information." />
+        <FeatureCard icon="globe-alt" title="Multi-language Support" description="Conversational interface that automatically adapts to your website's language." />
+      </div>
+    </ContentSection>
+
+    <!-- Technical Features -->
+    <ContentSection background="secondary">
+      <SectionTitle title="Technical Features" centered={true} />
+      <p class="text-center text-xl text-[var(--text-secondary)] mb-6 max-w-4xl mx-auto leading-relaxed">Built on cutting-edge technology to deliver exceptional performance and reliability.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <InfoBox
+          icon="light-bulb"
+          title="Intelligent Processing"
+          description="Our advanced AI engine leverages state-of-the-art natural language processing to understand user queries with remarkable accuracy. The system learns from every interaction, continuously improving its ability to provide relevant, contextual responses."
+          items={[
+            'Context-aware conversation management',
+            'Intent recognition and entity extraction',
+            'Multi-turn dialogue handling',
+            'Sentiment analysis for better engagement',
+            'Continuous learning from interactions'
+          ]}
+          variant="primary"
+        />
+
+        <InfoBox
+          icon="puzzle-piece"
+          title="Frictionless Integration"
+          description="Designed for developers and non-developers alike, Minimal integrates seamlessly with any website or platform. No complex setup, no backend changes required - just add one line of code and you're ready to go."
+          items={[
+            'One-line script installation',
+            'Zero dependencies or conflicts',
+            'Works with all modern frameworks',
+            'Automatic content synchronization',
+            'Real-time updates without redeployment'
+          ]}
+          variant="primary"
+        />
+      </div>
+    </ContentSection>
+
+    <!-- Analytics Capabilities -->
+    <ContentSection>
+      <SectionTitle title="Analytics Capabilities" centered={true} />
+      <p class="text-center text-xl text-[var(--text-secondary)] mb-8 max-w-4xl mx-auto leading-relaxed">Gain deep insights into user behavior and make data-driven decisions.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <InfoBox
+          icon="arrow-trending-up"
+          title="Engagement Metrics"
+          description="Track how users interact with your conversational interface in real-time. Monitor conversation rates, message volumes, user satisfaction scores, and engagement patterns to understand what resonates with your audience."
+          variant="tertiary"
+          items={[
+            'Conversation Rate: Percentage of visitors who engage',
+            'Average Session Length: Time spent in conversations',
+            'Message Volume: Total interactions over time'
+          ]}
+        />
+
+        <InfoBox
+          icon="user-group"
+          title="User Insights"
+          description="Understand your users like never before. See what questions they ask, what problems they're trying to solve, and what information they're seeking. Identify trends, common pain points, and opportunities for improvement."
+          variant="tertiary"
+          items={[
+            'Top Questions: Most frequently asked queries',
+            'User Intent: What users are trying to achieve',
+            'Behavior Patterns: Navigation and interaction flows'
+          ]}
+        />
+
+        <InfoBox
+          icon="clipboard-document-list"
+          title="Actionable Reports"
+          description="Transform raw data into actionable insights with comprehensive reports. Export data, create custom dashboards, and integrate with your existing analytics tools to get a complete picture of your website's performance."
+          variant="tertiary"
+          items={[
+            'Custom Dashboards: Visualize data your way',
+            'Automated Reports: Scheduled insights delivery',
+            'Data Export: CSV, JSON, and API access'
+          ]}
+        />
+      </div>
+    </ContentSection>
+
+    <!-- Security and Reliability -->
+    <ContentSection background="secondary">
+      <SectionTitle title="Security and Reliability" centered={true} />
+      <p class="text-center text-xl text-[var(--text-secondary)] mb-8 max-w-4xl mx-auto leading-relaxed">Enterprise-grade security and infrastructure you can trust.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <InfoBox
+          icon="lock-closed"
+          title="Data Protection"
+          description="Your data security is our top priority. We employ industry-leading encryption, comply with international privacy regulations, and implement strict access controls to ensure your information remains safe and private."
+          items={[
+            'End-to-end encryption for all data transmission',
+            'GDPR, CCPA, and SOC 2 compliance',
+            'Regular security audits by third-party experts',
+            'Data anonymization and privacy protection',
+            'Secure data centers with 24/7 monitoring'
+          ]}
+        />
+
+        <InfoBox
+          icon="cog"
+          title="Robust Infrastructure"
+          description="Built on world-class infrastructure with redundancy at every level. Our distributed architecture ensures your conversational interface is always available, fast, and responsive, no matter where your users are located."
+          items={[
+            '99.9% uptime guarantee with SLA backing',
+            'Global CDN for lightning-fast delivery',
+            'Automatic failover and disaster recovery',
+            'Load balancing for optimal performance',
+            'Real-time monitoring and alerting'
+          ]}
+        />
+
+        <InfoBox
+          icon="arrow-trending-up"
+          title="Scalability"
+          description="From startups to enterprises, Minimal scales with your business. Our infrastructure automatically adjusts to handle traffic spikes, seasonal variations, and growth without any intervention required from you."
+          items={[
+            'Auto-scaling infrastructure handles any traffic volume',
+            'No performance degradation during high traffic',
+            'Resource optimization for cost efficiency',
+            'Enterprise support for large-scale deployments',
+            'Custom solutions for specific requirements'
+          ]}
+        />
+      </div>
+    </ContentSection>
+
+    <!-- User Experience -->
+    <ContentSection>
+      <SectionTitle title="User Experience" centered={true} />
+      <p class="text-center text-xl text-[var(--text-secondary)] mb-8 max-w-4xl mx-auto leading-relaxed">Designed with both your users and your team in mind.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <InfoBox
+          icon="sparkles"
+          title="Intuitive Interface"
+          description="Our conversational interface is designed to feel natural and effortless. Users don't need training or instructions - they just start typing and get immediate, helpful responses. The clean, modern design ensures the focus stays on the conversation."
+          variant="tertiary"
+          items={[
+            'Natural language input',
+            'Smart suggestions',
+            'Quick replies',
+            'Rich media support',
+            'Mobile-optimized',
+            'Accessibility compliant'
+          ]}
+        />
+
+        <InfoBox
+          icon="paint-brush"
+          title="Visual Customization"
+          description="Make Minimal truly yours with extensive customization options. Match your brand perfectly by adjusting colors, fonts, spacing, position, and behavior. All changes can be made through our intuitive dashboard - no coding required."
+          variant="tertiary"
+          items={[
+            'Custom colors',
+            'Brand fonts',
+            'Logo integration',
+            'Position control',
+            'Theme modes',
+            'Animation settings'
+          ]}
+        />
+
+        <InfoBox
+          icon="rocket-launch"
+          title="Advanced Features"
+          description="Power users and developers can take advantage of advanced features including JavaScript API, webhooks, custom actions, and programmatic control. Build sophisticated workflows and integrate deeply with your existing systems."
+          variant="tertiary"
+          items={[
+            'JavaScript API',
+            'Webhook integration',
+            'Custom actions',
+            'Event tracking',
+            'A/B testing',
+            'Developer tools'
+          ]}
+        />
+      </div>
+    </ContentSection>
+
+    <!-- CTA Section -->
+    <CTASection
+      title="Ready to Transform Your Website?"
+      description="Join thousands of websites that have revolutionized their user experience with Minimal's intelligent conversational interface."
+      background="green"
+    >
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button variant="outline" size="lg" href="https://minimal.lat">
+          Get Started Free
+        </Button>
+        <Button variant="outline-light" size="lg" href="/contact">
+          Contact Sales
+        </Button>
+      </div>
+      <p class="text-white/80 text-sm mt-6">No credit card required • 14-day free trial • Cancel anytime</p>
+    </CTASection>
+  </main>
+
+  <Footer locale={locale} />
+</BaseLayout>

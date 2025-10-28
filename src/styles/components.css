@@ -1,0 +1,70 @@
+/*
+ * Component Utilities - Minimal Essential Classes
+ * Most styling should be inline Tailwind utilities in components
+ * Only define classes here when:
+ * 1. Used across 3+ components
+ * 2. Complex enough to warrant extraction
+ * 3. JavaScript needs to target them
+ */
+
+@layer components {
+  /* Hero Section - Dynamic text animation target (30% smaller) */
+  .hero-title {
+    font-size: clamp(1.05rem, 4.9vw, 1.4rem);
+  }
+
+  @media (min-width: 640px) {
+    .hero-title {
+      font-size: clamp(1.4rem, 4.2vw, 2.1rem);
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hero-title {
+      font-size: clamp(1.75rem, 3.85vw, 2.45rem);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-title {
+      font-size: clamp(1.225rem, 3.85vw, 3.15rem);
+    }
+  }
+
+  /* Process step numbers - consistent styling across steps */
+  .step-number {
+    background: linear-gradient(to bottom right, var(--brand-purple-primary), var(--brand-purple-dark));
+  }
+
+  /* Pricing featured card gradient background */
+  .pricing-card-featured {
+    background: linear-gradient(180deg, rgba(99, 102, 241, 0.02) 0%, var(--bg-primary) 100%);
+  }
+
+  /* Icon containers - used in multiple feature sections */
+  .icon-feature {
+    background-color: transparent;
+  }
+}
+
+@layer utilities {
+  /* Text gradient utilities for animated text */
+  .text-gradient-rainbow {
+    @apply bg-clip-text text-transparent;
+    background: linear-gradient(90deg, #FF5757 0%, #FFA500 20%, #FFD700 40%, #4CAF50 60%, #2196F3 80%, #3F51B5 100%);
+  }
+
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+
+  /* Background gradient for animated rainbow text */
+  .bg-rainbow-animated {
+    background: linear-gradient(90deg, #FF5757 0%, #FFA500 16.66%, #FFD700 33.33%, #4CAF50 50%, #2196F3 66.66%, #3F51B5 83.33%, #FF5757 100%);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}

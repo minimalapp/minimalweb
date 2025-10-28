@@ -1,0 +1,58 @@
+---
+/**
+ * IconFeatureCard Component
+ *
+ * A versatile card component for displaying features with icons (emoji or SVG).
+ * Supports both centered (for homepage Features section) and left-aligned (for Problem section) layouts.
+ *
+ * @param icon - Icon string (emoji like "🤖" or SVG markup)
+ * @param title - Card title
+ * @param description - Card description text
+ * @param iconType - 'emoji' for emoji icons, 'svg' for SVG markup (default: 'emoji')
+ * @param centered - Whether to center-align content (default: true)
+ * @param variant - Visual style: 'primary' (bg-primary) or 'tertiary' (bg-tertiary) (default: 'primary')
+ * @param className - Additional CSS classes
+ */
+
+interface Props {
+  icon: string;
+  title: string;
+  description: string;
+  iconType?: 'emoji' | 'svg';
+  centered?: boolean;
+  variant?: 'primary' | 'tertiary';
+  className?: string;
+}
+
+const {
+  icon,
+  title,
+  description,
+  iconType = 'emoji',
+  centered = true,
+  variant = 'primary',
+  className = ''
+} = Astro.props;
+
+// Match homepage UseCases pattern exactly
+const bgClass = variant === 'primary' ? 'bg-bg-primary' : 'bg-bg-tertiary';
+const textAlignClass = centered ? 'text-center' : '';
+const iconJustifyClass = centered ? 'justify-center' : 'justify-start';
+---
+
+<div class={`${bgClass} p-6 rounded-md shadow-md transition-all duration-base hover:-translate-y-0.5 hover:shadow-lg ${textAlignClass} ${className}`}>
+  <div class={`mb-2 flex ${iconJustifyClass}`}>
+    {iconType === 'emoji' ? (
+      <span class="text-4xl lg:text-5xl">{icon}</span>
+    ) : (
+      <span class="inline-flex items-center justify-center w-12 h-12 text-brand-purple-primary [&>svg]:w-full [&>svg]:h-full" set:html={icon}></span>
+    )}
+  </div>
+  <h3 class="text-2xl font-semibold mb-2 text-text-primary leading-snug">
+    {title}
+  </h3>
+  <p class="text-text-tertiary leading-relaxed text-[15px]">
+    {description}
+  </p>
+  <slot />
+</div>

@@ -1,0 +1,150 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import PageHero from '@/components/PageHero.astro';
+import ContentSection from '@/components/ContentSection.astro';
+import SectionTitle from '@/components/SectionTitle.astro';
+import FAQ from '@/components/FAQ.astro';
+import Button from '@/components/Button.astro';
+import InfoCard from '@/components/InfoCard.astro';
+
+const locale = 'en';
+
+const faqItems = [
+  {
+    question: "How quickly can I expect a response?",
+    answer: "<p>We typically respond to all inquiries within 24 hours during business days. For technical support requests, our average response time is under 2 hours. Urgent issues are prioritized and handled immediately.</p>"
+  },
+  {
+    question: "Can I schedule a demo of Minimal?",
+    answer: "<p>Absolutely! Select \"Request Demo\" from the subject dropdown when filling out the contact form. Our team will reach out to schedule a personalized demo at your convenience. We'll walk you through all features and answer any questions you have.</p>"
+  },
+  {
+    question: "Do you offer custom enterprise solutions?",
+    answer: "<p>Yes! We provide custom enterprise solutions with dedicated support, custom integrations, and SLA guarantees. Select \"Partnership Opportunity\" in the contact form, and our enterprise team will discuss your specific requirements and create a tailored solution.</p>"
+  },
+  {
+    question: "What information should I include in my support request?",
+    answer: `<p>To help us assist you quickly, please include:</p>
+      <ul>
+        <li>Your website URL and Site ID</li>
+        <li>Browser and device information</li>
+        <li>Detailed description of the issue</li>
+        <li>Screenshots or screen recordings if applicable</li>
+        <li>Any error messages you're seeing</li>
+      </ul>`
+  },
+  {
+    question: "Is there a phone number I can call?",
+    answer: "<p>We primarily support customers through email and scheduled calls to ensure quality responses. Use the \"Schedule a Call\" option above to book a time that works for you. For enterprise customers, we provide dedicated phone support as part of your plan.</p>"
+  }
+];
+---
+
+<BaseLayout title="Contact - Minimal" description="Get in touch with the Minimal team." locale={locale}>
+  <Header locale={locale} />
+
+  <main class="pt-header">
+    <PageHero
+      title="Contact Us"
+      subtitle="Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible."
+    />
+
+    <ContentSection>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+        <!-- Form -->
+        <div>
+          <SectionTitle title="Send us a Message" size="md" spacing="normal" />
+          <form class="flex flex-col gap-6">
+            <div class="flex flex-col gap-2">
+              <label for="name" class="text-[var(--text-primary)] text-base font-semibold">Full Name *</label>
+              <input type="text" id="name" name="name" placeholder="John Doe" required
+                class="px-6 py-4 min-h-[52px] border-2 border-[var(--border-primary)] rounded-lg text-base bg-[var(--bg-primary)] text-[var(--text-primary)] transition-all duration-200 shadow-sm focus:outline-none focus:border-[var(--brand-purple-primary)] focus:shadow-[0_0_0_3px_rgba(99,102,241,0.1)]" />
+            </div>
+
+            <div class="flex flex-col gap-2">
+              <label for="email" class="text-[var(--text-primary)] text-base font-semibold">Email Address *</label>
+              <input type="email" id="email" name="email" placeholder="john@example.com" required
+                class="px-6 py-4 min-h-[52px] border-2 border-[var(--border-primary)] rounded-lg text-base bg-[var(--bg-primary)] text-[var(--text-primary)] transition-all duration-200 shadow-sm focus:outline-none focus:border-[var(--brand-purple-primary)] focus:shadow-[0_0_0_3px_rgba(99,102,241,0.1)]" />
+            </div>
+
+            <div class="flex flex-col gap-2">
+              <label for="company" class="text-[var(--text-primary)] text-base font-semibold">Company</label>
+              <input type="text" id="company" name="company" placeholder="Your Company Name"
+                class="px-6 py-4 min-h-[52px] border-2 border-[var(--border-primary)] rounded-lg text-base bg-[var(--bg-primary)] text-[var(--text-primary)] transition-all duration-200 shadow-sm focus:outline-none focus:border-[var(--brand-purple-primary)] focus:shadow-[0_0_0_3px_rgba(99,102,241,0.1)]" />
+            </div>
+
+            <div class="flex flex-col gap-2">
+              <label for="website" class="text-[var(--text-primary)] text-base font-semibold">Website</label>
+              <input type="url" id="website" name="website" placeholder="https://example.com"
+                class="px-6 py-4 min-h-[52px] border-2 border-[var(--border-primary)] rounded-lg text-base bg-[var(--bg-primary)] text-[var(--text-primary)] transition-all duration-200 shadow-sm focus:outline-none focus:border-[var(--brand-purple-primary)] focus:shadow-[0_0_0_3px_rgba(99,102,241,0.1)]" />
+            </div>
+
+            <div class="flex flex-col gap-2">
+              <label for="subject" class="text-[var(--text-primary)] text-base font-semibold">Subject *</label>
+              <select id="subject" name="subject" required
+                class="px-6 py-4 min-h-[52px] border-2 border-[var(--border-primary)] rounded-lg text-base bg-[var(--bg-primary)] text-[var(--text-primary)] transition-all duration-200 shadow-sm cursor-pointer appearance-none bg-[url('data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2224%22%20height=%2224%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke=%22%236b7280%22%20stroke-width=%222%22%3E%3Cpolyline%20points=%226%209%2012%2015%2018%209%22%3E%3C/polyline%3E%3C/svg%3E')] bg-no-repeat bg-[right_12px_center] bg-[length:20px] pr-12 focus:outline-none focus:border-[var(--brand-purple-primary)] focus:shadow-[0_0_0_3px_rgba(99,102,241,0.1)]">
+                <option value="">Select an option</option>
+                <option value="demo">Request Demo</option>
+                <option value="pricing">Pricing Information</option>
+                <option value="integration">Integration Question</option>
+                <option value="support">Technical Support</option>
+                <option value="partnership">Partnership Opportunity</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="flex flex-col gap-2">
+              <label for="message" class="text-[var(--text-primary)] text-base font-semibold">Message *</label>
+              <textarea id="message" name="message" placeholder="Tell us how we can help..." rows="6" required
+                class="px-6 py-4 min-h-[150px] border-2 border-[var(--border-primary)] rounded-lg text-base bg-[var(--bg-primary)] text-[var(--text-primary)] transition-all duration-200 shadow-sm resize-y focus:outline-none focus:border-[var(--brand-purple-primary)] focus:shadow-[0_0_0_3px_rgba(99,102,241,0.1)]"></textarea>
+            </div>
+
+            <Button type="submit" variant="primary" size="lg" className="w-full">
+              Send Message
+            </Button>
+          </form>
+        </div>
+
+        <!-- Contact Info Cards -->
+        <div>
+          <SectionTitle title="Get in Touch" size="md" spacing="normal" />
+
+          <div class="mb-6 text-center">
+            <InfoCard
+              icon="envelope"
+              title="Email Us"
+              description="For general inquiries: hello@minimal.lat"
+              interactive={true}
+            />
+          </div>
+
+          <div class="mb-6 text-center">
+            <InfoCard
+              icon="wrench"
+              title="Technical Support"
+              description="Need help with integration? support@minimal.lat"
+              interactive={true}
+            />
+          </div>
+
+          <div class="bg-gradient-to-br from-purple-500/10 to-green-500/10 border-2 border-[var(--brand-purple-primary)] rounded-xl p-6 lg:p-8">
+            <h3 class="text-xl text-[var(--text-primary)] font-semibold mb-4">Prefer to Talk Directly?</h3>
+            <p class="text-base text-[var(--text-secondary)] leading-relaxed mb-6">We're available Monday through Friday, 9 AM - 6 PM EST. Schedule a call with our team to discuss your needs in detail.</p>
+            <Button variant="secondary" href="#" className="w-full">
+              Schedule a Call
+            </Button>
+          </div>
+        </div>
+      </div>
+    </ContentSection>
+
+    <ContentSection background="secondary">
+      <SectionTitle title="Frequently Asked Questions" centered={true} />
+      <FAQ items={faqItems} />
+    </ContentSection>
+  </main>
+
+  <Footer locale={locale} />
+</BaseLayout>

@@ -1,0 +1,239 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import PageHero from '@/components/PageHero.astro';
+import ContentSection from '@/components/ContentSection.astro';
+import SectionTitle from '@/components/SectionTitle.astro';
+import FeatureCard from '@/components/FeatureCard.astro';
+import CTASection from '@/components/CTASection.astro';
+import Button from '@/components/Button.astro';
+import InfoBox from '@/components/InfoBox.astro';
+import Icon from '@/components/Icon.astro';
+
+const locale = 'es';
+const title = 'Características - Minimal';
+const description = 'Descubre todas las funcionalidades que transformarán tu sitio web en una experiencia conversacional inteligente.';
+---
+
+<BaseLayout title={title} description={description} locale={locale}>
+  <Header locale={locale} />
+
+  <main class="pt-header">
+    <PageHero
+      title="Características de Minimal"
+      subtitle="Descubre todas las funcionalidades que transformarán tu sitio web en una experiencia conversacional inteligente."
+    />
+
+    <!-- Main Features -->
+    <ContentSection>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <FeatureCard icon="cpu-chip" title="IA Conversacional Avanzada" description="Procesamiento de lenguaje natural de última generación que comprende el contexto y las intenciones del usuario." />
+        <FeatureCard icon="paint-brush" title="Preservación de Marca" description="La interfaz conversacional se adapta automáticamente a los colores, fuentes y estilo visual de tu sitio web." />
+        <FeatureCard icon="bolt" title="Integración en 1 Línea" description="Implementación ultrarrápida que requiere solo agregar una línea de código JavaScript a tu sitio web." />
+        <FeatureCard icon="chart-bar" title="Analíticas Inteligentes" description="Obtén información profunda sobre las intenciones reales y patrones de comportamiento de tus usuarios." />
+        <FeatureCard icon="arrow-path" title="Sincronización Automática" description="El contenido de tu sitio web se sincroniza automáticamente, permitiendo que la IA siempre tenga información actualizada." />
+        <FeatureCard icon="globe-alt" title="Soporte Multi-idioma" description="Interfaz conversacional que se adapta automáticamente al idioma de tu sitio web." />
+      </div>
+    </ContentSection>
+
+    <!-- Technical Features -->
+    <ContentSection background="secondary">
+      <SectionTitle title="Características Técnicas" centered={true} />
+      <p class="text-center text-xl text-[var(--text-secondary)] mb-6 max-w-4xl mx-auto leading-relaxed">Construido con tecnología de vanguardia para ofrecer un rendimiento y confiabilidad excepcionales.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <InfoBox
+          icon="light-bulb"
+          title="Procesamiento Inteligente"
+          description="Nuestro motor de IA avanzado aprovecha el procesamiento de lenguaje natural de última generación para comprender consultas de usuarios con notable precisión. El sistema aprende de cada interacción, mejorando continuamente su capacidad para proporcionar respuestas relevantes y contextuales."
+          items={[
+            'Gestión de conversaciones consciente del contexto',
+            'Reconocimiento de intenciones y extracción de entidades',
+            'Manejo de diálogos de múltiples turnos',
+            'Análisis de sentimientos para mejor interacción',
+            'Aprendizaje continuo de las interacciones'
+          ]}
+          variant="primary"
+        />
+
+        <InfoBox
+          icon="puzzle-piece"
+          title="Integración Sin Fricciones"
+          description="Diseñado para desarrolladores y no desarrolladores por igual, Minimal se integra perfectamente con cualquier sitio web o plataforma. Sin configuración compleja, sin cambios en el backend requeridos - solo agrega una línea de código y estás listo."
+          items={[
+            'Instalación de script en una línea',
+            'Cero dependencias o conflictos',
+            'Funciona con todos los frameworks modernos',
+            'Sincronización automática de contenido',
+            'Actualizaciones en tiempo real sin reimplementación'
+          ]}
+          variant="primary"
+        />
+      </div>
+    </ContentSection>
+
+    <!-- Analytics Capabilities -->
+    <ContentSection>
+      <SectionTitle title="Capacidades de Analíticas" centered={true} />
+      <p class="text-center text-xl text-[var(--text-secondary)] mb-8 max-w-4xl mx-auto leading-relaxed">Obtén información profunda sobre el comportamiento del usuario y toma decisiones basadas en datos.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <InfoBox
+          icon="arrow-trending-up"
+          title="Métricas de Interacción"
+          description="Rastrea cómo los usuarios interactúan con tu interfaz conversacional en tiempo real. Monitorea tasas de conversación, volúmenes de mensajes, puntuaciones de satisfacción del usuario y patrones de interacción para entender qué resuena con tu audiencia."
+          variant="tertiary"
+          items={[
+            'Tasa de Conversación: Porcentaje de visitantes que interactúan',
+            'Duración Promedio de Sesión: Tiempo en conversaciones',
+            'Volumen de Mensajes: Interacciones totales a lo largo del tiempo'
+          ]}
+        />
+
+        <InfoBox
+          icon="user-group"
+          title="Perspectivas de Usuarios"
+          description="Comprende a tus usuarios como nunca antes. Ve qué preguntas hacen, qué problemas están tratando de resolver y qué información están buscando. Identifica tendencias, puntos de dolor comunes y oportunidades de mejora."
+          variant="tertiary"
+          items={[
+            'Preguntas Principales: Consultas más frecuentes',
+            'Intención del Usuario: Qué están tratando de lograr',
+            'Patrones de Comportamiento: Flujos de navegación e interacción'
+          ]}
+        />
+
+        <InfoBox
+          icon="clipboard-document-list"
+          title="Informes Accionables"
+          description="Transforma datos sin procesar en información accionable con informes completos. Exporta datos, crea paneles personalizados e integra con tus herramientas de analíticas existentes para obtener una imagen completa del rendimiento de tu sitio web."
+          variant="tertiary"
+          items={[
+            'Paneles Personalizados: Visualiza datos a tu manera',
+            'Informes Automatizados: Entrega programada de insights',
+            'Exportación de Datos: Acceso CSV, JSON y API'
+          ]}
+        />
+      </div>
+    </ContentSection>
+
+    <!-- Security and Reliability -->
+    <ContentSection background="secondary">
+      <SectionTitle title="Seguridad y Confiabilidad" centered={true} />
+      <p class="text-center text-xl text-[var(--text-secondary)] mb-8 max-w-4xl mx-auto leading-relaxed">Seguridad e infraestructura de nivel empresarial en la que puedes confiar.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <InfoBox
+          icon="lock-closed"
+          title="Protección de Datos"
+          description="Tu seguridad de datos es nuestra máxima prioridad. Empleamos encriptación líder en la industria, cumplimos con regulaciones internacionales de privacidad e implementamos estrictos controles de acceso para garantizar que tu información permanezca segura y privada."
+          items={[
+            'Encriptación de extremo a extremo para toda transmisión de datos',
+            'Cumplimiento de GDPR, CCPA y SOC 2',
+            'Auditorías de seguridad regulares por expertos externos',
+            'Anonimización de datos y protección de privacidad',
+            'Centros de datos seguros con monitoreo 24/7'
+          ]}
+        />
+
+        <InfoBox
+          icon="cog"
+          title="Infraestructura Robusta"
+          description="Construido sobre infraestructura de clase mundial con redundancia en cada nivel. Nuestra arquitectura distribuida garantiza que tu interfaz conversacional esté siempre disponible, rápida y receptiva, sin importar dónde se encuentren tus usuarios."
+          items={[
+            'Garantía de 99.9% de tiempo de actividad con respaldo SLA',
+            'CDN global para entrega ultrarrápida',
+            'Conmutación por error automática y recuperación ante desastres',
+            'Balanceo de carga para rendimiento óptimo',
+            'Monitoreo y alertas en tiempo real'
+          ]}
+        />
+
+        <InfoBox
+          icon="arrow-trending-up"
+          title="Escalabilidad"
+          description="Desde startups hasta empresas, Minimal escala con tu negocio. Nuestra infraestructura se ajusta automáticamente para manejar picos de tráfico, variaciones estacionales y crecimiento sin ninguna intervención requerida de tu parte."
+          items={[
+            'Infraestructura de auto-escalado maneja cualquier volumen de tráfico',
+            'Sin degradación de rendimiento durante alto tráfico',
+            'Optimización de recursos para eficiencia de costos',
+            'Soporte empresarial para implementaciones a gran escala',
+            'Soluciones personalizadas para requisitos específicos'
+          ]}
+        />
+      </div>
+    </ContentSection>
+
+    <!-- User Experience -->
+    <ContentSection>
+      <SectionTitle title="Experiencia de Usuario" centered={true} />
+      <p class="text-center text-xl text-[var(--text-secondary)] mb-8 max-w-4xl mx-auto leading-relaxed">Diseñado pensando tanto en tus usuarios como en tu equipo.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <InfoBox
+          icon="sparkles"
+          title="Interfaz Intuitiva"
+          description="Nuestra interfaz conversacional está diseñada para sentirse natural y sin esfuerzo. Los usuarios no necesitan capacitación o instrucciones - solo comienzan a escribir y obtienen respuestas inmediatas y útiles. El diseño limpio y moderno asegura que el enfoque permanezca en la conversación."
+          variant="tertiary"
+          items={[
+            'Entrada de lenguaje natural',
+            'Sugerencias inteligentes',
+            'Respuestas rápidas',
+            'Soporte de medios enriquecidos',
+            'Optimizado para móviles',
+            'Cumplimiento de accesibilidad'
+          ]}
+        />
+
+        <InfoBox
+          icon="paint-brush"
+          title="Personalización Visual"
+          description="Haz que Minimal sea verdaderamente tuyo con extensas opciones de personalización. Combina perfectamente con tu marca ajustando colores, fuentes, espaciado, posición y comportamiento. Todos los cambios se pueden hacer a través de nuestro panel intuitivo - sin necesidad de código."
+          variant="tertiary"
+          items={[
+            'Colores personalizados',
+            'Fuentes de marca',
+            'Integración de logo',
+            'Control de posición',
+            'Modos de tema',
+            'Configuración de animaciones'
+          ]}
+        />
+
+        <InfoBox
+          icon="rocket-launch"
+          title="Características Avanzadas"
+          description="Los usuarios avanzados y desarrolladores pueden aprovechar características avanzadas incluyendo API de JavaScript, webhooks, acciones personalizadas y control programático. Construye flujos de trabajo sofisticados e integra profundamente con tus sistemas existentes."
+          variant="tertiary"
+          items={[
+            'API de JavaScript',
+            'Integración de webhooks',
+            'Acciones personalizadas',
+            'Seguimiento de eventos',
+            'Pruebas A/B',
+            'Herramientas para desarrolladores'
+          ]}
+        />
+      </div>
+    </ContentSection>
+
+    <!-- CTA Section -->
+    <CTASection
+      title="¿Listo para Transformar Tu Sitio Web?"
+      description="Únete a miles de sitios web que han revolucionado su experiencia de usuario con la interfaz conversacional inteligente de Minimal."
+      background="green"
+    >
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button variant="outline" size="lg" href="https://minimal.lat">
+          Comenzar Gratis
+        </Button>
+        <Button variant="outline-light" size="lg" href="/es/contact">
+          Contactar Ventas
+        </Button>
+      </div>
+      <p class="text-white/80 text-sm mt-6">No se requiere tarjeta de crédito • Prueba gratuita de 14 días • Cancela en cualquier momento</p>
+    </CTASection>
+  </main>
+
+  <Footer locale={locale} />
+</BaseLayout>

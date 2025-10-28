@@ -1,0 +1,189 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import PageHero from '@/components/PageHero.astro';
+import ContentSection from '@/components/ContentSection.astro';
+import SectionTitle from '@/components/SectionTitle.astro';
+import FeatureCard from '@/components/FeatureCard.astro';
+import CTASection from '@/components/CTASection.astro';
+import Button from '@/components/Button.astro';
+import StepSection from '@/components/StepSection.astro';
+import ValueCard from '@/components/ValueCard.astro';
+import JobCard from '@/components/JobCard.astro';
+
+const locale = 'es';
+
+const jobs = [
+  {
+    title: "Ingeniero Full-Stack Senior",
+    category: "Ingeniería",
+    categoryColor: "success" as const,
+    location: "Remoto",
+    type: "Tiempo Completo",
+    description: "Construye servicios backend escalables e interfaces de usuario hermosas. Trabaja con React, Node.js, PostgreSQL y AWS.",
+    requirements: [
+      "5+ años de experiencia en desarrollo full-stack",
+      "Habilidades sólidas en TypeScript, React y Node.js",
+      "Experiencia con microservicios e infraestructura en la nube"
+    ]
+  },
+  {
+    title: "Ingeniero de ML (NLP)",
+    category: "IA/ML",
+    categoryColor: "primary" as const,
+    location: "Remoto",
+    type: "Tiempo Completo",
+    description: "Desarrolla y mejora nuestros modelos de IA conversacional. Trabaja con transformers, ajuste fino y sistemas de ML en producción.",
+    requirements: [
+      "3+ años de experiencia en ML/NLP",
+      "Experiencia con transformers, arquitecturas BERT, GPT",
+      "Habilidades sólidas en Python, PyTorch/TensorFlow"
+    ]
+  },
+  {
+    title: "Diseñador de Producto",
+    category: "Diseño",
+    categoryColor: "success" as const,
+    location: "Remoto",
+    type: "Tiempo Completo",
+    description: "Diseña interfaces hermosas e intuitivas para nuestra plataforma de IA conversacional. Gestiona el proceso de diseño de principio a fin.",
+    requirements: [
+      "4+ años de experiencia en diseño de producto",
+      "Portafolio sólido que demuestre habilidades de diseño UX y visual",
+      "Experiencia con Figma, investigación de usuarios y creación de prototipos"
+    ]
+  },
+  {
+    title: "Gerente de Éxito del Cliente",
+    category: "Éxito del Cliente",
+    categoryColor: "primary" as const,
+    location: "Remoto",
+    type: "Tiempo Completo",
+    description: "Ayuda a los clientes a tener éxito con Minimal. Construye relaciones, impulsa la adopción y asegura la satisfacción del cliente.",
+    requirements: [
+      "3+ años en éxito del cliente o gestión de cuentas",
+      "Experiencia técnica con productos SaaS",
+      "Excelentes habilidades de comunicación y resolución de problemas"
+    ]
+  }
+];
+
+const hiringProcessSteps = [
+  {
+    number: 1,
+    title: "Revisión de Solicitud",
+    description: "Envía tu solicitud con currículum y portafolio. Revisamos todas las solicitudes en 5 días hábiles."
+  },
+  {
+    number: 2,
+    title: "Entrevista Telefónica",
+    description: "Llamada de 30 minutos con nuestro equipo de reclutamiento para discutir tu experiencia, intereses y el puesto."
+  },
+  {
+    number: 3,
+    title: "Evaluación Técnica",
+    description: "Proyecto para llevar a casa o sesión de codificación en vivo. Respetamos tu tiempo y lo mantenemos en menos de 3 horas."
+  },
+  {
+    number: 4,
+    title: "Entrevistas con el Equipo",
+    description: "Conoce a los miembros del equipo con quienes trabajarás. Discute el enfoque técnico, estilo de colaboración y ajuste cultural."
+  },
+  {
+    number: 5,
+    title: "Oferta",
+    description: "Recibe una oferta competitiva. Somos transparentes sobre compensación y respondemos todas tus preguntas."
+  }
+];
+---
+
+<BaseLayout title="Carreras - Minimal" description="Únete a nuestro equipo y ayuda a transformar el futuro de la interacción web." locale={locale}>
+  <Header locale={locale} />
+
+  <main class="pt-header">
+    <PageHero
+      title="Únete a Nuestro Equipo"
+      subtitle="Ayúdanos a transformar cómo los sitios web interactúan con los usuarios a través de IA&nbsp;conversacional."
+    />
+
+    <ContentSection>
+      <div class="max-w-4xl mx-auto text-center mb-16">
+      <SectionTitle title="¿Por Qué Trabajar en Minimal?" centered={true} />
+      <p class="text-center text-xl text-[var(--text-secondary)] mb-6 max-w-4xl mx-auto leading-relaxed">Estamos construyendo el futuro de la interacción web. Únete a un equipo apasionado trabajando en tecnología de IA de vanguardia que es utilizada por miles de sitios web en todo el mundo.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <FeatureCard icon="rocket" title="Tecnología de Vanguardia" description="Trabaja con las últimas tecnologías de IA, React, Node.js y nube. Construye productos a la vanguardia de la IA conversacional." />
+        <FeatureCard icon="globe-alt" title="Remoto Primero" description="Trabaja desde cualquier lugar. Somos un equipo distribuido en múltiples zonas horarias con horarios flexibles." />
+        <FeatureCard icon="arrow-trending-up" title="Crecimiento y Aprendizaje" description="Presupuesto generoso para aprendizaje, asistencia a conferencias y oportunidades de desarrollo profesional continuo." />
+        <FeatureCard icon="currency-dollar" title="Salario Competitivo" description="Compensación líder en el mercado con opciones de acciones. Creemos en recompensar el gran trabajo." />
+        <FeatureCard icon="heart" title="Gran Cultura" description="Ambiente de apoyo y colaboración donde la voz de todos importa. Eventos regulares del equipo, comunicación abierta y equilibrio genuino entre vida laboral y personal." />
+        <FeatureCard icon="cursor-arrow-rays" title="Impacto" description="Tu trabajo afecta directamente a miles de usuarios. Ve el impacto real de tus contribuciones." />
+      </div>
+    </ContentSection>
+
+    <ContentSection background="secondary">
+      <div class="max-w-4xl mx-auto">
+      <SectionTitle title="Nuestros Valores" centered={true} />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 mt-6">
+          <ValueCard
+            icon="sparkles"
+            title="Innovación Centrada en el Usuario"
+            description="Cada decisión comienza con el usuario. Nos obsesionamos con crear experiencias deleitosas que resuelven problemas reales."
+          />
+          <ValueCard
+            icon="user-group"
+            title="Excelencia Colaborativa"
+            description="Los grandes productos provienen de grandes equipos. Valoramos las perspectivas diversas y construimos juntos."
+          />
+          <ValueCard
+            icon="bolt"
+            title="Moverse Rápido, Construir Calidad"
+            description="La velocidad y la calidad no son compromisos. Enviamos rápido mientras mantenemos altos estándares a través de excelentes prácticas de ingeniería."
+          />
+          <ValueCard
+            icon="arrow-trending-up"
+            title="Crecimiento Continuo"
+            description="Siempre estamos aprendiendo. La experimentación, la retroalimentación y la mejora son parte de nuestro ADN."
+          />
+        </div>
+      </div>
+    </ContentSection>
+
+    <ContentSection>
+      <SectionTitle title="Posiciones Abiertas" centered={true} />
+      <div class="max-w-4xl mx-auto space-y-6 lg:space-y-8">
+        {jobs.map(job => (
+          <JobCard
+            title={job.title}
+            category={job.category}
+            categoryColor={job.categoryColor}
+            location={job.location}
+            type={job.type}
+            description={job.description}
+            requirements={job.requirements}
+            buttonHref="/es/contact"
+          />
+        ))}
+      </div>
+    </ContentSection>
+
+    <ContentSection background="secondary">
+      <SectionTitle title="Proceso de Contratación" centered={true} />
+      <StepSection steps={hiringProcessSteps} />
+    </ContentSection>
+
+    <CTASection
+      title="¿No Ves el Rol Adecuado?"
+      description="Siempre estamos buscando personas talentosas. Envíanos tu currículum y cuéntanos qué te apasiona."
+      background="green"
+    >
+      <Button variant="outline" size="lg" href="/es/contact" className="mt-6">
+        Ponerse en Contacto
+      </Button>
+    </CTASection>
+  </main>
+
+  <Footer locale={locale} />
+</BaseLayout>

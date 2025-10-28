@@ -1,0 +1,108 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import MagicHero from '@/components/MagicHero.astro';
+import GradientOverlays from '@/components/GradientOverlays.astro';
+import Hero from '@/components/Hero.astro';
+import Problem from '@/components/Problem.astro';
+import Features from '@/components/Features.astro';
+import Process from '@/components/Process.astro';
+import ValueTabs from '@/components/ValueTabs.astro';
+import UseCases from '@/components/UseCases.astro';
+import Pricing from '@/components/Pricing.astro';
+import CTA from '@/components/CTA.astro';
+import homeTranslations from '@/i18n/home.json';
+
+const locale = 'en';
+const t = homeTranslations[locale];
+---
+
+<BaseLayout
+  title={t.meta.title}
+  description={t.meta.description}
+  locale={locale}
+>
+  <!-- Gradient Overlays -->
+  <GradientOverlays />
+
+  <!-- Magic Hero Animation -->
+  <MagicHero locale={locale} />
+
+  <Header locale={locale} />
+
+  <main class="pt-header">
+    <Hero
+      title={t.hero.title}
+      subtitle={t.hero.subtitle}
+      inputPlaceholder={t.hero.inputPlaceholder}
+      buttonText={t.hero.button}
+      locale={locale}
+    />
+
+    <Problem
+      title={t.problem.title}
+      items={t.problem.items}
+      locale={locale}
+    />
+
+    <Features
+      title={t.features.title}
+      items={t.features.items}
+      locale={locale}
+    />
+
+    <Process
+      title={t.process.title}
+      steps={t.process.steps}
+      locale={locale}
+    />
+
+    <ValueTabs
+      title={t.value.title}
+      tabs={t.value.tabs}
+      businessOwners={t.value.businessOwners}
+      marketing={t.value.marketing}
+      developers={t.value.developers}
+      endUsers={t.value.endUsers}
+      locale={locale}
+    />
+
+    <UseCases
+      title={t.useCases.title}
+      subtitle={t.useCases.subtitle}
+      cases={t.useCases.cases}
+      locale={locale}
+    />
+
+    <Pricing
+      title={t.pricing.title}
+      plans={t.pricing.plans}
+      locale={locale}
+    />
+
+    <CTA
+      title={t.cta.title}
+      subtitle={t.cta.subtitle}
+      emailPlaceholder={t.cta.emailPlaceholder}
+      urlPlaceholder={t.cta.urlPlaceholder}
+      buttonText={t.cta.button}
+      footnote={t.cta.footnote}
+      locale={locale}
+    />
+  </main>
+
+  <Footer locale={locale} />
+</BaseLayout>
+
+<script>
+  import { initMagicHero } from '@/scripts/magicHero';
+
+  // Initialize magic hero animation with translations
+  const translations = {
+    words: ["Transform", "Modernize", "Revolutionize"],
+    phrases: ["your website", "your brand", "your business"]
+  };
+
+  initMagicHero(translations);
+</script>

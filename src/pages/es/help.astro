@@ -1,0 +1,477 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import PageHero from '@/components/PageHero.astro';
+import ContentSection from '@/components/ContentSection.astro';
+import SectionTitle from '@/components/SectionTitle.astro';
+import CodeBlock from '@/components/CodeBlock.astro';
+import FAQ from '@/components/FAQ.astro';
+import CTASection from '@/components/CTASection.astro';
+import Button from '@/components/Button.astro';
+import StepSection from '@/components/StepSection.astro';
+import CategoryCard from '@/components/CategoryCard.astro';
+import MetricBox from '@/components/MetricBox.astro';
+import InfoBox from '@/components/InfoBox.astro';
+
+const locale = 'es';
+
+const gettingStartedSteps = [
+  {
+    number: 1,
+    title: "Crea tu Cuenta",
+    description: "Regístrate en minimal.lat con tu correo electrónico. Tendrás acceso al panel de control donde podrás administrar todos tus sitios.",
+    content: ''
+  },
+  {
+    number: 2,
+    title: "Agrega tu Sitio Web",
+    description: "Haz clic en \"Agregar Nuevo Sitio\" en tu panel, ingresa la URL de tu sitio web y recibirás un ID de Sitio único. Este ID conecta Minimal con tu sitio web.",
+    content: ''
+  },
+  {
+    number: 3,
+    title: "Instala el Script",
+    description: "Copia el script proporcionado y pégalo antes de la etiqueta de cierre </body> en tu sitio web. El widget aparecerá automáticamente.",
+    content: '<div class="bg-[#0F1419] text-[var(--brand-green)] p-6 rounded-lg font-mono text-sm overflow-x-auto"><code>&lt;script src="https://minimal.lat/embed.js" data-site-id="your-site-id"&gt;&lt;/script&gt;</code></div>'
+  },
+  {
+    number: 4,
+    title: "Personaliza y Lanza",
+    description: "Desde tu panel, personaliza colores, posición, mensajes de bienvenida y más. ¡Los cambios se aplican instantáneamente – sin necesidad de actualizar tu código!",
+    content: ''
+  }
+];
+
+const faqItems = [
+  {
+    question: "¿Cómo personalizo los colores del widget?",
+    answer: `<p>Puedes personalizar los colores de dos maneras:</p>
+      <ol>
+        <li><strong>Panel de Control:</strong> Ve a Configuración → Apariencia y usa el selector de color para elegir los colores de tu marca.</li>
+        <li><strong>Código:</strong> Usa la opción <code>customColors</code> en la configuración de JavaScript:</li>
+      </ol>
+      <div class="bg-[#0F1419] text-[var(--brand-green)] p-6 rounded-lg my-4">
+        <pre><code>customColors: {
+  primary: '#10b981',    // Color principal
+  background: '#ffffff', // Fondo del chat
+  text: '#1f2937'       // Color del texto
+}</code></pre>
+      </div>`
+  },
+  {
+    question: "¿Puedo ocultar el widget en páginas específicas?",
+    answer: `<p>¡Sí! Usa la opción de configuración <code>hideOnPages</code>:</p>
+      <div class="bg-[#0F1419] text-[var(--brand-green)] p-6 rounded-lg my-4">
+        <code>hideOnPages: ['/checkout', '/payment', '/admin/*']</code>
+      </div>
+      <p>Soporta comodines para coincidencias de patrones. También puedes usar <code>showOnPages</code> para mostrar solo en páginas específicas.</p>`
+  },
+  {
+    question: "¿Cómo integro con Google Analytics?",
+    answer: `<p>Minimal rastrea automáticamente eventos que puedes capturar en Google Analytics:</p>
+      <div class="bg-[#0F1419] text-[var(--brand-green)] p-6 rounded-lg my-4">
+        <pre><code>window.addEventListener('minimal:message', function(e) {
+  gtag('event', 'chat_message_sent', {
+    'event_category': 'engagement',
+    'event_label': 'Chat Interaction'
+  });
+});</code></pre>
+      </div>
+      <p>Consulta nuestra <a href="/es/integration" class="text-[var(--brand-green)] hover:underline">Guía de Integración</a> para más plataformas de análisis.</p>`
+  },
+  {
+    question: "¿Qué pasa si alcanzo los límites de mi plan?",
+    answer: `<p>Te notificaremos por correo electrónico cuando alcances el 80% de los límites de tu plan. Si excedes:</p>
+      <ul>
+        <li><strong>Conversaciones:</strong> El widget continúa funcionando, pero necesitarás actualizar para acceder a nuevas conversaciones en el panel.</li>
+        <li><strong>Vistas de Página:</strong> El seguimiento continúa y puedes actualizar en cualquier momento para acceder al análisis completo.</li>
+      </ul>
+      <p>Tus visitantes nunca verán ninguna interrupción en el servicio.</p>`
+  }
+];
+---
+
+<BaseLayout title="Centro de Ayuda - Minimal" description="Obtén ayuda y encuentra respuestas a preguntas frecuentes." locale={locale}>
+  <Header locale={locale} />
+
+  <main class="pt-header">
+    <PageHero
+      title="Centro de Ayuda"
+      subtitle="Obtén ayuda y encuentra respuestas a preguntas frecuentes sobre Minimal."
+    >
+      <div class="relative max-w-2xl mx-auto mt-8">
+        <svg class="absolute left-6 top-1/2 -translate-y-1/2 w-6 h-6 text-[var(--text-tertiary)] pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.35-4.35"></path>
+        </svg>
+        <input type="text" class="w-full px-6 py-4 pl-[100px] text-lg border-2 border-[var(--border-primary)] rounded-full bg-[var(--bg-primary)] text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)] transition-colors focus:outline-none focus:border-[var(--brand-green)]" placeholder="Buscar en la documentación..." />
+      </div>
+    </PageHero>
+
+    <!-- Help Categories -->
+    <ContentSection>
+      <SectionTitle title="Explorar por Categoría" centered={true} />
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <CategoryCard
+          href="#getting-started"
+          icon="rocket"
+          title="Primeros Pasos"
+          description="Aprende lo básico y configura Minimal"
+        />
+        <CategoryCard
+          href="#integration"
+          icon="puzzle-piece"
+          title="Guía de Integración"
+          description="Instrucciones de configuración por plataforma"
+        />
+        <CategoryCard
+          href="#customization"
+          icon="paint-brush"
+          title="Personalización"
+          description="Personaliza apariencia y comportamiento"
+        />
+        <CategoryCard
+          href="#analytics"
+          icon="chart-bar"
+          title="Análisis"
+          description="Comprende tus métricas"
+        />
+        <CategoryCard
+          href="#troubleshooting"
+          icon="wrench"
+          title="Solución de Problemas"
+          description="Problemas comunes y soluciones"
+        />
+        <CategoryCard
+          href="#api"
+          icon="code"
+          title="Referencia de API"
+          description="Documentación para desarrolladores"
+        />
+      </div>
+    </ContentSection>
+
+    <!-- Getting Started -->
+    <ContentSection id="getting-started" background="secondary" className="scroll-mt-32">
+      <SectionTitle title="Primeros Pasos con Minimal" />
+      <StepSection steps={gettingStartedSteps} />
+    </ContentSection>
+
+    <!-- Integration Guide -->
+    <ContentSection id="integration" className="scroll-mt-32">
+      <div class="max-w-4xl mx-auto">
+        <SectionTitle title="Guía de Integración" centered={true} />
+        <p class="text-center text-xl text-[var(--text-secondary)] mb-8 max-w-4xl mx-auto leading-relaxed">Elige tu plataforma y sigue las instrucciones de instalación. ¿Necesitas ayuda? Consulta nuestra <a href="/es/integration" class="text-[var(--brand-green)] hover:underline">página de integración detallada</a>.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <InfoBox
+            icon="code"
+            title="Plataformas Web"
+            description="Instala Minimal en cualquier sitio web con una simple etiqueta de script o usa nuestros paquetes específicos para frameworks."
+            items={[
+              'HTML/JavaScript - Etiqueta de script de una línea',
+              'React - Paquete npm con hooks',
+              'Vue.js - Plugin para Vue 3',
+              'Angular - Módulo nativo',
+              'Next.js - Optimizado para SSR'
+            ]}
+            variant="tertiary"
+          />
+
+          <InfoBox
+            icon="shopping-cart"
+            title="E-commerce & CMS"
+            description="Integraciones nativas para plataformas populares con fácil configuración desde el panel."
+            items={[
+              'WordPress - Plugin del repositorio',
+              'Shopify - App de la tienda de apps',
+              'WooCommerce - Extensión de WordPress',
+              'Webflow - Integración de código personalizado',
+              'Squarespace - Inyección de código'
+            ]}
+            variant="tertiary"
+          />
+        </div>
+      </div>
+    </ContentSection>
+
+    <!-- Advanced Customization -->
+    <ContentSection id="customization" background="secondary" className="scroll-mt-32">
+      <div class="max-w-4xl mx-auto">
+        <SectionTitle title="Personalización Avanzada" centered={true} />
+
+        <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4 mt-6">Configuración Usando Atributos</h3>
+        <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Puedes personalizar Minimal directamente en la etiqueta de script usando atributos de datos:</p>
+
+        <CodeBlock code={`<script
+  src="https://minimal.lat/embed.js"
+  data-site-id="your-site-id"
+  data-position="bottom-right"
+  data-theme="auto"
+  data-language="es"
+></script>`} />
+
+        <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4 mt-6">Opciones de Personalización</h3>
+        <div class="bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-xl p-6 my-4">
+          <div class="py-3 border-b border-[var(--border-primary)]">
+            <strong class="text-[var(--text-primary)]">Posición:</strong> <code class="bg-[var(--bg-tertiary)] text-[var(--brand-green)] px-2 py-1 rounded text-sm">bottom-right</code>, <code class="bg-[var(--bg-tertiary)] text-[var(--brand-green)] px-2 py-1 rounded text-sm">bottom-left</code>, <code class="bg-[var(--bg-tertiary)] text-[var(--brand-green)] px-2 py-1 rounded text-sm">top-right</code>, <code class="bg-[var(--bg-tertiary)] text-[var(--brand-green)] px-2 py-1 rounded text-sm">top-left</code>
+          </div>
+          <div class="py-3 border-b border-[var(--border-primary)]">
+            <strong class="text-[var(--text-primary)]">Tema:</strong> <code class="bg-[var(--bg-tertiary)] text-[var(--brand-green)] px-2 py-1 rounded text-sm">light</code>, <code class="bg-[var(--bg-tertiary)] text-[var(--brand-green)] px-2 py-1 rounded text-sm">dark</code>, <code class="bg-[var(--bg-tertiary)] text-[var(--brand-green)] px-2 py-1 rounded text-sm">auto</code> (sigue la preferencia del sistema)
+          </div>
+          <div class="py-3 border-b border-[var(--border-primary)]">
+            <strong class="text-[var(--text-primary)]">Idioma:</strong> <code class="bg-[var(--bg-tertiary)] text-[var(--brand-green)] px-2 py-1 rounded text-sm">en</code>, <code class="bg-[var(--bg-tertiary)] text-[var(--brand-green)] px-2 py-1 rounded text-sm">es</code>, <code class="bg-[var(--bg-tertiary)] text-[var(--brand-green)] px-2 py-1 rounded text-sm">fr</code>, <code class="bg-[var(--bg-tertiary)] text-[var(--brand-green)] px-2 py-1 rounded text-sm">de</code>, <code class="bg-[var(--bg-tertiary)] text-[var(--brand-green)] px-2 py-1 rounded text-sm">pt</code>, y más
+          </div>
+          <div class="py-3 border-b border-[var(--border-primary)]">
+            <strong class="text-[var(--text-primary)]">Saludo:</strong> Cualquier texto personalizado para el mensaje inicial
+          </div>
+          <div class="py-3">
+            <strong class="text-[var(--text-primary)]">Color Primario:</strong> Código de color hexadecimal (ej., <code class="bg-[var(--bg-tertiary)] text-[var(--brand-green)] px-2 py-1 rounded text-sm">#10b981</code>)
+          </div>
+        </div>
+
+        <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4 mt-6">Configuración Avanzada de JavaScript</h3>
+        <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Para más control, usa la configuración de JavaScript:</p>
+
+        <CodeBlock code={`window.MinimalConfig = {
+  siteId: 'your-site-id',
+  position: 'bottom-right',
+  theme: 'auto',
+  language: 'es',
+  greeting: '¡Hola! ¿Cómo podemos ayudarte?',
+  placeholder: 'Escribe tu mensaje...',
+
+  // Opciones avanzadas
+  autoOpen: false,
+  autoOpenDelay: 3000, // milisegundos
+  hideOnPages: ['/checkout', '/payment'],
+  showOnPages: ['*'], // todas las páginas por defecto
+
+  // Estilos
+  customColors: {
+    primary: '#10b981',
+    background: '#ffffff',
+    text: '#1f2937'
+  },
+
+  // Comportamiento
+  collectEmail: true,
+  requireEmail: false,
+  enableFileUploads: true,
+  maxFileSize: 10 // MB
+};
+
+<script src="https://minimal.lat/embed.js"></script>`} />
+      </div>
+    </ContentSection>
+
+    <!-- Analytics -->
+    <ContentSection id="analytics" background="secondary" className="scroll-mt-32">
+      <div class="max-w-5xl mx-auto">
+        <SectionTitle title="Comprende tus Análisis" centered={true} />
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <InfoBox
+            title="Métricas de Interacción"
+            description="Rastrea cómo los visitantes interactúan con tu chat:"
+            items={[
+              'Vistas del Widget: Número de veces que se mostró el widget',
+              'Tasa de Apertura: Porcentaje de visitantes que abrieron el chat',
+              'Mensajes Enviados: Total de mensajes de visitantes',
+              'Conversaciones Iniciadas: Nuevos hilos de conversación',
+              'Tiempo Promedio de Respuesta: Qué tan rápido respondes'
+            ]}
+          />
+
+          <InfoBox
+            title="Información de Usuarios"
+            description="Comprende el comportamiento de tus visitantes:"
+            items={[
+              'Horas Pico: Cuando los visitantes están más activos',
+              'Páginas Populares: Donde comienzan las conversaciones',
+              'Desglose por Dispositivo: Uso de escritorio vs. móvil',
+              'Datos Geográficos: De dónde vienen tus visitantes',
+              'Visitantes Recurrentes: Rastrea interacciones repetidas'
+            ]}
+          />
+
+          <InfoBox
+            title="Seguimiento de Conversiones"
+            description="Mide el impacto en el negocio:"
+            items={[
+              'Tasa de Captura de Leads: Porcentaje de chats que recopilan correos',
+              'Leads Calificados: Conversaciones marcadas como listas para ventas',
+              'Completación de Objetivos: Eventos de conversión personalizados',
+              'Atribución de Ingresos: Ventas vinculadas a interacciones de chat',
+              'Métricas de ROI: Cálculos de retorno de inversión'
+            ]}
+          />
+        </div>
+      </div>
+    </ContentSection>
+
+    <!-- FAQ Section -->
+    <ContentSection>
+      <SectionTitle title="Preguntas Frecuentes" centered={true} />
+      <FAQ items={faqItems} />
+    </ContentSection>
+
+    <!-- Troubleshooting -->
+    <ContentSection id="troubleshooting" background="secondary" className="scroll-mt-32">
+      <div class="max-w-4xl mx-auto">
+        <SectionTitle title="Solución de Problemas" centered={true} />
+        <p class="text-center text-xl text-[var(--text-secondary)] mb-8 max-w-4xl mx-auto leading-relaxed">Problemas comunes y cómo resolverlos.</p>
+
+        <div class="space-y-6">
+          <div class="bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-md p-6">
+            <h3 class="text-xl text-[var(--text-primary)] font-semibold mb-3">El Widget No Aparece</h3>
+            <p class="text-[var(--text-secondary)] mb-3">Si el widget no se muestra en tu sitio:</p>
+            <ul class="list-disc pl-6 space-y-2 text-[var(--text-secondary)]">
+              <li>Verifica que el script esté colocado antes de la etiqueta de cierre <code class="bg-[var(--bg-tertiary)] text-[var(--brand-green)] px-2 py-1 rounded text-sm">&lt;/body&gt;</code></li>
+              <li>Verifica que tu ID de Sitio sea correcto en el panel de control</li>
+              <li>Asegúrate de que JavaScript esté habilitado en tu navegador</li>
+              <li>Limpia la caché de tu navegador y recarga forzadamente (Ctrl+Shift+R o Cmd+Shift+R)</li>
+              <li>Revisa la consola del navegador en busca de mensajes de error</li>
+            </ul>
+          </div>
+
+          <div class="bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-md p-6">
+            <h3 class="text-xl text-[var(--text-primary)] font-semibold mb-3">Problemas de Posición del Widget</h3>
+            <p class="text-[var(--text-secondary)] mb-3">Si el widget aparece en la posición incorrecta o se superpone con otros elementos:</p>
+            <ul class="list-disc pl-6 space-y-2 text-[var(--text-secondary)]">
+              <li>Ajusta la configuración de posición en tu panel (bottom-right, bottom-left, etc.)</li>
+              <li>Verifica conflictos de CSS con valores altos de z-index en tu sitio</li>
+              <li>Usa CSS personalizado para anular el posicionamiento si es necesario</li>
+              <li>Prueba diferentes valores de desplazamiento para evitar superposiciones con otros elementos fijos</li>
+            </ul>
+          </div>
+
+          <div class="bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-md p-6">
+            <h3 class="text-xl text-[var(--text-primary)] font-semibold mb-3">Las Conversaciones No Se Guardan</h3>
+            <p class="text-[var(--text-secondary)] mb-3">Si las conversaciones no aparecen en tu panel:</p>
+            <ul class="list-disc pl-6 space-y-2 text-[var(--text-secondary)]">
+              <li>Verifica que hayas iniciado sesión en la cuenta correcta</li>
+              <li>Verifica que estés viendo el sitio correcto en el panel</li>
+              <li>Asegúrate de que tu plan no haya alcanzado los límites de conversaciones</li>
+              <li>Permite unos minutos para la sincronización de datos</li>
+              <li>Contacta al soporte si el problema persiste después de 15 minutos</li>
+            </ul>
+          </div>
+
+          <div class="bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-md p-6">
+            <h3 class="text-xl text-[var(--text-primary)] font-semibold mb-3">Los Estilos No Se Aplican</h3>
+            <p class="text-[var(--text-secondary)] mb-3">Si los colores o estilos personalizados no se muestran:</p>
+            <ul class="list-disc pl-6 space-y-2 text-[var(--text-secondary)]">
+              <li>Los cambios en el panel se aplican instantáneamente - no se necesitan actualizaciones de código</li>
+              <li>Limpia la caché del navegador para ver los últimos cambios de estilo</li>
+              <li>Verifica que CSS personalizado no esté anulando tu configuración</li>
+              <li>Verifica que los valores de color estén en formato hexadecimal válido (ej., #10b981)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </ContentSection>
+
+    <!-- API Reference -->
+    <ContentSection id="api" className="scroll-mt-32">
+      <div class="max-w-4xl mx-auto">
+        <SectionTitle title="Referencia de API" centered={true} />
+        <p class="text-center text-xl text-[var(--text-secondary)] mb-8 max-w-4xl mx-auto leading-relaxed">API de JavaScript para control y personalización avanzados.</p>
+
+        <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">Métodos de Control del Widget</h3>
+        <div class="bg-[var(--bg-tertiary)] border border-[var(--border-primary)] rounded-md p-6 mb-6">
+          <CodeBlock code={`// Abrir el widget
+Minimal.open();
+
+// Cerrar el widget
+Minimal.close();
+
+// Alternar estado del widget
+Minimal.toggle();
+
+// Verificar si el widget está abierto
+const isOpen = Minimal.isOpen(); // devuelve booleano
+
+// Destruir la instancia del widget
+Minimal.destroy();`} />
+        </div>
+
+        <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4 mt-8">Seguimiento de Eventos</h3>
+        <div class="bg-[var(--bg-tertiary)] border border-[var(--border-primary)] rounded-md p-6 mb-6">
+          <CodeBlock code={`// Rastrear eventos personalizados
+Minimal.trackEvent('event_name', {
+  customData: 'value',
+  userId: '12345'
+});
+
+// Establecer contexto de usuario
+Minimal.setContext({
+  userId: 'user_123',
+  email: 'user@example.com',
+  plan: 'premium'
+});
+
+// Identificar usuario
+Minimal.identify({
+  userId: 'user_123',
+  name: 'John Doe',
+  email: 'john@example.com'
+});`} />
+        </div>
+
+        <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4 mt-8">Escuchadores de Eventos</h3>
+        <div class="bg-[var(--bg-tertiary)] border border-[var(--border-primary)] rounded-md p-6 mb-6">
+          <CodeBlock code={`// Escuchar eventos del widget
+window.addEventListener('minimal:open', () => {
+  console.log('Widget abierto');
+});
+
+window.addEventListener('minimal:close', () => {
+  console.log('Widget cerrado');
+});
+
+window.addEventListener('minimal:message', (event) => {
+  console.log('Mensaje enviado:', event.detail);
+});
+
+window.addEventListener('minimal:ready', () => {
+  console.log('Widget inicializado');
+});`} />
+        </div>
+
+        <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4 mt-8">Actualizaciones de Configuración</h3>
+        <div class="bg-[var(--bg-tertiary)] border border-[var(--border-primary)] rounded-md p-6">
+          <CodeBlock code={`// Actualizar configuración en tiempo de ejecución
+Minimal.updateConfig({
+  theme: 'dark',
+  position: 'bottom-left',
+  greeting: 'Nuevo mensaje de bienvenida'
+});
+
+// Obtener configuración actual
+const config = Minimal.getConfig();`} />
+        </div>
+      </div>
+    </ContentSection>
+
+    <!-- Need More Help -->
+    <CTASection
+      title="¿Necesitas Más Ayuda?"
+      description="¿No encuentras lo que buscas? Nuestro equipo de soporte está aquí para ayudar."
+      background="secondary"
+    >
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button variant="primary" size="lg" href="/es/contact">
+          Contactar Soporte
+        </Button>
+        <Button variant="secondary" size="lg" href="https://docs.minimal.lat">
+          Ver Documentación Completa
+        </Button>
+      </div>
+      <p class="text-[var(--text-tertiary)] text-sm mt-6">Tiempo promedio de respuesta: <strong class="text-[var(--text-primary)]">menos de 2 horas</strong></p>
+    </CTASection>
+  </main>
+
+  <Footer locale={locale} />
+</BaseLayout>

@@ -1,0 +1,42 @@
+---
+import type { Locale } from '@/i18n/utils';
+import IconFeatureCard from '@/components/IconFeatureCard.astro';
+import { icons } from '@/lib/icons';
+
+export interface ProblemItem {
+  title: string;
+  description: string;
+  icon: string; // Icon identifier
+}
+
+export interface Props {
+  title: string;
+  items: ProblemItem[];
+  locale: Locale;
+}
+
+const { title, items, locale } = Astro.props;
+---
+
+<section
+  class="section-padding bg-bg-secondary"
+  id={locale === 'es' ? 'problema' : 'problem'}
+>
+  <div class="mx-auto max-w-container">
+    <h2 class="section-title">
+      {title}
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {items.map((item) => (
+        <IconFeatureCard
+          icon={icons[item.icon] || icons.search}
+          iconType="svg"
+          title={item.title}
+          description={item.description}
+          centered={false}
+          variant="primary"
+        />
+      ))}
+    </div>
+  </div>
+</section>

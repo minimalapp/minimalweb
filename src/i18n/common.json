@@ -1,0 +1,68 @@
+{
+  "en": {
+    "nav": {
+      "product": "Product",
+      "howItWorks": "How It Works",
+      "benefits": "Benefits",
+      "useCases": "Use Cases",
+      "pricing": "Pricing",
+      "tryFree": "Try Free"
+    },
+    "footer": {
+      "product": "Product",
+      "features": "Features",
+      "roadmap": "Roadmap",
+      "integration": "Integration",
+      "status": "Status",
+      "company": "Company",
+      "about": "About Us",
+      "blog": "Blog",
+      "careers": "Careers",
+      "contact": "Contact",
+      "resources": "Resources",
+      "help": "Help Center",
+      "guides": "Guides",
+      "webinars": "Webinars",
+      "community": "Community",
+      "legal": "Legal",
+      "terms": "Terms",
+      "privacy": "Privacy",
+      "gdpr": "GDPR",
+      "security": "Security",
+      "copyright": "© 2025 Minimal. All rights reserved."
+    }
+  },
+  "es": {
+    "nav": {
+      "product": "Producto",
+      "howItWorks": "Cómo Funciona",
+      "benefits": "Beneficios",
+      "useCases": "Casos de Uso",
+      "pricing": "Precios",
+      "tryFree": "Prueba Gratis"
+    },
+    "footer": {
+      "product": "Producto",
+      "features": "Características",
+      "roadmap": "Roadmap",
+      "integration": "Integración",
+      "status": "Status",
+      "company": "Empresa",
+      "about": "Sobre Nosotros",
+      "blog": "Blog",
+      "careers": "Carreras",
+      "contact": "Contacto",
+      "resources": "Recursos",
+      "help": "Centro de Ayuda",
+      "guides": "Guías",
+      "webinars": "Webinars",
+      "community": "Comunidad",
+      "legal": "Legal",
+      "terms": "Términos",
+      "privacy": "Privacidad",
+      "gdpr": "GDPR",
+      "security": "Seguridad",
+      "copyright": "© 2025 Minimal. Todos los derechos reservados."
+    }
+  }
+}

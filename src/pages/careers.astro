@@ -1,0 +1,189 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import PageHero from '@/components/PageHero.astro';
+import ContentSection from '@/components/ContentSection.astro';
+import SectionTitle from '@/components/SectionTitle.astro';
+import FeatureCard from '@/components/FeatureCard.astro';
+import CTASection from '@/components/CTASection.astro';
+import Button from '@/components/Button.astro';
+import StepSection from '@/components/StepSection.astro';
+import ValueCard from '@/components/ValueCard.astro';
+import JobCard from '@/components/JobCard.astro';
+
+const locale = 'en';
+
+const jobs = [
+  {
+    title: "Senior Full-Stack Engineer",
+    category: "Engineering",
+    categoryColor: "success" as const,
+    location: "Remote",
+    type: "Full-time",
+    description: "Build scalable backend services and beautiful user interfaces. Work with React, Node.js, PostgreSQL, and AWS.",
+    requirements: [
+      "5+ years full-stack development experience",
+      "Strong TypeScript, React, and Node.js skills",
+      "Experience with microservices and cloud infrastructure"
+    ]
+  },
+  {
+    title: "ML Engineer (NLP)",
+    category: "AI/ML",
+    categoryColor: "primary" as const,
+    location: "Remote",
+    type: "Full-time",
+    description: "Develop and improve our conversational AI models. Work with transformers, fine-tuning, and production ML systems.",
+    requirements: [
+      "3+ years ML/NLP experience",
+      "Experience with transformers, BERT, GPT architectures",
+      "Strong Python, PyTorch/TensorFlow skills"
+    ]
+  },
+  {
+    title: "Product Designer",
+    category: "Design",
+    categoryColor: "success" as const,
+    location: "Remote",
+    type: "Full-time",
+    description: "Design beautiful, intuitive interfaces for our conversational AI platform. Own the end-to-end design process.",
+    requirements: [
+      "4+ years product design experience",
+      "Strong portfolio demonstrating UX and visual design skills",
+      "Experience with Figma, user research, and prototyping"
+    ]
+  },
+  {
+    title: "Customer Success Manager",
+    category: "Customer Success",
+    categoryColor: "primary" as const,
+    location: "Remote",
+    type: "Full-time",
+    description: "Help customers succeed with Minimal. Build relationships, drive adoption, and ensure customer satisfaction.",
+    requirements: [
+      "3+ years customer success or account management",
+      "Technical background with SaaS products",
+      "Excellent communication and problem-solving skills"
+    ]
+  }
+];
+
+const hiringProcessSteps = [
+  {
+    number: 1,
+    title: "Application Review",
+    description: "Submit your application with resume and portfolio. We review all applications within 5 business days."
+  },
+  {
+    number: 2,
+    title: "Phone Screen",
+    description: "30-minute call with our recruiting team to discuss your experience, interests, and the role."
+  },
+  {
+    number: 3,
+    title: "Technical Assessment",
+    description: "Take-home project or live coding session. We respect your time and keep it under 3 hours."
+  },
+  {
+    number: 4,
+    title: "Team Interviews",
+    description: "Meet with team members you'll work with. Discuss technical approach, collaboration style, and culture fit."
+  },
+  {
+    number: 5,
+    title: "Offer",
+    description: "Receive a competitive offer. We're transparent about compensation and answer all your questions."
+  }
+];
+---
+
+<BaseLayout title="Careers - Minimal" description="Join our team and help transform the future of web interaction." locale={locale}>
+  <Header locale={locale} />
+
+  <main class="pt-header">
+    <PageHero
+      title="Join Our Team"
+      subtitle="Help us transform how websites interact with users through conversational&nbsp;AI."
+    />
+
+    <ContentSection>
+      <div class="max-w-4xl mx-auto text-center mb-16">
+      <SectionTitle title="Why Work at Minimal?" centered={true} />
+      <p class="text-center text-xl text-[var(--text-secondary)] mb-6 max-w-4xl mx-auto leading-relaxed">We're building the future of web interaction. Join a passionate team working on cutting-edge AI technology that's used by thousands of websites worldwide.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <FeatureCard icon="rocket" title="Cutting-Edge Tech" description="Work with the latest AI, React, Node.js, and cloud technologies. Build products at the forefront of conversational AI." />
+        <FeatureCard icon="globe-alt" title="Remote First" description="Work from anywhere. We're a distributed team across multiple time zones with flexible hours." />
+        <FeatureCard icon="arrow-trending-up" title="Growth & Learning" description="Generous learning budget, conference attendance, and continuous professional development opportunities." />
+        <FeatureCard icon="currency-dollar" title="Competitive Salary" description="Market-leading compensation with equity options. We believe in rewarding great work." />
+        <FeatureCard icon="heart" title="Great Culture" description="Supportive, collaborative environment where everyone's voice matters. Regular team events, open communication, and genuine work-life balance." />
+        <FeatureCard icon="cursor-arrow-rays" title="Impact" description="Your work directly affects thousands of users. See the real-world impact of your contributions." />
+      </div>
+    </ContentSection>
+
+    <ContentSection background="secondary">
+      <div class="max-w-4xl mx-auto">
+      <SectionTitle title="Our Values" centered={true} />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 mt-6">
+          <ValueCard
+            icon="sparkles"
+            title="User-Centric Innovation"
+            description="Every decision starts with the user. We obsess over creating delightful experiences that solve real problems."
+          />
+          <ValueCard
+            icon="user-group"
+            title="Collaborative Excellence"
+            description="Great products come from great teams. We value diverse perspectives and build together."
+          />
+          <ValueCard
+            icon="bolt"
+            title="Move Fast, Build Quality"
+            description="Speed and quality aren't trade-offs. We ship fast while maintaining high standards through great engineering practices."
+          />
+          <ValueCard
+            icon="arrow-trending-up"
+            title="Continuous Growth"
+            description="We're always learning. Experimentation, feedback, and improvement are part of our DNA."
+          />
+        </div>
+      </div>
+    </ContentSection>
+
+    <ContentSection>
+      <SectionTitle title="Open Positions" centered={true} />
+      <div class="max-w-4xl mx-auto space-y-6 lg:space-y-8">
+        {jobs.map(job => (
+          <JobCard
+            title={job.title}
+            category={job.category}
+            categoryColor={job.categoryColor}
+            location={job.location}
+            type={job.type}
+            description={job.description}
+            requirements={job.requirements}
+            buttonHref="/contact"
+          />
+        ))}
+      </div>
+    </ContentSection>
+
+    <ContentSection background="secondary">
+      <SectionTitle title="Hiring Process" centered={true} />
+      <StepSection steps={hiringProcessSteps} />
+    </ContentSection>
+
+    <CTASection
+      title="Don't See the Right Role?"
+      description="We're always looking for talented people. Send us your resume and let us know what you're passionate about."
+      background="green"
+    >
+      <Button variant="outline" size="lg" href="/contact" className="mt-6">
+        Get in Touch
+      </Button>
+    </CTASection>
+  </main>
+
+  <Footer locale={locale} />
+</BaseLayout>

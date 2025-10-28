@@ -1,0 +1,168 @@
+---
+import type { Locale } from '@/i18n/utils';
+import homeTranslations from '@/i18n/home.json';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = homeTranslations[locale].hero.demo;
+---
+
+<div class="demo-container">
+    <div class="demo-split">
+        <div class="demo-static">
+            <div class="demo-label">{t.traditional}</div>
+            <div style="background: #f8f9fa; flex: 1; border-radius: 10px; padding: 20px; border: 1px solid #e0e0e0; display: flex; flex-direction: column; gap: 15px;">
+                <!-- Header Section -->
+                <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 2px solid #e0e0e0;">
+                    <div style="width: 70px; height: 14px; background: #2c3e50; border-radius: 4px;"></div>
+                    <div style="display: flex; gap: 8px;">
+                        <div style="width: 44px; height: 10px; background: #7f8c8d; border-radius: 2px;"></div>
+                        <div style="width: 50px; height: 10px; background: #7f8c8d; border-radius: 2px;"></div>
+                        <div style="width: 46px; height: 10px; background: #7f8c8d; border-radius: 2px;"></div>
+                        <div style="width: 40px; height: 10px; background: #7f8c8d; border-radius: 2px;"></div>
+                    </div>
+                </div>
+
+                <!-- Hero Banner -->
+                <div style="background: linear-gradient(135deg, #3498db20, #2980b920); padding: 20px; border-radius: 8px; text-align: center; border: 1px solid #bdc3c7;">
+                    <div style="width: 70%; height: 18px; background: #2c3e50; margin: 0 auto 10px; border-radius: 4px;"></div>
+                    <div style="width: 85%; height: 12px; background: #7f8c8d; margin: 0 auto 8px; border-radius: 3px;"></div>
+                    <div style="width: 65%; height: 12px; background: #7f8c8d; margin: 0 auto 15px; border-radius: 3px;"></div>
+                    <div style="width: 100px; height: 28px; background: #3498db; margin: 0 auto; border-radius: 6px;"></div>
+                </div>
+
+                <!-- Three Column Features -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; flex: 1;">
+                    <div style="background: white; padding: 15px; border-radius: 6px; border: 1px solid #d5dbdb; display: flex; flex-direction: column;">
+                        <div style="width: 24px; height: 24px; background: #e74c3c; border-radius: 50%; margin-bottom: 10px;"></div>
+                        <div style="width: 100%; height: 10px; background: #2c3e50; margin-bottom: 6px; border-radius: 2px;"></div>
+                        <div style="width: 90%; height: 8px; background: #95a5a6; margin-bottom: 4px; border-radius: 2px;"></div>
+                        <div style="width: 85%; height: 8px; background: #95a5a6; margin-bottom: 4px; border-radius: 2px;"></div>
+                        <div style="width: 95%; height: 8px; background: #95a5a6; border-radius: 2px;"></div>
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 6px; border: 1px solid #d5dbdb; display: flex; flex-direction: column;">
+                        <div style="width: 24px; height: 24px; background: #f39c12; border-radius: 50%; margin-bottom: 10px;"></div>
+                        <div style="width: 100%; height: 10px; background: #2c3e50; margin-bottom: 6px; border-radius: 2px;"></div>
+                        <div style="width: 85%; height: 8px; background: #95a5a6; margin-bottom: 4px; border-radius: 2px;"></div>
+                        <div style="width: 92%; height: 8px; background: #95a5a6; margin-bottom: 4px; border-radius: 2px;"></div>
+                        <div style="width: 88%; height: 8px; background: #95a5a6; border-radius: 2px;"></div>
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 6px; border: 1px solid #d5dbdb; display: flex; flex-direction: column;">
+                        <div style="width: 24px; height: 24px; background: #27ae60; border-radius: 50%; margin-bottom: 10px;"></div>
+                        <div style="width: 100%; height: 10px; background: #2c3e50; margin-bottom: 6px; border-radius: 2px;"></div>
+                        <div style="width: 95%; height: 8px; background: #95a5a6; margin-bottom: 4px; border-radius: 2px;"></div>
+                        <div style="width: 80%; height: 8px; background: #95a5a6; margin-bottom: 4px; border-radius: 2px;"></div>
+                        <div style="width: 90%; height: 8px; background: #95a5a6; border-radius: 2px;"></div>
+                    </div>
+                </div>
+
+                <!-- Footer Section -->
+                <div style="background: #34495e; padding: 10px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; gap: 6px;">
+                        <div style="width: 36px; height: 8px; background: #7f8c8d; border-radius: 2px;"></div>
+                        <div style="width: 32px; height: 8px; background: #7f8c8d; border-radius: 2px;"></div>
+                        <div style="width: 38px; height: 8px; background: #7f8c8d; border-radius: 2px;"></div>
+                    </div>
+                    <div style="width: 52px; height: 8px; background: #95a5a6; border-radius: 2px;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="demo-ai">
+            <div class="demo-label">{t.withMinimal}</div>
+            <div class="chat-interface">
+                <div class="chat-message">{t.chat.greeting}</div>
+                <div style="background: #f0f0f0; padding: 0.75rem 1rem; border-radius: 20px; margin-bottom: 0.5rem; text-align: right;">
+                    {t.chat.userMessage}
+                </div>
+                <div class="chat-message">{t.chat.response}</div>
+                <div style="background: white; padding: 1rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-top: 1rem;">
+                    <div style="font-weight: 600; margin-bottom: 0.5rem;">{t.services.title}</div>
+                    <div style="display: flex; gap: 0.75rem;">
+                        <div style="flex: 1; padding: 0.4rem; background: rgba(33, 150, 243, 0.1); border-radius: 5px;">
+                            <div style="font-size: 0.8rem;">{t.services.consulting}</div>
+                        </div>
+                        <div style="flex: 1; padding: 0.4rem; background: rgba(76, 175, 80, 0.1); border-radius: 5px;">
+                            <div style="font-size: 0.8rem;">{t.services.development}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Demo Container - from production */
+.demo-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.demo-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.demo-static, .demo-ai {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 100%;
+}
+
+.demo-label {
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-align: center;
+    color: var(--text-dark, #1a1a1a);
+    padding: 0.5rem 0;
+}
+
+.chat-interface {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex: 1;
+}
+
+.chat-message {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 0.75rem 1rem;
+    border-radius: 20px;
+    max-width: 85%;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .demo-split {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .demo-container {
+        padding: 1rem 0;
+    }
+
+    .demo-label {
+        font-size: 1rem;
+    }
+
+    .chat-interface {
+        padding: 1rem;
+    }
+}
+</style>

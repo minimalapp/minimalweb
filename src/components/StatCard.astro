@@ -1,0 +1,19 @@
+---
+interface Props {
+  number: string;
+  label: string;
+  color?: string;
+  className?: string;
+}
+
+const { number, label, color = 'var(--brand-green)', className = '' } = Astro.props;
+---
+
+<div class={`text-center ${className}`}>
+  <div class="text-5xl lg:text-6xl font-bold mb-2" style={`color: ${color}`}>
+    {number}
+  </div>
+  <div class="text-lg text-[var(--text-secondary)]">
+    {label}
+  </div>
+</div>

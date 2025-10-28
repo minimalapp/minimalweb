@@ -1,0 +1,21 @@
+---
+interface Props {
+  text: string;
+  variant?: 'primary' | 'secondary' | 'outline' | 'success' | 'info';
+  className?: string;
+}
+
+const { text, variant = 'secondary', className = '' } = Astro.props;
+
+const variantStyles = {
+  primary: 'bg-[var(--brand-purple-primary)] text-white font-semibold',
+  secondary: 'bg-[var(--bg-tertiary)] text-[var(--text-secondary)] border border-[var(--border-primary)]',
+  outline: 'bg-transparent text-[var(--text-primary)] border-2 border-[var(--border-primary)]',
+  success: 'bg-[var(--brand-green)] text-white font-semibold',
+  info: 'bg-[var(--brand-blue)] text-white font-semibold'
+};
+---
+
+<span class={`inline-flex items-center px-3 py-1 rounded-full text-sm ${variantStyles[variant]} ${className}`}>
+  {text}
+</span>

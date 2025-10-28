@@ -1,0 +1,23 @@
+---
+import PageTitle from '@/components/PageTitle.astro';
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  className?: string;
+}
+
+const { title, subtitle, className = '' } = Astro.props;
+---
+
+<section class={`pt-10 md:pt-14 pb-3 md:pb-4 bg-gradient-to-b from-[var(--bg-secondary)] to-[var(--bg-primary)] text-center ${className}`}>
+  <div class="container mx-auto px-6 md:px-8">
+    <PageTitle title={title} size="lg" />
+    {subtitle && (
+      <p class="text-lg sm:text-xl lg:text-2xl text-[var(--text-secondary)] max-w-3xl mx-auto leading-relaxed">
+        {subtitle}
+      </p>
+    )}
+    <slot />
+  </div>
+</section>

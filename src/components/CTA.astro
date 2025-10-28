@@ -1,0 +1,66 @@
+---
+import Button from './Button.astro';
+import type { Locale } from '@/i18n/utils';
+
+export interface Props {
+  title: string;
+  subtitle: string;
+  emailPlaceholder: string;
+  urlPlaceholder: string;
+  buttonText: string;
+  footnote: string;
+  locale: Locale;
+}
+
+const { title, subtitle, emailPlaceholder, urlPlaceholder, buttonText, footnote, locale } = Astro.props;
+---
+
+<section
+  class="relative overflow-hidden text-center text-white bg-gradient-to-br from-brand-purple-primary via-brand-purple-dark to-[#5B21B6] section-padding animate-fadeIn motion-reduce:animate-none"
+  id={locale === 'es' ? 'contacto' : 'contact'}
+>
+  <!-- Noise overlay for texture -->
+  <div
+    class="absolute inset-0 pointer-events-none opacity-[0.05]"
+    style="background-image: url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E&quot;)"
+  ></div>
+
+  <!-- Gradient orb animation -->
+  <div
+    class="absolute w-[500px] h-[500px] rounded-full -top-[250px] -right-[100px] pointer-events-none animate-float bg-[radial-gradient(circle,rgba(255,255,255,0.1)_0%,transparent_70%)]"
+  ></div>
+
+  <div class="max-w-tight mx-auto relative z-10">
+    <h2 class="text-section-title text-white mb-2 font-bold leading-tight">
+      {title}
+    </h2>
+    <p class="text-xl mb-6 text-white/95 leading-relaxed">
+      {subtitle}
+    </p>
+    <form class="flex flex-col gap-3 mb-3 max-w-xs sm:max-w-[600px] mx-auto">
+      <div class="flex flex-col sm:flex-row gap-3">
+        <input
+          type="email"
+          placeholder={emailPlaceholder}
+          class="px-4 py-2 border-2 border-white/25 rounded-lg text-[15px] bg-white/10 text-white transition-all duration-base shadow-sm placeholder:text-white/60 focus:outline-none focus:border-white/60 focus:bg-white/15 sm:flex-1"
+          aria-label="Email"
+          required
+        />
+        <input
+          type="url"
+          placeholder={urlPlaceholder}
+          class="px-4 py-2 border-2 border-white/25 rounded-lg text-[15px] bg-white/10 text-white transition-all duration-base shadow-sm placeholder:text-white/60 focus:outline-none focus:border-white/60 focus:bg-white/15 sm:flex-1"
+          aria-label="Website URL"
+          required
+        />
+      </div>
+      <Button variant="outline-light" size="md" type="submit">
+        {buttonText}
+      </Button>
+    </form>
+    <p class="text-base text-white/95 mt-2">
+      {footnote}
+    </p>
+  </div>
+</section>
+

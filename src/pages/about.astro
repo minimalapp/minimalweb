@@ -1,0 +1,129 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import PageHero from '@/components/PageHero.astro';
+import ContentSection from '@/components/ContentSection.astro';
+import SectionTitle from '@/components/SectionTitle.astro';
+import FeatureCard from '@/components/FeatureCard.astro';
+import TeamCard from '@/components/TeamCard.astro';
+import ValueCard from '@/components/ValueCard.astro';
+
+const locale = 'en';
+const title = 'About Us - Minimal';
+const description = 'Transforming how websites interact with their users through conversational artificial intelligence.';
+---
+
+<BaseLayout title={title} description={description} locale={locale}>
+  <Header locale={locale} />
+
+  <main class="pt-header">
+    <PageHero
+      title="About Us"
+      subtitle="Transforming how websites interact with their users through conversational artificial intelligence."
+    />
+
+    <ContentSection maxWidth="md">
+      <div class="flex flex-col gap-6 lg:gap-8">
+        <div>
+                <SectionTitle title="Our Story" spacing="normal" />
+                <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-6">Minimal was born from a simple yet revolutionary vision: to transform traditional static websites into intelligent conversational experiences that maintain brand identity while offering completely new interaction.</p>
+          <div class="mt-8 pl-6 border-l-4 border-[var(--brand-purple-primary)]">
+          <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4 mt-8">The Problem We Solve</h3>
+          <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-6">Traditional websites are static and one-directional. Users struggle to find information, navigation is complex, and companies miss valuable insights about what their visitors really need. The disconnect between user intent and website structure creates friction and lost opportunities.</p>
+          </div>
+
+          <div class="mt-8 pl-6 border-l-4 border-[var(--brand-purple-primary)]">
+          <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4 mt-8">Our Approach</h3>
+          <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-6">We believe the solution isn't replacing websites but enhancing them. By adding a conversational AI layer that understands your content and preserves your brand, we transform existing websites into intelligent assistants. One line of code unlocks natural language interaction, automatic content synchronization, and deep behavioral insights.</p>
+          </div>
+        </div>
+
+        <div>
+      <SectionTitle title="Our Mission" spacing="normal" />
+      <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-6">Democratizing access to intelligent conversational web experiences, allowing any website to transform into a modern and comprehensive interface without losing its brand identity.</p>
+        </div>
+
+        <div>
+          <SectionTitle title="Our Vision" spacing="normal" />
+          <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-6">We envision a future where every website is an intelligent conversational experience, where users can interact naturally with content and where companies gain deep insights into their customers' real needs.</p>
+
+          <div class="mt-8 pl-6 border-l-4 border-[var(--brand-purple-primary)]">
+          <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4 mt-8">Technological Impact</h3>
+            <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-6">We're pioneering a new paradigm in web interaction. As AI becomes more sophisticated, the gap between static content and user expectations widens. We're building the bridge that makes every website intelligent, accessible, and insightful—creating a new standard for digital experiences.</p>
+          </div>
+        </div>
+
+        <div>
+      <SectionTitle title="Our Values" spacing="normal" />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 mt-6">
+            <ValueCard
+              icon="sparkles"
+              title="Simplicity First"
+              description="Complex technology should deliver simple experiences. We obsess over making powerful AI accessible through effortless integration."
+            />
+            <ValueCard
+              icon="paint-brush"
+              title="Brand Integrity"
+              description="Your identity matters. We enhance websites without replacing them, preserving the unique character that makes your brand recognizable."
+            />
+            <ValueCard
+              icon="lock-closed"
+              title="Privacy & Trust"
+              description="User data is sacred. We build with privacy by design, transparency in our processes, and unwavering commitment to data protection."
+            />
+            <ValueCard
+              icon="rocket-launch"
+              title="Continuous Innovation"
+              description="AI evolves rapidly, and so do we. We're committed to staying at the forefront of conversational technology while maintaining reliability."
+            />
+          </div>
+        </div>
+      </div>
+    </ContentSection>
+
+    <ContentSection background="secondary" maxWidth="xl">
+      <SectionTitle title="Why Choose Us?" centered={true} />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        <FeatureCard
+          title="Advanced Technology"
+          description="We leverage cutting-edge natural language processing and machine learning models to deliver human-like conversations. Our AI understands context, remembers previous interactions, and continuously learns from your content. Built on enterprise-grade infrastructure, our platform ensures 99.9% uptime and lightning-fast response times."
+        />
+        <FeatureCard
+          title="Simple Implementation"
+          description="Get started in minutes, not months. Our one-line integration means no complex installations, no API wrestling, no technical headaches. Just copy, paste, and watch your website transform. Automatic content synchronization keeps everything up-to-date without manual intervention. It's sophisticated technology made simple."
+        />
+        <FeatureCard
+          title="Deep Analytics"
+          description="Go beyond page views and bounce rates. See what users actually want, which questions they ask, where they get stuck, and what content resonates. Our analytics dashboard reveals user intent patterns, conversation flows, and engagement metrics that traditional analytics miss—turning interactions into actionable insights."
+        />
+        <FeatureCard
+          title="Scalability"
+          description="From startup to enterprise, we scale with you. Our infrastructure handles everything from 100 to 10 million monthly conversations without performance degradation. Pay only for what you use with transparent, flexible pricing. Add features, languages, and capabilities as you grow—no platform migrations, no rebuilding required."
+        />
+      </div>
+    </ContentSection>
+
+    <ContentSection maxWidth="md">
+      <SectionTitle title="Our Team" centered={true} />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        <TeamCard
+          avatar="PW"
+          name="Pablo Wolfus"
+          role="Co-Founder & CEO"
+          description="Technology visionary with experience in product and development. Specialized in transforming complex ideas into simple and scalable solutions."
+          image="/team/pablo-wolfus.jpg"
+        />
+        <TeamCard
+          avatar="JLB"
+          name="Juan La Battaglia"
+          role="Co-Founder & CTO"
+          description="Solution creator with constant learning in both technological and human fields. Focused on developing elegant solutions to modern organizational challenges through software development and systems thinking."
+          image="/team/juan-la-battaglia.jpg"
+        />
+      </div>
+    </ContentSection>
+  </main>
+
+  <Footer locale={locale} />
+</BaseLayout>

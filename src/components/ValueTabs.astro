@@ -1,0 +1,162 @@
+---
+import type { Locale } from '@/i18n/utils';
+
+export interface BenefitItem {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+export interface Props {
+  title: string;
+  tabs: {
+    businessOwners: string;
+    marketing: string;
+    developers: string;
+    endUsers: string;
+  };
+  businessOwners: BenefitItem[];
+  marketing: BenefitItem[];
+  developers: BenefitItem[];
+  endUsers: BenefitItem[];
+  locale: Locale;
+}
+
+const { title, tabs, businessOwners, marketing, developers, endUsers, locale } = Astro.props;
+---
+
+<section class="py-12 md:py-14 px-4 md:px-6 lg:px-8 bg-bg-primary" id={locale === 'es' ? 'beneficios' : 'benefits'}>
+  <div class="max-w-content mx-auto">
+    <h2 class="section-title">{title}</h2>
+    <div class="max-w-narrow mx-auto">
+      <div class="flex flex-wrap gap-2 justify-center mb-4" role="tablist">
+        <button
+          class="tab-button active px-7 py-3.5 bg-bg-secondary rounded-t-md cursor-pointer transition-all duration-base text-base font-medium text-text-secondary opacity-70 relative border-b-[3px] border-transparent hover:bg-bg-tertiary hover:opacity-90 focus-visible:outline-2 focus-visible:outline-brand-purple-primary focus-visible:outline-offset-2"
+          data-tab="businessOwners"
+          role="tab"
+          aria-selected="true"
+          aria-controls="businessOwners-panel"
+        >
+          {tabs.businessOwners}
+        </button>
+        <button
+          class="tab-button px-7 py-3.5 bg-bg-secondary rounded-t-md cursor-pointer transition-all duration-base text-base font-medium text-text-secondary opacity-70 relative border-b-[3px] border-transparent hover:bg-bg-tertiary hover:opacity-90 focus-visible:outline-2 focus-visible:outline-brand-purple-primary focus-visible:outline-offset-2"
+          data-tab="marketing"
+          role="tab"
+          aria-selected="false"
+          aria-controls="marketing-panel"
+        >
+          {tabs.marketing}
+        </button>
+        <button
+          class="tab-button px-7 py-3.5 bg-bg-secondary rounded-t-md cursor-pointer transition-all duration-base text-base font-medium text-text-secondary opacity-70 relative border-b-[3px] border-transparent hover:bg-bg-tertiary hover:opacity-90 focus-visible:outline-2 focus-visible:outline-brand-purple-primary focus-visible:outline-offset-2"
+          data-tab="developers"
+          role="tab"
+          aria-selected="false"
+          aria-controls="developers-panel"
+        >
+          {tabs.developers}
+        </button>
+        <button
+          class="tab-button px-7 py-3.5 bg-bg-secondary rounded-t-md cursor-pointer transition-all duration-base text-base font-medium text-text-secondary opacity-70 relative border-b-[3px] border-transparent hover:bg-bg-tertiary hover:opacity-90 focus-visible:outline-2 focus-visible:outline-brand-purple-primary focus-visible:outline-offset-2"
+          data-tab="endUsers"
+          role="tab"
+          aria-selected="false"
+          aria-controls="endUsers-panel"
+        >
+          {tabs.endUsers}
+        </button>
+      </div>
+      <div class="pt-3">
+        <div class="benefit-list grid grid-cols-1 md:grid-cols-2 gap-4 animate-fadeInUp" role="tabpanel" id="businessOwners-panel">
+          {businessOwners.map((item) => (
+            <div class="flex gap-3 items-start p-4 bg-bg-tertiary rounded-md shadow-sm transition-all duration-base border border-border-subtle hover:-translate-y-0.5 hover:shadow-md">
+              <div class="text-2xl flex-shrink-0 w-icon-sm h-icon-sm flex items-center justify-center icon-feature rounded-sm text-brand-purple-primary font-bold">
+                {item.icon}
+              </div>
+              <div>
+                <h4 class="m-0 mb-1 text-xl text-text-primary font-semibold">{item.title}</h4>
+                <p class="m-0 text-text-tertiary leading-relaxed text-[15px]">{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Store all benefit content data
+  const benefitContents = {
+    businessOwners: JSON.parse(document.getElementById('businessOwners-data')?.textContent || '[]'),
+    marketing: JSON.parse(document.getElementById('marketing-data')?.textContent || '[]'),
+    developers: JSON.parse(document.getElementById('developers-data')?.textContent || '[]'),
+    endUsers: JSON.parse(document.getElementById('endUsers-data')?.textContent || '[]')
+  };
+
+  // Tab switching functionality
+  const tabButtons = document.querySelectorAll('.tab-button');
+  const benefitList = document.querySelector('.benefit-list');
+
+  tabButtons.forEach(button => {
+    button.addEventListener('click', function(this: HTMLButtonElement) {
+      // Remove active from all buttons and update ARIA
+      tabButtons.forEach(btn => {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-selected', 'false');
+      });
+
+      // Add active to clicked button and update ARIA
+      this.classList.add('active');
+      this.setAttribute('aria-selected', 'true');
+
+      // Get the tab key
+      const tabKey = this.getAttribute('data-tab') as keyof typeof benefitContents;
+      const content = benefitContents[tabKey];
+
+      // Update benefit list with fade animation
+      if (benefitList && content) {
+        const listElement = benefitList as HTMLElement;
+
+        // Trigger fade out by removing animation
+        listElement.style.animation = 'none';
+
+        // Force reflow
+        void listElement.offsetWidth;
+
+        // Update content and panel ID
+        listElement.id = `${tabKey}-panel`;
+        listElement.innerHTML = content.map((item: any) => `
+          <div class="flex gap-3 items-start p-4 bg-bg-tertiary rounded-md shadow-sm transition-all duration-base border border-border-subtle hover:-translate-y-0.5 hover:shadow-md">
+            <div class="text-2xl flex-shrink-0 w-icon-sm h-icon-sm flex items-center justify-center icon-feature rounded-sm text-brand-purple-primary font-bold">
+              ${item.icon}
+            </div>
+            <div>
+              <h4 class="m-0 mb-1 text-xl text-text-primary font-semibold">${item.title}</h4>
+              <p class="m-0 text-text-tertiary leading-relaxed text-[15px]">${item.description}</p>
+            </div>
+          </div>
+        `).join('');
+
+        // Trigger fade in with Tailwind animation
+        listElement.classList.remove('animate-fadeInUp');
+        void listElement.offsetWidth;
+        listElement.classList.add('animate-fadeInUp');
+      }
+    });
+  });
+</script>
+
+<!-- Hidden data for client-side script -->
+<script id="businessOwners-data" type="application/json" is:inline set:html={JSON.stringify(businessOwners)}></script>
+<script id="marketing-data" type="application/json" is:inline set:html={JSON.stringify(marketing)}></script>
+<script id="developers-data" type="application/json" is:inline set:html={JSON.stringify(developers)}></script>
+<script id="endUsers-data" type="application/json" is:inline set:html={JSON.stringify(endUsers)}></script>
+
+<style>
+  /* Tab active state styles - minimal scoped styles for dynamic state */
+  .tab-button.active {
+    @apply bg-bg-primary text-brand-purple-primary opacity-100 border-b-brand-purple-primary font-semibold;
+  }
+</style>

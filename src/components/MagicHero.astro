@@ -1,0 +1,266 @@
+---
+export interface Props {
+  locale: string;
+}
+
+// Locale prop available for future use if needed
+const { locale: _locale } = Astro.props;
+---
+
+<div class="magic-hero" id="magicHero">
+  <div class="loading-dots" id="loadingDots">
+    <div class="loading-dot"></div>
+    <div class="loading-dot"></div>
+    <div class="loading-dot"></div>
+  </div>
+  <div class="magic-text" id="magicText">
+    <div class="text-line-1" id="textLine1">
+      <span class="typewriter magic-word" id="magicWord"></span>
+    </div>
+    <div class="text-line-2" id="textLine2"></div>
+  </div>
+</div>
+
+<style is:global>
+  .magic-hero {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100vh !important;
+    background: linear-gradient(135deg, rgba(255, 87, 87, 0.05) 0%, rgba(63, 81, 181, 0.05) 100%) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 9999 !important;
+    transition: opacity 1s ease-out !important;
+    cursor: pointer !important;
+    padding: 1rem !important;
+    opacity: 1 !important;
+  }
+
+  .magic-hero.scroll-triggered {
+    transition: opacity 0.05s ease-out !important;
+  }
+
+  .magic-hero.hidden {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    display: none !important;
+  }
+
+  .magic-text {
+    font-size: 3rem;
+    font-weight: 900;
+    text-align: center;
+    line-height: 1.1;
+    color: var(--text-dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 2rem);
+    max-width: 90%;
+  }
+
+  .text-line-1, .text-line-2 {
+    display: block;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .text-line-1.show, .text-line-2.show {
+    opacity: 1;
+  }
+
+  .typewriter {
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block;
+  }
+
+  .magic-word {
+    background: linear-gradient(90deg,
+      #FF5757 0%,
+      #FFA500 16.66%,
+      #FFD700 33.33%,
+      #4CAF50 50%,
+      #2196F3 66.66%,
+      #3F51B5 83.33%,
+      #FF5757 100%
+    );
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+    color: transparent;
+    animation: slowRainbowShift 8s ease-in-out infinite;
+  }
+
+  .magic-word.typing {
+    background: linear-gradient(90deg,
+      #FF5757 0%,
+      #FFA500 16.66%,
+      #FFD700 33.33%,
+      #4CAF50 50%,
+      #2196F3 66.66%,
+      #3F51B5 83.33%,
+      #FF5757 100%
+    );
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    animation: slowRainbowShift 8s ease-in-out infinite;
+  }
+
+  .magic-word::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -10px;
+    right: -10px;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
+    animation: magicGlow 2s ease-in-out infinite;
+    border-radius: 10px;
+    z-index: -1;
+  }
+
+  @keyframes magicShimmer {
+    0% {
+      opacity: 0;
+      transform: scale(0.8) translateY(20px);
+      filter: blur(8px);
+    }
+    50% {
+      transform: scale(1.1);
+      filter: blur(0px);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      filter: blur(0px);
+    }
+  }
+
+  @keyframes magicGlow {
+    0%, 100% {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+    50% {
+      opacity: 0.3;
+      transform: translateX(200px);
+    }
+  }
+
+  .loading-dots {
+    display: flex;
+    gap: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .loading-dots.show {
+    opacity: 1;
+  }
+
+  .loading-dot {
+    width: 60px;
+    height: 60px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    animation: dotBounce 1.4s ease-in-out infinite;
+    opacity: 0.5;
+  }
+
+  .loading-dot:nth-child(1) {
+    animation-delay: 0s;
+  }
+
+  .loading-dot:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .loading-dot:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+
+  @keyframes slowRainbowShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes dotBounce {
+    0%, 60%, 100% {
+      transform: translateY(0);
+    }
+    30% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @media (min-width: 480px) {
+    .magic-text {
+      font-size: 4rem;
+    }
+
+    .loading-dots {
+      gap: 2rem;
+    }
+
+    .loading-dot {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .magic-text {
+      font-size: 5rem;
+      gap: 1rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .magic-text {
+      font-size: 6rem;
+    }
+
+    .loading-dots {
+      gap: 3rem;
+    }
+
+    .loading-dot {
+      width: 120px;
+      height: 120px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .magic-text {
+      font-size: 8rem;
+    }
+  }
+</style>

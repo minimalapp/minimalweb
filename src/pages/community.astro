@@ -1,0 +1,159 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import PageHero from '@/components/PageHero.astro';
+import ContentSection from '@/components/ContentSection.astro';
+import SectionTitle from '@/components/SectionTitle.astro';
+import FeatureCard from '@/components/FeatureCard.astro';
+import CTASection from '@/components/CTASection.astro';
+import Button from '@/components/Button.astro';
+import StatCard from '@/components/StatCard.astro';
+import EventCard from '@/components/EventCard.astro';
+import TestimonialCard from '@/components/TestimonialCard.astro';
+
+const locale = 'en';
+---
+
+<BaseLayout title="Community - Minimal" description="Join the Minimal community of developers, designers, and product builders." locale={locale}>
+  <Header locale={locale} />
+
+  <main class="pt-header">
+    <PageHero
+      title="Minimal Community"
+      subtitle="Join thousands of developers, designers, and product builders creating better web experiences."
+    />
+
+    <ContentSection>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-8 mt-8">
+        <StatCard number="10K+" label="Active Users" color="var(--brand-green)" />
+        <StatCard number="50+" label="Countries" color="var(--brand-purple-primary)" />
+        <StatCard number="1M+" label="Conversations Daily" color="var(--brand-green)" />
+      </div>
+
+      <SectionTitle title="Connect With Us" centered={true} />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        <FeatureCard icon="chat-bubble" title="Discord Server" description="Join our active Discord community for real-time help, discussions, and announcements. 5,000+ members online." />
+        <FeatureCard icon="twitter" title="Twitter / X" description="Follow us for product updates, tips, and industry insights. Join the conversation with #MinimalChat." />
+        <FeatureCard icon="youtube" title="YouTube Channel" description="Tutorials, case studies, and behind-the-scenes content. Subscribe for weekly videos." />
+        <FeatureCard icon="document-text" title="Blog" description="Deep dives into conversational AI, best practices, and customer success stories." />
+        <FeatureCard icon="github" title="GitHub" description="Explore our open-source tools, examples, and contribute to the ecosystem." />
+        <FeatureCard icon="envelope" title="Newsletter" description="Monthly roundup of features, tips, and community highlights delivered to your inbox." />
+      </div>
+    </ContentSection>
+
+    <ContentSection background="secondary">
+      <SectionTitle title="Community Guidelines" centered={true} />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        <FeatureCard
+          icon="users"
+          title="Be Respectful"
+          description="Treat everyone with respect. Harassment, hate speech, and discrimination are not tolerated. We're building an inclusive community for all."
+        />
+        <FeatureCard
+          icon="lightbulb"
+          title="Share Knowledge"
+          description="Help others learn and grow. Share your experiences, answer questions, and contribute to discussions. Everyone's perspective adds value."
+        />
+        <FeatureCard
+          icon="arrow-right"
+          title="Stay On Topic"
+          description="Keep discussions relevant to Minimal and conversational AI. Use appropriate channels for different topics."
+        />
+        <FeatureCard
+          icon="shield-exclamation"
+          title="No Spam"
+          description="Don't spam, self-promote excessively, or post duplicate content. Quality over quantity."
+        />
+      </div>
+    </ContentSection>
+
+    <ContentSection background="secondary">
+      <SectionTitle title="Upcoming Events" centered={true} />
+      <div class="max-w-4xl mx-auto space-y-6 lg:space-y-8">
+        <EventCard
+          date="March 15, 2025 • 2:00 PM EST"
+          title="Conversational AI Workshop"
+          description="Learn best practices for designing conversational experiences. Interactive workshop with live Q&A."
+          tags={["Virtual", "Free"]}
+          buttonText="Register"
+          buttonHref="/contact"
+          dateColor="var(--brand-green)"
+        />
+        <EventCard
+          date="March 22, 2025 • 1:00 PM EST"
+          title="Monthly Community Call"
+          description="Join our monthly community call for product updates, roadmap discussions, and community showcases."
+          tags={["Virtual", "Free"]}
+          buttonText="Join Call"
+          buttonHref="/contact"
+          dateColor="var(--brand-purple-primary)"
+        />
+        <EventCard
+          date="April 5, 2025 • 10:00 AM EST"
+          title="Hackathon: Build with AI"
+          description="48-hour virtual hackathon. Build innovative conversational experiences. Prizes and swag for winners!"
+          tags={["Virtual", "48 Hours"]}
+          buttonText="Sign Up"
+          buttonHref="/contact"
+          dateColor="var(--brand-green)"
+        />
+      </div>
+    </ContentSection>
+
+    <ContentSection>
+      <SectionTitle title="Success Stories" centered={true} />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
+        <TestimonialCard
+          avatar="TC"
+          company="TechCo Inc."
+          industry="SaaS Platform"
+          quote="Minimal helped us increase customer engagement by 300%. The AI understands our complex product and provides accurate answers. Setup took less than 30 minutes."
+          author="Alex Chen, Head of Product"
+          avatarColor="from-[var(--brand-green)] to-[#059669]"
+        />
+        <TestimonialCard
+          avatar="SS"
+          company="StyleShop"
+          industry="E-commerce"
+          quote="Our conversion rate doubled after adding Minimal. The AI helps customers find products and answers sizing questions instantly. Game changer for our business."
+          author="Maria Garcia, Founder"
+          avatarColor="from-[var(--brand-purple-primary)] to-[var(--brand-purple-dark)]"
+        />
+        <TestimonialCard
+          avatar="ED"
+          company="EduPlatform"
+          industry="Education Tech"
+          quote="Students love it! They get instant help with course questions 24/7. Support ticket volume decreased by 60% while student satisfaction increased."
+          author="Dr. James Wilson, CTO"
+          avatarColor="from-[var(--brand-green)] to-[#059669]"
+        />
+        <TestimonialCard
+          avatar="FG"
+          company="FinanceGuru"
+          industry="Fintech"
+          quote="The analytics are incredible. We now understand exactly what our users are looking for and have improved our product roadmap based on conversation data."
+          author="Rachel Park, Product Manager"
+          avatarColor="from-[var(--brand-purple-primary)] to-[var(--brand-purple-dark)]"
+        />
+      </div>
+    </ContentSection>
+
+    <CTASection
+      title="Join the Community"
+      description="Connect with thousands of builders creating better web experiences with conversational AI."
+      background="secondary"
+    >
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button variant="primary" size="lg" href="https://discord.gg/minimal">
+          Join Discord
+        </Button>
+        <Button variant="secondary" size="lg" href="https://twitter.com/minimal">
+          Follow on Twitter
+        </Button>
+      </div>
+    </CTASection>
+  </main>
+
+  <Footer locale={locale} />
+</BaseLayout>

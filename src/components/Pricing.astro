@@ -1,0 +1,52 @@
+---
+import Button from './Button.astro';
+import type { Locale } from '@/i18n/utils';
+
+export interface PricingPlan {
+  name: string;
+  price: string;
+  period: string;
+  button: string;
+  features: string[];
+  badge?: string;
+}
+
+export interface Props {
+  title: string;
+  plans: PricingPlan[];
+  locale: Locale;
+}
+
+const { title, plans, locale } = Astro.props;
+---
+
+<section class="section-padding bg-bg-secondary" id={locale === 'es' ? 'precios' : 'pricing'}>
+  <div class="container">
+    <h2 class="section-title">{title}</h2>
+    <div class="grid grid-cols-1 gap-3 max-w-container mx-auto items-stretch md:grid-cols-3">
+      {plans.map((plan) => (
+        <div class={`relative bg-bg-primary px-4 py-6 rounded-lg shadow-sm text-center transition-all duration-base flex flex-col hover:-translate-y-0.5 hover:shadow-lg ${plan.badge ? 'border-2 border-brand-purple-primary pricing-card-featured' : ''}`}>
+          {plan.badge && <div class="absolute -top-3 left-1/2 -translate-x-1/2 text-white py-2 px-4 rounded-[20px] text-sm font-bold shadow-lg z-10 btn-primary">{plan.badge}</div>}
+          <h3 class="text-2xl mb-2 text-text-primary font-bold">{plan.name}</h3>
+          <div class="mb-6 flex items-baseline justify-center gap-2">
+            <span class="text-pricing-amount font-bold text-text-primary leading-none">{plan.price}</span>
+            <span class="text-lg text-text-quaternary">{plan.period}</span>
+          </div>
+          <ul class="list-none mb-auto pb-4 text-left">
+            {plan.features.map((feature) => (
+              <li class="py-3 text-[15px] text-text-tertiary border-b border-gray-200 last:border-b-0">{feature}</li>
+            ))}
+          </ul>
+          <Button
+            variant={plan.badge ? 'primary' : 'secondary'}
+            size="md"
+            type="button"
+            className="w-full mt-4"
+          >
+            {plan.button}
+          </Button>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
