@@ -18,12 +18,16 @@ interface Props {
   title: string;
   description?: string;
   className?: string;
+  href?: string;
 }
 
-const { icon, title, description, className = '' } = Astro.props;
+const { icon, title, description, className = '', href } = Astro.props;
+
+const Component = href ? 'a' : 'div';
+const linkProps = href ? { href } : {};
 ---
 
-<div class={`bg-bg-tertiary p-6 rounded-md shadow-md transition-all duration-base hover:-translate-y-0.5 hover:shadow-lg ${className}`}>
+<Component class={`block bg-bg-tertiary p-6 rounded-md shadow-md transition-all duration-base hover:-translate-y-0.5 hover:shadow-lg ${href ? 'cursor-pointer' : ''} ${className}`} {...linkProps}>
   {icon && (
     <div class="mb-4 text-brand-purple-primary">
       <Icon name={icon} size="xl" />
@@ -38,4 +42,4 @@ const { icon, title, description, className = '' } = Astro.props;
     </p>
   )}
   <slot />
-</div>
+</Component>

@@ -1,16 +1,27 @@
 ---
+import Icon from '@/components/Icon.astro';
+
 interface Props {
   title: string;
   description: string;
+  icon?: string;
   color?: string;
   className?: string;
 }
 
-const { title, description, color = 'var(--brand-purple-primary)', className = '' } = Astro.props;
+const { title, description, icon, color = 'var(--brand-purple-primary)', className = '' } = Astro.props;
 ---
 
-<div class={`p-6 bg-bg-tertiary rounded-md border-l-4 shadow-md ${className}`} style={`border-left-color: ${color}`}>
-  <p class="text-[var(--text-secondary)] leading-relaxed text-[15px]">
-    <strong class="text-[var(--text-primary)] font-semibold">{title}:</strong> {description}
-  </p>
+<div class={`bg-bg-tertiary p-6 rounded-md shadow-md transition-all duration-base hover:-translate-y-0.5 hover:shadow-lg ${className}`}>
+  <div class="flex items-start gap-4">
+    {icon && (
+      <div class="flex-shrink-0 text-brand-purple-primary">
+        <Icon name={icon} size="xl" />
+      </div>
+    )}
+    <div class="flex-1 min-w-0">
+      <h4 class="text-xl font-semibold text-[var(--text-primary)] mb-2">{title}</h4>
+      <p class="text-[var(--text-secondary)] leading-relaxed text-[15px]">{description}</p>
+    </div>
+  </div>
 </div>

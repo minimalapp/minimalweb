@@ -6,11 +6,9 @@ import PageHero from '@/components/PageHero.astro';
 import ContentSection from '@/components/ContentSection.astro';
 import SectionTitle from '@/components/SectionTitle.astro';
 import FeatureCard from '@/components/FeatureCard.astro';
-import TeamCard from '@/components/TeamCard.astro';
 import CTASection from '@/components/CTASection.astro';
 import Button from '@/components/Button.astro';
 import StatCard from '@/components/StatCard.astro';
-import ValueCard from '@/components/ValueCard.astro';
 import EventCard from '@/components/EventCard.astro';
 import TestimonialCard from '@/components/TestimonialCard.astro';
 
@@ -46,50 +44,26 @@ const locale = 'en';
 
     <ContentSection background="secondary">
       <SectionTitle title="Community Guidelines" centered={true} />
-      <div class="max-w-3xl mx-auto mt-6 space-y-4">
-        <ValueCard
-          title="🤝 Be Respectful"
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        <FeatureCard
+          icon="users"
+          title="Be Respectful"
           description="Treat everyone with respect. Harassment, hate speech, and discrimination are not tolerated. We're building an inclusive community for all."
-          color="var(--brand-green)"
         />
-        <ValueCard
-          title="💡 Share Knowledge"
+        <FeatureCard
+          icon="lightbulb"
+          title="Share Knowledge"
           description="Help others learn and grow. Share your experiences, answer questions, and contribute to discussions. Everyone's perspective adds value."
-          color="var(--brand-purple-primary)"
         />
-        <ValueCard
-          title="🎯 Stay On Topic"
+        <FeatureCard
+          icon="arrow-right"
+          title="Stay On Topic"
           description="Keep discussions relevant to Minimal and conversational AI. Use appropriate channels for different topics."
-          color="var(--brand-green)"
         />
-        <ValueCard
-          title="🚫 No Spam"
+        <FeatureCard
+          icon="shield-exclamation"
+          title="No Spam"
           description="Don't spam, self-promote excessively, or post duplicate content. Quality over quantity."
-          color="var(--brand-purple-primary)"
-        />
-      </div>
-    </ContentSection>
-
-    <ContentSection>
-      <SectionTitle title="Featured Community Members" centered={true} />
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-        <TeamCard
-          avatar="SK"
-          name="Sarah Kim"
-          role="Power User"
-          description="Helped 500+ community members with integration questions. Top contributor in our Discord."
-        />
-        <TeamCard
-          avatar="MR"
-          name="Miguel Rodriguez"
-          role="Developer Advocate"
-          description="Created popular open-source integrations and tutorials. Active YouTube content creator."
-        />
-        <TeamCard
-          avatar="EJ"
-          name="Emma Johnson"
-          role="Community Champion"
-          description="Organizes virtual meetups and workshops. Leading voice in conversational UX design."
         />
       </div>
     </ContentSection>

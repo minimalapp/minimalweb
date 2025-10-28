@@ -3,9 +3,10 @@ interface Props {
   background?: 'primary' | 'secondary';
   maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full';
   className?: string;
+  id?: string;
 }
 
-const { background = 'primary', maxWidth = 'xl', className = '' } = Astro.props;
+const { background = 'primary', maxWidth = 'xl', className = '', id } = Astro.props;
 
 const bgClass = background === 'secondary' ? 'bg-[var(--bg-secondary)]' : 'bg-[var(--bg-primary)]';
 const maxWidthClass = {
@@ -18,7 +19,7 @@ const maxWidthClass = {
 }[maxWidth];
 ---
 
-<section class={`section-padding ${bgClass} ${className}`}>
+<section id={id} class={`section-padding ${bgClass} ${className}`}>
   <div class={`mx-auto ${maxWidthClass}`}>
     <slot />
   </div>
