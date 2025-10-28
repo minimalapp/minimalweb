@@ -43,7 +43,7 @@
 
   /* Icon containers - used in multiple feature sections */
   .icon-feature {
-    background-color: rgba(99, 102, 241, 0.08);
+    background-color: transparent;
   }
 }
 
