@@ -4,6 +4,7 @@ import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 import PageHero from '@/components/PageHero.astro';
 import ContentSection from '@/components/ContentSection.astro';
+import SectionTitle from '@/components/SectionTitle.astro';
 import CodeBlock from '@/components/CodeBlock.astro';
 import FeatureCard from '@/components/FeatureCard.astro';
 import Button from '@/components/Button.astro';
@@ -22,7 +23,7 @@ const locale = 'en';
     />
 
     <ContentSection>
-      <h2 class="text-3xl lg:text-4xl mb-8 text-center text-[var(--text-primary)] font-bold">Browse Guides by Topic</h2>
+      <SectionTitle title="Browse Guides by Topic" centered={true} />
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
         <FeatureCard icon="rocket" title="Quick Start" description="Get up and running in minutes with our step-by-step installation guide." />
         <FeatureCard icon="paint-brush" title="Customization" description="Make Minimal match your brand with custom colors, positions, and messages." />
@@ -35,7 +36,7 @@ const locale = 'en';
 
     <ContentSection background="secondary">
       <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl lg:text-4xl mb-8 text-center text-[var(--text-primary)] font-bold">Quick Start Guide</h2>
+      <SectionTitle title="Quick Start Guide" centered={true} />
       <p class="text-center text-xl text-[var(--text-secondary)] mb-6 max-w-4xl mx-auto leading-relaxed">Follow these three simple steps to add Minimal to your website:</p>
 
         <div class="space-y-8">
@@ -62,7 +63,7 @@ const locale = 'en';
 
     <ContentSection>
       <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl lg:text-4xl mb-8 text-center text-[var(--text-primary)] font-bold">Customization Options</h2>
+      <SectionTitle title="Customization Options" centered={true} />
       <p class="text-center text-xl text-[var(--text-secondary)] mb-6 max-w-4xl mx-auto leading-relaxed">Personalize Minimal to match your brand perfectly:</p>
 
         <div class="space-y-8">
@@ -108,7 +109,7 @@ const locale = 'en';
 
     <ContentSection background="secondary">
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl lg:text-4xl mb-8 text-[var(--text-primary)] font-bold">Writing Effective Conversations</h2>
+        <SectionTitle title="Writing Effective Conversations" />
         <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-6">Craft messages that engage users and drive conversions:</p>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -141,34 +142,34 @@ const locale = 'en';
 
     <ContentSection>
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl lg:text-4xl mb-8 text-[var(--text-primary)] font-bold">Tracking Key Metrics</h2>
+        <SectionTitle title="Tracking Key Metrics" />
         <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-6">Monitor these essential KPIs to measure success:</p>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="bg-[var(--bg-tertiary)] rounded-xl p-6 shadow-sm border border-black/[0.04]">
-            <h3 class="text-xl text-[var(--text-primary)] font-semibold mb-4">Engagement Rate</h3>
-            <p class="text-[var(--text-secondary)] leading-relaxed mb-3">Percentage of visitors who interact with the widget</p>
+          <div class="bg-bg-tertiary rounded-md p-6 shadow-md transition-all duration-base hover:-translate-y-0.5 hover:shadow-lg">
+            <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">Engagement Rate</h3>
+            <p class="text-[var(--text-secondary)] leading-relaxed mb-3 text-[15px]">Percentage of visitors who interact with the widget</p>
             <p class="text-3xl font-bold text-[var(--brand-green)]">15-25%</p>
             <p class="text-sm text-[var(--text-tertiary)]">Industry benchmark</p>
           </div>
 
-          <div class="bg-[var(--bg-tertiary)] rounded-xl p-6 shadow-sm border border-black/[0.04]">
-            <h3 class="text-xl text-[var(--text-primary)] font-semibold mb-4">Conversation Quality</h3>
-            <p class="text-[var(--text-secondary)] leading-relaxed mb-3">Average messages per conversation</p>
+          <div class="bg-bg-tertiary rounded-md p-6 shadow-md transition-all duration-base hover:-translate-y-0.5 hover:shadow-lg">
+            <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">Conversation Quality</h3>
+            <p class="text-[var(--text-secondary)] leading-relaxed mb-3 text-[15px]">Average messages per conversation</p>
             <p class="text-3xl font-bold text-[var(--brand-green)]">4-6</p>
             <p class="text-sm text-[var(--text-tertiary)]">Optimal range</p>
           </div>
 
-          <div class="bg-[var(--bg-tertiary)] rounded-xl p-6 shadow-sm border border-black/[0.04]">
-            <h3 class="text-xl text-[var(--text-primary)] font-semibold mb-4">Lead Capture</h3>
-            <p class="text-[var(--text-secondary)] leading-relaxed mb-3">Percentage of conversations that collect contact info</p>
+          <div class="bg-bg-tertiary rounded-md p-6 shadow-md transition-all duration-base hover:-translate-y-0.5 hover:shadow-lg">
+            <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">Lead Capture</h3>
+            <p class="text-[var(--text-secondary)] leading-relaxed mb-3 text-[15px]">Percentage of conversations that collect contact info</p>
             <p class="text-3xl font-bold text-[var(--brand-green)]">30-40%</p>
             <p class="text-sm text-[var(--text-tertiary)]">Good performance</p>
           </div>
 
-          <div class="bg-[var(--bg-tertiary)] rounded-xl p-6 shadow-sm border border-black/[0.04]">
-            <h3 class="text-xl text-[var(--text-primary)] font-semibold mb-4">User Satisfaction</h3>
-            <p class="text-[var(--text-secondary)] leading-relaxed mb-3">Post-conversation rating scores</p>
+          <div class="bg-bg-tertiary rounded-md p-6 shadow-md transition-all duration-base hover:-translate-y-0.5 hover:shadow-lg">
+            <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">User Satisfaction</h3>
+            <p class="text-[var(--text-secondary)] leading-relaxed mb-3 text-[15px]">Post-conversation rating scores</p>
             <p class="text-3xl font-bold text-[var(--brand-green)]">4.5+</p>
             <p class="text-sm text-[var(--text-tertiary)]">Out of 5 stars</p>
           </div>
@@ -178,7 +179,7 @@ const locale = 'en';
 
     <ContentSection background="secondary">
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl lg:text-4xl mb-8 text-[var(--text-primary)] font-bold">Advanced Integration</h2>
+        <SectionTitle title="Advanced Integration" />
         <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-6">Unlock powerful features with the JavaScript API:</p>
 
         <div class="space-y-8">
@@ -241,7 +242,7 @@ Minimal.registerAction('download_pdf', function(data) {
 
     <ContentSection>
       <div class="max-w-3xl mx-auto text-center">
-        <h2 class="text-3xl lg:text-4xl mb-8 text-[var(--text-primary)] font-bold">Need More Help?</h2>
+        <SectionTitle title="Need More Help?" centered={true} />
         <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-6">Our documentation covers everything from basic setup to advanced integrations.</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <Button variant="primary" size="lg" href="/help">

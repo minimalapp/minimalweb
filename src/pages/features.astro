@@ -4,11 +4,11 @@ import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 import PageHero from '@/components/PageHero.astro';
 import ContentSection from '@/components/ContentSection.astro';
+import SectionTitle from '@/components/SectionTitle.astro';
 import FeatureCard from '@/components/FeatureCard.astro';
 import CTASection from '@/components/CTASection.astro';
 import Button from '@/components/Button.astro';
 import InfoBox from '@/components/InfoBox.astro';
-import MetricCard from '@/components/MetricCard.astro';
 import Icon from '@/components/Icon.astro';
 
 const locale = 'en';
@@ -27,31 +27,19 @@ const description = 'Discover all the functionalities that will transform your w
 
     <!-- Main Features -->
     <ContentSection>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <FeatureCard icon="cpu-chip" title="Advanced Conversational AI">
-          <p class="text-[var(--text-tertiary)] leading-relaxed text-[15px]">State-of-the-art natural language processing that understands context and user intentions.</p>
-        </FeatureCard>
-        <FeatureCard icon="paint-brush" title="Brand Preservation">
-          <p class="text-[var(--text-tertiary)] leading-relaxed text-[15px]">The conversational interface automatically adapts to your website's colors, fonts, and visual style.</p>
-        </FeatureCard>
-        <FeatureCard icon="bolt" title="1-Line Integration">
-          <p class="text-[var(--text-tertiary)] leading-relaxed text-[15px]">Ultra-fast implementation that requires only adding one line of JavaScript code to your website.</p>
-        </FeatureCard>
-        <FeatureCard icon="chart-bar" title="Intelligent Analytics">
-          <p class="text-[var(--text-tertiary)] leading-relaxed text-[15px]">Get deep insights into your users' real intentions and behavior patterns.</p>
-        </FeatureCard>
-        <FeatureCard icon="arrow-path" title="Automatic Synchronization">
-          <p class="text-[var(--text-tertiary)] leading-relaxed text-[15px]">Your website content syncs automatically, allowing AI to always have updated information.</p>
-        </FeatureCard>
-        <FeatureCard icon="globe-alt" title="Multi-language Support">
-          <p class="text-[var(--text-tertiary)] leading-relaxed text-[15px]">Conversational interface that automatically adapts to your website's language.</p>
-        </FeatureCard>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <FeatureCard icon="cpu-chip" title="Advanced Conversational AI" description="State-of-the-art natural language processing that understands context and user intentions." />
+        <FeatureCard icon="paint-brush" title="Brand Preservation" description="The conversational interface automatically adapts to your website's colors, fonts, and visual style." />
+        <FeatureCard icon="bolt" title="1-Line Integration" description="Ultra-fast implementation that requires only adding one line of JavaScript code to your website." />
+        <FeatureCard icon="chart-bar" title="Intelligent Analytics" description="Get deep insights into your users' real intentions and behavior patterns." />
+        <FeatureCard icon="arrow-path" title="Automatic Synchronization" description="Your website content syncs automatically, allowing AI to always have updated information." />
+        <FeatureCard icon="globe-alt" title="Multi-language Support" description="Conversational interface that automatically adapts to your website's language." />
       </div>
     </ContentSection>
 
     <!-- Technical Features -->
     <ContentSection background="secondary">
-      <h2 class="text-3xl lg:text-4xl mb-4 text-center text-[var(--text-primary)] font-bold">Technical Features</h2>
+      <SectionTitle title="Technical Features" centered={true} />
       <p class="text-center text-xl text-[var(--text-secondary)] mb-6 max-w-4xl mx-auto leading-relaxed">Built on cutting-edge technology to deliver exceptional performance and reliability.</p>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -87,7 +75,7 @@ const description = 'Discover all the functionalities that will transform your w
 
     <!-- Analytics Capabilities -->
     <ContentSection>
-      <h2 class="text-3xl lg:text-4xl mb-4 text-center text-[var(--text-primary)] font-bold">Analytics Capabilities</h2>
+      <SectionTitle title="Analytics Capabilities" centered={true} />
       <p class="text-center text-xl text-[var(--text-secondary)] mb-8 max-w-4xl mx-auto leading-relaxed">Gain deep insights into user behavior and make data-driven decisions.</p>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -96,45 +84,42 @@ const description = 'Discover all the functionalities that will transform your w
           title="Engagement Metrics"
           description="Track how users interact with your conversational interface in real-time. Monitor conversation rates, message volumes, user satisfaction scores, and engagement patterns to understand what resonates with your audience."
           variant="tertiary"
-        >
-          <div class="flex flex-col gap-3 mt-6">
-            <MetricCard label="Conversation Rate" description="Percentage of visitors who engage" />
-            <MetricCard label="Average Session Length" description="Time spent in conversations" />
-            <MetricCard label="Message Volume" description="Total interactions over time" />
-          </div>
-        </InfoBox>
+          items={[
+            'Conversation Rate: Percentage of visitors who engage',
+            'Average Session Length: Time spent in conversations',
+            'Message Volume: Total interactions over time'
+          ]}
+        />
 
         <InfoBox
           icon="user-group"
           title="User Insights"
           description="Understand your users like never before. See what questions they ask, what problems they're trying to solve, and what information they're seeking. Identify trends, common pain points, and opportunities for improvement."
           variant="tertiary"
-        >
-          <div class="flex flex-col gap-3 mt-6">
-            <MetricCard label="Top Questions" description="Most frequently asked queries" />
-            <MetricCard label="User Intent" description="What users are trying to achieve" />
-            <MetricCard label="Behavior Patterns" description="Navigation and interaction flows" />
-          </div>
-        </InfoBox>
+          items={[
+            'Top Questions: Most frequently asked queries',
+            'User Intent: What users are trying to achieve',
+            'Behavior Patterns: Navigation and interaction flows'
+          ]}
+        />
 
         <InfoBox
           icon="clipboard-document-list"
           title="Actionable Reports"
           description="Transform raw data into actionable insights with comprehensive reports. Export data, create custom dashboards, and integrate with your existing analytics tools to get a complete picture of your website's performance."
           variant="tertiary"
-        >
-          <div class="flex flex-col gap-3 mt-6">
-            <MetricCard label="Custom Dashboards" description="Visualize data your way" />
-            <MetricCard label="Automated Reports" description="Scheduled insights delivery" />
-            <MetricCard label="Data Export" description="CSV, JSON, and API access" />
-          </div>
-        </InfoBox>
+          items={[
+            'Custom Dashboards: Visualize data your way',
+            'Automated Reports: Scheduled insights delivery',
+            'Data Export: CSV, JSON, and API access'
+          ]}
+        />
       </div>
     </ContentSection>
 
     <!-- Security and Reliability -->
     <ContentSection background="secondary">
-      <h2 class="text-3xl lg:text-4xl mb-4 text-center text-[var(--text-primary)] font-bold">Security and Reliability</h2>
+      <SectionTitle title="Security and Reliability" centered={true} />
       <p class="text-center text-xl text-[var(--text-secondary)] mb-8 max-w-4xl mx-auto leading-relaxed">Enterprise-grade security and infrastructure you can trust.</p>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -181,51 +166,54 @@ const description = 'Discover all the functionalities that will transform your w
 
     <!-- User Experience -->
     <ContentSection>
-      <h2 class="text-3xl lg:text-4xl mb-4 text-center text-[var(--text-primary)] font-bold">User Experience</h2>
+      <SectionTitle title="User Experience" centered={true} />
       <p class="text-center text-xl text-[var(--text-secondary)] mb-8 max-w-4xl mx-auto leading-relaxed">Designed with both your users and your team in mind.</p>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-[var(--bg-tertiary)] rounded-xl p-6 lg:p-8 shadow-sm border border-black/[0.04]">
-          <div class="text-4xl mb-4">✨</div>
-          <h3 class="text-[var(--text-primary)] text-2xl mb-4 font-semibold">Intuitive Interface</h3>
-          <p class="text-[var(--text-secondary)] text-lg leading-relaxed mb-6">Our conversational interface is designed to feel natural and effortless. Users don't need training or instructions - they just start typing and get immediate, helpful responses. The clean, modern design ensures the focus stays on the conversation.</p>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-[var(--bg-primary)] text-[var(--text-secondary)] px-3 py-2 rounded-full text-sm border border-[var(--border-primary)]">Natural language input</span>
-            <span class="bg-[var(--bg-primary)] text-[var(--text-secondary)] px-3 py-2 rounded-full text-sm border border-[var(--border-primary)]">Smart suggestions</span>
-            <span class="bg-[var(--bg-primary)] text-[var(--text-secondary)] px-3 py-2 rounded-full text-sm border border-[var(--border-primary)]">Quick replies</span>
-            <span class="bg-[var(--bg-primary)] text-[var(--text-secondary)] px-3 py-2 rounded-full text-sm border border-[var(--border-primary)]">Rich media support</span>
-            <span class="bg-[var(--bg-primary)] text-[var(--text-secondary)] px-3 py-2 rounded-full text-sm border border-[var(--border-primary)]">Mobile-optimized</span>
-            <span class="bg-[var(--bg-primary)] text-[var(--text-secondary)] px-3 py-2 rounded-full text-sm border border-[var(--border-primary)]">Accessibility compliant</span>
-          </div>
-        </div>
+        <InfoBox
+          icon="sparkles"
+          title="Intuitive Interface"
+          description="Our conversational interface is designed to feel natural and effortless. Users don't need training or instructions - they just start typing and get immediate, helpful responses. The clean, modern design ensures the focus stays on the conversation."
+          variant="tertiary"
+          items={[
+            'Natural language input',
+            'Smart suggestions',
+            'Quick replies',
+            'Rich media support',
+            'Mobile-optimized',
+            'Accessibility compliant'
+          ]}
+        />
 
-        <div class="bg-[var(--bg-tertiary)] rounded-xl p-6 lg:p-8 shadow-sm border border-black/[0.04]">
-          <div class="text-4xl mb-4">🎨</div>
-          <h3 class="text-[var(--text-primary)] text-2xl mb-4 font-semibold">Visual Customization</h3>
-          <p class="text-[var(--text-secondary)] text-lg leading-relaxed mb-6">Make Minimal truly yours with extensive customization options. Match your brand perfectly by adjusting colors, fonts, spacing, position, and behavior. All changes can be made through our intuitive dashboard - no coding required.</p>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-[var(--bg-primary)] text-[var(--text-secondary)] px-3 py-2 rounded-full text-sm border border-[var(--border-primary)]">Custom colors</span>
-            <span class="bg-[var(--bg-primary)] text-[var(--text-secondary)] px-3 py-2 rounded-full text-sm border border-[var(--border-primary)]">Brand fonts</span>
-            <span class="bg-[var(--bg-primary)] text-[var(--text-secondary)] px-3 py-2 rounded-full text-sm border border-[var(--border-primary)]">Logo integration</span>
-            <span class="bg-[var(--bg-primary)] text-[var(--text-secondary)] px-3 py-2 rounded-full text-sm border border-[var(--border-primary)]">Position control</span>
-            <span class="bg-[var(--bg-primary)] text-[var(--text-secondary)] px-3 py-2 rounded-full text-sm border border-[var(--border-primary)]">Theme modes</span>
-            <span class="bg-[var(--bg-primary)] text-[var(--text-secondary)] px-3 py-2 rounded-full text-sm border border-[var(--border-primary)]">Animation settings</span>
-          </div>
-        </div>
+        <InfoBox
+          icon="paint-brush"
+          title="Visual Customization"
+          description="Make Minimal truly yours with extensive customization options. Match your brand perfectly by adjusting colors, fonts, spacing, position, and behavior. All changes can be made through our intuitive dashboard - no coding required."
+          variant="tertiary"
+          items={[
+            'Custom colors',
+            'Brand fonts',
+            'Logo integration',
+            'Position control',
+            'Theme modes',
+            'Animation settings'
+          ]}
+        />
 
-        <div class="bg-[var(--bg-tertiary)] rounded-xl p-6 lg:p-8 shadow-sm border border-black/[0.04]">
-          <div class="text-4xl mb-4">🚀</div>
-          <h3 class="text-[var(--text-primary)] text-2xl mb-4 font-semibold">Advanced Features</h3>
-          <p class="text-[var(--text-secondary)] text-lg leading-relaxed mb-6">Power users and developers can take advantage of advanced features including JavaScript API, webhooks, custom actions, and programmatic control. Build sophisticated workflows and integrate deeply with your existing systems.</p>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-[var(--bg-primary)] text-[var(--text-secondary)] px-3 py-2 rounded-full text-sm border border-[var(--border-primary)]">JavaScript API</span>
-            <span class="bg-[var(--bg-primary)] text-[var(--text-secondary)] px-3 py-2 rounded-full text-sm border border-[var(--border-primary)]">Webhook integration</span>
-            <span class="bg-[var(--bg-primary)] text-[var(--text-secondary)] px-3 py-2 rounded-full text-sm border border-[var(--border-primary)]">Custom actions</span>
-            <span class="bg-[var(--bg-primary)] text-[var(--text-secondary)] px-3 py-2 rounded-full text-sm border border-[var(--border-primary)]">Event tracking</span>
-            <span class="bg-[var(--bg-primary)] text-[var(--text-secondary)] px-3 py-2 rounded-full text-sm border border-[var(--border-primary)]">A/B testing</span>
-            <span class="bg-[var(--bg-primary)] text-[var(--text-secondary)] px-3 py-2 rounded-full text-sm border border-[var(--border-primary)]">Developer tools</span>
-          </div>
-        </div>
+        <InfoBox
+          icon="rocket-launch"
+          title="Advanced Features"
+          description="Power users and developers can take advantage of advanced features including JavaScript API, webhooks, custom actions, and programmatic control. Build sophisticated workflows and integrate deeply with your existing systems."
+          variant="tertiary"
+          items={[
+            'JavaScript API',
+            'Webhook integration',
+            'Custom actions',
+            'Event tracking',
+            'A/B testing',
+            'Developer tools'
+          ]}
+        />
       </div>
     </ContentSection>
 

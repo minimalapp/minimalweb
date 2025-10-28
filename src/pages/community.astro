@@ -4,6 +4,7 @@ import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 import PageHero from '@/components/PageHero.astro';
 import ContentSection from '@/components/ContentSection.astro';
+import SectionTitle from '@/components/SectionTitle.astro';
 import FeatureCard from '@/components/FeatureCard.astro';
 import TeamCard from '@/components/TeamCard.astro';
 import CTASection from '@/components/CTASection.astro';
@@ -32,7 +33,7 @@ const locale = 'en';
         <StatCard number="1M+" label="Conversations Daily" color="var(--brand-green)" />
       </div>
 
-      <h2 class="text-3xl lg:text-4xl mb-8 text-center text-[var(--text-primary)] font-bold">Connect With Us</h2>
+      <SectionTitle title="Connect With Us" centered={true} />
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
         <FeatureCard icon="chat-bubble" title="Discord Server" description="Join our active Discord community for real-time help, discussions, and announcements. 5,000+ members online." />
         <FeatureCard icon="twitter" title="Twitter / X" description="Follow us for product updates, tips, and industry insights. Join the conversation with #MinimalChat." />
@@ -44,7 +45,7 @@ const locale = 'en';
     </ContentSection>
 
     <ContentSection background="secondary">
-      <h2 class="text-3xl lg:text-4xl mb-8 text-center text-[var(--text-primary)] font-bold">Community Guidelines</h2>
+      <SectionTitle title="Community Guidelines" centered={true} />
       <div class="max-w-3xl mx-auto mt-6 space-y-4">
         <ValueCard
           title="🤝 Be Respectful"
@@ -70,7 +71,7 @@ const locale = 'en';
     </ContentSection>
 
     <ContentSection>
-      <h2 class="text-3xl lg:text-4xl mb-8 text-center text-[var(--text-primary)] font-bold">Featured Community Members</h2>
+      <SectionTitle title="Featured Community Members" centered={true} />
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
         <TeamCard
           avatar="SK"
@@ -94,7 +95,7 @@ const locale = 'en';
     </ContentSection>
 
     <ContentSection background="secondary">
-      <h2 class="text-3xl lg:text-4xl mb-8 text-center text-[var(--text-primary)] font-bold">Upcoming Events</h2>
+      <SectionTitle title="Upcoming Events" centered={true} />
       <div class="max-w-4xl mx-auto space-y-6 lg:space-y-8">
         <EventCard
           date="March 15, 2025 • 2:00 PM EST"
@@ -127,7 +128,7 @@ const locale = 'en';
     </ContentSection>
 
     <ContentSection>
-      <h2 class="text-3xl lg:text-4xl mb-8 text-center text-[var(--text-primary)] font-bold">Success Stories</h2>
+      <SectionTitle title="Success Stories" centered={true} />
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
         <TestimonialCard
           avatar="TC"

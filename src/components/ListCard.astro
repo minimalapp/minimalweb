@@ -46,45 +46,46 @@ const {
   className = ''
 } = Astro.props;
 
-// Background variants based on homepage pattern
+// Match homepage UseCases pattern exactly
 const bgClass = {
-  'primary': 'bg-[var(--bg-primary)]',
-  'tertiary': 'bg-[var(--bg-tertiary)]',
-  'secondary': 'bg-[var(--bg-secondary)]'
+  'primary': 'bg-bg-primary',
+  'tertiary': 'bg-bg-tertiary',
+  'secondary': 'bg-bg-secondary'
 }[variant];
 
 // Bullet character and color based on type
 const bulletConfig = {
-  'checkmark': { char: '✓', color: 'before:text-[var(--brand-green)]' },
-  'bullet': { char: '•', color: 'before:text-[var(--brand-green)]' },
+  'checkmark': { char: '✓', color: 'before:text-brand-green' },
+  'bullet': { char: '•', color: 'before:text-brand-green' },
   'x': { char: '✗', color: 'before:text-red-500' }
 };
 
 const bullet = bulletConfig[bulletType];
 ---
 
-<div class={`${bgClass} p-6 lg:p-8 rounded-xl border border-[var(--border-primary)] shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg ${className}`}>
+<div class={`${bgClass} p-6 rounded-md shadow-md transition-all duration-base hover:-translate-y-0.5 hover:shadow-lg ${className}`}>
   {icon && (
     <div class="mb-4 text-brand-purple-primary">
       <Icon name={icon} size="xl" />
     </div>
   )}
 
-  <h3 class="text-xl lg:text-2xl mb-3 text-[var(--text-primary)] font-semibold">
+  <h3 class="text-2xl mb-3 text-[var(--text-primary)] font-semibold">
     {title}
   </h3>
 
   {description && (
-    <p class="text-[var(--text-secondary)] leading-relaxed mb-4">
+    <p class="text-[var(--text-secondary)] leading-relaxed mb-4 text-[15px]">
       {description}
     </p>
   )}
 
   {items.length > 0 && (
-    <ul class="list-none p-0 m-0 space-y-2">
+    <ul class="list-none space-y-2">
       {items.map(item => (
-        <li class={`text-[var(--text-secondary)] text-base leading-relaxed pl-6 relative ${bullet.color} before:content-['${bullet.char}'] before:absolute before:left-0 before:font-bold`}>
-          {item}
+        <li class="flex items-start gap-2 text-[15px] text-[var(--text-tertiary)] leading-relaxed">
+          <span class={`${bullet.color.replace('before:', '')} font-bold flex-shrink-0`}>{bullet.char}</span>
+          <span>{item}</span>
         </li>
       ))}
     </ul>

@@ -4,6 +4,7 @@ import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 import PageHero from '@/components/PageHero.astro';
 import ContentSection from '@/components/ContentSection.astro';
+import SectionTitle from '@/components/SectionTitle.astro';
 import FeatureCard from '@/components/FeatureCard.astro';
 import TeamCard from '@/components/TeamCard.astro';
 import ValueCard from '@/components/ValueCard.astro';
@@ -25,7 +26,7 @@ const description = 'Transforming how websites interact with their users through
     <ContentSection maxWidth="md">
       <div class="flex flex-col gap-6 lg:gap-8">
         <div>
-                <h2 class="text-3xl lg:text-4xl mb-6 text-[var(--text-primary)] font-bold">Our Story</h2>
+                <SectionTitle title="Our Story" spacing="normal" />
                 <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-6">Minimal was born from a simple yet revolutionary vision: to transform traditional static websites into intelligent conversational experiences that maintain brand identity while offering completely new interaction.</p>
           <div class="mt-8 pl-6 border-l-4 border-[var(--brand-purple-primary)]">
           <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4 mt-8">The Problem We Solve</h3>
@@ -39,12 +40,12 @@ const description = 'Transforming how websites interact with their users through
         </div>
 
         <div>
-      <h2 class="text-3xl lg:text-4xl mb-6 text-[var(--text-primary)] font-bold">Our Mission</h2>
+      <SectionTitle title="Our Mission" spacing="normal" />
       <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-6">Democratizing access to intelligent conversational web experiences, allowing any website to transform into a modern and comprehensive interface without losing its brand identity.</p>
         </div>
 
         <div>
-          <h2 class="text-3xl lg:text-4xl mb-6 text-[var(--text-primary)] font-bold">Our Vision</h2>
+          <SectionTitle title="Our Vision" spacing="normal" />
           <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-6">We envision a future where every website is an intelligent conversational experience, where users can interact naturally with content and where companies gain deep insights into their customers' real needs.</p>
 
           <div class="mt-8 pl-6 border-l-4 border-[var(--brand-purple-primary)]">
@@ -54,7 +55,7 @@ const description = 'Transforming how websites interact with their users through
         </div>
 
         <div>
-      <h2 class="text-3xl lg:text-4xl mb-6 text-[var(--text-primary)] font-bold">Our Values</h2>
+      <SectionTitle title="Our Values" spacing="normal" />
       <div class="max-w-3xl mx-auto mt-6 space-y-4">
             <ValueCard
               title="Simplicity First"
@@ -78,7 +79,7 @@ const description = 'Transforming how websites interact with their users through
     </ContentSection>
 
     <ContentSection background="secondary" maxWidth="xl">
-      <h2 class="text-3xl lg:text-4xl mb-8 text-center text-[var(--text-primary)] font-bold">Why Choose Us?</h2>
+      <SectionTitle title="Why Choose Us?" centered={true} />
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
         <FeatureCard
           title="Advanced Technology"
@@ -100,7 +101,7 @@ const description = 'Transforming how websites interact with their users through
     </ContentSection>
 
     <ContentSection maxWidth="md">
-      <h2 class="text-3xl lg:text-4xl mb-8 text-center text-[var(--text-primary)] font-bold">Our Team</h2>
+      <SectionTitle title="Our Team" centered={true} />
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
         <TeamCard
           avatar="PW"

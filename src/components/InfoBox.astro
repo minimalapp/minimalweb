@@ -34,14 +34,15 @@ const {
   className = ''
 } = Astro.props;
 
+// Match homepage UseCases pattern - no borders, rounded-md, shadow-md
 const bgClass = {
-  'primary': 'bg-[var(--bg-primary)] border border-[var(--border-primary)]',
-  'tertiary': 'bg-[var(--bg-tertiary)] border border-[var(--border-subtle)]',
-  'secondary': 'bg-[var(--bg-secondary)] border border-[var(--border-primary)]'
+  'primary': 'bg-bg-primary',
+  'tertiary': 'bg-bg-tertiary',
+  'secondary': 'bg-bg-secondary'
 }[variant];
 ---
 
-<div class={`${bgClass} rounded-xl p-6 lg:p-8 shadow-sm ${className}`}>
+<div class={`${bgClass} rounded-md p-6 shadow-md transition-all duration-base hover:-translate-y-0.5 hover:shadow-lg ${className}`}>
   {icon && (
     <div class="mb-4 text-brand-purple-primary">
       <Icon name={icon} size="xl" />
@@ -52,14 +53,14 @@ const bgClass = {
     {title}
   </h3>
 
-  <p class="text-[var(--text-secondary)] text-lg leading-relaxed mb-6">
+  <p class="text-[var(--text-secondary)] text-[15px] leading-relaxed mb-6">
     {description}
   </p>
 
   {items.length > 0 && (
-    <ul class="list-none p-0 m-0 space-y-3">
+    <ul class="list-none p-0 m-0">
       {items.map(item => (
-        <li class="text-[var(--text-secondary)] text-base leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold">
+        <li class="text-sm text-text-tertiary mb-1 pl-3 relative before:content-['✓'] before:absolute before:left-0 before:text-brand-green before:font-bold">
           {item}
         </li>
       ))}

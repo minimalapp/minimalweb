@@ -4,6 +4,7 @@ import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 import PageHero from '@/components/PageHero.astro';
 import ContentSection from '@/components/ContentSection.astro';
+import SectionTitle from '@/components/SectionTitle.astro';
 import FeatureCard from '@/components/FeatureCard.astro';
 import CTASection from '@/components/CTASection.astro';
 import Button from '@/components/Button.astro';
@@ -108,7 +109,7 @@ const hiringProcessSteps = [
 
     <ContentSection>
       <div class="max-w-4xl mx-auto text-center mb-16">
-      <h2 class="text-3xl lg:text-4xl mb-8 text-center text-[var(--text-primary)] font-bold">Why Work at Minimal?</h2>
+      <SectionTitle title="Why Work at Minimal?" centered={true} />
       <p class="text-center text-xl text-[var(--text-secondary)] mb-6 max-w-4xl mx-auto leading-relaxed">We're building the future of web interaction. Join a passionate team working on cutting-edge AI technology that's used by thousands of websites worldwide.</p>
       </div>
 
@@ -124,7 +125,7 @@ const hiringProcessSteps = [
 
     <ContentSection background="secondary">
       <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl lg:text-4xl mb-8 text-center text-[var(--text-primary)] font-bold">Our Values</h2>
+      <SectionTitle title="Our Values" centered={true} />
       <div class="max-w-3xl mx-auto mt-6 space-y-4">
           <ValueCard
             title="🎯 User-Centric Innovation"
@@ -147,7 +148,7 @@ const hiringProcessSteps = [
     </ContentSection>
 
     <ContentSection>
-      <h2 class="text-3xl lg:text-4xl mb-8 text-center text-[var(--text-primary)] font-bold">Open Positions</h2>
+      <SectionTitle title="Open Positions" centered={true} />
       <div class="max-w-4xl mx-auto space-y-6 lg:space-y-8">
         {jobs.map(job => (
           <JobCard
@@ -165,7 +166,7 @@ const hiringProcessSteps = [
     </ContentSection>
 
     <ContentSection background="secondary">
-      <h2 class="text-3xl lg:text-4xl mb-8 text-center text-[var(--text-primary)] font-bold">Hiring Process</h2>
+      <SectionTitle title="Hiring Process" centered={true} />
       <StepSection steps={hiringProcessSteps} />
     </ContentSection>
 

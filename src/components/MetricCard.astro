@@ -28,8 +28,8 @@ const {
 const bgClass = variant === 'primary' ? 'bg-[var(--bg-primary)]' : 'bg-[var(--bg-secondary)]';
 ---
 
-<div class={`${bgClass} p-4 rounded-lg border border-[var(--border-primary)] ${className}`}>
-  <span class="block text-[var(--text-primary)] font-semibold mb-1 text-base">
+<div class={`${bgClass} p-6 rounded-md shadow-md ${className}`}>
+  <span class="block text-[var(--text-primary)] font-semibold mb-1 text-[15px]">
     {label}
   </span>
   <span class="text-[var(--text-tertiary)] text-sm">

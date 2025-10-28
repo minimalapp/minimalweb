@@ -20,7 +20,7 @@ const {
 } = Astro.props;
 ---
 
-<div class={`bg-[var(--bg-tertiary)] rounded-xl p-6 lg:p-8 shadow-sm border border-black/[0.04] ${className}`}>
+<div class={`bg-bg-tertiary rounded-md p-6 shadow-md ${className}`}>
   <div class="flex items-center gap-4 mb-4">
     <div class={`w-14 h-14 rounded-full bg-gradient-to-br ${avatarColor} text-white flex items-center justify-center text-xl font-bold flex-shrink-0`}>
       {avatar}
@@ -35,7 +35,7 @@ const {
     </div>
   </div>
 
-  <p class="text-[var(--text-secondary)] leading-relaxed italic mb-4 text-base">
+  <p class="text-[var(--text-secondary)] leading-relaxed italic mb-4 text-[15px]">
     "{quote}"
   </p>
 

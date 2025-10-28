@@ -4,10 +4,13 @@ import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 import PageHero from '@/components/PageHero.astro';
 import ContentSection from '@/components/ContentSection.astro';
+import SectionTitle from '@/components/SectionTitle.astro';
 import CodeBlock from '@/components/CodeBlock.astro';
 import FeatureCard from '@/components/FeatureCard.astro';
 import Button from '@/components/Button.astro';
 import ListCard from '@/components/ListCard.astro';
+import CTASection from '@/components/CTASection.astro';
+import Icon from '@/components/Icon.astro';
 
 const locale = 'en';
 ---
@@ -22,7 +25,7 @@ const locale = 'en';
     />
 
     <ContentSection>
-      <h2 class="text-3xl lg:text-4xl mb-8 text-center text-[var(--text-primary)] font-bold">Supported Platforms</h2>
+      <SectionTitle title="Supported Platforms" centered={true} />
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
         <FeatureCard icon="react" title="React" description="Seamless integration with React applications using our official component library." />
         <FeatureCard icon="angular" title="Angular" description="Native Angular module with TypeScript support and dependency injection." />
@@ -35,7 +38,7 @@ const locale = 'en';
 
     <ContentSection background="secondary">
       <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl lg:text-4xl mb-8 text-center text-[var(--text-primary)] font-bold">Universal Installation</h2>
+      <SectionTitle title="Universal Installation" centered={true} />
       <p class="text-center text-xl text-[var(--text-secondary)] mb-6 max-w-4xl mx-auto leading-relaxed">Works with any website regardless of tech stack:</p>
 
       <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">HTML Websites</h3>
@@ -92,7 +95,7 @@ app.use(MinimalPlugin, { siteId: 'your-site-id' });`} />
 
     <ContentSection>
       <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl lg:text-4xl mb-8 text-center text-[var(--text-primary)] font-bold">Advanced Configuration</h2>
+      <SectionTitle title="Advanced Configuration" centered={true} />
 
       <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">Custom Triggers</h3>
       <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Open widget based on user actions:</p>
@@ -154,73 +157,58 @@ Minimal.identify({
     </ContentSection>
 
     <ContentSection background="secondary">
-      <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl lg:text-4xl mb-8 text-center text-[var(--text-primary)] font-bold">Third-Party Integrations</h2>
+      <SectionTitle title="Third-Party Integrations" centered={true} />
       <p class="text-center text-xl text-[var(--text-secondary)] mb-6 max-w-4xl mx-auto leading-relaxed">Connect Minimal with your favorite tools:</p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-xl p-6">
-          <h3 class="text-xl text-[var(--text-primary)] font-semibold mb-4">📊 Analytics</h3>
-          <ul class="list-disc list-inside space-y-2 my-4">
-              <li>• Google Analytics</li>
-              <li>• Mixpanel</li>
-              <li>• Segment</li>
-              <li>• Amplitude</li>
-            </ul>
-          </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <FeatureCard icon="chart-bar" title="Google Analytics" description="Track user behavior and measure the impact of your conversational interface." />
+        <FeatureCard icon="chart-bar" title="Mixpanel" description="Product analytics to understand user engagement and conversion flows." />
+        <FeatureCard icon="chart-bar" title="Segment" description="Centralize your data collection and route it to multiple analytics tools." />
+        <FeatureCard icon="chart-bar" title="Amplitude" description="Behavioral analytics for understanding user journeys and retention." />
 
-          <div class="bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-xl p-6">
-          <h3 class="text-xl text-[var(--text-primary)] font-semibold mb-4">💼 CRM</h3>
-          <ul class="list-disc list-inside space-y-2 my-4">
-              <li>• Salesforce</li>
-              <li>• HubSpot</li>
-              <li>• Pipedrive</li>
-              <li>• Zoho CRM</li>
-            </ul>
-          </div>
+        <FeatureCard icon="briefcase" title="Salesforce" description="Sync conversation data and leads directly to your Salesforce CRM." />
+        <FeatureCard icon="briefcase" title="HubSpot" description="Integrate conversations with HubSpot's marketing and sales platform." />
+        <FeatureCard icon="briefcase" title="Pipedrive" description="Send qualified leads from conversations straight to your sales pipeline." />
+        <FeatureCard icon="briefcase" title="Zoho CRM" description="Connect customer interactions with Zoho's customer relationship tools." />
 
-          <div class="bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-xl p-6">
-          <h3 class="text-xl text-[var(--text-primary)] font-semibold mb-4">📧 Email Marketing</h3>
-          <ul class="list-disc list-inside space-y-2 my-4">
-              <li>• Mailchimp</li>
-              <li>• SendGrid</li>
-              <li>• ConvertKit</li>
-              <li>• ActiveCampaign</li>
-            </ul>
-          </div>
+        <FeatureCard icon="envelope" title="Mailchimp" description="Add conversation participants to email campaigns and marketing lists." />
+        <FeatureCard icon="envelope" title="SendGrid" description="Trigger transactional emails based on conversation events." />
+        <FeatureCard icon="envelope" title="ConvertKit" description="Build your creator email list from website conversations." />
+        <FeatureCard icon="envelope" title="ActiveCampaign" description="Automate email sequences based on conversation insights." />
 
-          <div class="bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-xl p-6">
-          <h3 class="text-xl text-[var(--text-primary)] font-semibold mb-4">💬 Support</h3>
-          <ul class="list-disc list-inside space-y-2 my-4">
-              <li>• Zendesk</li>
-              <li>• Intercom</li>
-              <li>• Freshdesk</li>
-              <li>• Help Scout</li>
-            </ul>
-          </div>
-        </div>
+        <FeatureCard icon="chat-bubble-left-right" title="Zendesk" description="Create support tickets automatically from conversation requests." />
+        <FeatureCard icon="chat-bubble-left-right" title="Intercom" description="Seamlessly hand off conversations to your support team." />
+        <FeatureCard icon="chat-bubble-left-right" title="Freshdesk" description="Route complex queries to your customer support system." />
+        <FeatureCard icon="chat-bubble-left-right" title="Help Scout" description="Integrate conversations with Help Scout's support platform." />
+      </div>
 
-        <div class="mt-8 bg-gradient-to-r from-purple-500/10 to-green-500/10 border border-[var(--brand-purple-primary)] rounded-xl p-6">
-        <h3 class="text-xl text-[var(--text-primary)] font-semibold mb-4">🔌 Zapier Integration</h3>
-        <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Connect Minimal to 5,000+ apps using Zapier. Trigger actions, sync data, and automate workflows without writing code.</p>
+      <div class="mt-8 bg-gradient-to-r from-purple-500/10 to-green-500/10 rounded-md p-6 shadow-md border-l-4 border-brand-purple-primary max-w-4xl mx-auto">
+        <div class="flex items-start gap-4">
+          <div class="text-brand-purple-primary flex-shrink-0">
+            <Icon name="bolt" size="xl" />
+          </div>
+          <div>
+            <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-3">Zapier Integration</h3>
+            <p class="text-[15px] text-[var(--text-secondary)] leading-relaxed">Connect Minimal to 5,000+ apps using Zapier. Trigger actions, sync data, and automate workflows without writing code.</p>
+          </div>
         </div>
       </div>
     </ContentSection>
 
-    <ContentSection>
-      <div class="max-w-3xl mx-auto text-center">
-      <h2 class="text-3xl lg:text-4xl mb-8 text-center text-[var(--text-primary)] font-bold">Need Integration Help?</h2>
-      <p class="text-center text-xl text-[var(--text-secondary)] mb-6 max-w-4xl mx-auto leading-relaxed">Our team can help with custom integrations and technical setup.</p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button variant="primary" size="lg" href="/help">
-            View Documentation
-          </Button>
-          <Button variant="secondary" size="lg" href="/contact">
-            Contact Support
-          </Button>
-        </div>
+    <CTASection
+      title="Need Integration Help?"
+      description="Our team can help with custom integrations and technical setup."
+      background="secondary"
+    >
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button variant="primary" size="lg" href="/help">
+          View Documentation
+        </Button>
+        <Button variant="secondary" size="lg" href="/contact">
+          Contact Support
+        </Button>
       </div>
-    </ContentSection>
+    </CTASection>
   </main>
 
   <Footer locale={locale} />

@@ -34,12 +34,13 @@ const {
   className = ''
 } = Astro.props;
 
+// Match homepage UseCases pattern exactly
 const bgClass = variant === 'primary' ? 'bg-bg-primary' : 'bg-bg-tertiary';
 const textAlignClass = centered ? 'text-center' : '';
 const iconJustifyClass = centered ? 'justify-center' : 'justify-start';
 ---
 
-<div class={`${bgClass} p-4 rounded-md border border-border-subtle shadow-sm transition-all duration-base hover:-translate-y-1 hover:shadow-lg ${textAlignClass} ${className}`}>
+<div class={`${bgClass} p-6 rounded-md shadow-md transition-all duration-base hover:-translate-y-0.5 hover:shadow-lg ${textAlignClass} ${className}`}>
   <div class={`mb-2 flex ${iconJustifyClass}`}>
     {iconType === 'emoji' ? (
       <span class="text-4xl lg:text-5xl">{icon}</span>

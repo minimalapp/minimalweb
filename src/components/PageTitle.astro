@@ -1,0 +1,55 @@
+---
+/**
+ * PageTitle Component
+ *
+ * Standardized H1 component for page hero sections.
+ * Designed with more top margin for breathing room and less bottom margin
+ * for closer visual connection to subtitle/description.
+ *
+ * Usage:
+ * <PageTitle title="About Us" />
+ * <PageTitle title="Contact" size="lg" />
+ */
+
+interface Props {
+  title: string;
+  size?: 'md' | 'lg' | 'xl';
+  centered?: boolean;
+  className?: string;
+}
+
+const {
+  title,
+  size = 'xl',
+  centered = true,
+  className = ''
+} = Astro.props;
+
+// Size mappings optimized for hero titles
+// Responsive scaling: mobile -> tablet -> desktop
+const sizeClasses = {
+  md: 'text-3xl sm:text-4xl lg:text-5xl',
+  lg: 'text-4xl sm:text-5xl lg:text-6xl',
+  xl: 'text-5xl sm:text-6xl lg:text-7xl'
+};
+
+// Standardized spacing:
+// - More top margin (mt-4 md:mt-6) for breathing room from header
+// - Less bottom margin (mb-3 md:mb-4) for tight connection to subtitle
+const spacingClasses = 'mt-4 md:mt-6 mb-3 md:mb-4';
+
+// Build class string
+const classes = [
+  sizeClasses[size],
+  spacingClasses,
+  'text-[var(--text-primary)]',
+  'font-bold',
+  'leading-tight',
+  centered ? 'text-center' : '',
+  className
+].filter(Boolean).join(' ');
+---
+
+<h1 class={classes}>
+  {title}
+</h1>
