@@ -206,6 +206,42 @@ export function initMagicHero(translations: MagicTranslations): void {
     phrases = translations.phrases;
   }
 
+  // Check if URL has a hash anchor (e.g., /#how-it-works)
+  // If it does, skip intro and go directly to that section
+  const hasHashAnchor = window.location.hash && window.location.hash.length > 1;
+
+  if (hasHashAnchor) {
+    // User navigated directly to an anchor link - skip intro
+    const magicHero = document.getElementById('magicHero');
+    const mainHero = document.getElementById('mainHero');
+
+    if (magicHero && mainHero) {
+      // Immediately hide intro and show main content
+      magicHero.style.display = 'none';
+      mainHero.style.opacity = '1';
+      document.body.classList.add('main-page-mode');
+
+      // Remove intro elements from DOM
+      setTimeout(() => {
+        if (magicHero.parentNode) {
+          magicHero.remove();
+        }
+      }, 100);
+
+      // Let browser handle scroll to anchor
+      // Small delay to ensure content is rendered
+      setTimeout(() => {
+        const targetId = window.location.hash.substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 200);
+    }
+    return; // Exit early - don't play intro
+  }
+
+  // No hash anchor - proceed with normal intro animation
   // Add intro-mode class to body
   document.body.classList.add('intro-mode');
 
