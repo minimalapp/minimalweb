@@ -2,789 +2,212 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
+import PageHero from '@/components/PageHero.astro';
+import ContentSection from '@/components/ContentSection.astro';
+import SectionTitle from '@/components/SectionTitle.astro';
+import CodeBlock from '@/components/CodeBlock.astro';
+import FeatureCard from '@/components/FeatureCard.astro';
+import Button from '@/components/Button.astro';
+import ListCard from '@/components/ListCard.astro';
+import CTASection from '@/components/CTASection.astro';
+import Icon from '@/components/Icon.astro';
 
 const locale = 'es';
 ---
 
-<BaseLayout title="Integración - Minimal" description="Integración simple en minutos. Un script, transformación instantánea." locale={locale}>
+<BaseLayout title="Integración - Minimal" description="Integra Minimal con tu plataforma en minutos." locale={locale}>
   <Header locale={locale} />
-  <main>
-    <section class="hero-section">
-      <div class="container">
-        <h1>Integración Simple</h1>
-        <p class="subtitle">Una línea de código, transformación instantánea. Funciona con cualquier plataforma.</p>
+
+  <main class="pt-header">
+    <PageHero
+      title="Integración de Plataforma"
+      subtitle="Integra Minimal con tu plataforma en minutos. Compatible con todas las principales tecnologías web."
+    />
+
+    <ContentSection>
+      <SectionTitle title="Plataformas Soportadas" centered={true} />
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <FeatureCard icon="react" title="React" description="Integración perfecta con aplicaciones React usando nuestra biblioteca de componentes oficial." href="#react" />
+        <FeatureCard icon="angular" title="Angular" description="Módulo nativo Angular con soporte TypeScript e inyección de dependencias." href="#angular" />
+        <FeatureCard icon="vue" title="Vue.js" description="Plugin Vue 3 con soporte composition API y gestión de estado reactivo." href="#vue" />
+        <FeatureCard icon="next" title="Next.js" description="Optimizado para Next.js con soporte SSR y división automática de código." href="#nextjs" />
+        <FeatureCard icon="bolt" title="WordPress" description="Plugin simple de WordPress - instala y configura en tu panel de administración." href="#wordpress" />
+        <FeatureCard icon="shopping-bag" title="Shopify" description="Integración de aplicación Shopify para tiendas de comercio electrónico con seguimiento de carrito." href="#shopify" />
       </div>
-    </section>
+    </ContentSection>
 
-    <!-- Quick Integration -->
-    <section class="content-section">
-      <div class="container">
-        <h2>🚀 Integración Rápida (5 minutos)</h2>
-        <p class="section-intro">Pon Minimal en funcionamiento en tu sitio web en tres simples pasos:</p>
+    <ContentSection background="secondary">
+      <div class="max-w-4xl mx-auto">
+      <SectionTitle title="Instalación Universal" centered={true} />
+      <p class="text-center text-xl text-[var(--text-secondary)] mb-6 max-w-4xl mx-auto leading-relaxed">Funciona con cualquier sitio web independientemente del stack tecnológico:</p>
 
-        <div class="steps-container">
-          <div class="step">
-            <div class="step-number">1</div>
-            <div class="step-content">
-              <h3>Obtén tu Site ID</h3>
-              <p>Regístrate en <a href="https://minimal.lat" target="_blank" rel="noopener">minimal.lat</a> y crea un nuevo sitio. Recibirás tu Site ID único.</p>
-            </div>
-          </div>
+      <h3 id="html" class="text-2xl text-[var(--text-primary)] font-semibold mb-4 scroll-mt-32">Sitios Web HTML</h3>
+      <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Añade antes de la etiqueta de cierre &lt;/body&gt;:</p>
+      <CodeBlock code={`<script src="https://minimal.lat/embed.js" data-site-id="your-site-id"></script>`} />
 
-          <div class="step">
-            <div class="step-number">2</div>
-            <div class="step-content">
-              <h3>Agrega el Script</h3>
-              <p>Copia y pega este código antes de la etiqueta de cierre <code>&lt;/body&gt;</code> en cada página donde quieras que aparezca Minimal:</p>
-              <div class="code-block">
-                <code>&lt;script src="https://minimal.lat/embed.js" data-site-id="tu-site-id"&gt;&lt;/script&gt;</code>
-              </div>
-            </div>
-          </div>
+      <h3 id="react" class="text-2xl text-[var(--text-primary)] font-semibold mb-4 scroll-mt-32">Aplicaciones React</h3>
+      <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Instala vía npm y usa como componente:</p>
+      <CodeBlock code={`npm install @minimal/react
+import { MinimalChat } from '@minimal/react';
 
-          <div class="step">
-            <div class="step-number">3</div>
-            <div class="step-content">
-              <h3>Prueba y Personaliza</h3>
-              <p>Visita tu sitio web y verás Minimal en vivo! Personaliza la apariencia y el comportamiento desde tu panel de control.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Platform-Specific Guides -->
-    <section class="content-section bg-secondary">
-      <div class="container">
-        <h2>📝 Guías de Integración por Plataforma</h2>
-
-        <!-- WordPress -->
-        <div class="platform-guide">
-          <h3>📝 WordPress</h3>
-          <p><strong>Método 1: Usando un Plugin</strong></p>
-          <ol>
-            <li>Instala el plugin "Insert Headers and Footers"</li>
-            <li>Ve a Ajustes → Insert Headers and Footers</li>
-            <li>Pega el script de Minimal en la sección "Scripts in Footer"</li>
-            <li>Haz clic en "Guardar"</li>
-          </ol>
-
-          <p><strong>Método 2: Editando el Tema</strong></p>
-          <ol>
-            <li>Ve a Apariencia → Editor de Temas</li>
-            <li>Selecciona el archivo <code>footer.php</code> de tu tema</li>
-            <li>Pega el script antes de la etiqueta <code>&lt;/body&gt;</code></li>
-            <li>Haz clic en "Actualizar Archivo"</li>
-          </ol>
-          <div class="code-block">
-            <code>&lt;script src="https://minimal.lat/embed.js" data-site-id="tu-site-id"&gt;&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code>
-          </div>
-        </div>
-
-        <!-- Shopify -->
-        <div class="platform-guide">
-          <h3>🛍️ Shopify</h3>
-          <ol>
-            <li>Desde tu panel de Shopify, ve a Tienda Online → Temas</li>
-            <li>Haz clic en "Acciones" → "Editar código"</li>
-            <li>En la carpeta Layout, haz clic en <code>theme.liquid</code></li>
-            <li>Desplázate hacia abajo y encuentra la etiqueta de cierre <code>&lt;/body&gt;</code></li>
-            <li>Pega el script de Minimal justo antes</li>
-            <li>Haz clic en "Guardar"</li>
-          </ol>
-          <div class="code-block">
-            <code>&lt;script src="https://minimal.lat/embed.js" data-site-id="tu-site-id"&gt;&lt;/script&gt;
-&lt;/body&gt;</code>
-          </div>
-        </div>
-
-        <!-- React / Next.js -->
-        <div class="platform-guide">
-          <h3>⚛️ React / Next.js</h3>
-          <p><strong>Para Next.js:</strong></p>
-          <p>Agrega a <code>pages/_document.js</code> o <code>app/layout.tsx</code>:</p>
-          <div class="code-block">
-            <pre><code>import Script from 'next/script'
-
-export default function RootLayout(&#123; children &#125;) &#123;
+function App() {
   return (
-    &lt;html&gt;
-      &lt;body&gt;
-        &#123;children&#125;
-        &lt;Script
-          src="https://minimal.lat/embed.js"
-          data-site-id="tu-site-id"
-          strategy="lazyOnload"
-        /&gt;
-      &lt;/body&gt;
-    &lt;/html&gt;
-  )
-&#125;</code></pre>
-          </div>
+    <div>
+      <MinimalChat siteId="your-site-id" />
+    </div>
+  );
+}`} />
 
-          <p><strong>Para React (CRA o Vite):</strong></p>
-          <p>Agrega a tu <code>public/index.html</code> antes de <code>&lt;/body&gt;</code>:</p>
-          <div class="code-block">
-            <code>&lt;script src="https://minimal.lat/embed.js" data-site-id="tu-site-id"&gt;&lt;/script&gt;</code>
-          </div>
+      <h3 id="angular" class="text-2xl text-[var(--text-primary)] font-semibold mb-4 scroll-mt-32">Aplicaciones Angular</h3>
+      <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Instala vía npm e importa en tu módulo:</p>
+      <CodeBlock code={`npm install @minimal/angular
+
+import { MinimalModule } from '@minimal/angular';
+
+@NgModule({
+  imports: [
+    MinimalModule.forRoot({ siteId: 'your-site-id' })
+  ]
+})
+export class AppModule { }`} />
+
+      <h3 id="vue" class="text-2xl text-[var(--text-primary)] font-semibold mb-4 scroll-mt-32">Aplicaciones Vue.js</h3>
+      <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Instala vía npm y usa como plugin:</p>
+      <CodeBlock code={`npm install @minimal/vue
+import { createApp } from 'vue';
+import MinimalPlugin from '@minimal/vue';
+
+const app = createApp(App);
+app.use(MinimalPlugin, { siteId: 'your-site-id' });`} />
+
+      <h3 id="nextjs" class="text-2xl text-[var(--text-primary)] font-semibold mb-4 scroll-mt-32">Aplicaciones Next.js</h3>
+      <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Instala vía npm y añade a tu layout o componente app:</p>
+      <CodeBlock code={`npm install @minimal/react
+
+// app/layout.tsx (App Router)
+import { MinimalChat } from '@minimal/react';
+
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <body>
+        {children}
+        <MinimalChat siteId="your-site-id" />
+      </body>
+    </html>
+  );
+}`} />
+
+      <div class="space-y-6">
+        <div id="wordpress" class="scroll-mt-32">
+        <ListCard
+          title="WordPress"
+          description="Instala el plugin y configura en Ajustes → Minimal:"
+          items={[
+            'Descarga el plugin Minimal desde el repositorio de WordPress',
+            'Sube y activa en Plugins → Añadir Nuevo',
+            'Navega a Ajustes → Minimal',
+            'Ingresa tu ID de Sitio y personaliza la apariencia',
+            'Guarda los cambios - el widget aparece automáticamente'
+          ]}
+        />
         </div>
 
-        <!-- Vue.js / Nuxt.js -->
-        <div class="platform-guide">
-          <h3>🟢 Vue.js / Nuxt.js</h3>
-          <p><strong>Para Nuxt.js:</strong></p>
-          <p>Agrega a <code>nuxt.config.js</code>:</p>
-          <div class="code-block">
-            <pre><code>export default &#123;
-  head: &#123;
-    script: [
-      &#123;
-        src: 'https://minimal.lat/embed.js',
-        'data-site-id': 'tu-site-id',
-        body: true,
-        defer: true
-      &#125;
-    ]
-  &#125;
-&#125;</code></pre>
-          </div>
-
-          <p><strong>Para Vue.js:</strong></p>
-          <p>Agrega a tu <code>public/index.html</code> antes de <code>&lt;/body&gt;</code>:</p>
-          <div class="code-block">
-            <code>&lt;script src="https://minimal.lat/embed.js" data-site-id="tu-site-id"&gt;&lt;/script&gt;</code>
-          </div>
-        </div>
-
-        <!-- Wix / Squarespace -->
-        <div class="platform-guide">
-          <h3>📱 Wix / Squarespace</h3>
-          <p><strong>Para Wix:</strong></p>
-          <ol>
-            <li>Ve a Configuración → Código Personalizado</li>
-            <li>Haz clic en "+ Agregar Código Personalizado"</li>
-            <li>Pega el script de Minimal</li>
-            <li>Configúralo para cargar en "Todas las páginas"</li>
-            <li>Coloca el código en "Body - end"</li>
-            <li>Haz clic en "Aplicar"</li>
-          </ol>
-
-          <p><strong>Para Squarespace:</strong></p>
-          <ol>
-            <li>Ve a Configuración → Avanzado → Inyección de Código</li>
-            <li>Pega el script en "Footer"</li>
-            <li>Haz clic en "Guardar"</li>
-          </ol>
-          <div class="code-block">
-            <code>&lt;script src="https://minimal.lat/embed.js" data-site-id="tu-site-id"&gt;&lt;/script&gt;</code>
-          </div>
-        </div>
-
-        <!-- Angular -->
-        <div class="platform-guide">
-          <h3>🅰️ Angular</h3>
-          <p>Agrega a tu <code>src/index.html</code> antes de la etiqueta de cierre <code>&lt;/body&gt;</code>:</p>
-          <div class="code-block">
-            <code>&lt;body&gt;
-  &lt;app-root&gt;&lt;/app-root&gt;
-  &lt;script src="https://minimal.lat/embed.js" data-site-id="tu-site-id"&gt;&lt;/script&gt;
-&lt;/body&gt;</code>
-          </div>
-          <p>O agrega programáticamente en <code>app.component.ts</code>:</p>
-          <div class="code-block">
-            <pre><code>ngOnInit() &#123;
-  const script = document.createElement('script');
-  script.src = 'https://minimal.lat/embed.js';
-  script.setAttribute('data-site-id', 'tu-site-id');
-  document.body.appendChild(script);
-&#125;</code></pre>
-          </div>
+        <div id="shopify" class="scroll-mt-32">
+        <ListCard
+          title="Tiendas Shopify"
+          description="Instala desde la Tienda de Aplicaciones de Shopify:"
+          items={[
+            'Visita la Tienda de Aplicaciones de Shopify y busca Minimal',
+            'Haz clic en Instalar Aplicación y autoriza los permisos',
+            'Ingresa tu ID de Sitio en la configuración de la aplicación',
+            'Personaliza la apariencia del widget',
+            'El widget aparece automáticamente en todas las páginas'
+          ]}
+        />
         </div>
       </div>
-    </section>
-
-    <!-- Advanced Configuration -->
-    <section class="content-section">
-      <div class="container">
-        <h2>⚙️ Configuración Avanzada</h2>
-
-        <h3>Opciones de Personalización</h3>
-        <p>Puedes personalizar el comportamiento de Minimal usando atributos de datos:</p>
-
-        <div class="code-block">
-          <code>&lt;script
-  src="https://minimal.lat/embed.js"
-  data-site-id="tu-site-id"
-  data-position="bottom-right"
-  data-theme="light"
-  data-language="es"
-  data-greeting="¡Hola! ¿En qué podemos ayudarte?"
-&gt;&lt;/script&gt;</code>
-        </div>
-
-        <div class="options-table">
-          <table>
-            <thead>
-              <tr>
-                <th>Atributo</th>
-                <th>Opciones</th>
-                <th>Descripción</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><code>data-position</code></td>
-                <td>bottom-right, bottom-left, top-right, top-left</td>
-                <td>Posición del widget en pantalla</td>
-              </tr>
-              <tr>
-                <td><code>data-theme</code></td>
-                <td>light, dark, auto</td>
-                <td>Tema de color</td>
-              </tr>
-              <tr>
-                <td><code>data-language</code></td>
-                <td>en, es, fr, de, etc.</td>
-                <td>Idioma de la interfaz</td>
-              </tr>
-              <tr>
-                <td><code>data-greeting</code></td>
-                <td>Cualquier texto</td>
-                <td>Mensaje de saludo inicial</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>Configuración con JavaScript</h3>
-        <p>Para un control más avanzado, configura Minimal mediante JavaScript:</p>
-        <div class="code-block">
-          <pre><code>window.MinimalConfig = &#123;
-  siteId: 'tu-site-id',
-  position: 'bottom-right',
-  theme: 'auto',
-  language: 'es',
-  greeting: '¡Bienvenido! ¿Cómo podemos ayudarte hoy?',
-  placeholder: 'Escribe tu mensaje...',
-  zIndex: 1000,
-  mobileBreakpoint: 768,
-  autoOpen: false,
-  autoOpenDelay: 3000,
-  hideOnPages: ['/checkout', '/admin'],
-  customColors: &#123;
-    primary: '#10b981',
-    background: '#ffffff',
-    text: '#1f2937'
-  &#125;
-&#125;;
-
-&lt;script src="https://minimal.lat/embed.js"&gt;&lt;/script&gt;</code></pre>
-        </div>
-
-        <h3>Eventos y Callbacks</h3>
-        <p>Escucha eventos de Minimal:</p>
-        <div class="code-block">
-          <pre><code>// Cuando Minimal está listo
-window.addEventListener('minimal:ready', function() &#123;
-  console.log('¡Minimal está cargado!');
-&#125;);
-
-// Cuando se abre el chat
-window.addEventListener('minimal:open', function() &#123;
-  console.log('Chat abierto');
-&#125;);
-
-// Cuando se cierra el chat
-window.addEventListener('minimal:close', function() &#123;
-  console.log('Chat cerrado');
-&#125;);
-
-// Cuando se envía un mensaje
-window.addEventListener('minimal:message', function(e) &#123;
-  console.log('Mensaje enviado:', e.detail);
-&#125;);</code></pre>
-        </div>
       </div>
-    </section>
+    </ContentSection>
 
-    <!-- API Reference -->
-    <section class="content-section bg-secondary">
-      <div class="container">
-        <h2>📚 Referencia de API</h2>
-        <p>Controla Minimal programáticamente usando la API de JavaScript:</p>
+    <ContentSection>
+      <div class="max-w-4xl mx-auto">
+      <SectionTitle title="Configuración Avanzada" centered={true} />
 
-        <h3>Métodos Disponibles</h3>
-        <div class="api-method">
-          <h4><code>Minimal.open()</code></h4>
-          <p>Abre el widget de chat</p>
-          <div class="code-block">
-            <code>Minimal.open();</code>
-          </div>
-        </div>
+      <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">Disparadores Personalizados</h3>
+      <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Abre el widget basado en acciones del usuario:</p>
+      <CodeBlock code={`// Open after time delay
+setTimeout(() => {
+  Minimal.open();
+}, 30000); // 30 seconds
 
-        <div class="api-method">
-          <h4><code>Minimal.close()</code></h4>
-          <p>Cierra el widget de chat</p>
-          <div class="code-block">
-            <code>Minimal.close();</code>
-          </div>
-        </div>
+// Open on exit intent
+document.addEventListener('mouseout', (e) => {
+  if (e.clientY < 0) {
+    Minimal.open();
+  }
+});
 
-        <div class="api-method">
-          <h4><code>Minimal.toggle()</code></h4>
-          <p>Alterna el widget de chat abierto/cerrado</p>
-          <div class="code-block">
-            <code>Minimal.toggle();</code>
-          </div>
-        </div>
+// Open on scroll depth
+window.addEventListener('scroll', () => {
+  const scrolled = (window.scrollY / document.body.scrollHeight) * 100;
+  if (scrolled > 50 && !Minimal.isOpen()) {
+    Minimal.open();
+  }
+});`} />
 
-        <div class="api-method">
-          <h4><code>Minimal.hide()</code></h4>
-          <p>Oculta el widget completamente</p>
-          <div class="code-block">
-            <code>Minimal.hide();</code>
-          </div>
-        </div>
+      <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">Seguimiento de Comercio Electrónico</h3>
+      <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Envía datos de carrito y producto a la IA:</p>
+      <CodeBlock code={`// Track product views
+Minimal.trackEvent('product_view', {
+  productId: '12345',
+  productName: 'Premium Widget',
+  price: 99.99
+});
 
-        <div class="api-method">
-          <h4><code>Minimal.show()</code></h4>
-          <p>Muestra el widget si está oculto</p>
-          <div class="code-block">
-            <code>Minimal.show();</code>
-          </div>
-        </div>
+// Track cart updates
+Minimal.trackEvent('add_to_cart', {
+  items: cartItems,
+  total: cartTotal
+});
 
-        <div class="api-method">
-          <h4><code>Minimal.setUser(userData)</code></h4>
-          <p>Establece información del usuario para personalización</p>
-          <div class="code-block">
-            <pre><code>Minimal.setUser(&#123;
-  id: 'user123',
-  name: 'Juan Pérez',
-  email: 'juan@example.com',
-  customData: &#123;
-    plan: 'premium',
-    signupDate: '2024-01-15'
-  &#125;
-&#125;);</code></pre>
-          </div>
-        </div>
+// Pre-fill checkout questions
+Minimal.setContext({
+  cartValue: 299.99,
+  items: ['Widget A', 'Widget B']
+});`} />
+
+      <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">Identificación de Usuario</h3>
+      <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Identifica usuarios recurrentes:</p>
+      <CodeBlock code={`// Set user information
+Minimal.identify({
+  userId: 'user_123',
+  email: 'john@example.com',
+  name: 'John Doe',
+  plan: 'premium',
+  customAttributes: {
+    signupDate: '2024-01-15',
+    lastPurchase: '2024-03-20'
+  }
+});`} />
       </div>
-    </section>
+    </ContentSection>
 
-    <!-- Analytics Integration -->
-    <section class="content-section">
-      <div class="container">
-        <h2>📊 Integración con Analytics</h2>
-
-        <h3>Google Analytics 4 (GA4)</h3>
-        <p>Rastrea las interacciones de Minimal en GA4:</p>
-        <div class="code-block">
-          <pre><code>window.addEventListener('minimal:message', function(e) &#123;
-  gtag('event', 'minimal_message_sent', &#123;
-    'event_category': 'engagement',
-    'event_label': 'Chat Message',
-    'value': e.detail.messageLength
-  &#125;);
-&#125;);
-
-window.addEventListener('minimal:open', function() &#123;
-  gtag('event', 'minimal_opened', &#123;
-    'event_category': 'engagement',
-    'event_label': 'Chat Opened'
-  &#125;);
-&#125;);</code></pre>
-        </div>
-
-        <h3>Facebook Pixel</h3>
-        <p>Rastrea conversiones con Facebook Pixel:</p>
-        <div class="code-block">
-          <pre><code>window.addEventListener('minimal:message', function() &#123;
-  fbq('track', 'Contact');
-&#125;);
-
-window.addEventListener('minimal:lead', function(e) &#123;
-  fbq('track', 'Lead', &#123;
-    content_name: 'Chat Lead',
-    value: e.detail.leadScore
-  &#125;);
-&#125;);</code></pre>
-        </div>
+    <CTASection
+      title="¿Necesitas Ayuda con la Integración?"
+      description="Nuestro equipo puede ayudar con integraciones personalizadas y configuración técnica."
+      background="secondary"
+    >
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button variant="primary" size="lg" href="/es/help">
+          Ver Documentación
+        </Button>
+        <Button variant="secondary" size="lg" href="/es/contact">
+          Contactar Soporte
+        </Button>
       </div>
-    </section>
-
-    <!-- CRM Integration -->
-    <section class="content-section bg-secondary">
-      <div class="container">
-        <h2>🔗 Integración con CRM</h2>
-
-        <h3>Integración con HubSpot</h3>
-        <p>Sincroniza datos del chat con HubSpot:</p>
-        <div class="code-block">
-          <pre><code>window.addEventListener('minimal:lead', function(e) &#123;
-  const leadData = e.detail;
-
-  // Crear contacto en HubSpot
-  fetch('https://api.hubapi.com/contacts/v1/contact/', &#123;
-    method: 'POST',
-    headers: &#123;
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer TU_CLAVE_API_HUBSPOT'
-    &#125;,
-    body: JSON.stringify(&#123;
-      properties: [
-        &#123; property: 'email', value: leadData.email &#125;,
-        &#123; property: 'firstname', value: leadData.name &#125;,
-        &#123; property: 'lead_source', value: 'Minimal Chat' &#125;
-      ]
-    &#125;)
-  &#125;);
-&#125;);</code></pre>
-        </div>
-
-        <div class="warning-box">
-          <strong>⚠️ Nota de Seguridad:</strong> Nunca expongas claves API en código del lado del cliente. Usa un proxy del lado del servidor o una función serverless para manejar integraciones CRM de forma segura.
-        </div>
-      </div>
-    </section>
-
-    <!-- Troubleshooting -->
-    <section class="content-section">
-      <div class="container">
-        <h2>🔧 Solución de Problemas</h2>
-
-        <div class="troubleshooting-item">
-          <h3>¿El widget no aparece?</h3>
-          <ul>
-            <li>Verifica que el script esté colocado antes de la etiqueta de cierre <code>&lt;/body&gt;</code></li>
-            <li>Verifica que tu Site ID sea correcto</li>
-            <li>Revisa la consola del navegador en busca de errores (F12)</li>
-            <li>Asegúrate de que ningún bloqueador de anuncios esté interfiriendo</li>
-            <li>Limpia la caché de tu navegador y recarga (Ctrl+Shift+R)</li>
-          </ul>
-        </div>
-
-        <div class="troubleshooting-item">
-          <h3>¿El widget aparece pero no funciona?</h3>
-          <ul>
-            <li>Verifica tu conexión a internet</li>
-            <li>Verifica que tu sitio esté activo en el panel de Minimal</li>
-            <li>Busca conflictos de JavaScript con otros plugins</li>
-            <li>Intenta deshabilitar otros scripts temporalmente para aislar el problema</li>
-          </ul>
-        </div>
-
-        <div class="troubleshooting-item">
-          <h3>Script de Validación</h3>
-          <p>Ejecuta esto en la consola de tu navegador para verificar la integración:</p>
-          <div class="code-block">
-            <pre><code>// Verificar si Minimal está cargado
-if (typeof Minimal !== 'undefined') &#123;
-  console.log('✅ Minimal está cargado');
-  console.log('Versión:', Minimal.version);
-  console.log('Site ID:', Minimal.config.siteId);
-&#125; else &#123;
-  console.error('❌ Minimal no está cargado');
-  console.log('Verificar si la etiqueta script está presente:',
-    document.querySelector('script[src*="minimal.lat"]'));
-&#125;</code></pre>
-          </div>
-        </div>
-
-        <div class="troubleshooting-item">
-          <h3>¿Sigues teniendo problemas?</h3>
-          <p>Contacta a nuestro equipo de soporte en <a href="mailto:support@minimal.lat">support@minimal.lat</a> o usa el widget de chat en nuestro sitio web. Incluye:</p>
-          <ul>
-            <li>Tu Site ID</li>
-            <li>URL donde estás probando</li>
-            <li>Navegador y versión</li>
-            <li>Cualquier error de consola</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+    </CTASection>
   </main>
+
   <Footer locale={locale} />
 </BaseLayout>
-
-<style>
-  main { padding-top: 60px; }
-
-  /* Hero Section */
-  .hero-section {
-    padding: clamp(3rem, 8vw, 6rem) var(--section-padding-left) clamp(2rem, 5vw, 4rem) var(--section-padding-right);
-    background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
-    text-align: center;
-  }
-  .hero-section h1 {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    margin-bottom: var(--space-4);
-    color: var(--text-primary);
-    font-weight: var(--font-weight-bold);
-  }
-  .subtitle {
-    font-size: clamp(1.125rem, 2vw, 1.5rem);
-    color: var(--text-secondary);
-    max-width: 700px;
-    margin: 0 auto;
-    line-height: 1.6;
-  }
-
-  /* Content Sections */
-  .content-section {
-    padding: clamp(3rem, 6vw, 5rem) var(--section-padding-left) clamp(3rem, 6vw, 5rem) var(--section-padding-right);
-  }
-  .content-section .container {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-  .content-section h2 {
-    color: var(--text-primary);
-    font-size: clamp(1.75rem, 3vw, 2.5rem);
-    margin-bottom: clamp(2rem, 4vw, 3rem);
-    text-align: center;
-    font-weight: 700;
-  }
-  .content-section h3 {
-    color: var(--text-primary);
-    font-size: clamp(1.25rem, 2vw, 1.75rem);
-    margin-top: clamp(2rem, 4vw, 3rem);
-    margin-bottom: 1.25rem;
-    font-weight: 600;
-  }
-  .content-section h4 {
-    color: var(--text-primary);
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
-  }
-  .content-section p {
-    color: var(--text-secondary);
-    font-size: 1.0625rem;
-    line-height: 1.75;
-    margin-bottom: 1.25rem;
-  }
-  .content-section a {
-    color: var(--brand-green);
-    text-decoration: none;
-    font-weight: 500;
-  }
-  .content-section a:hover {
-    text-decoration: underline;
-  }
-  .content-section ul, .content-section ol {
-    color: var(--text-secondary);
-    font-size: 1.0625rem;
-    line-height: 1.75;
-    margin-bottom: 1.5rem;
-    padding-left: 2rem;
-  }
-  .content-section li {
-    margin-bottom: 0.75rem;
-  }
-  .content-section code {
-    background: var(--bg-secondary);
-    color: var(--brand-green);
-    padding: 3px 8px;
-    border-radius: 5px;
-    font-family: 'Courier New', monospace;
-    font-size: 0.9375rem;
-    font-weight: 500;
-  }
-  .content-section strong {
-    color: var(--text-primary);
-    font-weight: 600;
-  }
-
-  .bg-secondary {
-    background: var(--bg-secondary);
-  }
-  .section-intro {
-    text-align: center;
-    font-size: 1.1875rem;
-    margin-bottom: 2.5rem;
-    color: var(--text-secondary);
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  /* Steps */
-  .steps-container {
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
-    margin-top: 2.5rem;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .step {
-    display: flex;
-    gap: 1.5rem;
-    align-items: flex-start;
-  }
-  .step-number {
-    flex-shrink: 0;
-    width: 56px;
-    height: 56px;
-    background: linear-gradient(135deg, var(--brand-green) 0%, #059669 100%);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    font-weight: var(--font-weight-bold);
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
-  }
-  .step-content {
-    flex: 1;
-  }
-  .step-content h3 {
-    margin-top: 0;
-    margin-bottom: 0.75rem;
-  }
-
-  /* Code blocks */
-  .code-block {
-    background: #0F1419;
-    color: var(--brand-green);
-    padding: 1.5rem;
-    border-radius: 12px;
-    overflow-x: auto;
-    margin: 1.5rem 0;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  .code-block code {
-    font-family: 'Courier New', monospace;
-    font-size: 0.9375rem;
-    white-space: pre;
-    display: block;
-    line-height: 1.7;
-  }
-
-  /* Platform guides */
-  .platform-guide {
-    background: var(--bg-primary);
-    border: 1px solid var(--border-primary);
-    border-radius: 12px;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  }
-  .platform-guide h3 {
-    margin-top: 0;
-    margin-bottom: 1.25rem;
-    color: var(--text-primary);
-  }
-  .platform-guide ol {
-    margin-top: 1rem;
-  }
-  .platform-guide p {
-    margin-bottom: 1rem;
-  }
-
-  /* Options table */
-  .options-table {
-    overflow-x: auto;
-    margin: 2rem 0;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  }
-  .options-table table {
-    width: 100%;
-    border-collapse: collapse;
-    background: var(--bg-primary);
-    border-radius: 12px;
-    overflow: hidden;
-  }
-  .options-table th {
-    background: var(--bg-secondary);
-    color: var(--text-primary);
-    text-align: left;
-    padding: 1rem 1.25rem;
-    font-weight: 600;
-    font-size: 0.9375rem;
-  }
-  .options-table td {
-    padding: 1rem 1.25rem;
-    border-top: 1px solid var(--border-primary);
-    color: var(--text-secondary);
-    font-size: 0.9375rem;
-  }
-  .options-table tr:hover {
-    background: var(--bg-secondary);
-  }
-
-  /* API methods */
-  .api-method {
-    background: var(--bg-primary);
-    border: 1px solid var(--border-primary);
-    border-radius: 12px;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  }
-  .api-method h4 {
-    margin-top: 0;
-    color: var(--brand-green);
-    margin-bottom: 0.75rem;
-  }
-  .api-method p {
-    margin-bottom: 1rem;
-  }
-
-  /* Warning box */
-  .warning-box {
-    background: rgba(239, 68, 68, 0.08);
-    border-left: 4px solid #ef4444;
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin: 2rem 0;
-  }
-  .warning-box strong {
-    color: #ef4444;
-    font-weight: 600;
-  }
-
-  /* Troubleshooting */
-  .troubleshooting-item {
-    background: var(--bg-primary);
-    border: 1px solid var(--border-primary);
-    border-radius: 12px;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  }
-  .troubleshooting-item h3 {
-    margin-top: 0;
-    margin-bottom: 1rem;
-  }
-
-  /* Responsive */
-  @media (max-width: 768px) {
-    .step {
-      flex-direction: column;
-      text-align: center;
-    }
-    .step-number {
-      margin: 0 auto;
-    }
-    .options-table {
-      font-size: 0.875rem;
-    }
-    .options-table th,
-    .options-table td {
-      padding: 0.75rem;
-    }
-    .platform-guide,
-    .api-method,
-    .troubleshooting-item {
-      padding: 1.5rem;
-    }
-  }
-</style>
