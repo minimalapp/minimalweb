@@ -8,6 +8,16 @@ export interface Props {
 
 const { locale } = Astro.props;
 const t = commonTranslations[locale];
+
+// Detect if we're on the homepage to determine link behavior
+// On homepage: use relative anchors (#product)
+// On other pages: use absolute anchors (/#product or /es#product)
+const pathname = Astro.url.pathname;
+const isHomepage = pathname === '/' || pathname === '/es' || pathname === '/es/';
+const homeUrl = locale === 'es' ? '/es' : '/';
+
+// Helper function to generate proper anchor links
+const getAnchorHref = (anchor: string) => isHomepage ? `#${anchor}` : `${homeUrl}#${anchor}`;
 ---
 
 <header class="fixed top-0 w-full bg-white/95 backdrop-blur-md z-[1000] shadow-sm opacity-100 transition-opacity duration-500" id="mainHeader" data-header-initialized="true">
@@ -18,13 +28,13 @@ const t = commonTranslations[locale];
       </a>
     </div>
     <ul class="nav-links hidden md:flex gap-6 lg:gap-8 list-none">
-      <li><a href={locale === 'es' ? '#producto' : '#product'} class="no-underline text-text-primary font-medium transition-colors duration-base hover:text-brand-blue flex items-center min-h-[44px]">{t.nav.product}</a></li>
-      <li><a href={locale === 'es' ? '#como-funciona' : '#how-it-works'} class="no-underline text-text-primary font-medium transition-colors duration-base hover:text-brand-blue flex items-center min-h-[44px]">{t.nav.howItWorks}</a></li>
-      <li><a href={locale === 'es' ? '#beneficios' : '#benefits'} class="no-underline text-text-primary font-medium transition-colors duration-base hover:text-brand-blue flex items-center min-h-[44px]">{t.nav.benefits}</a></li>
-      <li><a href={locale === 'es' ? '#casos' : '#use-cases'} class="no-underline text-text-primary font-medium transition-colors duration-base hover:text-brand-blue flex items-center min-h-[44px]">{t.nav.useCases}</a></li>
-      <li><a href={locale === 'es' ? '#precios' : '#pricing'} class="no-underline text-text-primary font-medium transition-colors duration-base hover:text-brand-blue flex items-center min-h-[44px]">{t.nav.pricing}</a></li>
+      <li><a href={getAnchorHref(locale === 'es' ? 'producto' : 'product')} class="no-underline text-text-primary font-medium transition-colors duration-base hover:text-brand-blue flex items-center min-h-[44px]">{t.nav.product}</a></li>
+      <li><a href={getAnchorHref(locale === 'es' ? 'como-funciona' : 'how-it-works')} class="no-underline text-text-primary font-medium transition-colors duration-base hover:text-brand-blue flex items-center min-h-[44px]">{t.nav.howItWorks}</a></li>
+      <li><a href={getAnchorHref(locale === 'es' ? 'beneficios' : 'benefits')} class="no-underline text-text-primary font-medium transition-colors duration-base hover:text-brand-blue flex items-center min-h-[44px]">{t.nav.benefits}</a></li>
+      <li><a href={getAnchorHref(locale === 'es' ? 'casos' : 'use-cases')} class="no-underline text-text-primary font-medium transition-colors duration-base hover:text-brand-blue flex items-center min-h-[44px]">{t.nav.useCases}</a></li>
+      <li><a href={getAnchorHref(locale === 'es' ? 'precios' : 'pricing')} class="no-underline text-text-primary font-medium transition-colors duration-base hover:text-brand-blue flex items-center min-h-[44px]">{t.nav.pricing}</a></li>
     </ul>
-    <a href={locale === 'es' ? '#contacto' : '#contact'} class="cta-button hidden md:inline-flex items-center justify-center px-7 py-2 bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white border-none rounded-full text-base font-semibold cursor-pointer transition-all duration-base hover:-translate-y-0.5 hover:shadow-hover no-underline">{t.nav.tryFree}</a>
+    <a href={getAnchorHref(locale === 'es' ? 'contacto' : 'contact')} class="cta-button hidden md:inline-flex items-center justify-center px-7 py-2 bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white border-none rounded-full text-base font-semibold cursor-pointer transition-all duration-base hover:-translate-y-0.5 hover:shadow-hover no-underline">{t.nav.tryFree}</a>
     <button class="mobile-menu md:hidden flex items-center justify-center bg-transparent border-none text-2xl cursor-pointer text-text-primary min-h-[44px] min-w-[44px] hover:text-brand-blue" id="mobileMenuButton">☰</button>
   </nav>
 </header>
@@ -33,13 +43,13 @@ const t = commonTranslations[locale];
 <div class="fixed top-0 left-0 w-full h-screen bg-white/98 backdrop-blur-xl z-[1001] -translate-x-full transition-transform duration-300 ease-in-out flex flex-col items-center justify-center gap-8 data-[open=true]:translate-x-0" id="mobileNavOverlay" data-open="false">
   <button class="mobile-close absolute top-4 right-4 bg-transparent border-none text-4xl cursor-pointer text-text-primary min-h-[44px] min-w-[44px] flex items-center justify-center hover:text-brand-blue" id="mobileCloseButton">×</button>
   <ul class="mobile-nav-links list-none text-center gap-6 flex flex-col">
-    <li><a href={locale === 'es' ? '#producto' : '#product'} class="no-underline text-text-primary font-semibold text-xl transition-colors duration-base hover:text-brand-blue min-h-[44px] flex items-center justify-center">{t.nav.product}</a></li>
-    <li><a href={locale === 'es' ? '#como-funciona' : '#how-it-works'} class="no-underline text-text-primary font-semibold text-xl transition-colors duration-base hover:text-brand-blue min-h-[44px] flex items-center justify-center">{t.nav.howItWorks}</a></li>
-    <li><a href={locale === 'es' ? '#beneficios' : '#benefits'} class="no-underline text-text-primary font-semibold text-xl transition-colors duration-base hover:text-brand-blue min-h-[44px] flex items-center justify-center">{t.nav.benefits}</a></li>
-    <li><a href={locale === 'es' ? '#casos' : '#use-cases'} class="no-underline text-text-primary font-semibold text-xl transition-colors duration-base hover:text-brand-blue min-h-[44px] flex items-center justify-center">{t.nav.useCases}</a></li>
-    <li><a href={locale === 'es' ? '#precios' : '#pricing'} class="no-underline text-text-primary font-semibold text-xl transition-colors duration-base hover:text-brand-blue min-h-[44px] flex items-center justify-center">{t.nav.pricing}</a></li>
+    <li><a href={getAnchorHref(locale === 'es' ? 'producto' : 'product')} class="no-underline text-text-primary font-semibold text-xl transition-colors duration-base hover:text-brand-blue min-h-[44px] flex items-center justify-center">{t.nav.product}</a></li>
+    <li><a href={getAnchorHref(locale === 'es' ? 'como-funciona' : 'how-it-works')} class="no-underline text-text-primary font-semibold text-xl transition-colors duration-base hover:text-brand-blue min-h-[44px] flex items-center justify-center">{t.nav.howItWorks}</a></li>
+    <li><a href={getAnchorHref(locale === 'es' ? 'beneficios' : 'benefits')} class="no-underline text-text-primary font-semibold text-xl transition-colors duration-base hover:text-brand-blue min-h-[44px] flex items-center justify-center">{t.nav.benefits}</a></li>
+    <li><a href={getAnchorHref(locale === 'es' ? 'casos' : 'use-cases')} class="no-underline text-text-primary font-semibold text-xl transition-colors duration-base hover:text-brand-blue min-h-[44px] flex items-center justify-center">{t.nav.useCases}</a></li>
+    <li><a href={getAnchorHref(locale === 'es' ? 'precios' : 'pricing')} class="no-underline text-text-primary font-semibold text-xl transition-colors duration-base hover:text-brand-blue min-h-[44px] flex items-center justify-center">{t.nav.pricing}</a></li>
   </ul>
-  <a href={locale === 'es' ? '#contacto' : '#contact'} class="cta-button inline-flex items-center justify-center px-7 py-2 bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white border-none rounded-full text-base font-semibold cursor-pointer transition-all duration-base hover:-translate-y-0.5 hover:shadow-hover no-underline">{t.nav.tryFree}</a>
+  <a href={getAnchorHref(locale === 'es' ? 'contacto' : 'contact')} class="cta-button inline-flex items-center justify-center px-7 py-2 bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white border-none rounded-full text-base font-semibold cursor-pointer transition-all duration-base hover:-translate-y-0.5 hover:shadow-hover no-underline">{t.nav.tryFree}</a>
 </div>
 
 <script>

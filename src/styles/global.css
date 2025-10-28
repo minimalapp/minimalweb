@@ -260,6 +260,17 @@
     @apply scroll-smooth;
   }
 
+  /* Fixed header anchor offset - prevents content from being hidden under header */
+  [id] {
+    scroll-margin-top: 70px;
+  }
+
+  @media (min-width: 768px) {
+    [id] {
+      scroll-margin-top: 80px;
+    }
+  }
+
   /* Selection */
   ::selection {
     @apply bg-brand-blue text-white;
