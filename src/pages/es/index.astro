@@ -31,7 +31,7 @@ const t = homeTranslations[locale];
 
   <Header locale={locale} />
 
-  <main>
+  <main class="pt-header">
     <Hero
       title={t.hero.title}
       subtitle={t.hero.subtitle}
@@ -106,9 +106,3 @@ const t = homeTranslations[locale];
 
   initMagicHero(translations);
 </script>
-
-<style is:global>
-  main {
-    padding-top: 60px;
-  }
-</style>
