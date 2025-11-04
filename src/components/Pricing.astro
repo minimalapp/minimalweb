@@ -18,56 +18,99 @@ export interface Props {
 }
 
 const { title, plans, locale } = Astro.props;
+
+// Get Stripe configuration from environment variables
+const stripePricingTableId = import.meta.env.PUBLIC_STRIPE_PRICING_TABLE_ID;
+const stripePublishableKey = import.meta.env.PUBLIC_STRIPE_PUBLISHABLE_KEY;
+
+// Use Stripe for English, static pricing for Spanish (for now)
+const useStripe = locale === 'en' && stripePricingTableId && stripePublishableKey;
 ---
+
+{useStripe && (
+  <!-- Load Stripe pricing table script for English version -->
+  <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
+)}
 
 <section class="section-padding bg-bg-secondary" id={locale === 'es' ? 'precios' : 'pricing'}>
   <div class="container">
     <h2 class="section-title">{title}</h2>
-    <div class="grid grid-cols-1 gap-3 max-w-container mx-auto items-stretch md:grid-cols-3">
-      {plans.map((plan, index) => (
-        <div class={`relative bg-bg-primary px-4 py-6 rounded-lg shadow-sm text-center transition-all duration-base flex flex-col hover:-translate-y-0.5 hover:shadow-lg ${plan.badge ? 'border-2 border-brand-purple-primary pricing-card-featured' : ''}`}>
-          {plan.badge && <div class="absolute -top-3 left-1/2 -translate-x-1/2 text-white py-2 px-4 rounded-[20px] text-sm font-bold shadow-lg z-10 btn-primary">{plan.badge}</div>}
-          <h3 class="text-2xl mb-2 text-text-primary font-bold">{plan.name}</h3>
-          <div class="mb-6 flex items-baseline justify-center gap-2">
-            <span class="text-pricing-amount font-bold text-text-primary leading-none">{plan.price}</span>
-            <span class="text-lg text-text-quaternary">{plan.period}</span>
+
+    {useStripe ? (
+      <!-- Stripe Pricing Table for English -->
+      <div class="max-w-container mx-auto stripe-pricing-container">
+        <stripe-pricing-table
+          pricing-table-id={stripePricingTableId}
+          publishable-key={stripePublishableKey}>
+        </stripe-pricing-table>
+      </div>
+    ) : (
+      <!-- Static Pricing for Spanish (or fallback) -->
+      <div class="grid grid-cols-1 gap-3 max-w-container mx-auto items-stretch md:grid-cols-3">
+        {plans.map((plan, index) => (
+          <div class={`relative bg-bg-primary px-4 py-6 rounded-lg shadow-sm text-center transition-all duration-base flex flex-col hover:-translate-y-0.5 hover:shadow-lg ${plan.badge ? 'border-2 border-brand-purple-primary pricing-card-featured' : ''}`}>
+            {plan.badge && <div class="absolute -top-3 left-1/2 -translate-x-1/2 text-white py-2 px-4 rounded-[20px] text-sm font-bold shadow-lg z-10 btn-primary">{plan.badge}</div>}
+            <h3 class="text-2xl mb-2 text-text-primary font-bold">{plan.name}</h3>
+            <div class="mb-6 flex items-baseline justify-center gap-2">
+              <span class="text-pricing-amount font-bold text-text-primary leading-none">{plan.price}</span>
+              <span class="text-lg text-text-quaternary">{plan.period}</span>
+            </div>
+            <ul class="list-none mb-auto pb-4 text-left">
+              {plan.features.map((feature) => (
+                <li class="py-3 text-[15px] text-text-tertiary border-b border-gray-200 last:border-b-0">{feature}</li>
+              ))}
+            </ul>
+            <Button
+              variant={plan.badge ? 'primary' : 'secondary'}
+              size="md"
+              type="button"
+              className="w-full mt-4 pricing-plan-btn"
+              data-plan-name={plan.name.toLowerCase()}
+              data-plan-price={plan.price.replace('$', '').replace('Custom', '0')}
+            >
+              {plan.button}
+            </Button>
           </div>
-          <ul class="list-none mb-auto pb-4 text-left">
-            {plan.features.map((feature) => (
-              <li class="py-3 text-[15px] text-text-tertiary border-b border-gray-200 last:border-b-0">{feature}</li>
-            ))}
-          </ul>
-          <Button
-            variant={plan.badge ? 'primary' : 'secondary'}
-            size="md"
-            type="button"
-            className="w-full mt-4 pricing-plan-btn"
-            data-plan-name={plan.name.toLowerCase()}
-            data-plan-price={plan.price.replace('$', '').replace('Custom', '0')}
-          >
-            {plan.button}
-          </Button>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    )}
   </div>
 </section>
 
 <script>
-  import { trackPlanSelection } from '@/scripts/analytics';
+  import { trackPlanSelection, trackEvent } from '@/scripts/analytics';
 
-  // Track pricing plan selections
   document.addEventListener('DOMContentLoaded', () => {
-    const pricingButtons = document.querySelectorAll('.pricing-plan-btn');
+    // Check if Stripe pricing table exists (English version)
+    const stripePricingTable = document.querySelector('stripe-pricing-table');
 
-    pricingButtons.forEach((button) => {
-      button.addEventListener('click', () => {
-        const planName = button.getAttribute('data-plan-name') as 'starter' | 'professional' | 'enterprise';
-        const planPriceStr = button.getAttribute('data-plan-price');
-        const planPrice = planPriceStr && planPriceStr !== '0' ? parseFloat(planPriceStr) : undefined;
+    if (stripePricingTable) {
+      // Track Stripe pricing table interactions
+      const stripeContainer = document.querySelector('.stripe-pricing-container');
 
-        trackPlanSelection(planName, planPrice, 'pricing_section');
+      if (stripeContainer) {
+        stripeContainer.addEventListener('click', () => {
+          // Basic interaction tracking for Stripe pricing table
+          trackEvent('pricing_table_interaction', {
+            button_location: 'stripe_pricing_table',
+            pricing_type: 'stripe',
+            page_path: window.location.pathname
+          });
+        });
+      }
+    } else {
+      // Track static pricing plan selections (Spanish version)
+      const pricingButtons = document.querySelectorAll('.pricing-plan-btn');
+
+      pricingButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const planName = button.getAttribute('data-plan-name') as 'starter' | 'professional' | 'enterprise';
+          const planPriceStr = button.getAttribute('data-plan-price');
+          const planPrice = planPriceStr && planPriceStr !== '0' ? parseFloat(planPriceStr) : undefined;
+
+          trackPlanSelection(planName, planPrice, 'pricing_section');
+        });
       });
-    });
+    }
   });
 </script>

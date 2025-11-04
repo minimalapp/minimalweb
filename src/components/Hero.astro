@@ -1,6 +1,5 @@
 ---
 import DemoComparison from './DemoComparison.astro';
-import Button from './Button.astro';
 import type { Locale } from '@/i18n/utils';
 
 export interface Props {
@@ -12,6 +11,7 @@ export interface Props {
 }
 
 const { title, subtitle, inputPlaceholder, buttonText, locale } = Astro.props;
+const API_URL = import.meta.env.PUBLIC_BACKEND_URL || 'http://localhost:8000';
 ---
 
 <section class="hero section-padding text-center bg-gradient-to-b from-gray-50 to-white relative overflow-hidden opacity-0" id="mainHero">
@@ -19,18 +19,42 @@ const { title, subtitle, inputPlaceholder, buttonText, locale } = Astro.props;
     <div class="hero-text text-center lg:text-left">
       <h1 class="hero-title mb-8 font-bold tracking-tight leading-tight" set:html={title}></h1>
       <p class="text-text-light mb-10 leading-relaxed max-w-[90%] lg:max-w-full mx-auto lg:mx-0 text-hero-subtitle">{subtitle}</p>
-      <div class="flex flex-col sm:flex-row gap-3 max-w-xs sm:max-w-[600px] mx-auto lg:mx-0">
-        <input
-          type="url"
-          placeholder={inputPlaceholder}
-          class="px-4 py-2 border-2 border-gray-200 rounded-full text-base transition-colors duration-base w-full focus:outline-none focus:border-brand-blue"
-          aria-label="Website URL"
-          id="hero-url-input"
-        />
-        <Button variant="primary" size="md" type="button" className="sm:whitespace-nowrap" id="hero-generate-preview-btn">
-          {buttonText}
-        </Button>
-      </div>
+
+      <!-- Preview Form -->
+      <form id="preview-form" class="preview-form">
+        <div class="flex flex-col sm:flex-row gap-3 max-w-xs sm:max-w-[600px] mx-auto lg:mx-0">
+          <input
+            type="url"
+            name="url"
+            placeholder={inputPlaceholder}
+            required
+            pattern="https?://.+"
+            class="px-4 py-2 border-2 border-gray-200 rounded-full text-base transition-colors duration-base w-full focus:outline-none focus:border-brand-blue"
+            aria-label="Website URL"
+            id="hero-url-input"
+          />
+          <button
+            type="submit"
+            id="hero-generate-preview-btn"
+            class="inline-flex items-center justify-center font-semibold rounded-full transition-all duration-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-purple-primary bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white shadow-md hover:-translate-y-0.5 hover:shadow-hover active:translate-y-0 px-6 py-2.5 text-base min-h-[44px] sm:whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+          >
+            <span class="btn-text">{buttonText}</span>
+            <span class="btn-spinner hidden">
+              <svg class="spinner animate-spin ml-2 h-5 w-5" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none" stroke-dasharray="40" stroke-dashoffset="30" />
+              </svg>
+            </span>
+          </button>
+        </div>
+
+        <!-- Error Message -->
+        <div id="error-message" class="error-message hidden mt-3 mx-auto max-w-xs sm:max-w-[600px] lg:mx-0"></div>
+
+        <!-- Optional: Show detected resolution -->
+        <div id="resolution-info" class="resolution-info hidden mt-2 mx-auto max-w-xs sm:max-w-[600px] lg:mx-0 text-center">
+          <small class="text-gray-500">Generating preview at: <span id="resolution-text" class="font-medium"></span></small>
+        </div>
+      </form>
     </div>
     <div class="hero-visual w-full">
       <DemoComparison locale={locale} />
@@ -38,17 +62,190 @@ const { title, subtitle, inputPlaceholder, buttonText, locale } = Astro.props;
   </div>
 </section>
 
-<script>
-  import { trackGeneratePreview } from '@/scripts/analytics';
+<script is:inline define:vars={{ API_URL }}>
+  // Import analytics function will be handled separately
+  const form = document.getElementById('preview-form');
+  const input = document.getElementById('hero-url-input');
+  const submitBtn = document.getElementById('hero-generate-preview-btn');
+  const btnText = submitBtn?.querySelector('.btn-text');
+  const btnSpinner = submitBtn?.querySelector('.btn-spinner');
+  const errorMessage = document.getElementById('error-message');
+  const resolutionInfo = document.getElementById('resolution-info');
+  const resolutionText = document.getElementById('resolution-text');
 
-  // Track "Generate Preview" button clicks
-  const button = document.getElementById('hero-generate-preview-btn');
-  const urlInput = document.getElementById('hero-url-input') as HTMLInputElement;
+  // Detect user's screen resolution
+  function getScreenResolution() {
+    const width = window.screen.width;
+    const height = window.screen.height;
 
-  button?.addEventListener('click', () => {
-    const urlValue = urlInput?.value?.trim();
-    trackGeneratePreview(urlValue || undefined);
+    // Apply maximum cap for 4K (3840x2160)
+    const cappedWidth = Math.min(width, 3840);
+    const cappedHeight = Math.min(height, 2160);
+
+    return {
+      width: cappedWidth,
+      height: cappedHeight,
+      original: {width, height},
+      isCapped: width > 3840 || height > 2160
+    };
+  }
+
+  // Detect device type
+  function getDeviceType() {
+    const width = window.screen.width;
+    if (width < 768) return 'mobile';
+    if (width < 1024) return 'tablet';
+    return 'desktop';
+  }
+
+  // Display detected resolution
+  function showResolutionInfo() {
+    const resolution = getScreenResolution();
+    const deviceType = getDeviceType();
+
+    let resolutionStr = `${resolution.width}x${resolution.height}`;
+    if (resolution.isCapped) {
+      resolutionStr += ` (capped from ${resolution.original.width}x${resolution.original.height})`;
+    }
+    resolutionStr += ` - ${deviceType}`;
+
+    if (resolutionText) {
+      resolutionText.textContent = resolutionStr;
+    }
+    if (resolutionInfo) {
+      resolutionInfo.classList.remove('hidden');
+    }
+  }
+
+  // Show resolution on page load (optional)
+  showResolutionInfo();
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const url = input?.value?.trim();
+
+    // Validate URL
+    if (!url || !url.match(/^https?:\/\/.+/)) {
+      showError('Please enter a valid URL (must start with http:// or https://)');
+      return;
+    }
+
+    // Get screen resolution
+    const resolution = getScreenResolution();
+
+    // Track analytics before submission (trigger custom event with resolution data)
+    window.dispatchEvent(new CustomEvent('hero-preview-submit', {
+      detail: {
+        url,
+        viewport_width: resolution.width,
+        viewport_height: resolution.height,
+        device_type: getDeviceType()
+      }
+    }));
+
+    // Show loading state
+    if (submitBtn) submitBtn.disabled = true;
+    if (btnText) btnText.style.display = 'none';
+    if (btnSpinner) {
+      btnSpinner.classList.remove('hidden');
+      btnSpinner.style.display = 'inline-block';
+    }
+    if (errorMessage) errorMessage.classList.add('hidden');
+
+    try {
+      // Submit to Django API with viewport dimensions
+      const response = await fetch(`${API_URL}/api/preview/generate/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          url: url,
+          viewport_width: resolution.width,
+          viewport_height: resolution.height
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // Success! Redirect to loading page
+        window.location.href = `${API_URL}${data.loading_url}`;
+      } else {
+        // Handle errors
+        if (response.status === 429) {
+          // Rate limit exceeded
+          const retryMinutes = data.details?.retry_after ? Math.ceil(data.details.retry_after / 60) : 5;
+          showError(`Rate limit exceeded. Please try again in ${retryMinutes} minute${retryMinutes > 1 ? 's' : ''}.`);
+        } else if (response.status === 400) {
+          // Validation error
+          const errorDetails = data.details;
+          let errorMsg = data.error || 'Invalid request';
+
+          // Format validation errors
+          if (errorDetails) {
+            if (errorDetails.url) {
+              errorMsg = errorDetails.url[0];
+            } else if (errorDetails.viewport_width) {
+              errorMsg = `Invalid width: ${errorDetails.viewport_width[0]}`;
+            } else if (errorDetails.viewport_height) {
+              errorMsg = `Invalid height: ${errorDetails.viewport_height[0]}`;
+            }
+          }
+
+          showError(errorMsg);
+        } else {
+          // Generic error
+          showError(data.error || 'An error occurred. Please try again.');
+        }
+
+        // Reset button
+        resetButton();
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      showError('Network error. Please check your connection and try again.');
+
+      // Reset button
+      resetButton();
+    }
   });
+
+  function showError(message) {
+    if (errorMessage) {
+      errorMessage.textContent = message;
+      errorMessage.classList.remove('hidden');
+    }
+  }
+
+  function resetButton() {
+    if (submitBtn) submitBtn.disabled = false;
+    if (btnText) btnText.style.display = 'inline-block';
+    if (btnSpinner) {
+      btnSpinner.style.display = 'none';
+      btnSpinner.classList.add('hidden');
+    }
+  }
+</script>
+
+<!-- Analytics tracking (separate script for module imports) -->
+<script>
+  import { trackGeneratePreview, trackEvent } from '@/scripts/analytics';
+
+  // Listen for custom event from form submission
+  window.addEventListener('hero-preview-submit', ((e: CustomEvent) => {
+    // Track the preview generation with viewport data
+    trackGeneratePreview(e.detail.url);
+
+    // Also track viewport dimensions as a separate event for analytics
+    trackEvent('preview_viewport_data', {
+      viewport_width: e.detail.viewport_width,
+      viewport_height: e.detail.viewport_height,
+      device_type: e.detail.device_type,
+      url: e.detail.url
+    });
+  }) as EventListener);
 </script>
 
 <style>
@@ -70,5 +267,30 @@ const { title, subtitle, inputPlaceholder, buttonText, locale } = Astro.props;
     100% {
       background-position: 300% 50%;
     }
+  }
+
+  /* Error message styling */
+  .error-message {
+    color: #ef4444;
+    padding: 0.75rem 1rem;
+    background: #fef2f2;
+    border: 1px solid #fee2e2;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    text-align: center;
+  }
+
+  .error-message.hidden {
+    display: none;
+  }
+
+  /* Spinner and button states */
+  .btn-spinner.hidden {
+    display: none;
+  }
+
+  /* Resolution info */
+  .resolution-info.hidden {
+    display: none;
   }
 </style>
