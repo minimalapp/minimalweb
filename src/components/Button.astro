@@ -17,9 +17,10 @@ interface Props {
   href?: string;
   type?: 'button' | 'submit';
   className?: string;
+  [key: string]: any; // Allow any additional props (like data attributes)
 }
 
-const { variant = 'primary', size = 'md', href, type = 'button', className = '' } = Astro.props;
+const { variant = 'primary', size = 'md', href, type = 'button', className = '', ...rest } = Astro.props;
 
 // Base classes - Tailwind utilities for consistency
 const baseClasses = 'inline-flex items-center justify-center font-semibold rounded-full transition-all duration-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-purple-primary';
@@ -53,6 +54,7 @@ const Tag = href ? 'a' : 'button';
   href={href}
   type={!href ? type : undefined}
   class={`${baseClasses} ${variantClasses} ${sizeClasses} ${className}`}
+  {...rest}
 >
   <slot />
 </Tag>

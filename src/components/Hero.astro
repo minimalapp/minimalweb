@@ -25,8 +25,9 @@ const { title, subtitle, inputPlaceholder, buttonText, locale } = Astro.props;
           placeholder={inputPlaceholder}
           class="px-4 py-2 border-2 border-gray-200 rounded-full text-base transition-colors duration-base w-full focus:outline-none focus:border-brand-blue"
           aria-label="Website URL"
+          id="hero-url-input"
         />
-        <Button variant="primary" size="md" type="button" className="sm:whitespace-nowrap">
+        <Button variant="primary" size="md" type="button" className="sm:whitespace-nowrap" id="hero-generate-preview-btn">
           {buttonText}
         </Button>
       </div>
@@ -36,6 +37,19 @@ const { title, subtitle, inputPlaceholder, buttonText, locale } = Astro.props;
     </div>
   </div>
 </section>
+
+<script>
+  import { trackGeneratePreview } from '@/scripts/analytics';
+
+  // Track "Generate Preview" button clicks
+  const button = document.getElementById('hero-generate-preview-btn');
+  const urlInput = document.getElementById('hero-url-input') as HTMLInputElement;
+
+  button?.addEventListener('click', () => {
+    const urlValue = urlInput?.value?.trim();
+    trackGeneratePreview(urlValue || undefined);
+  });
+</script>
 
 <style>
   /* Rainbow gradient animation for highlight text */

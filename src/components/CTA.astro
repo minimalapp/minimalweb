@@ -37,13 +37,14 @@ const { title, subtitle, emailPlaceholder, urlPlaceholder, buttonText, footnote,
     <p class="text-xl mb-6 text-white/95 leading-relaxed">
       {subtitle}
     </p>
-    <form class="flex flex-col gap-3 mb-3 max-w-xs sm:max-w-[600px] mx-auto">
+    <form class="flex flex-col gap-3 mb-3 max-w-xs sm:max-w-[600px] mx-auto" id="demo-request-form">
       <div class="flex flex-col sm:flex-row gap-3">
         <input
           type="email"
           placeholder={emailPlaceholder}
           class="px-4 py-2 border-2 border-white/25 rounded-lg text-[15px] bg-white/10 text-white transition-all duration-base shadow-sm placeholder:text-white/60 focus:outline-none focus:border-white/60 focus:bg-white/15 sm:flex-1"
           aria-label="Email"
+          id="demo-email-input"
           required
         />
         <input
@@ -51,6 +52,7 @@ const { title, subtitle, emailPlaceholder, urlPlaceholder, buttonText, footnote,
           placeholder={urlPlaceholder}
           class="px-4 py-2 border-2 border-white/25 rounded-lg text-[15px] bg-white/10 text-white transition-all duration-base shadow-sm placeholder:text-white/60 focus:outline-none focus:border-white/60 focus:bg-white/15 sm:flex-1"
           aria-label="Website URL"
+          id="demo-url-input"
           required
         />
       </div>
@@ -63,4 +65,26 @@ const { title, subtitle, emailPlaceholder, urlPlaceholder, buttonText, footnote,
     </p>
   </div>
 </section>
+
+<script>
+  import { trackDemoRequest } from '@/scripts/analytics';
+
+  // Track demo request form submissions
+  const form = document.getElementById('demo-request-form') as HTMLFormElement;
+  const emailInput = document.getElementById('demo-email-input') as HTMLInputElement;
+  const urlInput = document.getElementById('demo-url-input') as HTMLInputElement;
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const email = emailInput?.value?.trim();
+    const url = urlInput?.value?.trim();
+
+    trackDemoRequest(email, url);
+
+    // Show user feedback (you can customize this)
+    alert('Thank you! Your demo request has been submitted.');
+    form.reset();
+  });
+</script>
 

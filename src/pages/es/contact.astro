@@ -56,7 +56,7 @@ const faqItems = [
         <!-- Form -->
         <div>
           <SectionTitle title="Envíanos un Mensaje" size="md" spacing="normal" />
-          <form class="flex flex-col gap-6">
+          <form class="flex flex-col gap-6" id="contact-form-es">
             <div class="flex flex-col gap-2">
               <label for="name" class="text-[var(--text-primary)] text-base font-semibold">Nombre Completo *</label>
               <input type="text" id="name" name="name" placeholder="Juan Pérez" required
@@ -148,3 +148,22 @@ const faqItems = [
 
   <Footer locale={locale} />
 </BaseLayout>
+
+<script>
+  import { trackContactFormSubmit } from '@/scripts/analytics';
+
+  // Track contact form submissions
+  const form = document.getElementById('contact-form-es') as HTMLFormElement;
+  const subjectSelect = document.getElementById('subject') as HTMLSelectElement;
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const subject = subjectSelect?.value || 'not_specified';
+    trackContactFormSubmit(subject, '/es/contact');
+
+    // Show user feedback
+    alert('¡Gracias por contactarnos! Te responderemos pronto.');
+    form.reset();
+  });
+</script>

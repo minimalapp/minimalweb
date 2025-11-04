@@ -224,10 +224,10 @@ const description = 'Descubre todas las funcionalidades que transformarán tu si
       background="green"
     >
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <Button variant="outline" size="lg" href="https://minimal.lat">
+        <Button variant="outline" size="lg" href="https://minimal.lat" id="features-get-started-btn-es">
           Comenzar Gratis
         </Button>
-        <Button variant="outline-light" size="lg" href="/es/contact">
+        <Button variant="outline-light" size="lg" href="/es/contact" id="features-contact-sales-btn-es">
           Contactar Ventas
         </Button>
       </div>
@@ -237,3 +237,19 @@ const description = 'Descubre todas las funcionalidades que transformarán tu si
 
   <Footer locale={locale} />
 </BaseLayout>
+
+<script>
+  import { trackGetStartedClick, trackContactSalesClick } from '@/scripts/analytics';
+
+  // Track Features page CTAs
+  const getStartedBtn = document.getElementById('features-get-started-btn-es');
+  const contactSalesBtn = document.getElementById('features-contact-sales-btn-es');
+
+  getStartedBtn?.addEventListener('click', () => {
+    trackGetStartedClick('features_page_es', 'https://minimal.lat');
+  });
+
+  contactSalesBtn?.addEventListener('click', () => {
+    trackContactSalesClick('features_page_es');
+  });
+</script>

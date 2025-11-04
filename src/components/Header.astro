@@ -34,7 +34,7 @@ const getAnchorHref = (anchor: string) => isHomepage ? `#${anchor}` : `${homeUrl
       <li><a href={getAnchorHref(locale === 'es' ? 'casos' : 'use-cases')} class="no-underline text-text-primary font-medium transition-colors duration-base hover:text-brand-blue flex items-center min-h-[44px]">{t.nav.useCases}</a></li>
       <li><a href={getAnchorHref(locale === 'es' ? 'precios' : 'pricing')} class="no-underline text-text-primary font-medium transition-colors duration-base hover:text-brand-blue flex items-center min-h-[44px]">{t.nav.pricing}</a></li>
     </ul>
-    <a href={getAnchorHref(locale === 'es' ? 'contacto' : 'contact')} class="cta-button hidden md:inline-flex items-center justify-center px-7 py-2 bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white border-none rounded-full text-base font-semibold cursor-pointer transition-all duration-base hover:-translate-y-0.5 hover:shadow-hover no-underline">{t.nav.tryFree}</a>
+    <a href={getAnchorHref(locale === 'es' ? 'contacto' : 'contact')} class="cta-button hidden md:inline-flex items-center justify-center px-7 py-2 bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white border-none rounded-full text-base font-semibold cursor-pointer transition-all duration-base hover:-translate-y-0.5 hover:shadow-hover no-underline" id="header-try-free-desktop">{t.nav.tryFree}</a>
     <button class="mobile-menu md:hidden flex items-center justify-center bg-transparent border-none text-2xl cursor-pointer text-text-primary min-h-[44px] min-w-[44px] hover:text-brand-blue" id="mobileMenuButton">☰</button>
   </nav>
 </header>
@@ -49,11 +49,27 @@ const getAnchorHref = (anchor: string) => isHomepage ? `#${anchor}` : `${homeUrl
     <li><a href={getAnchorHref(locale === 'es' ? 'casos' : 'use-cases')} class="no-underline text-text-primary font-semibold text-xl transition-colors duration-base hover:text-brand-blue min-h-[44px] flex items-center justify-center">{t.nav.useCases}</a></li>
     <li><a href={getAnchorHref(locale === 'es' ? 'precios' : 'pricing')} class="no-underline text-text-primary font-semibold text-xl transition-colors duration-base hover:text-brand-blue min-h-[44px] flex items-center justify-center">{t.nav.pricing}</a></li>
   </ul>
-  <a href={getAnchorHref(locale === 'es' ? 'contacto' : 'contact')} class="cta-button inline-flex items-center justify-center px-7 py-2 bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white border-none rounded-full text-base font-semibold cursor-pointer transition-all duration-base hover:-translate-y-0.5 hover:shadow-hover no-underline">{t.nav.tryFree}</a>
+  <a href={getAnchorHref(locale === 'es' ? 'contacto' : 'contact')} class="cta-button inline-flex items-center justify-center px-7 py-2 bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white border-none rounded-full text-base font-semibold cursor-pointer transition-all duration-base hover:-translate-y-0.5 hover:shadow-hover no-underline" id="header-try-free-mobile">{t.nav.tryFree}</a>
 </div>
 
 <script>
+  import { trackTryFreeClick } from '@/scripts/analytics';
+
   // Header is now visible immediately - no delay needed
+
+  // Track "Try Free" CTA clicks
+  function initCTATracking() {
+    const desktopCTA = document.getElementById('header-try-free-desktop');
+    const mobileCTA = document.getElementById('header-try-free-mobile');
+
+    desktopCTA?.addEventListener('click', () => {
+      trackTryFreeClick('desktop');
+    });
+
+    mobileCTA?.addEventListener('click', () => {
+      trackTryFreeClick('mobile');
+    });
+  }
 
   // Mobile menu functionality
   function initMobileMenu() {
@@ -89,8 +105,12 @@ const getAnchorHref = (anchor: string) => isHomepage ? `#${anchor}` : `${homeUrl
 
   // Initialize on DOM ready
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initMobileMenu);
+    document.addEventListener('DOMContentLoaded', () => {
+      initMobileMenu();
+      initCTATracking();
+    });
   } else {
     initMobileMenu();
+    initCTATracking();
   }
 </script>
