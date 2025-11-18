@@ -32,6 +32,10 @@ jobs:
 
       - name: Build with Astro
         run: npm run build
+        env:
+          PUBLIC_STRIPE_PRICING_TABLE_ID: ${{ secrets.PUBLIC_STRIPE_PRICING_TABLE_ID }}
+          PUBLIC_STRIPE_PUBLISHABLE_KEY: ${{ secrets.PUBLIC_STRIPE_PUBLISHABLE_KEY }}
+          PUBLIC_BACKEND_URL: ${{ secrets.PUBLIC_BACKEND_URL }}
 
       - name: Add CNAME
         run: echo "minimal.lat" > ./dist/CNAME
