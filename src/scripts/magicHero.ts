@@ -146,6 +146,9 @@ function finishIntro(): void {
   window.removeEventListener('scroll', skipIntro);
 
   if (magicHero) {
+    // Immediately disable pointer events to allow clicks through
+    magicHero.style.pointerEvents = 'none';
+
     // Fade out magic hero overlay
     magicHero.style.transition = 'opacity 0.8s ease-out';
     magicHero.style.opacity = '0';
