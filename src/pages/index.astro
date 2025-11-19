@@ -26,9 +26,6 @@ const t = homeTranslations[locale];
   <!-- Gradient Overlays -->
   <GradientOverlays />
 
-  <!-- Magic Hero Animation -->
-  <MagicHero locale={locale} />
-
   <Header locale={locale} />
 
   <main class="pt-header">
@@ -38,7 +35,9 @@ const t = homeTranslations[locale];
       inputPlaceholder={t.hero.inputPlaceholder}
       buttonText={t.hero.button}
       locale={locale}
-    />
+    >
+      <MagicHero slot="magic-hero" locale={locale} />
+    </Hero>
 
     <Problem
       title={t.problem.title}

@@ -14,14 +14,20 @@ const { title, subtitle, inputPlaceholder, buttonText, locale } = Astro.props;
 const API_URL = import.meta.env.PUBLIC_BACKEND_URL || 'http://localhost:8000';
 ---
 
-<section class="hero section-padding text-center bg-gradient-to-b from-gray-50 to-white relative overflow-hidden opacity-0" id="mainHero">
-  <div class="max-w-content mx-auto flex flex-col lg:grid lg:grid-cols-[1fr_1.2fr] gap-8 lg:gap-12 lg:items-center">
-    <div class="hero-text text-center lg:text-left">
-      <h1 class="hero-title mb-8 font-bold tracking-tight leading-tight" set:html={title}></h1>
-      <p class="text-text-light mb-10 leading-relaxed max-w-[90%] lg:max-w-full mx-auto lg:mx-0 text-hero-subtitle">{subtitle}</p>
+<section class="hero section-padding text-center bg-gradient-to-b from-gray-50 to-white relative overflow-hidden min-h-[350px] md:min-h-[600px] flex items-center" id="mainHero">
+  <div id="intro-background" class="absolute inset-0 z-0 bg-gradient-to-br from-[rgba(255,87,87,0.05)] to-[rgba(63,81,181,0.05)] pointer-events-none transition-opacity duration-1000"></div>
+  <div class="max-w-content mx-auto flex flex-col lg:grid lg:grid-cols-[1fr_1.2fr] gap-8 lg:gap-12 lg:items-center relative z-10 md:static">
+    <div class="hero-text text-center lg:text-left relative md:static">
+      <div class="relative md:static">
+        <slot name="magic-hero" />
+        <div id="static-hero-content" class="opacity-0 transition-opacity duration-1000">
+          <h1 class="hero-title mb-6 md:mb-8 font-bold tracking-tight leading-tight text-4xl sm:text-5xl" set:html={title}></h1>
+          <p class="text-text-light mb-8 md:mb-10 leading-relaxed max-w-[90%] lg:max-w-full mx-auto lg:mx-0 text-hero-subtitle">{subtitle}</p>
+        </div>
+      </div>
 
       <!-- Preview Form -->
-      <form id="preview-form" class="preview-form">
+      <form id="preview-form" class="preview-form hero-extra-content md:opacity-0 transition-opacity duration-1000">
         <div class="flex flex-col sm:flex-row gap-3 max-w-xs sm:max-w-[600px] mx-auto lg:mx-0">
           <input
             type="url"
@@ -50,13 +56,10 @@ const API_URL = import.meta.env.PUBLIC_BACKEND_URL || 'http://localhost:8000';
         <!-- Error Message -->
         <div id="error-message" class="error-message hidden mt-3 mx-auto max-w-xs sm:max-w-[600px] lg:mx-0"></div>
 
-        <!-- Optional: Show detected resolution -->
-        <div id="resolution-info" class="resolution-info hidden mt-2 mx-auto max-w-xs sm:max-w-[600px] lg:mx-0 text-center">
-          <small class="text-gray-500">Generating preview at: <span id="resolution-text" class="font-medium"></span></small>
-        </div>
+
       </form>
     </div>
-    <div class="hero-visual w-full">
+    <div class="hero-visual w-full hero-extra-content md:opacity-0 transition-opacity duration-1000">
       <DemoComparison locale={locale} />
     </div>
   </div>
@@ -70,8 +73,6 @@ const API_URL = import.meta.env.PUBLIC_BACKEND_URL || 'http://localhost:8000';
   const btnText = submitBtn?.querySelector('.btn-text');
   const btnSpinner = submitBtn?.querySelector('.btn-spinner');
   const errorMessage = document.getElementById('error-message');
-  const resolutionInfo = document.getElementById('resolution-info');
-  const resolutionText = document.getElementById('resolution-text');
 
   // Detect user's screen resolution
   function getScreenResolution() {
@@ -99,26 +100,7 @@ const API_URL = import.meta.env.PUBLIC_BACKEND_URL || 'http://localhost:8000';
   }
 
   // Display detected resolution
-  function showResolutionInfo() {
-    const resolution = getScreenResolution();
-    const deviceType = getDeviceType();
-
-    let resolutionStr = `${resolution.width}x${resolution.height}`;
-    if (resolution.isCapped) {
-      resolutionStr += ` (capped from ${resolution.original.width}x${resolution.original.height})`;
-    }
-    resolutionStr += ` - ${deviceType}`;
-
-    if (resolutionText) {
-      resolutionText.textContent = resolutionStr;
-    }
-    if (resolutionInfo) {
-      resolutionInfo.classList.remove('hidden');
-    }
-  }
-
-  // Show resolution on page load (optional)
-  showResolutionInfo();
+  // (Removed as per user request)
 
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -286,11 +268,6 @@ const API_URL = import.meta.env.PUBLIC_BACKEND_URL || 'http://localhost:8000';
 
   /* Spinner and button states */
   .btn-spinner.hidden {
-    display: none;
-  }
-
-  /* Resolution info */
-  .resolution-info.hidden {
     display: none;
   }
 </style>
