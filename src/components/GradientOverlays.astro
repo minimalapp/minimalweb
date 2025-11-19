@@ -9,6 +9,59 @@
   <div class="gradient-noise"></div>
 </div>
 
+<script>
+  // Scroll-based animation for gradient overlays
+  let ticking = false;
+
+  function updateGradientTransforms() {
+    const scrollY = window.scrollY;
+    const scrollProgress = Math.min(scrollY / (document.documentElement.scrollHeight - window.innerHeight), 1);
+    
+    const leftOverlay = document.querySelector('.gradient-overlay-left') as HTMLElement;
+    const rightOverlay = document.querySelector('.gradient-overlay-right') as HTMLElement;
+    
+    if (leftOverlay && rightOverlay) {
+      // Calculate smooth transforms based on scroll
+      const translateY = scrollProgress * 50;
+      const rotate = scrollProgress * 30;
+      const scale = 1 + (scrollProgress * 0.1);
+      
+      // Update CSS variables for ::after pseudo-elements
+      leftOverlay.style.setProperty('--scroll-transform-after', `translate(0, ${translateY}%) rotate(${rotate}deg) scale(${scale})`);
+      rightOverlay.style.setProperty('--scroll-transform-after', `translate(0, ${translateY}%) rotate(${-rotate}deg) scale(${scale})`);
+      
+      // Update CSS variables for ::before pseudo-elements
+      const rotateB = scrollProgress * 360;
+      const translateYB = scrollProgress * -20;
+      leftOverlay.style.setProperty('--scroll-transform-before', `rotate(${rotateB}deg) translateY(${translateYB}%)`);
+      rightOverlay.style.setProperty('--scroll-transform-before', `rotate(${-rotateB}deg) translateY(${translateYB}%)`);
+    }
+    
+    ticking = false;
+  }
+
+  function onScroll() {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        updateGradientTransforms();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+
+  // Initialize on load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      updateGradientTransforms();
+      window.addEventListener('scroll', onScroll, { passive: true });
+    });
+  } else {
+    updateGradientTransforms();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+</script>
+
 <style is:global>
   .intro-mode .gradient-overlay-left,
   .intro-mode .gradient-overlay-right {

@@ -5,8 +5,16 @@
       "description": "Minimal converts static websites into dynamic AI interfaces that capture your visitors' real intent. Modernize your web presence without rebuilding."
     },
     "magic": {
-      "words": ["Transform", "Modernize", "Revolutionize"],
-      "phrases": ["your website", "your brand", "your business"]
+      "words": [
+        "Transform",
+        "Modernize",
+        "Revolutionize"
+      ],
+      "phrases": [
+        "your website",
+        "your brand",
+        "your business"
+      ]
     },
     "hero": {
       "title": "Transform your Website<br/>into an <span class=\"highlight\">Intelligent</span><br/><span class=\"highlight\">Conversational Experience</span>",
@@ -312,7 +320,7 @@
       "subtitle": "Join the companies already revolutionizing their web presence",
       "emailPlaceholder": "Your email",
       "urlPlaceholder": "Your website URL",
-      "button": "Get Personalized Demo",
+      "button": "Try on your website for free",
       "footnote": "⚡ Setup in less than 1 hour"
     }
   },
@@ -322,8 +330,16 @@
       "description": "Minimal convierte sitios web estáticos en interfaces dinámicas de IA que capturan la intención real de tus visitantes. Moderniza tu presencia web sin reconstruir."
     },
     "magic": {
-      "words": ["Transforma", "Moderniza", "Revoluciona"],
-      "phrases": ["tu sitio web", "tu marca", "tu negocio"]
+      "words": [
+        "Transforma",
+        "Moderniza",
+        "Revoluciona"
+      ],
+      "phrases": [
+        "tu sitio web",
+        "tu marca",
+        "tu negocio"
+      ]
     },
     "hero": {
       "title": "Transforma tu Sitio Web<br/>en una <span class=\"highlight\">Experiencia</span><br/><span class=\"highlight\">Conversacional Inteligente</span>",
@@ -629,7 +645,7 @@
       "subtitle": "Únete a las empresas que ya están revolucionando su presencia web",
       "emailPlaceholder": "Tu email",
       "urlPlaceholder": "URL de tu sitio web",
-      "button": "Obtener Demo Personalizada",
+      "button": "Prueba gratis en tu sitio web",
       "footnote": "⚡ Configuración en menos de 1 hora"
     }
   }

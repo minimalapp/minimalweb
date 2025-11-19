@@ -180,6 +180,10 @@ function finishIntro(): void {
   extraContent.forEach(el => {
     el.classList.remove('md:opacity-0');
   });
+
+  // Update body classes for gradient overlays
+  document.body.classList.remove('intro-mode');
+  document.body.classList.add('main-page-mode');
 }
 
 function skipIntro(): void {
@@ -204,6 +208,9 @@ export function initMagicHero(translations: MagicTranslations): void {
     finishIntro();
     return;
   }
+
+  // Add intro-mode class to body
+  document.body.classList.add('intro-mode');
 
   // Add skip listeners
   document.addEventListener('click', skipIntro);
