@@ -16,12 +16,30 @@ const {
   ogImage = '/assets/images/og-image.jpg'
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+// Ensure canonical URL doesn't have trailing slash (except for homepage)
+const canonicalPath = Astro.url.pathname === '/' ? '/' : Astro.url.pathname.replace(/\/$/, '');
+const canonicalURL = new URL(canonicalPath, Astro.site);
 const ogImageURL = new URL(ogImage, Astro.site);
 
-// Language alternates
-const alternateEn = new URL(Astro.url.pathname.replace('/es/', '/'), Astro.site);
-const alternateEs = new URL('/es' + Astro.url.pathname, Astro.site);
+// Language alternates - properly handle the path structure
+const isSpanishPage = Astro.url.pathname.startsWith('/es/') || Astro.url.pathname === '/es';
+let alternateEn, alternateEs;
+
+if (isSpanishPage) {
+  // Remove /es prefix for English version
+  const enPath = Astro.url.pathname === '/es' || Astro.url.pathname === '/es/'
+    ? '/'
+    : Astro.url.pathname.replace(/^\/es/, '').replace(/\/$/, '') || '/';
+  alternateEn = new URL(enPath, Astro.site);
+  alternateEs = new URL(canonicalPath, Astro.site);
+} else {
+  // Add /es prefix for Spanish version
+  const esPath = Astro.url.pathname === '/'
+    ? '/es'
+    : '/es' + Astro.url.pathname.replace(/\/$/, '');
+  alternateEn = new URL(canonicalPath, Astro.site);
+  alternateEs = new URL(esPath, Astro.site);
+}
 ---
 
 <!DOCTYPE html>
@@ -44,8 +62,15 @@ const alternateEs = new URL('/es' + Astro.url.pathname, Astro.site);
   <meta name="description" content={description}>
   <meta name="keywords" content="conversational AI, website transformation, chatbot, AI interface, web modernization, SaaS, AI assistant">
   <meta name="author" content="Minimal">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow">
   <link rel="canonical" href={canonicalURL}>
+
+  <!-- Additional SEO tags -->
+  <meta http-equiv="content-language" content={locale}>
+  <meta name="language" content={locale === 'es' ? 'Spanish' : 'English'}>
+  <meta name="revisit-after" content="7 days">
+  <meta name="distribution" content="global">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
@@ -74,26 +99,62 @@ const alternateEs = new URL('/es' + Astro.url.pathname, Astro.site);
 
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json" is:inline>
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Minimal",
-    "applicationCategory": "WebApplication",
-    "operatingSystem": "Web",
-    "description": "Transform your website into an intelligent conversational AI experience",
-    "offers": {
-      "@type": "AggregateOffer",
-      "lowPrice": "19",
-      "highPrice": "39",
-      "priceCurrency": "USD",
-      "offerCount": "3"
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Minimal",
+      "url": "https://minimal.lat",
+      "logo": "https://minimal.lat/assets/images/favicon.png",
+      "description": "Transform your website into an intelligent conversational AI experience",
+      "sameAs": [],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "",
+        "contactType": "customer support",
+        "availableLanguage": ["English", "Spanish"]
+      }
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "ratingCount": "150"
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Minimal",
+      "applicationCategory": "WebApplication",
+      "operatingSystem": "Web",
+      "description": "Transform your website into an intelligent conversational AI experience",
+      "url": "https://minimal.lat",
+      "offers": {
+        "@type": "AggregateOffer",
+        "lowPrice": "19",
+        "highPrice": "39",
+        "priceCurrency": "USD",
+        "offerCount": "3"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "150"
+      },
+      "provider": {
+        "@type": "Organization",
+        "name": "Minimal",
+        "url": "https://minimal.lat"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": "https://minimal.lat",
+      "name": "Minimal",
+      "description": "Transform your website into an intelligent conversational AI experience",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Minimal",
+        "url": "https://minimal.lat"
+      },
+      "inLanguage": ["en-US", "es-ES"]
     }
-  }
+  ]
   </script>
 </head>
 <body>

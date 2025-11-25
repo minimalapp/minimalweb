@@ -1,0 +1,6 @@
+# Redirect www to non-www
+https://www.minimal.lat/* https://minimal.lat/:splat 301!
+http://www.minimal.lat/* https://minimal.lat/:splat 301!
+
+# Force HTTPS
+http://minimal.lat/* https://minimal.lat/:splat 301!

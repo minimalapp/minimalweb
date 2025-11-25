@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://minimalapp.github.io/minimalweb/sitemap.xml
+Sitemap: https://minimal.lat/sitemap.xml
 
 # Specific pages to highlight
 Allow: /about/
