@@ -37,7 +37,7 @@ const faqItems = [
   },
   {
     question: "¿Hay un número de teléfono al que pueda llamar?",
-    answer: "<p>Apoyamos principalmente a los clientes a través de correo electrónico y llamadas programadas para asegurar respuestas de calidad. Usa la opción \"Programar una Llamada\" arriba para reservar un horario que te funcione. Para clientes empresariales, proporcionamos soporte telefónico dedicado como parte de tu plan.</p>"
+    answer: "<p>Apoyamos principalmente a los clientes a través de correo electrónico para asegurar respuestas de calidad. Para clientes empresariales, proporcionamos soporte telefónico dedicado como parte de tu plan. Contáctanos en hello@minimal.lat para discutir tus necesidades.</p>"
   }
 ];
 ---
@@ -58,8 +58,8 @@ const faqItems = [
           <SectionTitle title="Envíanos un Mensaje" size="md" spacing="normal" />
           <form class="flex flex-col gap-6" id="contact-form-es">
             <div class="flex flex-col gap-2">
-              <label for="name" class="text-[var(--text-primary)] text-base font-semibold">Nombre Completo *</label>
-              <input type="text" id="name" name="name" placeholder="Juan Pérez" required
+              <label for="full_name" class="text-[var(--text-primary)] text-base font-semibold">Nombre Completo *</label>
+              <input type="text" id="full_name" name="full_name" placeholder="Juan Pérez" required
                 class="px-6 py-4 min-h-[52px] border-2 border-[var(--border-primary)] rounded-lg text-base bg-[var(--bg-primary)] text-[var(--text-primary)] transition-all duration-200 shadow-sm focus:outline-none focus:border-[var(--brand-purple-primary)] focus:shadow-[0_0_0_3px_rgba(99,102,241,0.1)]" />
             </div>
 
@@ -97,9 +97,12 @@ const faqItems = [
 
             <div class="flex flex-col gap-2">
               <label for="message" class="text-[var(--text-primary)] text-base font-semibold">Mensaje *</label>
-              <textarea id="message" name="message" placeholder="Cuéntanos cómo podemos ayudarte..." rows="6" required
+              <textarea id="message" name="message" placeholder="Cuéntanos cómo podemos ayudarte..." rows="6" required minlength="10"
                 class="px-6 py-4 min-h-[150px] border-2 border-[var(--border-primary)] rounded-lg text-base bg-[var(--bg-primary)] text-[var(--text-primary)] transition-all duration-200 shadow-sm resize-y focus:outline-none focus:border-[var(--brand-purple-primary)] focus:shadow-[0_0_0_3px_rgba(99,102,241,0.1)]"></textarea>
             </div>
+
+            <!-- Form message container -->
+            <div id="form-message-es" class="hidden rounded-lg p-4 text-sm"></div>
 
             <Button type="submit" variant="primary" size="lg" className="w-full">
               Enviar Mensaje
@@ -128,14 +131,6 @@ const faqItems = [
               interactive={true}
             />
           </div>
-
-          <div class="bg-gradient-to-br from-purple-500/10 to-green-500/10 border-2 border-[var(--brand-purple-primary)] rounded-xl p-6 lg:p-8">
-            <h3 class="text-xl text-[var(--text-primary)] font-semibold mb-4">¿Prefieres Hablar Directamente?</h3>
-            <p class="text-base text-[var(--text-secondary)] leading-relaxed mb-6">Estamos disponibles de lunes a viernes, de 9 AM a 6 PM EST. Programa una llamada con nuestro equipo para discutir tus necesidades en detalle.</p>
-            <Button variant="secondary" href="#" className="w-full">
-              Programar una Llamada
-            </Button>
-          </div>
         </div>
       </div>
     </ContentSection>
@@ -152,18 +147,139 @@ const faqItems = [
 <script>
   import { trackContactFormSubmit } from '@/scripts/analytics';
 
-  // Track contact form submissions
+  const API_URL = import.meta.env.PUBLIC_BACKEND_URL || 'http://localhost:8000';
   const form = document.getElementById('contact-form-es') as HTMLFormElement;
-  const subjectSelect = document.getElementById('subject') as HTMLSelectElement;
+  const submitBtn = form?.querySelector('button[type="submit"]') as HTMLButtonElement;
+  const messageContainer = document.getElementById('form-message-es') as HTMLDivElement;
+  const originalBtnText = submitBtn?.textContent || 'Enviar Mensaje';
 
-  form?.addEventListener('submit', (e) => {
+  function showMessage(type: 'success' | 'error', message: string) {
+    if (!messageContainer) return;
+
+    messageContainer.className = type === 'success'
+      ? 'rounded-lg p-4 text-sm bg-green-50 border border-green-200 text-green-800'
+      : 'rounded-lg p-4 text-sm bg-red-50 border border-red-200 text-red-800';
+
+    messageContainer.innerHTML = message;
+    messageContainer.classList.remove('hidden');
+    messageContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function hideMessage() {
+    if (messageContainer) {
+      messageContainer.classList.add('hidden');
+    }
+  }
+
+  form?.addEventListener('submit', async (e) => {
     e.preventDefault();
+    hideMessage();
 
-    const subject = subjectSelect?.value || 'not_specified';
-    trackContactFormSubmit(subject, '/es/contact');
+    const formData = new FormData(form);
+    const subject = formData.get('subject') as string;
 
-    // Show user feedback
-    alert('¡Gracias por contactarnos! Te responderemos pronto.');
-    form.reset();
+    const payload = {
+      full_name: formData.get('full_name'),
+      email: formData.get('email'),
+      company: formData.get('company') || '',
+      website: formData.get('website') || '',
+      subject: subject || 'other',
+      message: formData.get('message'),
+    };
+
+    // Disable button and show loading state
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando...';
+    }
+
+    try {
+      const response = await fetch(`${API_URL}/api/contact/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // Track successful submission
+        trackContactFormSubmit(subject || 'not_specified', '/es/contact');
+
+        // Show success message
+        showMessage('success', `
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+            </svg>
+            <div>
+              <p class="font-medium">¡Mensaje enviado con éxito!</p>
+              <p class="mt-1 opacity-90">${data.message || "Gracias por contactarnos. Te responderemos pronto."}</p>
+            </div>
+          </div>
+        `);
+        form.reset();
+      } else {
+        // Handle validation errors
+        const fieldLabels: Record<string, string> = {
+          full_name: 'Nombre completo',
+          email: 'Correo electrónico',
+          company: 'Empresa',
+          website: 'Sitio web',
+          subject: 'Asunto',
+          message: 'Mensaje'
+        };
+
+        if (data.details) {
+          const errorList = Object.entries(data.details)
+            .map(([field, msgs]) => `<li><strong>${fieldLabels[field] || field}:</strong> ${(msgs as string[]).join(', ')}</li>`)
+            .join('');
+          showMessage('error', `
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
+              </svg>
+              <div>
+                <p class="font-medium">Por favor corrige los siguientes errores:</p>
+                <ul class="mt-1 list-disc list-inside opacity-90">${errorList}</ul>
+              </div>
+            </div>
+          `);
+        } else {
+          showMessage('error', `
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
+              </svg>
+              <div>
+                <p class="font-medium">Algo salió mal</p>
+                <p class="mt-1 opacity-90">${data.error || 'Por favor intenta de nuevo más tarde.'}</p>
+              </div>
+            </div>
+          `);
+        }
+      }
+    } catch (error) {
+      console.error('Contact form error:', error);
+      showMessage('error', `
+        <div class="flex items-start gap-3">
+          <svg class="w-5 h-5 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
+          </svg>
+          <div>
+            <p class="font-medium">Error de conexión</p>
+            <p class="mt-1 opacity-90">Por favor verifica tu conexión a internet e intenta de nuevo.</p>
+          </div>
+        </div>
+      `);
+    } finally {
+      // Re-enable button
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+      }
+    }
   });
 </script>

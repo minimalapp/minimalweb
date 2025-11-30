@@ -157,12 +157,14 @@
         {
           "icon": "✓",
           "title": "A/B Testing",
-          "description": "Test different variations and optimize"
+          "description": "Test different variations and optimize",
+          "comingSoon": true
         },
         {
           "icon": "✓",
           "title": "Automated Reports",
-          "description": "Real-time metrics and KPIs"
+          "description": "Real-time metrics and KPIs",
+          "comingSoon": true
         }
       ],
       "developers": [
@@ -174,7 +176,8 @@
         {
           "icon": "✓",
           "title": "Flexible APIs",
-          "description": "Easily connect with your existing tools"
+          "description": "Easily connect with your existing tools",
+          "comingSoon": true
         },
         {
           "icon": "✓",
@@ -206,7 +209,8 @@
         {
           "icon": "✓",
           "title": "Accessibility",
-          "description": "Inclusive design for everyone"
+          "description": "Inclusive design for everyone",
+          "comingSoon": true
         }
       ]
     },
@@ -482,12 +486,14 @@
         {
           "icon": "✓",
           "title": "A/B Testing",
-          "description": "Prueba diferentes variaciones y optimiza"
+          "description": "Prueba diferentes variaciones y optimiza",
+          "comingSoon": true
         },
         {
           "icon": "✓",
           "title": "Reportes Automatizados",
-          "description": "Métricas y KPIs en tiempo real"
+          "description": "Métricas y KPIs en tiempo real",
+          "comingSoon": true
         }
       ],
       "developers": [
@@ -499,7 +505,8 @@
         {
           "icon": "✓",
           "title": "APIs Flexibles",
-          "description": "Conecta fácilmente con tus herramientas existentes"
+          "description": "Conecta fácilmente con tus herramientas existentes",
+          "comingSoon": true
         },
         {
           "icon": "✓",
@@ -531,7 +538,8 @@
         {
           "icon": "✓",
           "title": "Accesibilidad",
-          "description": "Diseño inclusivo para todos"
+          "description": "Diseño inclusivo para todos",
+          "comingSoon": true
         }
       ]
     },

@@ -16,13 +16,19 @@
 
 import Icon from '@/components/Icon.astro';
 
+interface ItemWithBadge {
+  text: string;
+  comingSoon?: boolean;
+}
+
 interface Props {
   icon?: string;
   title: string;
   description: string;
-  items?: string[];
+  items?: (string | ItemWithBadge)[];
   variant?: 'primary' | 'tertiary' | 'secondary';
   className?: string;
+  comingSoon?: boolean;
 }
 
 const {
@@ -31,7 +37,8 @@ const {
   description,
   items = [],
   variant = 'primary',
-  className = ''
+  className = '',
+  comingSoon = false
 } = Astro.props;
 
 // Match homepage UseCases pattern - no borders, rounded-md, shadow-md
@@ -42,7 +49,10 @@ const bgClass = {
 }[variant];
 ---
 
-<div class={`${bgClass} rounded-md p-6 shadow-md transition-all duration-base hover:-translate-y-0.5 hover:shadow-lg ${className}`}>
+<div class={`relative ${bgClass} rounded-md p-6 shadow-md transition-all duration-base hover:-translate-y-0.5 hover:shadow-lg overflow-visible ${className}`}>
+  {comingSoon && (
+    <span class="coming-soon-badge">Coming soon</span>
+  )}
   {icon && (
     <div class="mb-4 text-brand-purple-primary">
       <Icon name={icon} size="xl" />
@@ -59,13 +69,87 @@ const bgClass = {
 
   {items.length > 0 && (
     <ul class="list-none p-0 m-0">
-      {items.map(item => (
-        <li class="text-sm text-text-tertiary mb-1 pl-3 relative before:content-['✓'] before:absolute before:left-0 before:text-brand-green before:font-bold">
-          {item}
-        </li>
-      ))}
+      {items.map(item => {
+        const isObject = typeof item === 'object';
+        const text = isObject ? item.text : item;
+        const comingSoon = isObject ? item.comingSoon : false;
+        return (
+          <li class="text-sm text-text-tertiary mb-1 pl-3 relative before:content-['✓'] before:absolute before:left-0 before:text-brand-green before:font-bold">
+            <span class="inline-flex items-center flex-wrap gap-1">
+              <span>{text}</span>
+              {comingSoon && <span class="coming-soon-badge-inline">Coming soon</span>}
+            </span>
+          </li>
+        );
+      })}
     </ul>
   )}
 
   <slot />
 </div>
+
+<style is:global>
+  .coming-soon-badge {
+    @apply text-[10px] font-semibold px-2.5 py-1 rounded-md whitespace-nowrap uppercase tracking-wider;
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    z-index: 10;
+    background: linear-gradient(135deg, #7c3aed 0%, #6366f1 50%, #7c3aed 100%);
+    color: #ffffff;
+    border: 1px solid #8b5cf6;
+    box-shadow: 0 2px 8px rgba(124, 58, 237, 0.4);
+    overflow: hidden;
+  }
+
+  .coming-soon-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+
+  .coming-soon-badge-inline {
+    @apply text-[9px] font-medium px-1.5 py-0.5 rounded ml-2 uppercase tracking-wide whitespace-nowrap inline-block;
+    background: rgba(139, 92, 246, 0.12);
+    color: #a78bfa;
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .coming-soon-badge-inline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.25),
+      transparent
+    );
+    animation: shimmer-inline 2.5s infinite;
+  }
+
+  @keyframes shimmer-inline {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+</style>

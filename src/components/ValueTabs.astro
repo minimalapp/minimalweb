@@ -5,6 +5,7 @@ export interface BenefitItem {
   icon: string;
   title: string;
   description: string;
+  comingSoon?: boolean;
 }
 
 export interface Props {
@@ -70,11 +71,14 @@ const { title, tabs, businessOwners, marketing, developers, endUsers, locale } =
       <div class="pt-3">
         <div class="benefit-list grid grid-cols-1 md:grid-cols-2 gap-4 animate-fadeInUp" role="tabpanel" id="businessOwners-panel">
           {businessOwners.map((item) => (
-            <div class="flex gap-3 items-start p-4 bg-bg-tertiary rounded-md shadow-sm transition-all duration-base border border-border-subtle hover:-translate-y-0.5 hover:shadow-md">
+            <div class="relative flex gap-3 items-start p-4 bg-bg-tertiary rounded-md shadow-sm transition-all duration-base border border-border-subtle hover:-translate-y-0.5 hover:shadow-md overflow-visible">
+              {item.comingSoon && (
+                <span class="coming-soon-badge">Coming soon</span>
+              )}
               <div class="text-2xl flex-shrink-0 w-icon-sm h-icon-sm flex items-center justify-center icon-feature rounded-sm text-brand-purple-primary font-bold">
                 {item.icon}
               </div>
-              <div>
+              <div class="flex-1">
                 <h4 class="m-0 mb-1 text-xl text-text-primary font-semibold">{item.title}</h4>
                 <p class="m-0 text-text-tertiary leading-relaxed text-[15px]">{item.description}</p>
               </div>
@@ -128,11 +132,12 @@ const { title, tabs, businessOwners, marketing, developers, endUsers, locale } =
         // Update content and panel ID
         listElement.id = `${tabKey}-panel`;
         listElement.innerHTML = content.map((item: any) => `
-          <div class="flex gap-3 items-start p-4 bg-bg-tertiary rounded-md shadow-sm transition-all duration-base border border-border-subtle hover:-translate-y-0.5 hover:shadow-md">
+          <div class="relative flex gap-3 items-start p-4 bg-bg-tertiary rounded-md shadow-sm transition-all duration-base border border-border-subtle hover:-translate-y-0.5 hover:shadow-md overflow-visible">
+            ${item.comingSoon ? '<span class="coming-soon-badge">Coming soon</span>' : ''}
             <div class="text-2xl flex-shrink-0 w-icon-sm h-icon-sm flex items-center justify-center icon-feature rounded-sm text-brand-purple-primary font-bold">
               ${item.icon}
             </div>
-            <div>
+            <div class="flex-1">
               <h4 class="m-0 mb-1 text-xl text-text-primary font-semibold">${item.title}</h4>
               <p class="m-0 text-text-tertiary leading-relaxed text-[15px]">${item.description}</p>
             </div>
@@ -158,5 +163,46 @@ const { title, tabs, businessOwners, marketing, developers, endUsers, locale } =
   /* Tab active state styles - minimal scoped styles for dynamic state */
   .tab-button.active {
     @apply bg-bg-primary text-brand-purple-primary opacity-100 border-b-brand-purple-primary font-semibold;
+  }
+</style>
+
+<style is:global>
+  /* Coming soon badge - global so it works with dynamically rendered content */
+  .coming-soon-badge {
+    @apply text-[10px] font-semibold px-2.5 py-1 rounded-md whitespace-nowrap uppercase tracking-wider;
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    z-index: 10;
+    background: linear-gradient(135deg, #7c3aed 0%, #6366f1 50%, #7c3aed 100%);
+    color: #ffffff;
+    border: 1px solid #8b5cf6;
+    box-shadow: 0 2px 8px rgba(124, 58, 237, 0.4);
+    overflow: hidden;
+  }
+
+  .coming-soon-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
   }
 </style>

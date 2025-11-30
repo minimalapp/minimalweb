@@ -14,6 +14,7 @@ import Icon from '@/components/Icon.astro';
 const locale = 'es';
 const title = 'Características - Minimal';
 const description = 'Descubre todas las funcionalidades que transformarán tu sitio web en una experiencia conversacional inteligente.';
+const API_URL = import.meta.env.PUBLIC_BACKEND_URL || 'http://localhost:8000';
 ---
 
 <BaseLayout title={title} description={description} locale={locale}>
@@ -32,8 +33,8 @@ const description = 'Descubre todas las funcionalidades que transformarán tu si
         <FeatureCard icon="paint-brush" title="Preservación de Marca" description="La interfaz conversacional se adapta automáticamente a los colores, fuentes y estilo visual de tu sitio web." />
         <FeatureCard icon="bolt" title="Integración en 1 Línea" description="Implementación ultrarrápida que requiere solo agregar una línea de código JavaScript a tu sitio web." />
         <FeatureCard icon="chart-bar" title="Analíticas Inteligentes" description="Obtén información profunda sobre las intenciones reales y patrones de comportamiento de tus usuarios." />
-        <FeatureCard icon="arrow-path" title="Sincronización Automática" description="El contenido de tu sitio web se sincroniza automáticamente, permitiendo que la IA siempre tenga información actualizada." />
-        <FeatureCard icon="globe-alt" title="Soporte Multi-idioma" description="Interfaz conversacional que se adapta automáticamente al idioma de tu sitio web." />
+        <FeatureCard icon="arrow-path" title="Sincronización Automática" description="El contenido de tu sitio web se sincroniza automáticamente, permitiendo que la IA siempre tenga información actualizada." comingSoon={true} />
+        <FeatureCard icon="globe-alt" title="Soporte Multi-idioma" description="Interfaz conversacional que se adapta automáticamente al idioma de tu sitio web." comingSoon={true} />
       </div>
     </ContentSection>
 
@@ -52,7 +53,7 @@ const description = 'Descubre todas las funcionalidades que transformarán tu si
             'Reconocimiento de intenciones y extracción de entidades',
             'Manejo de diálogos de múltiples turnos',
             'Análisis de sentimientos para mejor interacción',
-            'Aprendizaje continuo de las interacciones'
+            { text: 'Aprendizaje continuo de las interacciones', comingSoon: true }
           ]}
           variant="primary"
         />
@@ -99,7 +100,7 @@ const description = 'Descubre todas las funcionalidades que transformarán tu si
           items={[
             'Preguntas Principales: Consultas más frecuentes',
             'Intención del Usuario: Qué están tratando de lograr',
-            'Patrones de Comportamiento: Flujos de navegación e interacción'
+            { text: 'Patrones de Comportamiento: Flujos de navegación e interacción', comingSoon: true }
           ]}
         />
 
@@ -108,6 +109,7 @@ const description = 'Descubre todas las funcionalidades que transformarán tu si
           title="Informes Accionables"
           description="Transforma datos sin procesar en información accionable con informes completos. Exporta datos, crea paneles personalizados e integra con tus herramientas de analíticas existentes para obtener una imagen completa del rendimiento de tu sitio web."
           variant="tertiary"
+          comingSoon={true}
           items={[
             'Paneles Personalizados: Visualiza datos a tu manera',
             'Informes Automatizados: Entrega programada de insights',
@@ -179,7 +181,7 @@ const description = 'Descubre todas las funcionalidades que transformarán tu si
             'Respuestas rápidas',
             'Soporte de medios enriquecidos',
             'Optimizado para móviles',
-            'Cumplimiento de accesibilidad'
+            { text: 'Accesibilidad', comingSoon: true }
           ]}
         />
 
@@ -190,11 +192,11 @@ const description = 'Descubre todas las funcionalidades que transformarán tu si
           variant="tertiary"
           items={[
             'Colores personalizados',
-            'Fuentes de marca',
+            { text: 'Fuentes de marca', comingSoon: true },
             'Integración de logo',
             'Control de posición',
-            'Modos de tema',
-            'Configuración de animaciones'
+            { text: 'Modos de tema', comingSoon: true },
+            { text: 'Configuración de animaciones', comingSoon: true }
           ]}
         />
 
@@ -203,6 +205,7 @@ const description = 'Descubre todas las funcionalidades que transformarán tu si
           title="Características Avanzadas"
           description="Los usuarios avanzados y desarrolladores pueden aprovechar características avanzadas incluyendo API de JavaScript, webhooks, acciones personalizadas y control programático. Construye flujos de trabajo sofisticados e integra profundamente con tus sistemas existentes."
           variant="tertiary"
+          comingSoon={true}
           items={[
             'API de JavaScript',
             'Integración de webhooks',
@@ -222,7 +225,7 @@ const description = 'Descubre todas las funcionalidades que transformarán tu si
       background="green"
     >
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <Button variant="outline" size="lg" href="https://minimal.lat" id="features-get-started-btn-es">
+        <Button variant="outline" size="lg" href={`${API_URL}/accounts/signup/`} id="features-get-started-btn-es">
           Comenzar Gratis
         </Button>
         <Button variant="outline-light" size="lg" href="/es/contact" id="features-contact-sales-btn-es">
@@ -244,7 +247,7 @@ const description = 'Descubre todas las funcionalidades que transformarán tu si
   const contactSalesBtn = document.getElementById('features-contact-sales-btn-es');
 
   getStartedBtn?.addEventListener('click', () => {
-    trackGetStartedClick('features_page_es', 'https://minimal.lat');
+    trackGetStartedClick('features_page_es', 'signup');
   });
 
   contactSalesBtn?.addEventListener('click', () => {
