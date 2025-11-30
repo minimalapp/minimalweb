@@ -126,26 +126,24 @@ const description = 'Discover all the functionalities that will transform your w
         <InfoBox
           icon="lock-closed"
           title="Data Protection"
-          description="Your data security is our top priority. We employ industry-leading encryption, comply with international privacy regulations, and implement strict access controls to ensure your information remains safe and private."
+          description="Your data security is our priority. We use TLS encryption for data in transit, store data using AWS encryption services, and strive to comply with international privacy regulations."
           items={[
-            'End-to-end encryption for all data transmission',
-            'GDPR, CCPA, and SOC 2 compliance',
-            'Regular security audits by third-party experts',
-            'Data anonymization and privacy protection',
-            'Secure data centers with 24/7 monitoring'
+            'TLS encryption for data in transit',
+            'AWS encryption for data at rest (AES-256)',
+            'GDPR and CCPA compliance efforts',
+            'Hosted on AWS certified infrastructure'
           ]}
         />
 
         <InfoBox
           icon="cog"
           title="Robust Infrastructure"
-          description="Built on world-class infrastructure with redundancy at every level. Our distributed architecture ensures your conversational interface is always available, fast, and responsive, no matter where your users are located."
+          description="Built on AWS infrastructure. We aim to provide reliable service, though during beta no formal SLA is in effect."
           items={[
-            '99.9% uptime guarantee with SLA backing',
-            'Global CDN for lightning-fast delivery',
-            'Automatic failover and disaster recovery',
-            'Load balancing for optimal performance',
-            'Real-time monitoring and alerting'
+            '99.9% uptime goal (not guaranteed during beta)',
+            'AWS infrastructure',
+            'Service monitoring via AWS CloudWatch',
+            'Regular data backups'
           ]}
         />
 

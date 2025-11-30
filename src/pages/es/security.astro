@@ -17,12 +17,16 @@ const locale = 'es';
       title="Seguridad"
       subtitle="Prácticas y medidas de seguridad integrales que protegen tus datos en Minimal."
     >
-      <p class="text-center text-lg text-[var(--text-secondary)] mt-4">Última actualización: Enero 2025</p>
+      <p class="text-center text-lg text-[var(--text-secondary)] mt-4">Ultima actualizacion: Noviembre 2025</p>
+      <div class="bg-amber-500/10 border border-amber-500/30 rounded-lg p-4 mt-6 text-center">
+        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500 text-white uppercase tracking-wide mr-2">Beta</span>
+        <span class="text-amber-800 dark:text-amber-200 text-sm">Las caracteristicas de seguridad y certificaciones se estan mejorando continuamente durante nuestro periodo beta. Algunas certificaciones pueden estar en progreso.</span>
+      </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
         <InfoCard
           icon="shield-check"
-          title="SOC 2 Type II"
-          description="Controles de seguridad auditados de forma independiente"
+          title="Infraestructura AWS"
+          description="Alojado en plataforma de nube líder en la industria"
         />
         <InfoCard
           icon="building-library"
@@ -31,8 +35,8 @@ const locale = 'es';
         />
         <InfoCard
           icon="bolt"
-          title="99.9% Tiempo Activo"
-          description="Infraestructura confiable y disponible"
+          title="Meta 99.9% Tiempo Activo"
+          description="Disponibilidad objetivo (no garantizada durante beta)"
         />
       </div>
     </PageHero>
@@ -43,29 +47,23 @@ const locale = 'es';
               <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-6">La seguridad está en el centro de todo lo que hacemos en Minimal. Entendemos que nos estás confiando tus datos valiosos y nos tomamos esa responsabilidad muy en serio. Nuestro programa integral de seguridad está diseñado para proteger tu información a través de múltiples capas de protección, monitoreo continuo y estricto cumplimiento de los estándares de la industria.</p>
       <h2 class="text-3xl lg:text-4xl mb-8 text-[var(--text-primary)] font-bold">Seguridad de la Infraestructura</h2>
       <ul class="list-none p-0 m-0 space-y-3 my-4">
-          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Infraestructura de Nube Empresarial:</strong> Alojado en proveedores de nube líderes en la industria con certificaciones SOC 2 Type II e ISO 27001</li>
-          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Redundancia Geográfica:</strong> Despliegue multi-región con conmutación por error automática para garantizar disponibilidad continua</li>
-          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Segmentación de Red:</strong> Zonas de red aisladas con reglas estrictas de firewall y controles de acceso</li>
-          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Protección DDoS:</strong> Protección de denegación de servicio distribuida de nivel empresarial en toda la infraestructura</li>
-          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Seguridad Física:</strong> Centros de datos con monitoreo 24/7, acceso biométrico y controles ambientales</li>
+          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Infraestructura de Nube AWS:</strong> Alojado en Amazon Web Services, que mantiene certificaciones SOC 2, ISO 27001 y otras de la industria</li>
+          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Aislamiento de Red:</strong> Servicios desplegados dentro de entornos de nube privada virtual (VPC) aislados</li>
+          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Seguridad Física de AWS:</strong> Los centros de datos de AWS cuentan con controles integrales de seguridad física y ambiental</li>
         </ul>
 
       <h2 class="text-3xl lg:text-4xl mb-8 text-[var(--text-primary)] font-bold">Protección de Datos</h2>
 
       <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">Encriptación</h3>
       <ul class="list-none p-0 m-0 space-y-3 my-4">
-          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Encriptación en Tránsito:</strong> TLS 1.3 con secreto perfecto hacia adelante para toda transmisión de datos</li>
-          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Encriptación en Reposo:</strong> Encriptación AES-256 para todos los datos almacenados y copias de seguridad</li>
-          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Gestión de Claves:</strong> Módulos de seguridad de hardware (HSM) para almacenamiento de claves criptográficas</li>
-          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Encriptación de Extremo a Extremo:</strong> Encriptación E2E opcional para campos de datos sensibles</li>
+          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Encriptación en Tránsito:</strong> Encriptación TLS para toda transmisión de datos entre clientes y nuestros servicios</li>
+          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Encriptación en Reposo:</strong> Datos almacenados usando servicios de encriptación de AWS (AES-256)</li>
         </ul>
 
         <h3 class="text-2xl text-[var(--text-primary)] font-semibold mt-8 mb-4">Control de Acceso</h3>
         <ul class="list-none p-0 m-0 space-y-3 my-4">
-          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Control de Acceso Basado en Roles (RBAC):</strong> Permisos granulares basados en función laboral y necesidad</li>
-          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Autenticación Multifactor (MFA):</strong> Requerido para todos los miembros del equipo y disponible para clientes</li>
-          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Inicio de Sesión Único (SSO):</strong> Soporte para integraciones empresariales SAML 2.0 y OAuth 2.0</li>
-          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Registro de Acceso:</strong> Pista de auditoría completa de todo acceso a datos de clientes</li>
+          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Autenticación:</strong> Autenticación segura de usuarios para acceso a cuentas</li>
+          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">AWS IAM:</strong> Acceso a infraestructura gestionado a través de AWS Identity and Access Management</li>
         </ul>
 
         <h2 class="text-3xl lg:text-4xl mb-8 mt-12 text-[var(--text-primary)] font-semibold">Seguridad de Aplicaciones</h2>
@@ -80,20 +78,16 @@ const locale = 'es';
 
       <h2 class="text-3xl lg:text-4xl mb-8 text-[var(--text-primary)] font-bold">Cumplimiento Regulatorio</h2>
       <ul class="list-none p-0 m-0 space-y-3 my-4">
-          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">GDPR (Reglamento General de Protección de Datos):</strong> Cumplimiento total con requisitos de protección de datos de la UE</li>
-          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">CCPA (Ley de Privacidad del Consumidor de California):</strong> Cumplimiento con regulaciones de privacidad de California</li>
-          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">SOC 2 Type II:</strong> Auditoría independiente anual de controles de seguridad, disponibilidad y confidencialidad</li>
-          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">ISO 27001:</strong> Estándar internacional para gestión de seguridad de la información</li>
-          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">HIPAA:</strong> Protección de datos de salud para clientes elegibles</li>
+          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">GDPR (Reglamento General de Protección de Datos):</strong> Nos esforzamos por cumplir con los requisitos de protección de datos de la UE</li>
+          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">CCPA (Ley de Privacidad del Consumidor de California):</strong> Nos esforzamos por cumplir con las regulaciones de privacidad de California</li>
+          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Certificaciones de AWS:</strong> Nuestro proveedor de infraestructura (AWS) mantiene certificaciones SOC 2, ISO 27001 y otras de la industria</li>
         </ul>
 
       <h2 class="text-3xl lg:text-4xl mb-8 text-[var(--text-primary)] font-bold">Monitoreo y Respuesta a Incidentes</h2>
       <ul class="list-none p-0 m-0 space-y-3 my-4">
-          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Monitoreo de Seguridad 24/7:</strong> Detección de amenazas en tiempo real y sistemas de respuesta automatizada</li>
-          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Equipo de Respuesta a Incidentes:</strong> Equipo de seguridad dedicado con procedimientos de escalación definidos</li>
-          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Gestión de Vulnerabilidades:</strong> Evaluaciones de seguridad regulares y pruebas de penetración</li>
-          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Programa de Bug Bounty:</strong> Programa de divulgación responsable con investigadores de seguridad</li>
-          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Notificación al Cliente:</strong> Comunicación transparente en caso de incidentes de seguridad</li>
+          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">AWS CloudWatch:</strong> Monitoreo de servicios y alertas a través de la infraestructura de AWS</li>
+          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Respuesta a Incidentes:</strong> Investigamos y respondemos a preocupaciones de seguridad cuando surgen</li>
+          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Notificación al Cliente:</strong> Nos comunicaremos de forma transparente en caso de incidentes de seguridad</li>
         </ul>
 
       <h2 class="text-3xl lg:text-4xl mb-8 text-[var(--text-primary)] font-bold">Continuidad del Negocio</h2>
@@ -101,25 +95,16 @@ const locale = 'es';
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Copias de Seguridad Automatizadas:</strong> Respaldo continuo de datos con recuperación en un momento específico</li>
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Recuperación ante Desastres:</strong> Procedimientos de recuperación ante desastres probados con RTO y RPO definidos</li>
           <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Alta Disponibilidad:</strong> Sistemas redundantes en múltiples zonas de disponibilidad</li>
-          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Acuerdo de Nivel de Servicio:</strong> Garantía de tiempo activo del 99.9% con monitoreo proactivo</li>
+          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Meta de Tiempo Activo:</strong> Objetivo de tiempo activo del 99.9% con monitoreo proactivo</li>
         </ul>
+        <div class="bg-amber-100 dark:bg-amber-900/20 border-l-4 border-amber-500 p-4 my-6 rounded-r-lg">
+          <p class="text-amber-800 dark:text-amber-200 text-sm m-0"><strong>Aviso Beta:</strong> Durante nuestro periodo beta, ningun Acuerdo de Nivel de Servicio (SLA) esta vigente. El 99.9% de tiempo activo es nuestra meta operativa, no una garantia contractual. Los servicios beta pueden experimentar interrupciones, y no se aplican creditos de servicio ni compensacion por tiempo de inactividad durante este periodo. Por favor consulta nuestros <a href="/es/terms#beta-services" class="text-amber-700 dark:text-amber-300 underline">Terminos de Servicio</a> para mas detalles.</p>
+        </div>
 
-      <h2 class="text-3xl lg:text-4xl mb-8 text-[var(--text-primary)] font-bold">Seguridad del Personal</h2>
+      <h2 class="text-3xl lg:text-4xl mb-8 text-[var(--text-primary)] font-bold">Gestión de Datos</h2>
       <ul class="list-none p-0 m-0 space-y-3 my-4">
-          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Verificación de Antecedentes:</strong> Investigación exhaustiva para todos los empleados con acceso a datos de clientes</li>
-          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Capacitación en Seguridad:</strong> Capacitación regular de concientización sobre seguridad y ejercicios simulados de phishing</li>
-          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Acuerdos de Confidencialidad:</strong> Todos los empleados firman NDA estrictos y políticas de seguridad</li>
-          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Acceso de Mínimo Privilegio:</strong> Acceso a sistemas y datos limitado a requisitos laborales</li>
-        </ul>
-
-      <h2 class="text-3xl lg:text-4xl mb-8 text-[var(--text-primary)] font-bold">Controles de Seguridad del Cliente</h2>
-      <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-6">Proporcionamos a los clientes potentes controles de seguridad:</p>
-      <ul class="list-none p-0 m-0 space-y-3 my-4">
-          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Gestión de Acceso:</strong> Gestiona permisos y niveles de acceso de miembros del equipo</li>
-          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Registros de Auditoría:</strong> Registros completos de actividad para cumplimiento y análisis forense</li>
-          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Lista Blanca de IP:</strong> Restringe el acceso a direcciones IP o rangos específicos</li>
-          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Exportación de Datos:</strong> Exporta tus datos en cualquier momento para respaldo o migración</li>
-          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Eliminación de Datos:</strong> Eliminación permanente y segura de datos bajo solicitud</li>
+          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Exportación de Datos:</strong> Exporta tus datos para respaldo o migración</li>
+          <li class="text-[var(--text-secondary)] leading-relaxed pl-6 relative before:content-['✓'] before:absolute before:left-0 before:text-[var(--brand-green)] before:font-bold"><strong class="text-[var(--text-primary)]">Eliminación de Datos:</strong> Eliminaremos tus datos bajo solicitud de acuerdo con la ley aplicable</li>
         </ul>
 
         <div class="bg-[var(--bg-secondary)] p-6 lg:p-8 rounded-xl mt-12">

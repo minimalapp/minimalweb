@@ -8,8 +8,12 @@ const locale = 'es';
   title="Cumplimiento GDPR - Minimal"
   description="Información completa sobre cumplimiento GDPR y tus derechos de protección de datos."
   locale={locale}
-  lastUpdated="Enero 2025"
+  lastUpdated="Noviembre 2025"
 >
+  <div class="important-callout" style="border-color: #f59e0b; background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(251, 191, 36, 0.05));">
+    <h3 style="color: #d97706;">Servicio Beta - Aviso GDPR</h3>
+    <p><strong>Minimal se encuentra actualmente en BETA.</strong> Durante nuestro periodo beta, procesamos datos adicionales para mejorar nuestros sistemas de IA, incluyendo indicaciones, respuestas y patrones de interaccion. Este procesamiento se basa en interes legitimo (mejora del servicio) y, cuando corresponda, en su consentimiento. Tiene derecho a oponerse a este procesamiento o a optar por no participar en el uso de datos de entrenamiento de IA contactando a privacy@minimal.lat. Por favor revise la Seccion 5.1 para detalles sobre el procesamiento de datos de IA durante el beta.</p>
+  </div>
 
   <h2>1. Descripción General del GDPR</h2>
   <p>El Reglamento General de Protección de Datos (GDPR) es una ley integral de protección de datos que entró en vigencia el 25 de mayo de 2018. Establece requisitos estrictos sobre cómo las organizaciones recopilan, almacenan, procesan y protegen los datos personales de individuos en la Unión Europea (UE) y el Espacio Económico Europeo (EEE).</p>
@@ -162,6 +166,38 @@ const locale = 'es';
     <li><strong>Marketing:</strong> Enviar comunicaciones promocionales (con consentimiento)</li>
   </ul>
 
+  <h3>5.1 Procesamiento de Datos de IA (Beta)</h3>
+  <p>Durante nuestro periodo beta, procesamos datos de interaccion con IA para fines de mejora del servicio. Esto incluye:</p>
+  <ul>
+    <li><strong>Indicaciones y Respuestas de IA:</strong> Preguntas enviadas y respuestas generadas por nuestros sistemas de IA</li>
+    <li><strong>Contexto de Conversacion:</strong> El flujo y contexto de las interacciones con IA</li>
+    <li><strong>Datos de Retroalimentacion:</strong> Calificaciones, correcciones y comentarios que proporciona sobre las salidas de IA</li>
+    <li><strong>Patrones de Uso:</strong> Como interactua con las funciones de IA, incluyendo frecuencia y momento</li>
+  </ul>
+  <p><strong>Base Legal:</strong> Procesamos estos datos basandonos en:</p>
+  <ul>
+    <li><strong>Interes Legitimo (Art. 6(1)(f) GDPR):</strong> Para mejorar nuestros sistemas de IA, aumentar la precision y desarrollar mejores funciones</li>
+    <li><strong>Consentimiento (Art. 6(1)(a) GDPR):</strong> Donde recopilamos retroalimentacion opcional o participacion en programas de prueba beta</li>
+    <li><strong>Ejecucion de Contrato (Art. 6(1)(b) GDPR):</strong> Para entregar los servicios impulsados por IA que ha solicitado</li>
+  </ul>
+  <p><strong>Sus Derechos Respecto a Datos de IA:</strong></p>
+  <ul>
+    <li>Puede oponerse al procesamiento de datos de entrenamiento de IA bajo el Art. 21 GDPR</li>
+    <li>Puede solicitar la eliminacion de su historial de interacciones con IA bajo el Art. 17 GDPR</li>
+    <li>Puede solicitar acceso a sus datos de interaccion con IA bajo el Art. 15 GDPR</li>
+    <li>Para ejercer estos derechos, contacte a privacy@minimal.lat</li>
+  </ul>
+  <p><strong>Importante:</strong> Durante el beta, nuestro equipo puede revisar las interacciones con IA para mejorar la calidad. Recomendamos no enviar datos personales sensibles, datos de categoria especial (Art. 9 GDPR) o informacion confidencial a los sistemas de IA.</p>
+
+  <h3>5.2 Proveedores de IA de Terceros</h3>
+  <p>Nuestras funciones de IA pueden utilizar proveedores de IA de terceros. Cuando los datos son procesados por terceros:</p>
+  <ul>
+    <li>Tenemos Acuerdos de Procesamiento de Datos (DPAs) vigentes segun lo requerido por el Art. 28 GDPR</li>
+    <li>Los proveedores de terceros estan sujetos a obligaciones contractuales para proteger sus datos</li>
+    <li>Las transferencias internacionales estan protegidas por Clausulas Contractuales Estandar (SCCs)</li>
+    <li>Realizamos evaluaciones regulares de las practicas de seguridad de terceros</li>
+  </ul>
+
   <h2>6. Compartición y Transferencias de Datos</h2>
 
   <h3>6.1 Proveedores de Servicios de Terceros</h3>
@@ -207,35 +243,47 @@ const locale = 'es';
 
   <h3>8.1 Medidas Técnicas</h3>
   <ul>
-    <li>Cifrado en tránsito (TLS 1.3) y en reposo (AES-256)</li>
-    <li>Evaluaciones de seguridad regulares y pruebas de penetración</li>
-    <li>Sistemas de detección y prevención de intrusiones</li>
-    <li>Copia de seguridad automatizada y recuperación ante desastres</li>
-    <li>Segmentación de red y controles de acceso</li>
+    <li>Cifrado en tránsito (TLS) y en reposo usando servicios de cifrado de AWS (AES-256)</li>
+    <li>Alojado en infraestructura de AWS, que mantiene certificaciones SOC 2, ISO 27001 y otras</li>
+    <li>Monitoreo de servicios via AWS CloudWatch</li>
+    <li>Copias de seguridad regulares de datos</li>
+    <li>Aislamiento de red via AWS VPC</li>
   </ul>
 
   <h3>8.2 Medidas Organizativas</h3>
   <ul>
     <li>Privacidad por diseño y por defecto</li>
-    <li>Capacitación regular de empleados sobre protección de datos</li>
-    <li>Evaluaciones de impacto de protección de datos (DPIAs)</li>
-    <li>Procedimientos de respuesta a incidentes y notificación de brechas</li>
-    <li>Evaluaciones de proveedores externos</li>
+    <li>Procedimientos de respuesta a incidentes</li>
+    <li>Procedimientos de notificación de brechas de acuerdo con los requisitos del GDPR</li>
   </ul>
 
   <h2>9. Cookies y Seguimiento</h2>
-  <p>Usamos cookies y tecnologías similares para proporcionar y mejorar nuestros Servicios. Para información detallada sobre nuestro uso de cookies, consulte nuestra Política de Cookies.</p>
+  <p>Usamos cookies y tecnologías similares para proporcionar y mejorar nuestros Servicios. De acuerdo con el GDPR y la Directiva de Privacidad Electrónica, obtenemos su consentimiento antes de colocar cookies no esenciales.</p>
 
-  <h3>9.1 Tipos de Cookies que Usamos</h3>
+  <h3>9.1 Consentimiento de Cookies</h3>
+  <p>Cuando visita nuestro sitio web por primera vez, se le presentará un banner de consentimiento de cookies con dos opciones:</p>
   <ul>
-    <li><strong>Cookies Esenciales:</strong> Necesarias para la funcionalidad básica</li>
-    <li><strong>Cookies de Rendimiento:</strong> Nos ayudan a entender cómo los visitantes usan nuestros Servicios</li>
-    <li><strong>Cookies Funcionales:</strong> Recuerdan sus preferencias</li>
-    <li><strong>Cookies de Marketing:</strong> Rastrean la efectividad de campañas de marketing (con consentimiento)</li>
+    <li><strong>Aceptar:</strong> Habilita todas las cookies, incluyendo analíticas (ej. Google Analytics), para ayudarnos a mejorar nuestros servicios</li>
+    <li><strong>Rechazar:</strong> Solo se usan cookies esenciales. No se establecerán cookies analíticas ni de seguimiento.</li>
+  </ul>
+  <p>Puede cambiar sus preferencias de cookies en cualquier momento borrando sus cookies y revisitando el sitio.</p>
+
+  <h3>9.2 Tipos de Cookies que Usamos</h3>
+  <ul>
+    <li><strong>Cookies Esenciales (Siempre Activas):</strong> Necesarias para funcionalidad básica y para recordar su preferencia de cookies. Base legal: Estrictamente necesario (no se requiere consentimiento bajo GDPR/ePrivacy)</li>
+    <li><strong>Cookies Analíticas:</strong> Nos permiten medir y mejorar el rendimiento del sitio (ej. Google Analytics). Solo se establecen si hace clic en "Aceptar". Base legal: Consentimiento</li>
   </ul>
 
-  <h3>9.2 Gestión de Cookies</h3>
-  <p>Puede controlar las cookies a través de la configuración de su navegador y nuestra herramienta de consentimiento de cookies. Tenga en cuenta que deshabilitar ciertas cookies puede afectar la funcionalidad.</p>
+  <h3>9.3 Gestión de Cookies</h3>
+  <p>Puede controlar las cookies a través de:</p>
+  <ul>
+    <li><strong>Nuestro Banner de Consentimiento de Cookies:</strong> Elija "Aceptar" o "Rechazar" cuando visite por primera vez</li>
+    <li><strong>Configuración del Navegador:</strong> La mayoría de los navegadores le permiten ver, eliminar y bloquear cookies</li>
+    <li><strong>Borrar Cookies:</strong> Borre las cookies de su navegador para ver el banner de consentimiento nuevamente</li>
+  </ul>
+
+  <h3>9.4 Retención de Cookies</h3>
+  <p>Su preferencia de consentimiento de cookies se almacena durante 365 días. Después de este período, o si borra sus cookies, se le pedirá que proporcione consentimiento nuevamente.</p>
 
   <h2>10. Privacidad de los Niños</h2>
   <p>Nuestros Servicios no están dirigidos a niños menores de 16 años. No recopilamos conscientemente datos personales de niños. Si descubrimos que hemos recopilado datos de un niño menor de 16 años, los eliminaremos de inmediato.</p>
@@ -262,11 +310,6 @@ const locale = 'es';
   <div class="contact-info">
     <p><strong>Equipo de Privacidad:</strong> privacy@minimal.lat</p>
     <p><strong>Delegado de Protección de Datos:</strong> dpo@minimal.lat</p>
-    <p><strong>Dirección Postal:</strong><br>
-    Minimal - Departamento de Privacidad<br>
-    1234 Innovation Drive<br>
-    San Francisco, CA 94102<br>
-    Estados Unidos</p>
     <p><strong>Tiempo de Respuesta:</strong> Respondemos a todas las solicitudes del GDPR dentro de 30 días según lo requerido por ley.</p>
   </div>
 </LegalLayout>

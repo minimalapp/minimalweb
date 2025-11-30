@@ -1,6 +1,7 @@
 ---
 import '@/styles/global.css';
 import '@/styles/animations.css';
+import CookieConsent from '@/components/CookieConsent.astro';
 
 export interface Props {
   title: string;
@@ -45,14 +46,39 @@ if (isSpanishPage) {
 <!DOCTYPE html>
 <html lang={locale}>
 <head>
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1N7WSHVF9F"></script>
+  <!-- Google Analytics with Consent Mode v2 -->
   <script is:inline>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+
+    // Set default consent to denied (GDPR compliant)
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'wait_for_update': 500
+    });
+
+    // Check for existing consent
+    (function() {
+      try {
+        const consent = document.cookie.split('; ').find(row => row.startsWith('minimal_cookie_consent='));
+        if (consent) {
+          const prefs = JSON.parse(decodeURIComponent(consent.split('=')[1]));
+          if (prefs.analytics) {
+            gtag('consent', 'update', {
+              'analytics_storage': 'granted'
+            });
+          }
+        }
+      } catch (e) {}
+    })();
+
     gtag('js', new Date());
     gtag('config', 'G-1N7WSHVF9F');
   </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1N7WSHVF9F"></script>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -159,5 +185,6 @@ if (isSpanishPage) {
 </head>
 <body>
   <slot />
+  <CookieConsent locale={locale} />
 </body>
 </html>

@@ -8,8 +8,13 @@ const locale = 'es';
   title="Política de Privacidad - Minimal"
   description="Política de privacidad para los servicios de Minimal."
   locale={locale}
-  lastUpdated="Enero 2025"
+  lastUpdated="Noviembre 2025"
 >
+  <div class="important-callout" style="border-color: #f59e0b; background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(251, 191, 36, 0.05));">
+    <h3 style="color: #d97706;">Aviso de Datos del Servicio Beta</h3>
+    <p><strong>Minimal se encuentra actualmente en BETA.</strong> Durante el periodo beta, podemos recopilar datos adicionales para mejorar nuestros sistemas de IA y servicios. Esto incluye datos de interaccion con IA, indicaciones, respuestas y patrones de uso. Al usar nuestros servicios beta, consientes esta recopilacion mejorada de datos con fines de mejora del servicio. Por favor revisa la Seccion 2.4 y Seccion 3 para detalles sobre la recopilacion y uso de datos de IA.</p>
+  </div>
+
   <h2>1. Introducción</h2>
   <p>Esta Política de Privacidad describe cómo Minimal ("nosotros", "nuestro" o "la empresa") recopila, usa, comparte y protege su información personal cuando utiliza nuestros servicios de creación de sitios web y asistente de IA. Estamos comprometidos con la protección de su privacidad y garantizar transparencia sobre nuestras prácticas de datos.</p>
   <p>Al utilizar nuestros servicios, usted acepta la recopilación y el uso de información de acuerdo con esta política. Si no está de acuerdo con alguna parte de esta política, por favor no utilice nuestros servicios.</p>
@@ -76,13 +81,11 @@ const locale = 'es';
   </ul>
 
   <h2>6. Seguridad de Datos</h2>
-  <p>Implementamos medidas de seguridad integrales para proteger su información:</p>
+  <p>Implementamos medidas de seguridad para proteger su información:</p>
   <ul>
-    <li><strong>Cifrado:</strong> Los datos se cifran en tránsito usando TLS 1.3 y en reposo usando estándares de cifrado AES-256</li>
-    <li><strong>Controles de Acceso:</strong> Controles de acceso estrictos basados en roles y requisitos de autenticación para el acceso al sistema</li>
-    <li><strong>Seguridad de Infraestructura:</strong> Auditorías de seguridad regulares, evaluaciones de vulnerabilidades y pruebas de penetración</li>
-    <li><strong>Monitoreo:</strong> Monitoreo de seguridad 24/7, sistemas de detección de intrusiones y respuesta automatizada a amenazas</li>
-    <li><strong>Capacitación de Empleados:</strong> Capacitación regular de concienciación sobre seguridad y protocolos estrictos de manejo de datos para todos los miembros del personal</li>
+    <li><strong>Cifrado:</strong> Los datos se cifran en tránsito usando TLS y en reposo usando servicios de cifrado de AWS (AES-256)</li>
+    <li><strong>Infraestructura:</strong> Alojado en Amazon Web Services (AWS), que mantiene certificaciones SOC 2, ISO 27001 y otras</li>
+    <li><strong>Monitoreo:</strong> Monitoreo de servicios via AWS CloudWatch</li>
   </ul>
   <p>Si bien nos esforzamos por proteger su información, ningún método de transmisión o almacenamiento es 100% seguro. No podemos garantizar la seguridad absoluta, pero trabajamos continuamente para mejorar nuestras medidas de protección.</p>
 
@@ -99,24 +102,21 @@ const locale = 'es';
   <p>Para ejercer estos derechos, contáctenos en privacy@minimal.lat. Responderemos a las solicitudes dentro de 30 días. También tiene derecho a presentar una queja ante una autoridad de protección de datos.</p>
 
   <h2>8. Cookies y Tecnologías Similares</h2>
-  <p>Utilizamos cookies y tecnologías de seguimiento similares para mejorar su experiencia y recopilar información sobre el uso del servicio:</p>
+  <p>Utilizamos cookies para mejorar su experiencia y comprender cómo se utilizan nuestros servicios.</p>
 
   <h3>8.1 Tipos de Cookies</h3>
   <ul>
-    <li><strong>Cookies Esenciales:</strong> Requeridas para la funcionalidad básica del sitio, autenticación y seguridad</li>
-    <li><strong>Cookies de Rendimiento:</strong> Recopilan datos anónimos sobre cómo los visitantes usan nuestro sitio para mejorar el rendimiento</li>
-    <li><strong>Cookies Funcionales:</strong> Recuerdan sus preferencias y configuraciones de personalización</li>
-    <li><strong>Cookies Analíticas:</strong> Nos ayudan a comprender el comportamiento del usuario y medir la efectividad del servicio</li>
+    <li><strong>Cookies Esenciales:</strong> Requeridas para la funcionalidad básica del sitio. Estas siempre están activas y no requieren consentimiento.</li>
+    <li><strong>Cookies Analíticas:</strong> Nos ayudan a comprender cómo los visitantes usan nuestro sitio (ej. Google Analytics). Solo se establecen si acepta las cookies.</li>
   </ul>
 
-  <h3>8.2 Gestión de Cookies</h3>
-  <p>Puede controlar las cookies a través de la configuración de su navegador. Tenga en cuenta que deshabilitar ciertas cookies puede limitar la funcionalidad. La mayoría de los navegadores le permiten:</p>
+  <h3>8.2 Sus Opciones de Cookies</h3>
+  <p>Cuando visite nuestro sitio, verá un banner de cookies con dos opciones:</p>
   <ul>
-    <li>Ver y eliminar cookies</li>
-    <li>Bloquear cookies de terceros</li>
-    <li>Bloquear todas las cookies (puede afectar la funcionalidad del sitio)</li>
-    <li>Eliminar cookies al cerrar el navegador</li>
+    <li><strong>Aceptar:</strong> Habilita todas las cookies, incluyendo analíticas, para ayudarnos a mejorar nuestros servicios</li>
+    <li><strong>Rechazar:</strong> Solo se usan cookies esenciales. No se establecerán cookies analíticas ni de seguimiento.</li>
   </ul>
+  <p>También puede controlar las cookies a través de la configuración de su navegador. Tenga en cuenta que bloquear las cookies esenciales puede afectar la funcionalidad del sitio.</p>
 
   <h2>9. Transferencias Internacionales de Datos</h2>
   <p>Operamos globalmente y podemos transferir su información a países fuera de su residencia. Cuando transferimos datos internacionalmente:</p>
@@ -145,12 +145,6 @@ const locale = 'es';
   <p>Para preguntas, inquietudes o solicitudes relacionadas con esta Política de Privacidad o nuestras prácticas de datos, contáctenos:</p>
   <div class="contact-info">
     <p><strong>Correo Electrónico:</strong> privacy@minimal.lat</p>
-    <p><strong>Dirección Postal:</strong><br>
-    Minimal<br>
-    Departamento de Privacidad<br>
-    1234 Innovation Drive<br>
-    San Francisco, CA 94102<br>
-    Estados Unidos</p>
     <p><strong>Tiempo de Respuesta:</strong> Nuestro objetivo es responder a todas las consultas de privacidad dentro de 5 días hábiles.</p>
     <p><strong>Responsable de Protección de Datos:</strong> Para consultas relacionadas con la UE, contacte a nuestro Responsable de Protección de Datos en dpo@minimal.lat</p>
   </div>

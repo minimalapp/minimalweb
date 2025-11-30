@@ -124,7 +124,7 @@ function showText(): void {
           // All words done, finish intro
           setTimeout(() => {
             finishIntro();
-          }, 1000);
+          }, 800);
         }
       }, 500);
     });
@@ -187,6 +187,9 @@ function finishIntro(): void {
   // Update body classes for gradient overlays
   document.body.classList.remove('intro-mode');
   document.body.classList.add('main-page-mode');
+
+  // Dispatch event so other components (like cookie banner) know intro is done
+  window.dispatchEvent(new CustomEvent('introAnimationComplete'));
 }
 
 function skipIntro(): void {
@@ -223,6 +226,7 @@ export function initMagicHero(translations: MagicTranslations): void {
   setTimeout(() => {
     if (introFinished) return;
     const loadingDots = document.getElementById('loadingDots');
+
     if (loadingDots) {
       loadingDots.classList.add('show');
 
