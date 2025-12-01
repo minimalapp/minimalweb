@@ -34,6 +34,7 @@ interface Props {
   bulletType?: 'checkmark' | 'bullet' | 'x';
   variant?: 'primary' | 'tertiary' | 'secondary';
   className?: string;
+  comingSoon?: boolean;
 }
 
 const {
@@ -43,7 +44,8 @@ const {
   items = [],
   bulletType = 'checkmark',
   variant = 'primary',
-  className = ''
+  className = '',
+  comingSoon = false
 } = Astro.props;
 
 // Match homepage UseCases pattern exactly
@@ -63,7 +65,10 @@ const bulletConfig = {
 const bullet = bulletConfig[bulletType];
 ---
 
-<div class={`${bgClass} p-6 rounded-md shadow-md transition-all duration-base hover:-translate-y-0.5 hover:shadow-lg ${className}`}>
+<div class={`relative ${bgClass} p-6 rounded-md shadow-md transition-all duration-base hover:-translate-y-0.5 hover:shadow-lg overflow-visible ${className}`}>
+  {comingSoon && (
+    <span class="coming-soon-badge">Coming soon</span>
+  )}
   {icon && (
     <div class="mb-4 text-brand-purple-primary">
       <Icon name={icon} size="xl" />

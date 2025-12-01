@@ -6,13 +6,14 @@ import PageHero from '@/components/PageHero.astro';
 import ContentSection from '@/components/ContentSection.astro';
 import SectionTitle from '@/components/SectionTitle.astro';
 import CodeBlock from '@/components/CodeBlock.astro';
-import FAQ from '@/components/FAQ.astro';
 import CTASection from '@/components/CTASection.astro';
 import Button from '@/components/Button.astro';
 import StepSection from '@/components/StepSection.astro';
 import CategoryCard from '@/components/CategoryCard.astro';
 import MetricBox from '@/components/MetricBox.astro';
 import InfoBox from '@/components/InfoBox.astro';
+import ListCard from '@/components/ListCard.astro';
+import FeatureCard from '@/components/FeatureCard.astro';
 
 const locale = 'es';
 
@@ -43,53 +44,6 @@ const gettingStartedSteps = [
   }
 ];
 
-const faqItems = [
-  {
-    question: "¿Cómo personalizo los colores del widget?",
-    answer: `<p>Puedes personalizar los colores de dos maneras:</p>
-      <ol>
-        <li><strong>Panel de Control:</strong> Ve a Configuración → Apariencia y usa el selector de color para elegir los colores de tu marca.</li>
-        <li><strong>Código:</strong> Usa la opción <code>customColors</code> en la configuración de JavaScript:</li>
-      </ol>
-      <div class="bg-[#0F1419] text-[var(--brand-green)] p-6 rounded-lg my-4">
-        <pre><code>customColors: {
-  primary: '#10b981',    // Color principal
-  background: '#ffffff', // Fondo del chat
-  text: '#1f2937'       // Color del texto
-}</code></pre>
-      </div>`
-  },
-  {
-    question: "¿Puedo ocultar el widget en páginas específicas?",
-    answer: `<p>¡Sí! Usa la opción de configuración <code>hideOnPages</code>:</p>
-      <div class="bg-[#0F1419] text-[var(--brand-green)] p-6 rounded-lg my-4">
-        <code>hideOnPages: ['/checkout', '/payment', '/admin/*']</code>
-      </div>
-      <p>Soporta comodines para coincidencias de patrones. También puedes usar <code>showOnPages</code> para mostrar solo en páginas específicas.</p>`
-  },
-  {
-    question: "¿Cómo integro con Google Analytics?",
-    answer: `<p>Minimal rastrea automáticamente eventos que puedes capturar en Google Analytics:</p>
-      <div class="bg-[#0F1419] text-[var(--brand-green)] p-6 rounded-lg my-4">
-        <pre><code>window.addEventListener('minimal:message', function(e) {
-  gtag('event', 'chat_message_sent', {
-    'event_category': 'engagement',
-    'event_label': 'Chat Interaction'
-  });
-});</code></pre>
-      </div>
-      <p>Consulta nuestra <a href="/es/integration" class="text-[var(--brand-green)] hover:underline">Guía de Integración</a> para más plataformas de análisis.</p>`
-  },
-  {
-    question: "¿Qué pasa si alcanzo los límites de mi plan?",
-    answer: `<p>Te notificaremos por correo electrónico cuando alcances el 80% de los límites de tu plan. Si excedes:</p>
-      <ul>
-        <li><strong>Conversaciones:</strong> El widget continúa funcionando, pero necesitarás actualizar para acceder a nuevas conversaciones en el panel.</li>
-        <li><strong>Vistas de Página:</strong> El seguimiento continúa y puedes actualizar en cualquier momento para acceder al análisis completo.</li>
-      </ul>
-      <p>Tus visitantes nunca verán ninguna interrupción en el servicio.</p>`
-  }
-];
 ---
 
 <BaseLayout title="Centro de Ayuda - Minimal" description="Obtén ayuda y encuentra respuestas a preguntas frecuentes." locale={locale}>
@@ -99,15 +53,7 @@ const faqItems = [
     <PageHero
       title="Centro de Ayuda"
       subtitle="Obtén ayuda y encuentra respuestas a preguntas frecuentes sobre Minimal."
-    >
-      <div class="relative max-w-2xl mx-auto mt-8">
-        <svg class="absolute left-6 top-1/2 -translate-y-1/2 w-6 h-6 text-[var(--text-tertiary)] pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="11" cy="11" r="8"></circle>
-          <path d="m21 21-4.35-4.35"></path>
-        </svg>
-        <input type="text" class="w-full px-6 py-4 pl-[100px] text-lg border-2 border-[var(--border-primary)] rounded-full bg-[var(--bg-primary)] text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)] transition-colors focus:outline-none focus:border-[var(--brand-green)]" placeholder="Buscar en la documentación..." />
-      </div>
-    </PageHero>
+    />
 
     <!-- Help Categories -->
     <ContentSection>
@@ -138,6 +84,18 @@ const faqItems = [
           description="Comprende tus métricas"
         />
         <CategoryCard
+          href="#best-practices"
+          icon="pencil-square"
+          title="Mejores Prácticas"
+          description="Escribir conversaciones efectivas"
+        />
+        <CategoryCard
+          href="#conversation-design"
+          icon="chat-bubble-left-right"
+          title="Diseño de Conversación"
+          description="Diseña flujos naturales"
+        />
+        <CategoryCard
           href="#troubleshooting"
           icon="wrench"
           title="Solución de Problemas"
@@ -148,6 +106,7 @@ const faqItems = [
           icon="code"
           title="Referencia de API"
           description="Documentación para desarrolladores"
+          comingSoon={true}
         />
       </div>
     </ContentSection>
@@ -168,14 +127,7 @@ const faqItems = [
           <InfoBox
             icon="code"
             title="Plataformas Web"
-            description="Instala Minimal en cualquier sitio web con una simple etiqueta de script o usa nuestros paquetes específicos para frameworks."
-            items={[
-              'HTML/JavaScript - Etiqueta de script de una línea',
-              'React - Paquete npm con hooks',
-              'Vue.js - Plugin para Vue 3',
-              'Angular - Módulo nativo',
-              'Next.js - Optimizado para SSR'
-            ]}
+            description="Instala Minimal en cualquier sitio web con una simple etiqueta de script de una línea. Funciona con HTML, JavaScript y todos los frameworks modernos incluyendo React, Vue, Angular y Next.js."
             variant="tertiary"
           />
 
@@ -185,84 +137,90 @@ const faqItems = [
             description="Integraciones nativas para plataformas populares con fácil configuración desde el panel."
             items={[
               'WordPress - Plugin del repositorio',
-              'Shopify - App de la tienda de apps',
-              'WooCommerce - Extensión de WordPress',
               'Webflow - Integración de código personalizado',
+              'Framer - Componente de código personalizado',
+              'Wix - Integración de código personalizado',
               'Squarespace - Inyección de código'
             ]}
+            variant="tertiary"
+            comingSoon={true}
+          />
+        </div>
+      </div>
+    </ContentSection>
+
+    <!-- Dashboard Customization -->
+    <ContentSection id="customization" background="secondary" className="scroll-mt-32">
+      <div class="max-w-4xl mx-auto">
+        <SectionTitle title="Personalización del Panel" centered={true} />
+        <p class="text-center text-xl text-[var(--text-secondary)] mb-8 max-w-4xl mx-auto leading-relaxed">Personaliza la apariencia de tu widget directamente desde el panel de Minimal - sin necesidad de código.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <InfoBox
+            icon="cursor-arrow-rays"
+            title="Botón de Chat"
+            description="Controla dónde y cómo aparece el botón de chat en tu sitio web."
+            items={[
+              'Posición del Botón: Abajo Derecha, Abajo Izquierda, Arriba Derecha, Arriba Izquierda',
+              'Color del Botón: Elige cualquier color para coincidir con tu marca'
+            ]}
+            variant="tertiary"
+          />
+
+          <InfoBox
+            icon="paint-brush"
+            title="Colores de Marca"
+            description="Haz que el widget se sienta como parte nativa de tu sitio web."
+            items={[
+              'Color Primario: Color principal de marca para acentos y resaltados',
+              'Color Secundario: Color secundario de marca para estilos adicionales'
+            ]}
+            variant="tertiary"
+          />
+
+          <InfoBox
+            icon="cog"
+            title="Características"
+            description="Activa o desactiva características para personalizar la experiencia del usuario."
+            items={[
+              'Frases de Bienvenida: Muestra mensajes de bienvenida rotativos antes de que el usuario comience a chatear'
+            ]}
+            variant="tertiary"
+          />
+
+          <InfoBox
+            icon="sparkles"
+            title="Fácil de Usar"
+            description="Todas las opciones de personalización están disponibles en tu panel bajo Configuración del Widget. Los cambios se aplican instantáneamente - no necesitas actualizar ningún código en tu sitio web."
             variant="tertiary"
           />
         </div>
       </div>
     </ContentSection>
 
-    <!-- Advanced Customization -->
-    <ContentSection id="customization" background="secondary" className="scroll-mt-32">
+    <!-- Advanced Script Customization -->
+    <ContentSection id="advanced-customization" className="scroll-mt-32">
       <div class="max-w-4xl mx-auto">
-        <SectionTitle title="Personalización Avanzada" centered={true} />
+        <SectionTitle title="Personalización Avanzada de Script" centered={true} />
+        <p class="text-center text-xl text-[var(--text-secondary)] mb-8 max-w-4xl mx-auto leading-relaxed">Para desarrolladores que necesitan más control, las opciones de configuración avanzada de script estarán disponibles pronto.</p>
 
-        <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4 mt-6">Configuración Usando Atributos</h3>
-        <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Puedes personalizar Minimal directamente en la etiqueta de script usando atributos de datos:</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <InfoBox
+            icon="code"
+            title="Atributos de Datos"
+            description="Personaliza Minimal directamente en la etiqueta de script usando atributos de datos para posición, tema, idioma y más."
+            variant="tertiary"
+            comingSoon={true}
+          />
 
-        <CodeBlock code={`<script
-  src="https://minimal.lat/embed.js"
-  data-site-id="your-site-id"
-  data-position="bottom-right"
-  data-theme="auto"
-  data-language="es"
-></script>`} />
-
-        <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4 mt-6">Opciones de Personalización</h3>
-        <div class="bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-xl p-6 my-4">
-          <div class="py-3 border-b border-[var(--border-primary)]">
-            <strong class="text-[var(--text-primary)]">Posición:</strong> <code class="bg-[var(--bg-tertiary)] text-[var(--brand-green)] px-2 py-1 rounded text-sm">bottom-right</code>, <code class="bg-[var(--bg-tertiary)] text-[var(--brand-green)] px-2 py-1 rounded text-sm">bottom-left</code>, <code class="bg-[var(--bg-tertiary)] text-[var(--brand-green)] px-2 py-1 rounded text-sm">top-right</code>, <code class="bg-[var(--bg-tertiary)] text-[var(--brand-green)] px-2 py-1 rounded text-sm">top-left</code>
-          </div>
-          <div class="py-3 border-b border-[var(--border-primary)]">
-            <strong class="text-[var(--text-primary)]">Tema:</strong> <code class="bg-[var(--bg-tertiary)] text-[var(--brand-green)] px-2 py-1 rounded text-sm">light</code>, <code class="bg-[var(--bg-tertiary)] text-[var(--brand-green)] px-2 py-1 rounded text-sm">dark</code>, <code class="bg-[var(--bg-tertiary)] text-[var(--brand-green)] px-2 py-1 rounded text-sm">auto</code> (sigue la preferencia del sistema)
-          </div>
-          <div class="py-3 border-b border-[var(--border-primary)]">
-            <strong class="text-[var(--text-primary)]">Idioma:</strong> <code class="bg-[var(--bg-tertiary)] text-[var(--brand-green)] px-2 py-1 rounded text-sm">en</code>, <code class="bg-[var(--bg-tertiary)] text-[var(--brand-green)] px-2 py-1 rounded text-sm">es</code>, <code class="bg-[var(--bg-tertiary)] text-[var(--brand-green)] px-2 py-1 rounded text-sm">fr</code>, <code class="bg-[var(--bg-tertiary)] text-[var(--brand-green)] px-2 py-1 rounded text-sm">de</code>, <code class="bg-[var(--bg-tertiary)] text-[var(--brand-green)] px-2 py-1 rounded text-sm">pt</code>, y más
-          </div>
-          <div class="py-3 border-b border-[var(--border-primary)]">
-            <strong class="text-[var(--text-primary)]">Saludo:</strong> Cualquier texto personalizado para el mensaje inicial
-          </div>
-          <div class="py-3">
-            <strong class="text-[var(--text-primary)]">Color Primario:</strong> Código de color hexadecimal (ej., <code class="bg-[var(--bg-tertiary)] text-[var(--brand-green)] px-2 py-1 rounded text-sm">#10b981</code>)
-          </div>
+          <InfoBox
+            icon="command-line"
+            title="API de JavaScript"
+            description="Control programático completo con objetos de configuración de JavaScript para casos de uso avanzados."
+            variant="tertiary"
+            comingSoon={true}
+          />
         </div>
-
-        <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4 mt-6">Configuración Avanzada de JavaScript</h3>
-        <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Para más control, usa la configuración de JavaScript:</p>
-
-        <CodeBlock code={`window.MinimalConfig = {
-  siteId: 'your-site-id',
-  position: 'bottom-right',
-  theme: 'auto',
-  language: 'es',
-  greeting: '¡Hola! ¿Cómo podemos ayudarte?',
-  placeholder: 'Escribe tu mensaje...',
-
-  // Opciones avanzadas
-  autoOpen: false,
-  autoOpenDelay: 3000, // milisegundos
-  hideOnPages: ['/checkout', '/payment'],
-  showOnPages: ['*'], // todas las páginas por defecto
-
-  // Estilos
-  customColors: {
-    primary: '#10b981',
-    background: '#ffffff',
-    text: '#1f2937'
-  },
-
-  // Comportamiento
-  collectEmail: true,
-  requireEmail: false,
-  enableFileUploads: true,
-  maxFileSize: 10 // MB
-};
-
-<script src="https://minimal.lat/embed.js"></script>`} />
       </div>
     </ContentSection>
 
@@ -270,55 +228,137 @@ const faqItems = [
     <ContentSection id="analytics" background="secondary" className="scroll-mt-32">
       <div class="max-w-5xl mx-auto">
         <SectionTitle title="Comprende tus Análisis" centered={true} />
+        <p class="text-center text-xl text-[var(--text-secondary)] mb-8 max-w-4xl mx-auto leading-relaxed">Obtén información sobre cómo los visitantes interactúan con tu interfaz conversacional.</p>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <InfoBox
-            title="Métricas de Interacción"
-            description="Rastrea cómo los visitantes interactúan con tu chat:"
+            icon="chart-bar"
+            title="Métricas Clave"
+            description="Rastrea tus métricas de conversación más importantes de un vistazo:"
             items={[
-              'Vistas del Widget: Número de veces que se mostró el widget',
-              'Tasa de Apertura: Porcentaje de visitantes que abrieron el chat',
-              'Mensajes Enviados: Total de mensajes de visitantes',
-              'Conversaciones Iniciadas: Nuevos hilos de conversación',
-              'Tiempo Promedio de Respuesta: Qué tan rápido respondes'
+              'Total de Conversaciones: Número de chats en los últimos 30 días',
+              'Conversaciones Activas: Chats actualmente en curso',
+              'Total de Mensajes: Todos los mensajes intercambiados',
+              'Promedio de Mensajes por Conversación: Indicador de profundidad'
             ]}
+            variant="tertiary"
           />
 
           <InfoBox
-            title="Información de Usuarios"
-            description="Comprende el comportamiento de tus visitantes:"
-            items={[
-              'Horas Pico: Cuando los visitantes están más activos',
-              'Páginas Populares: Donde comienzan las conversaciones',
-              'Desglose por Dispositivo: Uso de escritorio vs. móvil',
-              'Datos Geográficos: De dónde vienen tus visitantes',
-              'Visitantes Recurrentes: Rastrea interacciones repetidas'
-            ]}
+            icon="arrow-trending-up"
+            title="Conversaciones en el Tiempo"
+            description="Visualiza tendencias de conversación con un gráfico de línea interactivo que muestra el volumen diario de conversaciones del último mes."
+            variant="tertiary"
           />
 
           <InfoBox
-            title="Seguimiento de Conversiones"
-            description="Mide el impacto en el negocio:"
+            icon="chart-pie"
+            title="Distribución de Estados"
+            description="Ve cómo terminan tus conversaciones con un desglose de:"
             items={[
-              'Tasa de Captura de Leads: Porcentaje de chats que recopilan correos',
-              'Leads Calificados: Conversaciones marcadas como listas para ventas',
-              'Completación de Objetivos: Eventos de conversión personalizados',
-              'Atribución de Ingresos: Ventas vinculadas a interacciones de chat',
-              'Métricas de ROI: Cálculos de retorno de inversión'
+              'Completadas: Conversaciones finalizadas exitosamente',
+              'Activas: Conversaciones en curso',
+              'Abandonadas: Conversaciones dejadas sin resolución'
             ]}
+            variant="tertiary"
+          />
+
+          <InfoBox
+            icon="face-smile"
+            title="Análisis de Sentimiento"
+            description="Comprende la satisfacción del usuario a través de detección automática de sentimiento:"
+            items={[
+              'Positivo: Interacciones felices y satisfechas',
+              'Neutral: Intercambios informativos',
+              'Negativo: Usuarios frustrados o insatisfechos'
+            ]}
+            variant="tertiary"
+          />
+
+          <InfoBox
+            icon="sparkles"
+            title="Tendencia de Engagement"
+            description="Monitorea tu Puntuación Promedio de Engagement a lo largo del tiempo para ver qué tan bien tu IA se conecta con los visitantes."
+            variant="tertiary"
+          />
+
+          <InfoBox
+            icon="light-bulb"
+            title="Top Intenciones y Uso de Tokens"
+            description="Descubre qué preguntan más los usuarios y rastrea tu consumo de tokens para gestionar el uso efectivamente."
+            variant="tertiary"
           />
         </div>
       </div>
     </ContentSection>
 
-    <!-- FAQ Section -->
-    <ContentSection>
-      <SectionTitle title="Preguntas Frecuentes" centered={true} />
-      <FAQ items={faqItems} />
+    <!-- Best Practices -->
+    <ContentSection id="best-practices" className="scroll-mt-32">
+      <div class="max-w-4xl mx-auto">
+        <SectionTitle title="Escribir Conversaciones Efectivas" centered={true} />
+        <p class="text-center text-xl text-[var(--text-secondary)] mb-8 max-w-4xl mx-auto leading-relaxed">Crea mensajes que enganchen a los usuarios e impulsen las conversiones.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <ListCard
+            title="Mejores Prácticas"
+            items={[
+              'Mantén los saludos cálidos y conversacionales, no corporativos',
+              'Haz preguntas abiertas para entender las necesidades del usuario',
+              'Proporciona respuestas rápidas para preguntas comunes',
+              'Usa la voz y personalidad de tu marca',
+              'Establece expectativas sobre tiempos de respuesta'
+            ]}
+            bulletType="checkmark"
+          />
+
+          <ListCard
+            title="Qué Evitar"
+            items={[
+              'Saludos genéricos como "Hola" o "Bienvenido"',
+              'Lenguaje excesivamente formal o robótico',
+              'Pedir información que ya tienes',
+              'Demasiados mensajes a la vez (abrumar usuarios)',
+              'Llamadas a la acción poco claras'
+            ]}
+            bulletType="x"
+          />
+        </div>
+      </div>
+    </ContentSection>
+
+    <!-- Conversation Design -->
+    <ContentSection id="conversation-design" background="secondary" className="scroll-mt-32">
+      <div class="max-w-4xl mx-auto">
+        <SectionTitle title="Diseño de Conversación" centered={true} />
+        <p class="text-center text-xl text-[var(--text-secondary)] mb-8 max-w-4xl mx-auto leading-relaxed">Diseña flujos de conversación que se sientan naturales y guíen a los usuarios a sus objetivos.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <FeatureCard
+            icon="chat-bubble-left-right"
+            title="Flujo Natural"
+            description="Mantén las conversaciones con un tono humano y útil. Usa mensajes cortos, haz una pregunta a la vez y reconoce las respuestas del usuario antes de avanzar."
+          />
+          <FeatureCard
+            icon="arrow-path"
+            title="Respuestas Rápidas"
+            description="Ofrece respuestas sugeridas para preguntas comunes. Esto acelera las interacciones y ayuda a usuarios que no están seguros de qué preguntar."
+          />
+          <FeatureCard
+            icon="light-bulb"
+            title="Enrutamiento Inteligente"
+            description="Guía a los usuarios a la información correcta basándote en sus preguntas. Usa el contexto de mensajes anteriores para proporcionar seguimientos relevantes."
+          />
+          <FeatureCard
+            icon="check-circle"
+            title="CTAs Claros"
+            description="Cada conversación debe tener un propósito. Facilita que los usuarios den el siguiente paso con sugerencias claras y accionables."
+          />
+        </div>
+      </div>
     </ContentSection>
 
     <!-- Troubleshooting -->
-    <ContentSection id="troubleshooting" background="secondary" className="scroll-mt-32">
+    <ContentSection id="troubleshooting" className="scroll-mt-32">
       <div class="max-w-4xl mx-auto">
         <SectionTitle title="Solución de Problemas" centered={true} />
         <p class="text-center text-xl text-[var(--text-secondary)] mb-8 max-w-4xl mx-auto leading-relaxed">Problemas comunes y cómo resolverlos.</p>
@@ -376,7 +416,9 @@ const faqItems = [
     <!-- API Reference -->
     <ContentSection id="api" className="scroll-mt-32">
       <div class="max-w-4xl mx-auto">
-        <SectionTitle title="Referencia de API" centered={true} />
+        <h2 class="text-4xl md:text-5xl font-bold text-[var(--text-primary)] text-center mb-6">
+          Referencia de API <span class="coming-soon-badge-inline align-middle">Coming soon</span>
+        </h2>
         <p class="text-center text-xl text-[var(--text-secondary)] mb-8 max-w-4xl mx-auto leading-relaxed">API de JavaScript para control y personalización avanzados.</p>
 
         <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">Métodos de Control del Widget</h3>
@@ -465,11 +507,7 @@ const config = Minimal.getConfig();`} />
         <Button variant="primary" size="lg" href="/es/contact">
           Contactar Soporte
         </Button>
-        <Button variant="secondary" size="lg" href="https://docs.minimal.lat">
-          Ver Documentación Completa
-        </Button>
       </div>
-      <p class="text-[var(--text-tertiary)] text-sm mt-6">Tiempo promedio de respuesta: <strong class="text-[var(--text-primary)]">menos de 2 horas</strong></p>
     </CTASection>
   </main>
 

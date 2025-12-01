@@ -26,13 +26,20 @@ const locale = 'es';
 
     <ContentSection>
       <SectionTitle title="Plataformas Soportadas" centered={true} />
+      <div class="bg-[var(--bg-tertiary)] border-l-4 border-[var(--brand-purple-primary)] rounded-xl p-6 mb-8 max-w-3xl mx-auto">
+        <h4 class="text-[var(--brand-purple-primary)] text-base font-semibold mt-0 mb-2 flex items-center gap-2">
+          <span class="coming-soon-badge-inline ml-0">En Desarrollo</span>
+          Paquetes de Framework
+        </h4>
+        <p class="text-[var(--text-secondary)] text-sm mb-0 leading-relaxed">Nuestros paquetes npm para integraciones específicas de frameworks están actualmente en desarrollo. Mientras tanto, usa nuestra etiqueta de script universal para una integración perfecta con cualquier plataforma.</p>
+      </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-        <FeatureCard icon="react" title="React" description="Integración perfecta con aplicaciones React usando nuestra biblioteca de componentes oficial." href="#react" />
-        <FeatureCard icon="angular" title="Angular" description="Módulo nativo Angular con soporte TypeScript e inyección de dependencias." href="#angular" />
-        <FeatureCard icon="vue" title="Vue.js" description="Plugin Vue 3 con soporte composition API y gestión de estado reactivo." href="#vue" />
-        <FeatureCard icon="next" title="Next.js" description="Optimizado para Next.js con soporte SSR y división automática de código." href="#nextjs" />
-        <FeatureCard icon="bolt" title="WordPress" description="Plugin simple de WordPress - instala y configura en tu panel de administración." href="#wordpress" />
-        <FeatureCard icon="shopping-bag" title="Shopify" description="Integración de aplicación Shopify para tiendas de comercio electrónico con seguimiento de carrito." href="#shopify" />
+        <FeatureCard icon="code" title="HTML / JavaScript" description="Funciona con cualquier sitio web usando una simple etiqueta de script de una línea. Sin herramientas de compilación." href="#html" />
+        <FeatureCard icon="react" title="React" description="Integración perfecta con aplicaciones React usando nuestra biblioteca de componentes oficial." href="#react" comingSoon={true} />
+        <FeatureCard icon="angular" title="Angular" description="Módulo nativo Angular con soporte TypeScript e inyección de dependencias." href="#angular" comingSoon={true} />
+        <FeatureCard icon="vue" title="Vue.js" description="Plugin Vue 3 con soporte composition API y gestión de estado reactivo." href="#vue" comingSoon={true} />
+        <FeatureCard icon="next" title="Next.js" description="Optimizado para Next.js con soporte SSR y división automática de código." href="#nextjs" comingSoon={true} />
+        <FeatureCard icon="bolt" title="WordPress" description="Plugin simple de WordPress - instala y configura en tu panel de administración." href="#wordpress" comingSoon={true} />
       </div>
     </ContentSection>
 
@@ -45,7 +52,7 @@ const locale = 'es';
       <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Añade antes de la etiqueta de cierre &lt;/body&gt;:</p>
       <CodeBlock code={`<script src="https://minimal.lat/embed.js" data-site-id="your-site-id"></script>`} />
 
-      <h3 id="react" class="text-2xl text-[var(--text-primary)] font-semibold mb-4 scroll-mt-32">Aplicaciones React</h3>
+      <h3 id="react" class="text-2xl text-[var(--text-primary)] font-semibold mb-4 scroll-mt-32">Aplicaciones React <span class="coming-soon-badge-inline align-middle">Coming soon</span></h3>
       <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Instala vía npm y usa como componente:</p>
       <CodeBlock code={`npm install @minimal/react
 import { MinimalChat } from '@minimal/react';
@@ -58,7 +65,7 @@ function App() {
   );
 }`} />
 
-      <h3 id="angular" class="text-2xl text-[var(--text-primary)] font-semibold mb-4 scroll-mt-32">Aplicaciones Angular</h3>
+      <h3 id="angular" class="text-2xl text-[var(--text-primary)] font-semibold mb-4 scroll-mt-32">Aplicaciones Angular <span class="coming-soon-badge-inline align-middle">Coming soon</span></h3>
       <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Instala vía npm e importa en tu módulo:</p>
       <CodeBlock code={`npm install @minimal/angular
 
@@ -71,7 +78,7 @@ import { MinimalModule } from '@minimal/angular';
 })
 export class AppModule { }`} />
 
-      <h3 id="vue" class="text-2xl text-[var(--text-primary)] font-semibold mb-4 scroll-mt-32">Aplicaciones Vue.js</h3>
+      <h3 id="vue" class="text-2xl text-[var(--text-primary)] font-semibold mb-4 scroll-mt-32">Aplicaciones Vue.js <span class="coming-soon-badge-inline align-middle">Coming soon</span></h3>
       <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Instala vía npm y usa como plugin:</p>
       <CodeBlock code={`npm install @minimal/vue
 import { createApp } from 'vue';
@@ -80,7 +87,7 @@ import MinimalPlugin from '@minimal/vue';
 const app = createApp(App);
 app.use(MinimalPlugin, { siteId: 'your-site-id' });`} />
 
-      <h3 id="nextjs" class="text-2xl text-[var(--text-primary)] font-semibold mb-4 scroll-mt-32">Aplicaciones Next.js</h3>
+      <h3 id="nextjs" class="text-2xl text-[var(--text-primary)] font-semibold mb-4 scroll-mt-32">Aplicaciones Next.js <span class="coming-soon-badge-inline align-middle">Coming soon</span></h3>
       <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Instala vía npm y añade a tu layout o componente app:</p>
       <CodeBlock code={`npm install @minimal/react
 
@@ -110,20 +117,7 @@ export default function RootLayout({ children }) {
             'Ingresa tu ID de Sitio y personaliza la apariencia',
             'Guarda los cambios - el widget aparece automáticamente'
           ]}
-        />
-        </div>
-
-        <div id="shopify" class="scroll-mt-32">
-        <ListCard
-          title="Tiendas Shopify"
-          description="Instala desde la Tienda de Aplicaciones de Shopify:"
-          items={[
-            'Visita la Tienda de Aplicaciones de Shopify y busca Minimal',
-            'Haz clic en Instalar Aplicación y autoriza los permisos',
-            'Ingresa tu ID de Sitio en la configuración de la aplicación',
-            'Personaliza la apariencia del widget',
-            'El widget aparece automáticamente en todas las páginas'
-          ]}
+          comingSoon={true}
         />
         </div>
       </div>
@@ -132,7 +126,9 @@ export default function RootLayout({ children }) {
 
     <ContentSection>
       <div class="max-w-4xl mx-auto">
-      <SectionTitle title="Configuración Avanzada" centered={true} />
+      <h2 class="text-4xl md:text-5xl font-bold text-[var(--text-primary)] text-center mb-6">
+        Configuración Avanzada <span class="coming-soon-badge-inline align-middle">Coming soon</span>
+      </h2>
 
       <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-4">Disparadores Personalizados</h3>
       <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">Abre el widget basado en acciones del usuario:</p>

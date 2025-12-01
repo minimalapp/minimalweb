@@ -10,6 +10,7 @@
  * @param title - Card title
  * @param description - Card description
  * @param className - Additional CSS classes
+ * @param comingSoon - Show coming soon badge
  */
 
 import Icon from '@/components/Icon.astro';
@@ -20,15 +21,19 @@ interface Props {
   title: string;
   description: string;
   className?: string;
+  comingSoon?: boolean;
 }
 
-const { href, icon, title, description, className = '' } = Astro.props;
+const { href, icon, title, description, className = '', comingSoon = false } = Astro.props;
 ---
 
 <a
   href={href}
-  class={`flex flex-col items-center text-center bg-bg-tertiary p-6 rounded-md shadow-md no-underline transition-all duration-base hover:-translate-y-0.5 hover:shadow-lg ${className}`}
+  class={`relative flex flex-col items-center text-center bg-bg-tertiary p-6 rounded-md shadow-md no-underline transition-all duration-base hover:-translate-y-0.5 hover:shadow-lg overflow-visible ${className}`}
 >
+  {comingSoon && (
+    <span class="coming-soon-badge">Coming soon</span>
+  )}
   <div class="mb-4 text-brand-purple-primary">
     <Icon name={icon} size="xl" />
   </div>
@@ -39,3 +44,39 @@ const { href, icon, title, description, className = '' } = Astro.props;
     {description}
   </p>
 </a>
+
+<style is:global>
+  .coming-soon-badge {
+    @apply text-[10px] font-semibold px-2.5 py-1 rounded-md whitespace-nowrap uppercase tracking-wider;
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    z-index: 10;
+    background: linear-gradient(135deg, #7c3aed 0%, #6366f1 50%, #7c3aed 100%);
+    color: #ffffff;
+    border: 1px solid #8b5cf6;
+    box-shadow: 0 2px 8px rgba(124, 58, 237, 0.4);
+    overflow: hidden;
+  }
+
+  .coming-soon-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+</style>

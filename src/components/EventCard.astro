@@ -11,6 +11,7 @@ interface Props {
   buttonHref: string;
   dateColor?: string;
   className?: string;
+  isPast?: boolean;
 }
 
 const {
@@ -21,17 +22,18 @@ const {
   buttonText,
   buttonHref,
   dateColor = 'var(--brand-green)',
-  className = ''
+  className = '',
+  isPast = false
 } = Astro.props;
 ---
 
-<div class={`bg-bg-primary p-6 rounded-md shadow-md transition-all duration-base hover:-translate-y-0.5 hover:shadow-lg ${className}`}>
+<div class={`bg-bg-primary p-6 rounded-md shadow-md transition-all duration-base hover:-translate-y-0.5 hover:shadow-lg ${isPast ? 'opacity-60' : ''} ${className}`}>
   <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
     <div class="flex-1">
-      <div class="text-sm font-semibold mb-2" style={`color: ${dateColor}`}>
+      <div class={`text-sm font-semibold mb-2 ${isPast ? 'line-through' : ''}`} style={`color: ${isPast ? 'var(--text-tertiary)' : dateColor}`}>
         📅 {date}
       </div>
-      <h3 class="text-2xl text-[var(--text-primary)] font-semibold mb-3">
+      <h3 class={`text-2xl text-[var(--text-primary)] font-semibold mb-3 ${isPast ? 'line-through text-[var(--text-tertiary)]' : ''}`}>
         {title}
       </h3>
       <p class="text-[var(--text-secondary)] leading-relaxed mb-4 text-[15px]">
@@ -43,8 +45,12 @@ const {
         ))}
       </div>
     </div>
-    <Button variant="primary" href={buttonHref}>
-      {buttonText}
-    </Button>
+    {isPast ? (
+      <span class="text-[var(--text-tertiary)] text-sm font-medium px-4 py-2">Event Ended</span>
+    ) : (
+      <Button variant="primary" href={buttonHref}>
+        {buttonText}
+      </Button>
+    )}
   </div>
 </div>

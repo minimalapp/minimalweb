@@ -13,6 +13,7 @@ import EventCard from '@/components/EventCard.astro';
 import TestimonialCard from '@/components/TestimonialCard.astro';
 
 const locale = 'en';
+const IDEAS_APP_URL = import.meta.env.PUBLIC_IDEAS_APP_URL || 'http://localhost:8000';
 ---
 
 <BaseLayout title="Community - Minimal" description="Join the Minimal community of developers, designers, and product builders." locale={locale}>
@@ -25,20 +26,68 @@ const locale = 'en';
     />
 
     <ContentSection>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-8 mt-8">
-        <StatCard number="10K+" label="Active Users" color="var(--brand-green)" />
-        <StatCard number="50+" label="Countries" color="var(--brand-purple-primary)" />
-        <StatCard number="1M+" label="Conversations Daily" color="var(--brand-green)" />
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+        <StatCard number="1K+" label="Active Users" color="var(--brand-green)" />
+        <StatCard number="15" label="Countries" color="var(--brand-purple-primary)" />
+        <StatCard number="10K+" label="Conversations Daily" color="var(--brand-green)" />
       </div>
+    </ContentSection>
 
+    <!-- Ideas Board Section -->
+    <ContentSection background="secondary">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-8">
+          <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-[var(--brand-purple-primary)] to-[var(--brand-purple-dark)] mb-6 shadow-lg shadow-purple-500/25">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-white">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+            </svg>
+          </div>
+          <h2 class="text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-4">
+            Shape the Future
+          </h2>
+          <p class="text-xl text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed">
+            Your ideas drive our roadmap. Share feature requests, vote on what matters most, and help us build the conversational AI platform you need.
+          </p>
+        </div>
+
+        <!-- Embedded Ideas Cards -->
+        <div class="mb-4">
+          <iframe
+            src={`${IDEAS_APP_URL}/ideas/embed/?limit=6`}
+            class="w-full border-0"
+            style="height: 580px; background: transparent; overflow: hidden;"
+            title="Community Ideas"
+            loading="lazy"
+            scrolling="no"
+          ></iframe>
+        </div>
+
+        <!-- Ideas CTA -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Button variant="primary" size="lg" href={`${IDEAS_APP_URL}/ideas/submit/`}>
+            <span class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              </svg>
+              Submit Your Idea
+            </span>
+          </Button>
+          <Button variant="secondary" size="lg" href={`${IDEAS_APP_URL}/ideas/cards/`}>
+            View All Ideas
+          </Button>
+        </div>
+      </div>
+    </ContentSection>
+
+    <ContentSection>
       <SectionTitle title="Connect With Us" centered={true} />
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-        <FeatureCard icon="chat-bubble" title="Discord Server" description="Join our active Discord community for real-time help, discussions, and announcements. 5,000+ members online." />
         <FeatureCard icon="twitter" title="Twitter / X" description="Follow us for product updates, tips, and industry insights. Join the conversation with #MinimalChat." />
+        <FeatureCard icon="linkedin" title="LinkedIn" description="Connect with us professionally. Company updates, industry insights, and B2B community." />
         <FeatureCard icon="youtube" title="YouTube Channel" description="Tutorials, case studies, and behind-the-scenes content. Subscribe for weekly videos." />
-        <FeatureCard icon="document-text" title="Blog" description="Deep dives into conversational AI, best practices, and customer success stories." />
+        <FeatureCard icon="document-text" title="Blog" description="Deep dives into conversational AI, best practices, and customer success stories." comingSoon={true} />
         <FeatureCard icon="github" title="GitHub" description="Explore our open-source tools, examples, and contribute to the ecosystem." />
-        <FeatureCard icon="envelope" title="Newsletter" description="Monthly roundup of features, tips, and community highlights delivered to your inbox." />
+        <FeatureCard icon="envelope" title="Newsletter" description="Monthly roundup of features, tips, and community highlights delivered to your inbox." comingSoon={true} />
       </div>
     </ContentSection>
 
@@ -79,6 +128,7 @@ const locale = 'en';
           buttonText="Register"
           buttonHref="/contact"
           dateColor="var(--brand-green)"
+          isPast={true}
         />
         <EventCard
           date="March 22, 2025 • 1:00 PM EST"
@@ -88,6 +138,7 @@ const locale = 'en';
           buttonText="Join Call"
           buttonHref="/contact"
           dateColor="var(--brand-purple-primary)"
+          isPast={true}
         />
         <EventCard
           date="April 5, 2025 • 10:00 AM EST"
@@ -97,6 +148,7 @@ const locale = 'en';
           buttonText="Sign Up"
           buttonHref="/contact"
           dateColor="var(--brand-green)"
+          isPast={true}
         />
       </div>
     </ContentSection>
@@ -113,11 +165,11 @@ const locale = 'en';
           avatarColor="from-[var(--brand-green)] to-[#059669]"
         />
         <TestimonialCard
-          avatar="SS"
-          company="StyleShop"
-          industry="E-commerce"
-          quote="Our conversion rate doubled after adding Minimal. The AI helps customers find products and answers sizing questions instantly. Game changer for our business."
-          author="Maria Garcia, Founder"
+          avatar="AR"
+          company="AutoRight Repairs"
+          industry="Auto Services"
+          quote="Customers can now book appointments and get estimates 24/7. The AI answers common questions about services and pricing instantly. Our phone calls dropped by 40%."
+          author="Carlos Mendez, Owner"
           avatarColor="from-[var(--brand-purple-primary)] to-[var(--brand-purple-dark)]"
         />
         <TestimonialCard
@@ -141,15 +193,15 @@ const locale = 'en';
 
     <CTASection
       title="Join the Community"
-      description="Connect with thousands of builders creating better web experiences with conversational AI."
+      description="Connect with builders creating better web experiences with conversational AI."
       background="secondary"
     >
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <Button variant="primary" size="lg" href="https://discord.gg/minimal">
-          Join Discord
-        </Button>
-        <Button variant="secondary" size="lg" href="https://twitter.com/minimal">
+        <Button variant="primary" size="lg" href="https://twitter.com/minimal">
           Follow on Twitter
+        </Button>
+        <Button variant="secondary" size="lg" href="https://linkedin.com/company/minimal">
+          Connect on LinkedIn
         </Button>
       </div>
     </CTASection>
