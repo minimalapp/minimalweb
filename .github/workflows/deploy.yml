@@ -36,6 +36,7 @@ jobs:
           PUBLIC_STRIPE_PRICING_TABLE_ID: ${{ secrets.PUBLIC_STRIPE_PRICING_TABLE_ID }}
           PUBLIC_STRIPE_PUBLISHABLE_KEY: ${{ secrets.PUBLIC_STRIPE_PUBLISHABLE_KEY }}
           PUBLIC_BACKEND_URL: ${{ secrets.PUBLIC_BACKEND_URL }}
+          PUBLIC_IDEAS_APP_URL: ${{ secrets.PUBLIC_IDEAS_APP_URL }}
 
       - name: Add CNAME
         run: echo "minimal.lat" > ./dist/CNAME
