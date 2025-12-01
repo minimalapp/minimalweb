@@ -216,66 +216,66 @@
     },
     "useCases": {
       "title": "Real Use Cases",
-      "subtitle": "Discover how different industries are transforming their web presence with Minimal",
+      "subtitle": "See how businesses like yours use Minimal to help visitors find answers instantly",
       "cases": [
         {
-          "title": "SaaS & Software",
-          "icon": "laptop",
-          "description": "Reduce onboarding friction and convert visitors into active users",
-          "benefits": [
-            "Conversational onboarding",
-            "Interactive demonstrations",
-            "Intelligent technical support"
-          ]
-        },
-        {
-          "title": "Professional Services",
+          "title": "Small Business Websites",
           "icon": "building",
-          "description": "Capture qualified leads and schedule meetings automatically",
+          "description": "Help visitors instantly find business info without searching through pages",
           "benefits": [
-            "Automatic lead qualification",
-            "Smart scheduling",
-            "Personalized proposals"
+            "Answer FAQs about services and pricing",
+            "Share business hours and location",
+            "Explain what makes you different"
           ]
         },
         {
-          "title": "Education & Training",
-          "icon": "academic",
-          "description": "Guide students to relevant courses and answer questions instantly",
+          "title": "Portfolio & Personal Sites",
+          "icon": "laptop",
+          "description": "Let your work speak for itself while the AI handles common questions",
           "benefits": [
-            "Course recommendations",
-            "24/7 academic advising",
-            "Simplified enrollment"
+            "Explain your skills and experience",
+            "Guide visitors to relevant projects",
+            "Answer availability questions"
           ]
         },
         {
-          "title": "Health & Wellness",
-          "icon": "heart-pulse",
-          "description": "Connect patients with appropriate services and schedule appointments easily",
-          "benefits": [
-            "Automated triage",
-            "Appointment scheduling",
-            "Service information"
-          ]
-        },
-        {
-          "title": "Real Estate",
+          "title": "Local Services",
           "icon": "home",
-          "description": "Help buyers find ideal properties based on their needs",
+          "description": "Give customers instant answers about your services 24/7",
           "benefits": [
-            "Conversational search",
-            "Guided virtual tours",
-            "Mortgage calculator"
+            "Share menu or service details",
+            "Answer pricing questions",
+            "Provide hours and contact info"
           ]
         },
         {
-          "title": "Finance & Insurance",
-          "icon": "currency",
-          "description": "Explain complex products in a simple and personalized way",
+          "title": "Agency & Freelancer Sites",
+          "icon": "building",
+          "description": "Qualify leads by answering service questions before they contact you",
           "benefits": [
-            "Basic financial advice",
-            "Product comparison",
-            "Instant quotes"
+            "Explain your process and timeline",
+            "Share pricing ranges",
+            "Describe past work and expertise"
+          ]
+        },
+        {
+          "title": "Content & Blog Sites",
+          "icon": "academic",
+          "description": "Help readers discover relevant content based on what they're looking for",
+          "benefits": [
+            "Recommend articles by topic",
+            "Summarize key content",
+            "Answer questions from your posts"
+          ]
+        },
+        {
+          "title": "Product Landing Pages",
+          "icon": "currency",
+          "description": "Answer product questions instantly to reduce bounce rates",
+          "benefits": [
+            "Explain features and benefits",
+            "Clarify pricing and plans",
+            "Address common objections"
           ]
         }
       ]
@@ -545,66 +545,66 @@
     },
     "useCases": {
       "title": "Casos de Uso Reales",
-      "subtitle": "Descubre cómo diferentes industrias están transformando su presencia web con Minimal",
+      "subtitle": "Mira cómo negocios como el tuyo usan Minimal para ayudar a visitantes a encontrar respuestas al instante",
       "cases": [
         {
-          "title": "SaaS & Software",
-          "icon": "laptop",
-          "description": "Reduce fricción en onboarding y convierte visitantes en usuarios activos",
-          "benefits": [
-            "Onboarding conversacional",
-            "Demostraciones interactivas",
-            "Soporte técnico inteligente"
-          ]
-        },
-        {
-          "title": "Servicios Profesionales",
+          "title": "Sitios de Pequeños Negocios",
           "icon": "building",
-          "description": "Captura leads calificados y agenda reuniones automáticamente",
+          "description": "Ayuda a visitantes a encontrar información del negocio sin buscar en múltiples páginas",
           "benefits": [
-            "Calificación automática de leads",
-            "Agendamiento inteligente",
-            "Propuestas personalizadas"
+            "Responde FAQs sobre servicios y precios",
+            "Comparte horarios y ubicación",
+            "Explica qué te hace diferente"
           ]
         },
         {
-          "title": "Educación & Formación",
-          "icon": "academic",
-          "description": "Guía a estudiantes a cursos relevantes y responde dudas al instante",
+          "title": "Portafolios y Sitios Personales",
+          "icon": "laptop",
+          "description": "Deja que tu trabajo hable por sí mismo mientras la IA responde preguntas comunes",
           "benefits": [
-            "Recomendación de cursos",
-            "Asesoría académica 24/7",
-            "Inscripción simplificada"
+            "Explica tus habilidades y experiencia",
+            "Guía visitantes a proyectos relevantes",
+            "Responde sobre disponibilidad"
           ]
         },
         {
-          "title": "Salud & Bienestar",
-          "icon": "heart-pulse",
-          "description": "Conecta pacientes con servicios adecuados y agenda citas fácilmente",
-          "benefits": [
-            "Triage automatizado",
-            "Agendamiento de citas",
-            "Información de servicios"
-          ]
-        },
-        {
-          "title": "Inmobiliaria",
+          "title": "Servicios Locales",
           "icon": "home",
-          "description": "Ayuda a compradores a encontrar propiedades ideales basado en sus necesidades",
+          "description": "Da respuestas instantáneas a clientes sobre tus servicios 24/7",
           "benefits": [
-            "Búsqueda conversacional",
-            "Tours virtuales guiados",
-            "Cálculo de hipotecas"
+            "Comparte detalles del menú o servicios",
+            "Responde preguntas de precios",
+            "Proporciona horarios e información de contacto"
           ]
         },
         {
-          "title": "Finanzas & Seguros",
-          "icon": "currency",
-          "description": "Explica productos complejos de forma simple y personalizada",
+          "title": "Sitios de Agencias y Freelancers",
+          "icon": "building",
+          "description": "Califica leads respondiendo preguntas sobre servicios antes de que te contacten",
           "benefits": [
-            "Asesoría financiera básica",
-            "Comparación de productos",
-            "Cotización instantánea"
+            "Explica tu proceso y tiempos",
+            "Comparte rangos de precios",
+            "Describe trabajos anteriores y experiencia"
+          ]
+        },
+        {
+          "title": "Sitios de Contenido y Blogs",
+          "icon": "academic",
+          "description": "Ayuda a lectores a descubrir contenido relevante según lo que buscan",
+          "benefits": [
+            "Recomienda artículos por tema",
+            "Resume contenido clave",
+            "Responde preguntas de tus publicaciones"
+          ]
+        },
+        {
+          "title": "Landing Pages de Productos",
+          "icon": "currency",
+          "description": "Responde preguntas del producto al instante para reducir abandonos",
+          "benefits": [
+            "Explica características y beneficios",
+            "Aclara precios y planes",
+            "Aborda objeciones comunes"
           ]
         }
       ]
